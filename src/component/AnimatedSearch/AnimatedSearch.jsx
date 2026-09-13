@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,7 +11,7 @@ export default function AnimatedSearch() {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    // Don't start another search while searching
+    // Don't start  while searching
     if (!query.trim() || status === "searching") {
       return;
     }
@@ -20,7 +19,7 @@ export default function AnimatedSearch() {
     // Start loading
     setStatus("searching");
 
-    // Clear previous timeout if any
+    // Clear previous timeout
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
     }
@@ -33,7 +32,7 @@ export default function AnimatedSearch() {
   };
 
   const resetSearch = () => {
-    // Clear any running timeout
+    // Clear  timeout
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
       searchTimeoutRef.current = null;
@@ -55,7 +54,6 @@ export default function AnimatedSearch() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-5">
       <div className="w-full max-w-xl">
-
         {/* Heading */}
         <div className="mb-8 text-center">
           <motion.h1
@@ -70,11 +68,7 @@ export default function AnimatedSearch() {
             transition={{
               duration: 0.5,
             }}
-            className="
-              text-3xl
-              font-bold
-              tracking-tight
-              text-white
+            className=" text-3xl font-bold tracking-tight text-white
             "
           >
             Animated Search
@@ -104,10 +98,7 @@ export default function AnimatedSearch() {
         </div>
 
         {/* Search Form */}
-        <form
-          onSubmit={handleSearch}
-          className="relative"
-        >
+        <form onSubmit={handleSearch} className="relative">
           {/* Search Box */}
           <motion.div
             animate={
@@ -121,26 +112,11 @@ export default function AnimatedSearch() {
             }
             transition={{
               duration: 0.5,
-              repeat:
-                status === "searching"
-                  ? Infinity
-                  : 0,
+              repeat: status === "searching" ? Infinity : 0,
             }}
-            className="
-              relative
-              flex
-              h-16
-              items-center
-              overflow-hidden
-              rounded-2xl
-              border
-              border-white/10
-              bg-white/[0.06]
-              shadow-2xl
-              backdrop-blur-xl
+            className=" relative flex  h-16 items-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] shadow-2xl backdrop-blur-xl
             "
           >
-
             {/* Top Highlight */}
             <div
               className="
@@ -165,25 +141,19 @@ export default function AnimatedSearch() {
                       rotate: [0, 15, -15, 0],
                     }
                   : status === "success"
-                  ? {
-                      scale: [1, 1.3, 1],
-                      rotate: [0, 10, 0],
-                    }
-                  : {
-                      x: 0,
-                      rotate: 0,
-                      scale: 1,
-                    }
+                    ? {
+                        scale: [1, 1.3, 1],
+                        rotate: [0, 10, 0],
+                      }
+                    : {
+                        x: 0,
+                        rotate: 0,
+                        scale: 1,
+                      }
               }
               transition={{
-                duration:
-                  status === "searching"
-                    ? 0.7
-                    : 0.45,
-                repeat:
-                  status === "searching"
-                    ? Infinity
-                    : 0,
+                duration: status === "searching" ? 0.7 : 0.45,
+                repeat: status === "searching" ? Infinity : 0,
               }}
               className="
                 ml-5
@@ -195,9 +165,7 @@ export default function AnimatedSearch() {
                 justify-center
               "
             >
-              <AnimatePresence
-                mode="wait"
-              >
+              <AnimatePresence mode="wait">
                 {/* SUCCESS ICON */}
                 {status === "success" ? (
                   <motion.svg
@@ -248,8 +216,7 @@ export default function AnimatedSearch() {
                     />
                   </motion.svg>
                 ) : (
-
-                  /* SEARCH ICON */
+                  /* Search ICON */
                   <motion.svg
                     key="search"
                     initial={{
@@ -276,12 +243,7 @@ export default function AnimatedSearch() {
                       text-zinc-400
                     "
                   >
-                    <circle
-                      cx="11"
-                      cy="11"
-                      r="6.5"
-                      strokeWidth="2"
-                    />
+                    <circle cx="11" cy="11" r="6.5" strokeWidth="2" />
 
                     <path
                       d="M16 16L21 21"
@@ -299,7 +261,7 @@ export default function AnimatedSearch() {
               onChange={(e) => {
                 setQuery(e.target.value);
 
-                // If user starts typing again after success
+                // starts typing again after success
                 if (status === "success") {
                   setStatus("idle");
                 }
@@ -322,10 +284,7 @@ export default function AnimatedSearch() {
             {/* Search Button */}
             <motion.button
               type="submit"
-              disabled={
-                !query.trim() ||
-                status === "searching"
-              }
+              disabled={!query.trim() || status === "searching"}
               whileHover={
                 status !== "searching"
                   ? {
@@ -359,7 +318,6 @@ export default function AnimatedSearch() {
                 disabled:opacity-40
               "
             >
-
               {/* SEARCHING */}
               {status === "searching" ? (
                 <>
@@ -382,13 +340,9 @@ export default function AnimatedSearch() {
                     "
                   />
 
-                  <span>
-                    Searching
-                  </span>
+                  <span>Searching</span>
                 </>
-
               ) : status === "success" ? (
-
                 /* SUCCESS */
                 <motion.span
                   initial={{
@@ -407,16 +361,11 @@ export default function AnimatedSearch() {
                 >
                   Done ✓
                 </motion.span>
-
               ) : (
-
-                /* IDLE */
                 "Search"
               )}
-
             </motion.button>
 
-            {/* SCANNING LINE */}
             <AnimatePresence>
               {status === "searching" && (
                 <motion.div
@@ -455,7 +404,6 @@ export default function AnimatedSearch() {
                 />
               )}
             </AnimatePresence>
-
           </motion.div>
         </form>
 
@@ -496,7 +444,6 @@ export default function AnimatedSearch() {
                 backdrop-blur-xl
               "
             >
-
               <div>
                 <p
                   className="
@@ -561,7 +508,6 @@ export default function AnimatedSearch() {
                   ✓
                 </motion.span>
               </motion.div>
-
             </motion.div>
           )}
         </AnimatePresence>
@@ -599,7 +545,6 @@ export default function AnimatedSearch() {
             </motion.button>
           )}
         </AnimatePresence>
-
       </div>
     </div>
   );

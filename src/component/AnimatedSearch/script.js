@@ -1,6 +1,3 @@
-// ==============================
-// ELEMENTS
-// ==============================
 
 const searchForm =
   document.getElementById("searchForm");
@@ -41,19 +38,9 @@ const resultQuery =
 const searchAgain =
   document.getElementById("searchAgain");
 
-
-// ==============================
-// STATE
-// ==============================
-
 let status = "idle";
 
 let searchTimeout = null;
-
-
-// ==============================
-// SEARCH
-// ==============================
 
 searchForm.addEventListener(
   "submit",
@@ -73,11 +60,6 @@ searchForm.addEventListener(
     if (status === "searching") {
       return;
     }
-
-
-    // ==========================
-    // START SEARCH
-    // ==========================
 
     status = "searching";
 
@@ -147,22 +129,20 @@ searchForm.addEventListener(
 );
 
 
-// ==============================
-// SEARCH COMPLETE
-// ==============================
+
+// Search Compelect
+
 
 function completeSearch(query) {
 
   status = "success";
 
 
-  // Clear timeout reference
+  // Clear timeout 
   searchTimeout = null;
 
 
-  // ==========================
-  // STOP ALL LOADING
-  // ==========================
+
 
   searchBox.classList.remove(
     "searching"
@@ -183,9 +163,9 @@ function completeSearch(query) {
   );
 
 
-  // ==========================
-  // ICON CHANGE
-  // ==========================
+  
+  // ICON change
+  
 
   searchIcon.classList.add(
     "hidden"
@@ -212,9 +192,7 @@ function completeSearch(query) {
   );
 
 
-  // ==========================
-  // BUTTON
-  // ==========================
+  // button
 
   searchButton.disabled = false;
 
@@ -222,9 +200,7 @@ function completeSearch(query) {
     "Done ✓";
 
 
-  // ==========================
-  // RESULT
-  // ==========================
+    // result
 
   resultQuery.textContent =
     query;
@@ -240,15 +216,12 @@ function completeSearch(query) {
 }
 
 
-// ==============================
-// SEARCH AGAIN
-// ==============================
 
 searchAgain.addEventListener(
   "click",
   function () {
 
-    // Clear timeout if somehow running
+    
     if (searchTimeout) {
 
       clearTimeout(
@@ -260,11 +233,9 @@ searchAgain.addEventListener(
     }
 
 
-    // Reset state
     status = "idle";
 
 
-    // Reset input
     searchInput.value = "";
 
 
@@ -272,7 +243,6 @@ searchAgain.addEventListener(
       false;
 
 
-    // Reset button
     searchButton.disabled =
       false;
 
@@ -280,7 +250,6 @@ searchAgain.addEventListener(
       "Search";
 
 
-    // Reset icons
     successIcon.classList.add(
       "hidden"
     );
@@ -295,7 +264,6 @@ searchAgain.addEventListener(
     );
 
 
-    // Hide result
     resultCard.classList.add(
       "hidden"
     );
@@ -312,9 +280,8 @@ searchAgain.addEventListener(
 );
 
 
-// ==============================
-// CLEANUP
-// ==============================
+
+// cleanup
 
 window.addEventListener(
   "beforeunload",
