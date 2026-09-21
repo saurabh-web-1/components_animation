@@ -1,0 +1,713 @@
+# CartGlide — Component Guide
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section or code part.
+
+For example:
+
+* `CHANGE PRODUCTS`
+* `CHANGE COLORS`
+* `CHANGE CART ANIMATION`
+* `CHANGE QUANTITY`
+* `PLACEMENT OPTIONS`
+* `CHECKOUT`
+* `CART DRAWER`
+
+Find the section you want, then change the required code/value.
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+`CartGlide` is an animated shopping cart component built with:
+
+* React
+* Tailwind CSS
+* Framer Motion
+
+It includes:
+
+* Product grid
+* Add-to-cart animation
+* Flying product animation
+* Cart quantity management
+* Remove product
+* Cart preview bar
+* Animated cart drawer
+* Placement/delivery options
+* Order note textarea
+* Subtotal calculation
+* Checkout button
+
+The main component is:
+
+```jsx
+export default function CartGlide() {
+```
+
+---
+
+## 2. REQUIRED IMPORTS
+
+The component uses React hooks and Framer Motion:
+
+```jsx
+import { useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+```
+
+Make sure Framer Motion is installed:
+
+```bash
+npm install framer-motion
+```
+
+---
+
+## 3. CHANGE PRODUCTS
+
+Products are stored inside the `PRODUCTS` array.
+
+Find:
+
+```jsx
+const PRODUCTS = [
+```
+
+Each product contains:
+
+```jsx
+{
+  id: 1,
+  name: "Shoe 1",
+  category: "SHOES",
+  price: 3.99,
+  rating: 4.5,
+  reviews: 52,
+  image: "IMAGE_URL",
+}
+```
+
+You can change:
+
+* `name` → Product name
+* `category` → Product category
+* `price` → Product price
+* `rating` → Product rating
+* `reviews` → Number of reviews
+* `image` → Product image
+
+Example:
+
+```jsx
+{
+  id: 5,
+  name: "Running Shoes",
+  category: "SPORTS",
+  price: 59.99,
+  rating: 4.8,
+  reviews: 120,
+  image: "your-image-url",
+}
+```
+
+---
+
+## 4. CHANGE PRODUCT IMAGE
+
+The image is controlled by:
+
+```jsx
+image: "https://..."
+```
+
+The image is displayed using:
+
+```jsx
+<img
+  src={product.image}
+  alt={product.name}
+/>
+```
+
+You can replace the Unsplash URL with:
+
+* Cloudinary URL
+* Your own hosted image
+* Local image
+* CDN image
+
+---
+
+## 5. CHANGE COLORS
+
+The main accent color is emerald green.
+
+Common classes include:
+
+```jsx
+bg-emerald-500
+text-emerald-500
+text-emerald-600
+border-emerald-200
+bg-emerald-50
+```
+
+For example:
+
+```jsx
+bg-emerald-500
+```
+
+can be changed to:
+
+```jsx
+bg-blue-500
+```
+
+or:
+
+```jsx
+bg-purple-500
+```
+
+The main cart bar uses:
+
+```jsx
+bg-emerald-500
+```
+
+---
+
+## 6. CHANGE PRODUCT CARD SIZE
+
+The product grid uses:
+
+```jsx
+grid-cols-2
+```
+
+The product image container uses:
+
+```jsx
+h-[175px]
+```
+
+To make the image area taller:
+
+```jsx
+h-[220px]
+```
+
+The product card has:
+
+```jsx
+rounded-2xl
+p-3
+```
+
+You can change these Tailwind classes to customize the card.
+
+---
+
+## 7. ADD TO CART
+
+The main function is:
+
+```jsx
+const addToCart = (product) => {
+```
+
+When the user clicks `+ Add`, this function runs:
+
+```jsx
+onClick={() => addToCart(product)}
+```
+
+The function:
+
+1. Finds the clicked product.
+2. Finds the cart position.
+3. Calculates the starting position.
+4. Calculates the cart position.
+5. Creates the flying animation.
+6. Adds the product to the cart.
+7. Updates the quantity if the product already exists.
+8. Triggers the cart pulse animation.
+
+---
+
+## 8. CHANGE FLYING PRODUCT ANIMATION
+
+The animation route is controlled by these points:
+
+```jsx
+point1X
+point1Y
+
+point2X
+point2Y
+
+point3X
+point3Y
+```
+
+Current route:
+
+```text
+START
+  ↓
+UP
+  ↓
+RIGHT + UP
+  ↓
+RIGHT
+  ↓
+DOWN
+  ↓
+CART
+```
+
+The animation duration is:
+
+```jsx
+duration: 1.15
+```
+
+To make it faster:
+
+```jsx
+duration: 0.8
+```
+
+To make it slower:
+
+```jsx
+duration: 1.5
+```
+
+---
+
+## 9. CHANGE FLYING PRODUCT SIZE
+
+The flying product uses:
+
+```jsx
+h-16 w-16
+```
+
+You can change it to:
+
+```jsx
+h-20 w-20
+```
+
+for a larger flying product.
+
+---
+
+## 10. CART QUANTITY
+
+The quantity is calculated using:
+
+```jsx
+const totalItems = useMemo(
+  () => cart.reduce((sum, item) => sum + item.quantity, 0),
+  [cart]
+);
+```
+
+The subtotal is calculated using:
+
+```jsx
+const subtotal = useMemo(
+  () =>
+    cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    ),
+  [cart]
+);
+```
+
+This means the subtotal automatically updates when:
+
+* A product is added
+* Quantity increases
+* Quantity decreases
+* A product is removed
+
+---
+
+## 11. CHANGE QUANTITY
+
+Quantity is controlled by:
+
+```jsx
+const changeQuantity = (id, amount) => {
+```
+
+Increase:
+
+```jsx
+changeQuantity(item.id, 1)
+```
+
+Decrease:
+
+```jsx
+changeQuantity(item.id, -1)
+```
+
+The quantity cannot go below `0`.
+
+When it reaches `0`, the product is automatically removed from the cart.
+
+---
+
+## 12. REMOVE PRODUCT
+
+Products can be completely removed using:
+
+```jsx
+const removeItem = (id) => {
+  setCart((previous) =>
+    previous.filter((item) => item.id !== id)
+  );
+};
+```
+
+The `Remove` button calls:
+
+```jsx
+removeItem(item.id)
+```
+
+---
+
+## 13. CART PREVIEW BAR
+
+The cart preview is fixed at the bottom:
+
+```jsx
+fixed bottom-6
+```
+
+It displays:
+
+* Product thumbnails
+* Number of items
+* Subtotal
+* View cart button
+
+Only the first three product thumbnails are shown:
+
+```jsx
+cart.slice(0, 3)
+```
+
+If more products exist, it displays:
+
+```jsx
++{cart.length - 3}
+```
+
+---
+
+## 14. CART PULSE ANIMATION
+
+After a product is added, the cart briefly scales:
+
+```jsx
+scale: [1, 1.08, 0.97, 1]
+```
+
+The pulse duration is:
+
+```jsx
+duration: 0.45
+```
+
+The pulse is triggered for:
+
+```jsx
+500
+```
+
+milliseconds.
+
+---
+
+## 15. OPEN CART DRAWER
+
+Clicking:
+
+```jsx
+View cart
+```
+
+runs:
+
+```jsx
+setCartOpen(true)
+```
+
+The cart drawer is displayed when:
+
+```jsx
+cartOpen
+```
+
+is `true`.
+
+Clicking outside the drawer closes it:
+
+```jsx
+onClick={() => setCartOpen(false)}
+```
+
+Clicking inside the drawer does not close it because of:
+
+```jsx
+event.stopPropagation()
+```
+
+---
+
+## 16. CART DRAWER ANIMATION
+
+The drawer starts with:
+
+```jsx
+y: 80,
+opacity: 0,
+scale: 0.97
+```
+
+and animates to:
+
+```jsx
+y: 0,
+opacity: 1,
+scale: 1
+```
+
+It uses a spring animation:
+
+```jsx
+transition={{
+  type: "spring",
+  stiffness: 350,
+  damping: 30,
+}}
+```
+
+You can modify `stiffness` and `damping` to change the feel of the drawer animation.
+
+---
+
+## 17. PLACEMENT / DELIVERY OPTIONS
+
+The component contains three options:
+
+```jsx
+Home
+Store
+Schedule
+```
+
+The selected option is stored in:
+
+```jsx
+const [placement, setPlacement] = useState("home");
+```
+
+Each option changes the placement value:
+
+```jsx
+setPlacement("home")
+setPlacement("store")
+setPlacement("schedule")
+```
+
+You can add more options by creating another:
+
+```jsx
+<PlacementOption />
+```
+
+---
+
+## 18. CUSTOMIZE DELIVERY OPTIONS
+
+Each option contains:
+
+```jsx
+<PlacementOption
+  active={placement === "home"}
+  onClick={() => setPlacement("home")}
+  icon="⌂"
+  title="Home"
+  subtitle="3–5 days"
+/>
+```
+
+Change:
+
+```jsx
+title
+```
+
+for the option name.
+
+Change:
+
+```jsx
+subtitle
+```
+
+for the delivery information.
+
+---
+
+## 19. ADD ORDER NOTE
+
+The note is controlled using:
+
+```jsx
+const [note, setNote] = useState("");
+```
+
+The textarea uses:
+
+```jsx
+value={note}
+```
+
+and:
+
+```jsx
+onChange={(e) => setNote(e.target.value)}
+```
+
+The placeholder can be changed here:
+
+```jsx
+placeholder="E.g. Gate no, landmark, special instructions..."
+```
+
+---
+
+## 20. CHECKOUT BUTTON
+
+The checkout button is disabled when the cart is empty:
+
+```jsx
+disabled={cart.length === 0}
+```
+
+Current button:
+
+```jsx
+Proceed to Checkout
+```
+
+You can connect it to your real checkout flow using:
+
+```jsx
+onClick={handleCheckout}
+```
+
+For example:
+
+```jsx
+const handleCheckout = () => {
+  // checkout logic
+};
+```
+
+---
+
+## 21. CONNECT REAL API
+
+Currently products are stored locally:
+
+```jsx
+const PRODUCTS = [...]
+```
+
+For a real e-commerce application, you can replace this with API data.
+
+Example:
+
+```jsx
+const response = await fetch("/api/products");
+const data = await response.json();
+```
+
+Then store the products using React state.
+
+The current `addToCart()` function can also be connected to your backend cart API.
+
+---
+
+## 22. IMPORTANT CUSTOMIZATION AREAS
+
+Use **Ctrl + F** to quickly find these sections:
+
+```text
+PRODUCTS
+formatPrice
+addToCart
+changeQuantity
+removeItem
+flying
+cartPulse
+PlacementOption
+Proceed to Checkout
+```
+
+These are the main areas you will modify when integrating the component into a real project.
+
+---
+
+## 23. COMPONENT STRUCTURE
+
+The component is organized into:
+
+```text
+CartGlide
+│
+├── Product Data
+├── Product Grid
+│
+├── Add to Cart
+│   └── Flying Product Animation
+│
+├── Cart Preview Bar
+│
+├── Cart Drawer
+│   ├── Cart Items
+│   ├── Quantity Controls
+│   ├── Remove Item
+│   ├── Placement Options
+│   ├── Order Note
+│   ├── Subtotal
+│   └── Checkout
+│
+└── PlacementOption
+```
+
+---
+
+## 24. DEPENDENCIES
+
+Required:
+
+```bash
+npm install framer-motion
+```
+
+React and Tailwind CSS should already be configured in your project.
+

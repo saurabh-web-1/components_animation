@@ -1,0 +1,548 @@
+# ANIMATED SHARE BUTTON — COMPONENT GUIDE
+
+**Component:** AnimatedShareButton
+**Type:** React + Tailwind CSS + Framer Motion
+**File:** `AnimatedShareButton.jsx`
+
+---
+
+## 1. REQUIREMENTS
+
+Make sure your React project has Tailwind CSS and Framer Motion installed.
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+npm install framer-motion
+```
+
+The component uses:
+
+* `useState`
+* Framer Motion
+* `AnimatePresence`
+* Browser Clipboard API
+
+---
+
+## 2. ADD THE COMPONENT TO YOUR PROJECT
+
+Create a file such as:
+
+```text
+src/components/AnimatedShareButton.jsx
+```
+
+Paste the component code into that file.
+
+---
+
+## 3. IMPORT THE COMPONENT
+
+In the page where you want to use it:
+
+```jsx
+import AnimatedShareButton from "./components/AnimatedShareButton";
+```
+
+If your folder structure is different, update the import path accordingly.
+
+---
+
+## 4. USE THE COMPONENT
+
+Render the component like this:
+
+```jsx
+function App() {
+  return (
+    <div>
+      <AnimatedShareButton />
+    </div>
+  );
+}
+
+export default App;
+```
+
+---
+
+## 5. HOW THE SHARE BUTTON WORKS
+
+The component has three visual states:
+
+### Normal
+
+* Displays the Share icon.
+* Shows `Share` text.
+* Displays a small animated arrow.
+* Button responds to hover and click interactions.
+
+### Sending
+
+After clicking the button:
+
+* The current page URL is copied to the clipboard.
+* The button enters the sending state.
+* The share icon transforms into a flying paper plane.
+* The paper plane flies upward and outward.
+* Motion trails appear behind the plane.
+* Small particles are generated.
+* The button glow becomes visible.
+* Text changes to `Sending...`.
+
+The URL is copied using:
+
+```js
+await navigator.clipboard.writeText(window.location.href);
+```
+
+---
+
+### Shared
+
+After the animation completes:
+
+* The paper plane disappears.
+* A check mark appears.
+* A success flash animation plays.
+* Text changes to `Shared`.
+* The success state automatically resets after a short delay.
+
+The component controls these states using:
+
+```js
+const [sending, setSending] = useState(false);
+const [shared, setShared] = useState(false);
+```
+
+---
+
+## 6. SHARE ANIMATION
+
+The main animation is designed around a flying paper plane.
+
+During the sending state, the plane moves:
+
+```js
+x: [0, 3, 75, 135],
+y: [0, 4, -25, -82],
+rotate: [-8, -8, -3, 8],
+scale: [0.65, 0.85, 1, 0.75],
+opacity: [0, 1, 1, 0]
+```
+
+This creates the effect of the paper plane launching from the button and flying away.
+
+The animation lasts approximately:
+
+```js
+duration: 1.15
+```
+
+---
+
+## 7. SHARE URL
+
+By default, the component shares the current page URL:
+
+```js
+window.location.href
+```
+
+The URL is copied using the browser Clipboard API:
+
+```js
+await navigator.clipboard.writeText(window.location.href);
+```
+
+This means the same component can be placed on different pages without changing the URL manually.
+
+---
+
+## 8. CHANGE WHAT GETS SHARED
+
+If you want to share a custom URL instead of the current page, replace:
+
+```js
+await navigator.clipboard.writeText(window.location.href);
+```
+
+with:
+
+```js
+await navigator.clipboard.writeText("https://example.com");
+```
+
+You can also make the URL dynamic:
+
+```js
+const shareUrl = "https://example.com/product/123";
+
+await navigator.clipboard.writeText(shareUrl);
+```
+
+---
+
+## 9. CHANGE BUTTON TEXT
+
+The default text states are:
+
+```text
+Share
+Sending...
+Shared
+```
+
+You can change them directly in the JSX.
+
+For example:
+
+```text
+Share
+Sharing...
+Copied ✓
+```
+
+Or:
+
+```text
+Send
+Sending...
+Sent ✓
+```
+
+---
+
+## 10. CHANGE SHARE ANIMATION SPEED
+
+The paper-plane animation currently uses:
+
+```js
+duration: 1.15
+```
+
+For a faster animation:
+
+```js
+duration: 0.8
+```
+
+For a slower animation:
+
+```js
+duration: 1.8
+```
+
+You can also adjust the animation timing through:
+
+```js
+times: [0, 0.12, 0.55, 1]
+```
+
+---
+
+## 11. PARTICLE EFFECT
+
+The component creates seven particles while sharing:
+
+```js
+[...Array(7)].map((_, index) => (
+```
+
+To increase the number of particles:
+
+```js
+[...Array(12)].map((_, index) => (
+```
+
+To reduce them:
+
+```js
+[...Array(4)].map((_, index) => (
+```
+
+This allows you to control how strong the launch effect looks.
+
+---
+
+## 12. SUCCESS ANIMATION
+
+When sharing finishes, a success check mark appears.
+
+The check mark uses an animated SVG path:
+
+```js
+initial={{ pathLength: 0 }}
+animate={{ pathLength: 1 }}
+```
+
+This creates a drawing-style check animation.
+
+The success state also creates a quick border flash around the button.
+
+---
+
+## 13. CHANGE BUTTON SIZE
+
+The current button uses:
+
+```text
+h-[58px]
+w-[180px]
+```
+
+For a smaller button:
+
+```text
+h-[48px]
+w-[150px]
+```
+
+For a larger button:
+
+```text
+h-[64px]
+w-[210px]
+```
+
+You can also adjust the border radius:
+
+```text
+rounded-2xl
+```
+
+For example:
+
+```text
+rounded-xl
+```
+
+or:
+
+```text
+rounded-3xl
+```
+
+---
+
+## 14. CHANGE COLORS
+
+The component currently uses a dark glass-style design.
+
+Main background:
+
+```text
+bg-[#050505]
+```
+
+Button background:
+
+```text
+bg-white/[0.06]
+```
+
+Border:
+
+```text
+border-white/10
+```
+
+Text:
+
+```text
+text-white
+```
+
+You can replace these Tailwind classes to match your website.
+
+For example, a blue theme could use:
+
+```text
+bg-blue-500
+border-blue-400/20
+text-blue-400
+```
+
+---
+
+## 15. CUSTOMIZE THE GLOW
+
+The button has a glow effect that becomes visible while sending and after sharing.
+
+The glow opacity is controlled by:
+
+```js
+opacity: sending ? 0.9 : shared ? 0.6 : 0
+```
+
+You can increase or decrease these values to change the intensity.
+
+For example:
+
+```js
+opacity: sending ? 1 : shared ? 0.8 : 0
+```
+
+---
+
+## 16. DISABLE MULTIPLE CLICKS
+
+The component prevents the share animation from starting again while it is already sending:
+
+```js
+if (sending) return;
+```
+
+The button is also disabled during the sending state:
+
+```jsx
+disabled={sending}
+```
+
+This prevents users from triggering multiple animations simultaneously.
+
+---
+
+## 17. CHANGE THE RESET TIME
+
+After the share animation finishes, the component waits before removing the `Shared` state.
+
+Current reset:
+
+```js
+setTimeout(() => {
+  setShared(false);
+}, 2800);
+```
+
+For a shorter success message:
+
+```js
+}, 2000);
+```
+
+For a longer success message:
+
+```js
+}, 4000);
+```
+
+---
+
+## 18. USE IT FOR SOCIAL SHARING
+
+The current component copies the URL to the clipboard.
+
+You can modify `handleShare` to integrate it with your own sharing system.
+
+For example, you could connect it to:
+
+* WhatsApp sharing
+* Telegram sharing
+* Facebook sharing
+* X sharing
+* Custom share APIs
+* Your own backend
+
+The current animation can remain the same while the actual sharing logic is replaced.
+
+---
+
+## 19. CUSTOMIZE THE PAPER PLANE
+
+The paper plane is created using an inline SVG.
+
+You can replace its SVG path with your own icon or design.
+
+For example, you could use:
+
+* Send icon
+* Rocket
+* Arrow
+* Lightning icon
+* Custom SVG
+* Lucide icon
+
+The animation itself can remain unchanged.
+
+---
+
+## 20. COMPONENT STRUCTURE
+
+The component contains these main visual sections:
+
+```text
+AnimatedShareButton
+│
+├── Button Glow
+├── Success Flash
+├── Icon Area
+│   ├── Share Icon
+│   ├── Paper Plane
+│   ├── Trail
+│   ├── Particles
+│   └── Success Check
+│
+├── Button Text
+│   ├── Share
+│   ├── Sending...
+│   └── Shared
+│
+└── Animated Arrow
+```
+
+---
+
+## 21. QUICK SETUP
+
+### 1. Install Framer Motion
+
+```bash
+npm install framer-motion
+```
+
+### 2. Create the component
+
+```text
+src/components/AnimatedShareButton.jsx
+```
+
+### 3. Paste the component code.
+
+### 4. Import it:
+
+```jsx
+import AnimatedShareButton from "./components/AnimatedShareButton";
+```
+
+### 5. Render it:
+
+```jsx
+<AnimatedShareButton />
+```
+
+### 6. Run your React project.
+
+The button will copy the current page URL and play the animated sharing sequence.
+
+---
+
+## SUMMARY
+
+`AnimatedShareButton` is a modern animated sharing UI component built with React, Tailwind CSS and Framer Motion.
+
+It provides:
+
+* Glassmorphism button design
+* Animated share icon
+* Flying paper-plane animation
+* Motion trails
+* Particle effects
+* Button glow
+* Success flash
+* Animated check mark
+* `Share → Sending... → Shared` state transition
+* Clipboard URL sharing
+* Hover and tap interactions
+
+The component can be used for websites, portfolios, product pages, blogs, component libraries and other modern React interfaces.

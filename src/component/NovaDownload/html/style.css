@@ -1,0 +1,739 @@
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  margin: 0;
+
+  width: 100%;
+  min-height: 100%;
+}
+
+
+body {
+  background: #03070d;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: white;
+}
+
+
+
+
+.page {
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+
+
+.download-button {
+  position: relative;
+
+  width: 148px;
+
+  height: 48px;
+
+  padding: 0;
+
+  border-radius: 999px;
+
+  border: 1px solid
+    rgba(255,255,255,.30);
+
+  background:
+    rgba(255,255,255,.035);
+
+  color: white;
+
+  backdrop-filter: blur(20px);
+
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 12px 40px
+    rgba(0,0,0,.4);
+
+  overflow: hidden;
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition:
+    width .85s
+      cubic-bezier(.22,1,.36,1),
+
+    height .85s
+      cubic-bezier(.22,1,.36,1);
+}
+
+
+.download-button:disabled {
+  cursor: default;
+}
+
+
+/* COMMON ICON */
+
+.icon-wrapper {
+  position: absolute;
+
+  top: 50%;
+
+  width: 28px;
+
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transform:
+    translateY(-50%);
+
+  z-index: 30;
+
+  pointer-events: none;
+}
+
+
+.icon-wrapper svg {
+  width: 24px;
+
+  height: 24px;
+}
+
+
+/* DOWNLOAD ICON */
+
+.download-icon {
+  left: 15px;
+
+  color: #bef264;
+
+  opacity: 1;
+
+  transform:
+    translateY(-50%)
+    scale(1);
+
+  transition:
+    opacity .2s ease,
+
+    transform .2s ease;
+}
+
+
+/* DOWNLOAD TEXT */
+
+.download-text {
+  opacity: 1;
+
+  transform:
+    translateY(-50%)
+    translateX(0);
+
+  transition:
+    opacity .2s ease,
+
+    transform .2s ease;
+}
+
+
+/* DOWNLOAD TEXT */
+
+.morph-diamond {
+  left: 15px;
+
+  color: #fcd34d;
+
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    scale(.7)
+    rotate(-45deg);
+
+  pointer-events: none;
+}
+
+
+/* LOADING DIAMOND */
+
+.loading-diamond {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #fcd34d;
+
+  opacity: 0;
+
+  transform: scale(.8);
+
+  z-index: 30;
+
+  pointer-events: none;
+}
+
+
+.loading-diamond svg {
+  width: 24px;
+
+  height: 24px;
+}
+
+
+/* LOADING RING */
+
+.loading-ring {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  z-index: 10;
+
+  transform:
+    rotate(-90deg);
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.ring-background,
+.ring-progress {
+  fill: none;
+
+  cx: 32;
+
+  cy: 32;
+
+  r: 28;
+}
+
+
+.ring-background {
+  stroke:
+    rgba(255,255,255,.08);
+
+  stroke-width: 3;
+}
+
+
+.ring-progress {
+  stroke: #21d5bc;
+
+  stroke-width: 3;
+
+  stroke-linecap: round;
+
+  stroke-dasharray: 175.93;
+
+  stroke-dashoffset: 175.93;
+
+  filter:
+    drop-shadow(
+      0 0 6px
+      rgba(33,213,188,.8)
+    );
+}
+
+
+/* SUCCESS ICON */
+
+.success-icon {
+  left: 16px;
+
+  color: #6ee7b7;
+
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    scale(0);
+
+  z-index: 30;
+
+  pointer-events: none;
+}
+
+
+.success-icon svg {
+  width: 24px;
+
+  height: 24px;
+}
+
+
+#successPath {
+  stroke-dasharray: 30;
+
+  stroke-dashoffset: 30;
+}
+
+
+/* TEXT */
+
+.button-text {
+  position: absolute;
+
+  top: 50%;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  letter-spacing: .04em;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+
+.download-text {
+  left: 50px;
+
+  opacity: 1;
+
+  transform:
+    translateY(-50%)
+    translateX(0);
+}
+
+
+.open-text {
+  left: 48px;
+
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    translateX(-8px);
+}
+
+
+/* MORPHING */
+
+.download-button.morphing {
+  width: 64px;
+
+  height: 64px;
+}
+
+
+
+
+.download-button.morphing
+.download-icon {
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    scale(.5);
+
+  pointer-events: none;
+}
+
+
+.download-button.morphing
+.download-text {
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    translateX(10px);
+
+  pointer-events: none;
+}
+
+
+Diamond animation
+
+.download-button.morphing
+.morph-diamond {
+
+  animation:
+    diamondMove
+    .85s
+    cubic-bezier(.22,1,.36,1)
+    forwards;
+}
+
+
+/* LOADING */
+
+.download-button.loading {
+  width: 64px;
+
+  height: 64px;
+}
+
+
+/*
+  OLD DOWNLOAD CONTENT
+  MUST STAY HIDDEN
+*/
+
+.download-button.loading
+.download-icon,
+
+.download-button.loading
+.download-text,
+
+.download-button.loading
+.morph-diamond,
+
+.download-button.loading
+.open-text,
+
+.download-button.loading
+.success-icon {
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/*
+  Loading diamond
+*/
+
+.download-button.loading
+.loading-diamond {
+
+  opacity: 1;
+
+  transform: scale(1);
+
+  transition:
+    opacity .25s ease,
+
+    transform .25s ease;
+}
+
+
+/*
+  Loading ring
+*/
+
+.download-button.loading
+.loading-ring {
+
+  opacity: 1;
+
+}
+
+
+/* COMPLETE */
+
+.download-button.complete {
+
+  width: 148px;
+
+  height: 48px;
+}
+
+
+/*
+  IMPORTANT:
+
+  Download icon/text permanently hidden
+  during complete state.
+*/
+
+.download-button.complete
+.download-icon {
+
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    scale(.5);
+
+  pointer-events: none;
+}
+
+
+.download-button.complete
+.download-text {
+
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    translateX(10px);
+
+  pointer-events: none;
+}
+
+
+/*
+  Hide loading
+*/
+
+.download-button.complete
+.loading-ring,
+
+.download-button.complete
+.loading-diamond,
+
+.download-button.complete
+.morph-diamond {
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/*
+  Success
+*/
+
+.download-button.complete
+.success-icon {
+
+  animation:
+    successIn
+    .45s
+    cubic-bezier(.2,1.5,.5,1)
+    forwards;
+}
+
+
+/*
+  Check draw
+*/
+
+.download-button.complete
+#successPath {
+
+  animation:
+    checkDraw
+    .4s
+    ease
+    forwards;
+}
+
+
+/*
+  Open text
+*/
+
+.download-button.complete
+.open-text {
+
+  animation:
+    openTextIn
+    .3s
+    ease
+    forwards;
+}
+
+
+/*    DIAMOND ANIMATION
+ */
+
+@keyframes diamondMove {
+
+  0% {
+
+    left: 15px;
+
+    opacity: 0;
+
+    transform:
+      translateY(-50%)
+      scale(.7)
+      rotate(-45deg);
+
+  }
+
+
+  20% {
+
+    opacity: 1;
+
+  }
+
+
+  65% {
+
+    transform:
+      translateY(-50%)
+      scale(1.15)
+      rotate(0deg);
+
+  }
+
+
+  100% {
+
+    left: 18px;
+
+    opacity: 1;
+
+    transform:
+      translateY(-50%)
+      scale(1)
+      rotate(0deg);
+
+  }
+
+}
+
+@keyframes successIn {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateY(-50%)
+      scale(0);
+
+  }
+
+
+  70% {
+
+    transform:
+      translateY(-50%)
+      scale(1.12);
+
+  }
+
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateY(-50%)
+      scale(1);
+
+  }
+
+}
+
+
+
+
+@keyframes checkDraw {
+
+  from {
+
+    stroke-dashoffset: 30;
+
+  }
+
+  to {
+
+    stroke-dashoffset: 0;
+
+  }
+
+}
+
+
+
+
+@keyframes openTextIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(-50%)
+      translateX(-8px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(-50%)
+      translateX(0);
+
+  }
+
+}
+
+
+/* PROGRESS */
+
+.download-button.loading
+.ring-progress {
+
+  animation:
+    progress
+    2.3s
+    ease-in-out
+    forwards;
+}
+
+
+@keyframes progress {
+
+  from {
+
+    stroke-dashoffset: 175.93;
+
+  }
+
+  to {
+
+    stroke-dashoffset: 0;
+
+  }
+
+}
+
+
+/*  MOBILE */
+
+@media (max-width: 480px) {
+
+  .download-button {
+
+    transform: scale(.95);
+
+  }
+
+}

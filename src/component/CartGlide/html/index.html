@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CartGlide</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <div class="header">
+      <h1>Popular Products</h1>
+      <p>Discover our most loved products</p>
+    </div>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================== -->
+
+    <div class="product-grid">
+
+      <!-- PRODUCT 1 -->
+
+      <article class="product-card" data-id="1">
+
+        <div class="product-image">
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=85"
+            alt="Shoe 1"
+          />
+
+          <span class="product-count"></span>
+        </div>
+
+        <div class="category">
+          SHOES
+        </div>
+
+        <h2>Shoe 1</h2>
+
+        <div class="rating">
+          <span>★★★★★</span>
+          <small>4.5 (52)</small>
+        </div>
+
+        <div class="product-bottom">
+
+          <strong>$3.99</strong>
+
+          <button
+            class="add-button"
+            data-product="1"
+          >
+            + Add
+          </button>
+
+        </div>
+
+      </article>
+
+
+      <!-- PRODUCT 2 -->
+
+      <article class="product-card" data-id="2">
+
+        <div class="product-image">
+          <img
+            src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&q=85"
+            alt="Shoe 2"
+          />
+
+          <span class="product-count"></span>
+        </div>
+
+        <div class="category">
+          SHOES
+        </div>
+
+        <h2>Shoe 2</h2>
+
+        <div class="rating">
+          <span>★★★★★</span>
+          <small>4.5 (59)</small>
+        </div>
+
+        <div class="product-bottom">
+
+          <strong>$12.99</strong>
+
+          <button
+            class="add-button"
+            data-product="2"
+          >
+            + Add
+          </button>
+
+        </div>
+
+      </article>
+
+
+      <!-- PRODUCT 3 -->
+
+      <article class="product-card" data-id="3">
+
+        <div class="product-image">
+          <img
+            src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=85"
+            alt="Shoe 3"
+          />
+
+          <span class="product-count"></span>
+        </div>
+
+        <div class="category">
+          SHOES
+        </div>
+
+        <h2>Shoe 3</h2>
+
+        <div class="rating">
+          <span>★★★★★</span>
+          <small>4.3 (28)</small>
+        </div>
+
+        <div class="product-bottom">
+
+          <strong>$29.99</strong>
+
+          <button
+            class="add-button"
+            data-product="3"
+          >
+            + Add
+          </button>
+
+        </div>
+
+      </article>
+
+
+      <!-- PRODUCT 4 -->
+
+      <article class="product-card" data-id="4">
+
+        <div class="product-image">
+          <img
+            src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&q=85"
+            alt="Shoe 4"
+          />
+
+          <span class="product-count"></span>
+        </div>
+
+        <div class="category">
+          SHOES
+        </div>
+
+        <h2>Shoe 4</h2>
+
+        <div class="rating">
+          <span>★★★★★</span>
+          <small>4.6 (67)</small>
+        </div>
+
+        <div class="product-bottom">
+
+          <strong>$49.99</strong>
+
+          <button
+            class="add-button"
+            data-product="4"
+          >
+            + Add
+          </button>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+  <!-- ==================================================
+       FLYING PRODUCT
+  =================================================== -->
+
+  <div
+    class="flying-product"
+    id="flyingProduct"
+  >
+    <img id="flyingImage" src="" alt="" />
+  </div>
+
+
+  <!-- ==================================================
+       CART BAR
+  =================================================== -->
+
+  <div
+    class="cart-bar"
+    id="cartBar"
+  >
+
+    <!-- Thumbnails -->
+
+    <div
+      class="cart-thumbnails"
+      id="cartThumbnails"
+    >
+
+      <!-- Empty trolley -->
+
+      <div
+        class="empty-cart-icon"
+        id="emptyCartIcon"
+      >
+
+        <svg viewBox="0 0 24 24" fill="none">
+
+          <path
+            d="M3 4H5L7.5 16H19L21 8H6"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <circle
+            cx="9"
+            cy="20"
+            r="1.3"
+            fill="currentColor"
+          />
+
+          <circle
+            cx="17"
+            cy="20"
+            r="1.3"
+            fill="currentColor"
+          />
+
+        </svg>
+
+      </div>
+
+    </div>
+
+
+    <!-- Cart text -->
+
+    <button
+      class="view-cart-button"
+      id="viewCartButton"
+    >
+
+      <div>
+
+        <strong>
+          View cart
+        </strong>
+
+        <span id="cartSummary">
+          0 items
+        </span>
+
+      </div>
+
+      <span class="cart-arrow">
+        ›
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <!-- ==================================================
+       CART OVERLAY
+  =================================================== -->
+
+  <div
+    class="cart-overlay"
+    id="cartOverlay"
+  >
+
+    <section
+      class="cart-drawer"
+      id="cartDrawer"
+    >
+
+      <!-- Mobile handle -->
+
+      <div class="drawer-handle"></div>
+
+
+      <!-- HEADER -->
+
+      <div class="drawer-header">
+
+        <div class="cart-title">
+
+          <div class="drawer-cart-icon">
+
+            <svg viewBox="0 0 24 24" fill="none">
+
+              <path
+                d="M3 4H5L7.5 16H19L21 8H6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <circle
+                cx="9"
+                cy="20"
+                r="1.3"
+                fill="currentColor"
+              />
+
+              <circle
+                cx="17"
+                cy="20"
+                r="1.3"
+                fill="currentColor"
+              />
+
+            </svg>
+
+          </div>
+
+
+          <div>
+
+            <div class="title-row">
+
+              <h2>Your Cart</h2>
+
+              <span id="drawerCount">
+                0
+              </span>
+
+            </div>
+
+            <p>
+              Review your items and proceed
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="close-cart"
+          id="closeCart"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <!-- CART ITEMS -->
+
+      <div
+        class="cart-items"
+        id="cartItems"
+      ></div>
+
+
+      <!-- ADD MORE -->
+
+      <button
+        class="add-more"
+        id="addMore"
+      >
+        + Add more items
+      </button>
+
+
+      <!-- PLACEMENT -->
+
+      <div class="placement-section">
+
+        <div class="section-heading">
+
+          <div class="location-icon">
+            📍
+          </div>
+
+          <div>
+            <h3>
+              Placement / Delivery Options
+            </h3>
+
+            <p>
+              Choose how you want to receive your order
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="placement-options">
+
+          <button
+            class="placement-option active"
+            data-placement="home"
+          >
+
+            <span class="option-icon">
+              ⌂
+            </span>
+
+            <strong>
+              Home
+            </strong>
+
+            <small>
+              3–5 days
+            </small>
+
+            <i>✓</i>
+
+          </button>
+
+
+          <button
+            class="placement-option"
+            data-placement="store"
+          >
+
+            <span class="option-icon">
+              ▣
+            </span>
+
+            <strong>
+              Store
+            </strong>
+
+            <small>
+              Tomorrow
+            </small>
+
+            <i>✓</i>
+
+          </button>
+
+
+          <button
+            class="placement-option"
+            data-placement="schedule"
+          >
+
+            <span class="option-icon">
+              ◷
+            </span>
+
+            <strong>
+              Schedule
+            </strong>
+
+            <small>
+              Pick a slot
+            </small>
+
+            <i>✓</i>
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- NOTE -->
+
+      <div class="note-section">
+
+        <label>
+          Add a note
+          <span>(optional)</span>
+        </label>
+
+        <textarea
+          id="orderNote"
+          placeholder="E.g. Gate no, landmark, special instructions..."
+        ></textarea>
+
+      </div>
+
+
+      <!-- SUMMARY -->
+
+      <div class="summary">
+
+        <div class="subtotal-row">
+
+          <span id="subtotalLabel">
+            Subtotal (0 items)
+          </span>
+
+          <strong id="subtotal">
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <button
+          class="checkout-button"
+          id="checkoutButton"
+        >
+          Proceed to Checkout
+          <span>›</span>
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

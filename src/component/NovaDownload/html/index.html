@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>MorphDrop</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="page">
+
+    <button
+      id="downloadButton"
+      class="download-button"
+      type="button"
+    >
+
+      <!-- DOWNLOAD ICON -->
+
+      <div
+        id="downloadIcon"
+        class="icon-wrapper download-icon"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+
+          <path
+            d="M12 3V16"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M7 11L12 16L17 11"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <path
+            d="M5 21H19"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+
+        </svg>
+
+      </div>
+
+
+      <!-- MORPHING DIAMOND -->
+
+      <div
+        id="morphDiamond"
+        class="icon-wrapper morph-diamond"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+
+          <path
+            d="
+              M12 3
+              L19 12
+              L12 21
+              L5 12
+              Z
+            "
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+
+          <path
+            d="
+              M12 7
+              L16 12
+              L12 17
+              L8 12
+              Z
+            "
+            stroke="currentColor"
+            stroke-width="1.2"
+            opacity="0.6"
+          />
+
+        </svg>
+
+      </div>
+
+
+      <!-- LOADING DIAMOND -->
+
+      <div
+        id="loadingDiamond"
+        class="loading-diamond"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+
+          <path
+            d="
+              M12 3
+              L19 12
+              L12 21
+              L5 12
+              Z
+            "
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+
+          <path
+            d="
+              M12 7
+              L16 12
+              L12 17
+              L8 12
+              Z
+            "
+            stroke="currentColor"
+            stroke-width="1.2"
+            opacity="0.6"
+          />
+
+        </svg>
+
+      </div>
+
+
+     <!-- LOADING RING -->
+
+      <svg
+        id="loadingRing"
+        class="loading-ring"
+        viewBox="0 0 64 64"
+      >
+
+        <circle
+          class="ring-background"
+          cx="32"
+          cy="32"
+          r="28"
+        />
+
+        <circle
+          id="progressRing"
+          class="ring-progress"
+          cx="32"
+          cy="32"
+          r="28"
+        />
+
+      </svg>
+
+
+      <!-- SUCCESS CHECK -->
+
+      <div
+        id="successIcon"
+        class="icon-wrapper success-icon"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+
+          <path
+            id="successPath"
+            d="M5 12.5L9.5 17L19 7"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </div>
+
+
+      <!-- DOWNLOAD TEXT -->
+
+      <span
+        id="downloadText"
+        class="button-text download-text"
+      >
+        Download
+      </span>
+
+
+     <!-- OPEN TEXT -->
+
+      <span
+        id="openText"
+        class="button-text open-text"
+      >
+        Open
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

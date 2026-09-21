@@ -1,0 +1,833 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #fff;
+  background: #07090d;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #07090d;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+
+/* ================= PAGE ================= */
+
+.page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  color: #fff;
+}
+
+
+.container {
+  width: 100%;
+  max-width: 430px;
+
+  position: relative;
+}
+
+
+/* ================= CARD ================= */
+
+.card-scene {
+  width: 100%;
+  height: 245px;
+
+  perspective: 1200px;
+}
+
+
+.card {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.7s
+    cubic-bezier(.22, 1, .36, 1);
+}
+
+
+.card.show-back {
+  transform: rotateY(180deg);
+}
+
+
+.card-face {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  border: 1px solid rgba(255,255,255,.10);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+
+/* ================= FRONT ================= */
+
+.card-front {
+  padding: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #20252f,
+      #11151d 55%,
+      #080a0f
+    );
+}
+
+
+.glow {
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  border-radius: 50%;
+
+  filter: blur(80px);
+
+  pointer-events: none;
+}
+
+
+.glow-cyan {
+  top: -95px;
+  right: -80px;
+
+  background:
+    rgba(34,211,238,.20);
+}
+
+
+.glow-violet {
+  bottom: -95px;
+  left: -80px;
+
+  background:
+    rgba(139,92,246,.15);
+}
+
+
+.card-content {
+  position: relative;
+
+  z-index: 2;
+
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+
+/* ================= TOP ================= */
+
+.card-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+/* ================= CHIP ================= */
+
+.chip {
+  width: 48px;
+  height: 36px;
+
+  border-radius: 9px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fef3c7,
+      #facc15,
+      #ca8a04
+    );
+}
+
+
+.chip-v,
+.chip-h {
+  position: absolute;
+
+  background:
+    rgba(133,77,14,.5);
+}
+
+
+.chip-v {
+  left: 50%;
+  top: 0;
+
+  width: 1px;
+  height: 100%;
+}
+
+
+.chip-h {
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+}
+
+
+.chip-inner {
+  position: absolute;
+
+  inset: 8px;
+
+  border:
+    1px solid
+    rgba(133,77,14,.4);
+
+  border-radius: 6px;
+}
+
+
+/* ================= BRAND ================= */
+
+.brand {
+  font-size: 18px;
+
+  font-weight: 800;
+
+  font-style: italic;
+
+  letter-spacing: .08em;
+
+  min-width: 70px;
+
+  text-align: right;
+
+  animation:
+    brandIn .25s ease;
+}
+
+
+.mastercard-icon {
+  display: flex;
+
+  align-items: center;
+}
+
+
+.mastercard-icon span {
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  display: block;
+}
+
+
+.mastercard-icon .red {
+  background:
+    rgba(239,68,68,.9);
+}
+
+
+.mastercard-icon .yellow {
+  background:
+    rgba(250,204,21,.9);
+
+  margin-left: -12px;
+}
+
+
+/* ================= NUMBER ================= */
+
+.card-number {
+  font-size: 22px;
+
+  letter-spacing: 3px;
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: clip;
+
+  animation:
+    fadeIn .2s ease;
+}
+
+
+/* ================= BOTTOM ================= */
+
+.card-bottom {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: 20px;
+}
+
+
+.micro-label {
+  margin: 0;
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+
+  letter-spacing: .16em;
+
+  color:
+    rgba(255,255,255,.4);
+}
+
+
+.holder-display,
+.expiry-display {
+  margin: 4px 0 0;
+
+  font-size: 14px;
+
+  letter-spacing: .08em;
+}
+
+
+.holder-display {
+  text-transform: uppercase;
+}
+
+
+.expiry-display {
+  font-family:
+    ui-monospace,
+    monospace;
+}
+
+
+/* ================= BACK ================= */
+
+.card-back {
+  background:
+    linear-gradient(
+      135deg,
+      #1c2028,
+      #080a0e
+    );
+
+  transform:
+    rotateY(180deg);
+}
+
+
+.back-content {
+  padding-top: 32px;
+}
+
+
+.magnetic-strip {
+  width: 100%;
+
+  height: 45px;
+
+  background:
+    rgba(0,0,0,.8);
+}
+
+
+.cvv-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin:
+    28px 28px 0;
+}
+
+
+.signature-strip {
+  flex: 1;
+
+  height: 40px;
+
+  border-radius: 8px;
+
+  padding: 0 16px;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  background:
+    rgba(255,255,255,.1);
+}
+
+
+.signature-strip span {
+  color:
+    rgba(255,255,255,.3);
+
+  font-size: 12px;
+}
+
+
+.cvv-box {
+  width: 60px;
+  height: 40px;
+
+  border-radius: 8px;
+
+  background: #fff;
+
+  color: #000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font:
+    700 14px
+    ui-monospace,
+    monospace;
+}
+
+
+.security-note {
+  margin:
+    20px 28px 0;
+
+  color:
+    rgba(255,255,255,.3);
+
+  font-size: 9px;
+
+  line-height: 1.6;
+}
+
+
+.back-brand {
+  position: absolute;
+
+  right: 28px;
+  bottom: 28px;
+
+  color:
+    rgba(255,255,255,.4);
+
+  font-weight: 800;
+
+  font-style: italic;
+}
+
+
+/* ================= FORM ================= */
+
+.form {
+  margin-top: 32px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+
+.field label {
+  display: block;
+
+  color:
+    rgba(255,255,255,.5);
+
+  font-size: 12px;
+}
+
+
+.field input {
+  width: 100%;
+
+  height: 48px;
+
+  margin-top: 8px;
+
+  padding: 0 16px;
+
+  color: #fff;
+
+  background:
+    rgba(255,255,255,.05);
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  border-radius: 12px;
+
+  outline: none;
+
+  transition:
+    border-color .2s,
+    box-shadow .2s;
+}
+
+
+.field input::placeholder {
+  color:
+    rgba(255,255,255,.20);
+}
+
+
+.field input:focus {
+  border-color:
+    rgba(34,211,238,.5);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(34,211,238,.06);
+}
+
+
+.two-fields {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+
+/* ================= PAY BUTTON ================= */
+
+.pay-button {
+  position: relative;
+
+  width: 100%;
+  height: 56px;
+
+  margin-top: 4px;
+
+  border: 0;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  background: #67e8f9;
+
+  color: #000;
+
+  font-weight: 700;
+
+  transition:
+    transform .15s,
+    background .25s;
+}
+
+
+.pay-button:hover {
+  filter: brightness(1.04);
+}
+
+
+.pay-button:active {
+  transform: scale(.97);
+}
+
+
+.pay-button:disabled {
+  cursor: default;
+}
+
+
+.pay-button.success {
+  background: #34d399;
+}
+
+
+.button-content {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  min-height: 24px;
+
+  animation:
+    buttonIn .25s ease;
+}
+
+
+/* ================= SPINNER ================= */
+
+.spinner {
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  border:
+    2px solid
+    rgba(0,0,0,.2);
+
+  border-top-color: #000;
+
+  animation:
+    spin .7s linear infinite;
+}
+
+
+/* ================= SUCCESS ================= */
+
+.success-icon {
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(0,0,0,.1);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  animation:
+    pop .35s
+    cubic-bezier(.2,1.5,.5,1)
+    forwards;
+}
+
+
+/* ================= PARTICLES ================= */
+
+.particles {
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+
+.particle {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #67e8f9;
+
+  animation:
+    particleFly 1s
+    ease-out forwards;
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+@keyframes pop {
+
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes fadeIn {
+
+  from {
+    opacity: .5;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes brandIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+@keyframes buttonIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+@keyframes particleFly {
+
+  0% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      scale(1);
+  }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 500px) {
+
+  .page {
+    padding: 16px;
+  }
+
+
+  .card-scene {
+    height: 215px;
+  }
+
+
+  .card-front {
+    padding: 22px;
+  }
+
+
+  .card-number {
+    font-size: 17px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .holder-display,
+  .expiry-display {
+    font-size: 12px;
+  }
+
+
+  .chip {
+    width: 43px;
+    height: 32px;
+  }
+
+}

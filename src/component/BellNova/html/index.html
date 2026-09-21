@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BellNova</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="notification-wrapper">
+
+    <!-- Bell Button -->
+    <button class="bell-button" id="bellButton" aria-label="Notifications">
+
+      <div class="bell-icon">
+
+        <svg viewBox="0 0 24 24" fill="none">
+          <path
+            d="M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z"
+          />
+
+          <path d="M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20" />
+        </svg>
+
+        <!-- Notification Count -->
+        <span class="notification-count" id="notificationCount">3</span>
+
+      </div>
+
+      <!-- Sound Waves -->
+      <span class="wave wave-1"></span>
+      <span class="wave wave-2"></span>
+      <span class="wave wave-3"></span>
+
+    </button>
+
+
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notificationPanel">
+
+      <div class="panel-header">
+        <div>
+          <h3>Notifications</h3>
+          <span id="notificationStatus">3 unread notifications</span>
+        </div>
+
+        <button class="close-button" id="closeButton">
+          ×
+        </button>
+      </div>
+
+
+      <div class="notification-list">
+
+        <!-- Notification 1 -->
+        <div class="notification-item unread" data-index="1">
+
+          <div class="notification-avatar">
+            <span>⚡</span>
+          </div>
+
+          <div class="notification-content">
+            <strong>New component added</strong>
+            <p>Animated search component is now live.</p>
+            <small>2 min ago</small>
+          </div>
+
+          <span class="unread-dot"></span>
+
+        </div>
+
+
+        <!-- Notification 2 -->
+        <div class="notification-item unread" data-index="2">
+
+          <div class="notification-avatar purple">
+            <span>✨</span>
+          </div>
+
+          <div class="notification-content">
+            <strong>New animation</strong>
+            <p>A fresh micro interaction has been published.</p>
+            <small>15 min ago</small>
+          </div>
+
+          <span class="unread-dot"></span>
+
+        </div>
+
+
+        <!-- Notification 3 -->
+        <div class="notification-item unread" data-index="3">
+
+          <div class="notification-avatar green">
+            <span>✓</span>
+          </div>
+
+          <div class="notification-content">
+            <strong>Deployment successful</strong>
+            <p>Your latest component is live.</p>
+            <small>1 hour ago</small>
+          </div>
+
+          <span class="unread-dot"></span>
+
+        </div>
+
+      </div>
+
+
+      <button class="mark-read" id="markRead">
+        Mark all as read
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

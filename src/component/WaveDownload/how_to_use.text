@@ -1,0 +1,787 @@
+# WaveDownload — Component Guide
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section or code part.
+
+For example:
+
+* `CHANGE COLORS`
+* `DOWNLOAD TIMING`
+* `LOADING ANIMATION`
+* `SUCCESS`
+* `FAILURE`
+* `BUTTON SIZE`
+
+Find the section you want, then change the required code/value.
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+**WaveDownload** is an animated download button built with:
+
+* React
+* Tailwind CSS
+* Framer Motion
+* SVG
+
+The component includes:
+
+* Download icon
+* Morphing horizontal line
+* Animated loading wave
+* Loading dots
+* Success check animation
+* Failure X animation
+* Success/failure status text
+* Button color transition
+* Failure shake/morph effect
+* Disabled state during download
+
+---
+
+## 2. IMPORTS
+
+```jsx
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+```
+
+Install Framer Motion if required:
+
+```bash
+npm install framer-motion
+```
+
+---
+
+## 3. COMPONENT STATE
+
+The component uses:
+
+```jsx
+const [status, setStatus] = useState("idle");
+```
+
+Available states:
+
+```text
+idle
+morphing
+loading
+success
+fail
+```
+
+Each state controls a different visual stage.
+
+---
+
+## 4. DOWNLOAD FLOW
+
+When the button is clicked:
+
+```jsx
+startDownload()
+```
+
+The animation follows:
+
+```text
+Download Icon
+      ↓
+Horizontal Line
+      ↓
+Loading Wave
+      ↓
+Success / Failure
+```
+
+The initial morphing state starts here:
+
+```jsx
+setStatus("morphing");
+```
+
+---
+
+## 5. CHANGE BUTTON SIZE
+
+Current size:
+
+```jsx
+style={{
+  width: 86,
+  height: 86,
+  borderRadius: 999,
+}}
+```
+
+Example:
+
+```jsx
+width: 100,
+height: 100,
+```
+
+The button remains circular because of:
+
+```jsx
+borderRadius: 999
+```
+
+---
+
+## 6. CHANGE BUTTON COLOR
+
+The default button color is:
+
+```jsx
+"#0891b2"
+```
+
+It is used here:
+
+```jsx
+backgroundColor:
+  status === "success"
+    ? "#0891b2"
+    : "#0891b2"
+```
+
+Replace `#0891b2` with your preferred color.
+
+Example:
+
+```jsx
+"#6366f1"
+```
+
+---
+
+## 7. FAILURE COLOR
+
+Failure changes the background to:
+
+```jsx
+"#ef4444"
+```
+
+The failure animation also changes the glow:
+
+```jsx
+"0 0 45px rgba(239,68,68,.75)"
+```
+
+Change these values to customize the failure appearance.
+
+---
+
+## 8. BUTTON GLOW
+
+Default glow:
+
+```jsx
+"0 0 30px rgba(8,145,178,.35)"
+```
+
+Increase the final opacity or blur value for a stronger glow.
+
+Example:
+
+```jsx
+"0 0 45px rgba(8,145,178,.5)"
+```
+
+---
+
+## 9. INNER RING
+
+The button contains an inner border:
+
+```jsx
+className="absolute inset-[9px] rounded-full border-2 border-white/25"
+```
+
+Change:
+
+```text
+inset-[9px]
+```
+
+to control the distance from the outer button.
+
+Change:
+
+```text
+border-2
+```
+
+to control the border thickness.
+
+---
+
+## 10. DOWNLOAD ICON
+
+The initial icon appears only when:
+
+```jsx
+status === "idle"
+```
+
+Its size is:
+
+```jsx
+width="42"
+height="42"
+```
+
+Change these values for a larger or smaller icon.
+
+---
+
+## 11. DOWNLOAD ICON ANIMATION
+
+The icon enters with:
+
+```jsx
+initial={{
+  opacity: 0,
+  scale: 0.5,
+}}
+```
+
+and becomes:
+
+```jsx
+animate={{
+  opacity: 1,
+  scale: 1,
+}}
+```
+
+It exits with:
+
+```jsx
+exit={{
+  opacity: 0,
+  scale: 0.4,
+  rotate: 90,
+}}
+```
+
+Modify these values to change the icon transition.
+
+---
+
+## 12. HORIZONTAL LINE
+
+After clicking the button:
+
+```jsx
+setStatus("morphing");
+```
+
+The download icon is replaced by a horizontal line.
+
+Current width:
+
+```jsx
+width: 34
+```
+
+Animation starts from:
+
+```jsx
+width: 0,
+opacity: 0,
+```
+
+and ends at:
+
+```jsx
+width: 34,
+opacity: 1,
+```
+
+Change `34` for a longer or shorter line.
+
+---
+
+## 13. MORPHING TIMING
+
+The line appears first, then loading starts after:
+
+```jsx
+setTimeout(() => {
+  setStatus("loading");
+}, 700);
+```
+
+Current delay:
+
+```text
+700ms
+```
+
+Increase it for a longer line stage.
+
+---
+
+## 14. LOADING WAVE
+
+The loading wave appears when:
+
+```jsx
+status === "loading"
+```
+
+Its container size is:
+
+```jsx
+w-[48px] h-[35px]
+```
+
+SVG size:
+
+```jsx
+width="48"
+height="35"
+```
+
+Change these values to resize the loading animation.
+
+---
+
+## 15. WAVE ANIMATION
+
+The main wave continuously changes between two SVG paths.
+
+Animation:
+
+```jsx
+duration: 0.8,
+repeat: Infinity,
+ease: "easeInOut",
+```
+
+Change `0.8` to control wave speed.
+
+Example:
+
+```jsx
+duration: 0.5
+```
+
+makes the wave faster.
+
+---
+
+## 16. WAVE GLOW
+
+The second wave path creates the glow:
+
+```jsx
+strokeWidth="7"
+opacity="0.12"
+```
+
+Increase opacity for a stronger glow:
+
+```jsx
+opacity="0.2"
+```
+
+---
+
+## 17. LOADING DOTS
+
+The loading text contains:
+
+```text
+•••
+```
+
+Its animation uses:
+
+```jsx
+opacity: [0.5, 1, 0.5]
+```
+
+with:
+
+```jsx
+duration: 1,
+repeat: Infinity
+```
+
+Change the duration to control the dot animation speed.
+
+---
+
+## 18. DOWNLOAD RESULT TIMING
+
+The demo result is triggered after:
+
+```jsx
+setTimeout(() => {
+  ...
+}, 3200);
+```
+
+Current simulated download time:
+
+```text
+3200ms
+```
+
+Change `3200` to simulate a faster or slower download.
+
+---
+
+## 19. SUCCESS / FAILURE RESULT
+
+The component currently uses:
+
+```jsx
+const success = Math.random() > 0.35;
+```
+
+This means the demo uses approximately:
+
+```text
+65% success
+35% failure
+```
+
+For always-success:
+
+```jsx
+const success = true;
+```
+
+For always-failure:
+
+```jsx
+const success = false;
+```
+
+---
+
+## 20. SUCCESS ANIMATION
+
+Success state:
+
+```jsx
+setStatus("success");
+```
+
+The success icon uses a check path:
+
+```jsx
+d="M10 21L17 28L31 12"
+```
+
+The check is drawn using:
+
+```jsx
+pathLength: 0
+```
+
+to:
+
+```jsx
+pathLength: 1
+```
+
+Current drawing duration:
+
+```jsx
+duration: 0.55
+```
+
+---
+
+## 21. FAILURE ANIMATION
+
+Failure state:
+
+```jsx
+setStatus("fail");
+```
+
+The button morphs horizontally:
+
+```jsx
+scaleX: [1, 0.12, 0.55, 1]
+```
+
+This creates the compressed failure effect.
+
+Change these values to modify the effect.
+
+---
+
+## 22. FAILURE ICON
+
+The failure icon contains two animated paths:
+
+```jsx
+M10 10L28 28
+```
+
+and:
+
+```jsx
+M28 10L10 28
+```
+
+Each path is animated using:
+
+```jsx
+pathLength: 0
+```
+
+to:
+
+```jsx
+pathLength: 1
+```
+
+The second line starts with:
+
+```jsx
+delay: 0.12
+```
+
+---
+
+## 23. FAILURE RESET
+
+After failure:
+
+```jsx
+setTimeout(() => {
+  setStatus("idle");
+}, 1200);
+```
+
+Current reset delay:
+
+```text
+1200ms
+```
+
+Increase this value if you want the failure state to remain visible longer.
+
+---
+
+## 24. STATUS TEXT
+
+Loading:
+
+```text
+Downloading
+```
+
+Success:
+
+```text
+Success
+```
+
+Failure:
+
+```text
+Failed
+```
+
+These are controlled by:
+
+```jsx
+status === "loading"
+status === "success"
+status === "fail"
+```
+
+---
+
+## 25. CHANGE STATUS TEXT
+
+Change:
+
+```jsx
+Downloading
+```
+
+to:
+
+```jsx
+Processing
+```
+
+Change:
+
+```jsx
+Success
+```
+
+to:
+
+```jsx
+Downloaded
+```
+
+Change:
+
+```jsx
+Failed
+```
+
+to:
+
+```jsx
+Try Again
+```
+
+---
+
+## 26. STATUS TEXT COLORS
+
+Loading:
+
+```jsx
+text-white/50
+```
+
+Success:
+
+```jsx
+text-cyan-300
+```
+
+Failure:
+
+```jsx
+text-red-400
+```
+
+Change these Tailwind classes to match your theme.
+
+---
+
+## 27. STATUS TEXT SPACING
+
+Current text:
+
+```jsx
+tracking-[3px]
+```
+
+Change this value to control letter spacing.
+
+Example:
+
+```jsx
+tracking-[4px]
+```
+
+---
+
+## 28. CONNECT REAL DOWNLOAD
+
+Currently the component only simulates a download.
+
+The demo result is generated using:
+
+```jsx
+Math.random()
+```
+
+For a real download, replace the result logic inside:
+
+```jsx
+setTimeout(() => {
+  ...
+}, 3200);
+```
+
+with your actual download/API logic.
+
+Example flow:
+
+```text
+Start Download
+      ↓
+Set loading
+      ↓
+Request file/API
+      ↓
+Success → success
+      ↓
+Error → fail
+```
+
+---
+
+## 29. PREVENT MULTIPLE CLICKS
+
+The button is disabled whenever:
+
+```jsx
+status !== "idle"
+```
+
+This prevents starting another download while the current animation is running.
+
+---
+
+## 30. COMPONENT USAGE
+
+Import:
+
+```jsx
+import WaveDownload from "./WaveDownload";
+```
+
+Use:
+
+```jsx
+<WaveDownload />
+```
+
+---
+
+## 31. CUSTOMIZATION CHECKLIST
+
+You can customize:
+
+* Button size
+* Button color
+* Button glow
+* Inner ring
+* Download icon size
+* Icon animation
+* Horizontal line width
+* Morphing delay
+* Loading wave size
+* Wave speed
+* Wave glow
+* Loading dots
+* Download duration
+* Success probability
+* Success animation
+* Failure animation
+* Failure reset time
+* Status text
+* Status colors
+* Letter spacing
+
+---
+
+## 32. IMPORTANT
+
+The current component uses a simulated download result.
+
+No actual file is downloaded by the provided code. Replace the demo `setTimeout()` logic with your real download/API function when integrating it into a production project.

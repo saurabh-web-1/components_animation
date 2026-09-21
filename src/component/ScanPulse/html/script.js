@@ -182,7 +182,6 @@ function completeSearch(query) {
   );
 
 
-  // Force browser reflow
   void successIcon.offsetWidth;
 
 

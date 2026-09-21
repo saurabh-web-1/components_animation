@@ -1,0 +1,763 @@
+# WaveDownload — HTML, CSS & JavaScript Component Guide
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section or code part.
+
+For example:
+
+* `CHANGE COLORS`
+* `BUTTON SIZE`
+* `DOWNLOAD TIMING`
+* `WAVE ANIMATION`
+* `SUCCESS`
+* `FAILURE`
+
+Find the section you want, then change the required code/value.
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+**WaveDownload** is an animated download button built with:
+
+* HTML
+* CSS
+* Vanilla JavaScript
+* SVG
+
+Animation flow:
+
+```text
+Download Icon
+      ↓
+Horizontal Line
+      ↓
+Wave Loader
+      ↓
+Success / Failure
+```
+
+The JavaScript controls the complete state flow.
+
+---
+
+## 2. FILE STRUCTURE
+
+Recommended structure:
+
+```text
+WaveDownload/
+├── index.html
+├── style.css
+└── script.js
+```
+
+HTML loads:
+
+```html
+<link rel="stylesheet" href="style.css" />
+```
+
+and:
+
+```html
+<script src="script.js"></script>
+```
+
+---
+
+## 3. COMPONENT STATES
+
+The component uses:
+
+```js
+let status = "idle";
+```
+
+Main states:
+
+```text
+idle
+morphing
+loading
+success
+fail
+```
+
+Each state controls a different animation stage.
+
+---
+
+## 4. CHANGE BUTTON SIZE
+
+Current button:
+
+```css
+.download-btn {
+  width: 86px;
+  height: 86px;
+}
+```
+
+Make it larger:
+
+```css
+width: 100px;
+height: 100px;
+```
+
+The button remains circular because of:
+
+```css
+border-radius: 999px;
+```
+
+---
+
+## 5. CHANGE BUTTON COLOR
+
+Default background:
+
+```css
+.button-background {
+  background: #0891b2;
+}
+```
+
+Example:
+
+```css
+background: #6366f1;
+```
+
+Also update the failure animation if you want the original color to match:
+
+```css
+@keyframes failBackground {
+  0% {
+    background: #0891b2;
+  }
+}
+```
+
+---
+
+## 6. CHANGE BUTTON GLOW
+
+Current glow:
+
+```css
+box-shadow:
+  0 0 30px rgba(8, 145, 178, 0.35);
+```
+
+Increase the glow:
+
+```css
+box-shadow:
+  0 0 45px rgba(8, 145, 178, 0.5);
+```
+
+---
+
+## 7. INNER RING
+
+Current ring:
+
+```css
+.inner-ring {
+  inset: 9px;
+  border: 2px solid rgba(255,255,255,0.25);
+}
+```
+
+Change `inset` to control the ring position.
+
+Change `border` to control its thickness and opacity.
+
+---
+
+## 8. DOWNLOAD ICON
+
+The download icon is controlled by:
+
+```html
+<svg id="downloadIcon" class="download-icon icon">
+```
+
+Current size:
+
+```html
+width="42"
+height="42"
+```
+
+Change both values to resize it.
+
+---
+
+## 9. DOWNLOAD ICON ANIMATION
+
+Active state:
+
+```css
+.download-icon.active {
+  opacity: 1;
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+```
+
+Exit state:
+
+```css
+.download-icon.leaving {
+  opacity: 0;
+  transform:
+    translate(-50%, -50%)
+    scale(0.4)
+    rotate(90deg);
+}
+```
+
+Change `scale()` and `rotate()` to customize the exit animation.
+
+---
+
+## 10. MORPHING LINE
+
+The horizontal line starts with:
+
+```css
+.morph-line {
+  width: 0;
+  height: 3px;
+  opacity: 0;
+}
+```
+
+Final width:
+
+```css
+@keyframes lineMorph {
+  100% {
+    width: 34px;
+    opacity: 1;
+  }
+}
+```
+
+Change `34px` to make the line longer or shorter.
+
+---
+
+## 11. MORPHING SPEED
+
+Current line animation:
+
+```css
+animation:
+  lineMorph 0.55s
+  cubic-bezier(0.22, 1, 0.36, 1)
+  forwards;
+```
+
+Change `0.55s` to control the speed.
+
+---
+
+## 12. LOADING WAVE
+
+Wave container:
+
+```css
+.wave-loader {
+  width: 48px;
+  height: 35px;
+}
+```
+
+SVG:
+
+```html
+<svg width="48" height="35">
+```
+
+Change these values to resize the loader.
+
+---
+
+## 13. WAVE SPEED
+
+Current animation:
+
+```css
+.wave-loader.active .wave-path,
+.wave-loader.active .wave-glow {
+  animation:
+    waveMorph 0.8s
+    ease-in-out
+    infinite;
+}
+```
+
+Faster:
+
+```css
+waveMorph 0.5s ease-in-out infinite;
+```
+
+Slower:
+
+```css
+waveMorph 1.2s ease-in-out infinite;
+```
+
+---
+
+## 14. WAVE SHAPE
+
+The wave shape is controlled by:
+
+```css
+@keyframes waveMorph
+```
+
+It uses SVG `path()` values.
+
+The `0%`, `50%`, and `100%` paths control how the wave moves between its shapes.
+
+---
+
+## 15. WAVE GLOW
+
+Current glow:
+
+```css
+.wave-glow {
+  stroke-width: 7;
+  opacity: 0.12;
+}
+```
+
+Increase:
+
+```css
+opacity: 0.2;
+```
+
+for a stronger glow.
+
+Change `stroke-width` to control glow thickness.
+
+---
+
+## 16. LOADING DOTS
+
+HTML:
+
+```html
+<span class="loading-dots">
+  •••
+</span>
+```
+
+Animation:
+
+```css
+@keyframes dotsPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+```
+
+Speed:
+
+```css
+animation:
+  dotsPulse 1s
+  ease-in-out
+  infinite;
+```
+
+---
+
+## 17. DOWNLOAD TIMING
+
+The loading state begins after:
+
+```js
+setTimeout(() => {
+  status = "loading";
+}, 700);
+```
+
+Change `700` to control how long the morphing-line stage remains visible.
+
+---
+
+## 18. RESULT TIMING
+
+The demo result is shown after:
+
+```js
+setTimeout(() => {
+  ...
+}, 3200);
+```
+
+Current simulated download duration:
+
+```text
+3200ms
+```
+
+Change this value to make the demo faster or slower.
+
+---
+
+## 19. SUCCESS / FAILURE PROBABILITY
+
+The result is currently generated with:
+
+```js
+const success =
+  Math.random() > 0.35;
+```
+
+This produces approximately:
+
+```text
+65% success
+35% failure
+```
+
+For always-success:
+
+```js
+const success = true;
+```
+
+For always-failure:
+
+```js
+const success = false;
+```
+
+---
+
+## 20. SUCCESS ICON
+
+Success is shown through:
+
+```html
+<svg id="successIcon">
+```
+
+The check path is:
+
+```html
+<path
+  id="successPath"
+  d="M10 21L17 28L31 12"
+/>
+```
+
+The drawing animation uses:
+
+```css
+#successPath {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+```
+
+and:
+
+```css
+.success-icon.active #successPath {
+  animation:
+    checkDraw
+    0.55s
+    ease-out
+    forwards;
+}
+```
+
+---
+
+## 21. FAILURE ICON
+
+Failure contains two paths:
+
+```html
+<path id="failPath1" d="M10 10L28 28" />
+<path id="failPath2" d="M28 10L10 28" />
+```
+
+Both paths use stroke drawing animation.
+
+The second line starts with:
+
+```css
+animation:
+  failDraw
+  0.25s
+  ease-out
+  0.12s
+  forwards;
+```
+
+---
+
+## 22. FAILURE BUTTON MORPH
+
+When failure occurs:
+
+```css
+.download-btn.fail-animation {
+  animation:
+    failButton
+    0.8s
+    ease-in-out
+    forwards;
+}
+```
+
+The button uses:
+
+```css
+transform: scaleX(...)
+```
+
+Sequence:
+
+```text
+1
+↓
+0.12
+↓
+0.55
+↓
+1
+```
+
+Change these values to customize the failure squeeze effect.
+
+---
+
+## 23. FAILURE COLOR
+
+Failure background:
+
+```css
+background: #ef4444;
+```
+
+Failure glow:
+
+```css
+box-shadow:
+  0 0 45px rgba(239,68,68,0.75);
+```
+
+Change these values for another failure theme.
+
+---
+
+## 24. FAILURE RESET
+
+After failure:
+
+```js
+resetTimer = setTimeout(() => {
+  setIdle();
+}, 1200);
+```
+
+Change `1200` to control how long the failure state stays visible.
+
+---
+
+## 25. STATUS TEXT
+
+Available status messages:
+
+```text
+Downloading
+Success
+Failed
+```
+
+HTML elements:
+
+```html
+<div id="loadingText">Downloading</div>
+<div id="successText">Success</div>
+<div id="failText">Failed</div>
+```
+
+Change the text directly in the HTML.
+
+---
+
+## 26. STATUS TEXT COLORS
+
+Loading:
+
+```css
+.loading-text {
+  color: rgba(255,255,255,0.5);
+}
+```
+
+Success:
+
+```css
+.success-text {
+  color: #67e8f9;
+}
+```
+
+Failure:
+
+```css
+.fail-text {
+  color: #f87171;
+}
+```
+
+---
+
+## 27. STATUS TEXT SPACING
+
+Current letter spacing:
+
+```css
+letter-spacing: 3px;
+```
+
+Increase it for a wider uppercase appearance.
+
+Example:
+
+```css
+letter-spacing: 4px;
+```
+
+---
+
+## 28. RESET TO IDLE
+
+The component uses:
+
+```js
+function setIdle() {
+  status = "idle";
+
+  hideAll();
+
+  downloadIcon.classList.add("active");
+}
+```
+
+This restores the initial download icon and removes other states.
+
+---
+
+## 29. SUCCESS CLICK BEHAVIOR
+
+When the button is in the success state:
+
+```js
+if (status === "success") {
+  setIdle();
+  return;
+}
+```
+
+Clicking the button after success resets it to the download state.
+
+---
+
+## 30. PREVENT MULTIPLE DOWNLOADS
+
+The download function checks:
+
+```js
+if (status !== "idle") {
+  return;
+}
+```
+
+This prevents the user from starting another animation while the current process is running.
+
+---
+
+## 31. REAL DOWNLOAD INTEGRATION
+
+The current result is simulated with:
+
+```js
+Math.random()
+```
+
+For production use, replace the `3200ms` result timer with your real download/API request.
+
+Recommended flow:
+
+```text
+Button Click
+    ↓
+Morph
+    ↓
+Loading
+    ↓
+API / File Download
+    ↓
+Success or Failure
+```
+
+---
+
+## 32. CUSTOMIZATION CHECKLIST
+
+You can customize:
+
+* Button size
+* Button color
+* Button glow
+* Inner ring
+* Download icon
+* Icon exit animation
+* Morph line width
+* Morph speed
+* Wave size
+* Wave shape
+* Wave speed
+* Wave glow
+* Loading dots
+* Download duration
+* Success probability
+* Success animation
+* Failure animation
+* Failure color
+* Failure reset time
+* Status text
+* Status colors
+* Letter spacing
+
+---
+
+## 33. IMPORTANT
+
+This version is a **UI demo**. The JavaScript does not download an actual file.
+
+The success/failure result is simulated using `Math.random()`. For a real component, connect the loading stage to your actual download or API request.

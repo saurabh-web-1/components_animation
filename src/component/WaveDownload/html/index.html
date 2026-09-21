@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>WaveDownload</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- ================= BUTTON ================= -->
+
+    <button
+      id="downloadBtn"
+      class="download-btn"
+      type="button"
+    >
+
+      <!-- Background -->
+      <div
+        id="buttonBackground"
+        class="button-background"
+      ></div>
+
+
+      <!-- Inner Ring -->
+      <div class="inner-ring"></div>
+
+
+      <!-- ================= DOWNLOAD ================= -->
+
+      <svg
+        id="downloadIcon"
+        class="download-icon icon"
+        width="42"
+        height="42"
+        viewBox="0 0 42 42"
+        fill="none"
+      >
+
+        <!-- Arrow -->
+        <path
+          d="M21 6V27"
+          stroke="white"
+          stroke-width="2.8"
+          stroke-linecap="round"
+        />
+
+        <!-- Arrow Head -->
+        <path
+          d="M12 19L21 28L30 19"
+          stroke="white"
+          stroke-width="2.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        <!-- Bottom -->
+        <path
+          d="M8 35H34"
+          stroke="white"
+          stroke-width="2.8"
+          stroke-linecap="round"
+        />
+
+      </svg>
+
+
+      <!-- ================= LINE ================= -->
+
+      <div
+        id="morphLine"
+        class="morph-line"
+      ></div>
+
+
+      <!-- ================= WAVE ================= -->
+
+      <div
+        id="waveLoader"
+        class="wave-loader"
+      >
+
+        <svg
+          width="48"
+          height="35"
+          viewBox="0 0 48 35"
+          fill="none"
+        >
+
+          <!-- Glow Wave -->
+          <path
+            id="waveGlow"
+            class="wave-glow"
+            d="
+              M2 18
+              C6 10, 10 26, 14 18
+              C18 10, 22 26, 26 18
+              C30 10, 34 26, 38 18
+              C42 10, 46 26, 50 18
+            "
+          />
+
+          <!-- Main Wave -->
+          <path
+            id="wavePath"
+            class="wave-path"
+            d="
+              M2 18
+              C6 10, 10 26, 14 18
+              C18 10, 22 26, 26 18
+              C30 10, 34 26, 38 18
+              C42 10, 46 26, 50 18
+            "
+          />
+
+        </svg>
+
+
+        <!-- Loading dots -->
+        <span class="loading-dots">
+          •••
+        </span>
+
+      </div>
+
+
+      <!-- ================= SUCCESS ================= -->
+
+      <svg
+        id="successIcon"
+        class="success-icon icon"
+        width="40"
+        height="40"
+        viewBox="0 0 40 40"
+        fill="none"
+      >
+
+        <path
+          id="successPath"
+          d="M10 21L17 28L31 12"
+          stroke="white"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+      </svg>
+
+
+      <!-- ================= FAIL ================= -->
+
+      <svg
+        id="failIcon"
+        class="fail-icon icon"
+        width="38"
+        height="38"
+        viewBox="0 0 38 38"
+        fill="none"
+      >
+
+        <path
+          id="failPath1"
+          d="M10 10L28 28"
+          stroke="white"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+
+        <path
+          id="failPath2"
+          d="M28 10L10 28"
+          stroke="white"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+
+      </svg>
+
+    </button>
+
+
+    <!-- ================= STATUS ================= -->
+
+    <div
+      id="statusContainer"
+      class="status-container"
+    >
+
+      <div
+        id="loadingText"
+        class="status-text loading-text"
+      >
+        Downloading
+      </div>
+
+      <div
+        id="successText"
+        class="status-text success-text"
+      >
+        Success
+      </div>
+
+      <div
+        id="failText"
+        class="status-text fail-text"
+      >
+        Failed
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

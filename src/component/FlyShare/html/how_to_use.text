@@ -1,0 +1,824 @@
+# ANIMATED SHARE BUTTON — COMPONENT GUIDE
+
+**Component:** FlyShare
+**Type:** HTML + CSS + JavaScript
+**Files:** `index.html`, `style.css`, `script.js`
+
+---
+
+## 1. REQUIREMENTS
+
+This component uses standard web technologies:
+
+* HTML5
+* CSS3
+* Vanilla JavaScript
+* CSS Animations
+* Browser Clipboard API
+
+No external library or framework is required.
+
+---
+
+## 2. ADD THE COMPONENT TO YOUR PROJECT
+
+Create these three files:
+
+```text
+index.html
+style.css
+script.js
+```
+
+Your folder structure can look like:
+
+```text
+flyshare/
+├── index.html
+├── style.css
+└── script.js
+```
+
+---
+
+## 3. ADD THE HTML
+
+Add the component markup inside your HTML file.
+
+The main button uses:
+
+```html
+<button class="share-button" id="shareButton">
+```
+
+The component contains separate elements for:
+
+* Share icon
+* Paper plane
+* Flight trails
+* Particles
+* Success icon
+* Button text
+* Animated arrow
+
+The HTML structure allows CSS to control each animation independently.
+
+---
+
+## 4. CONNECT CSS
+
+Make sure your HTML includes:
+
+```html
+<link rel="stylesheet" href="style.css" />
+```
+
+Place this inside the `<head>` section.
+
+---
+
+## 5. CONNECT JAVASCRIPT
+
+Add:
+
+```html
+<script src="script.js"></script>
+```
+
+Place it before the closing `</body>` tag.
+
+---
+
+## 6. HOW THE SHARE BUTTON WORKS
+
+The component has three main visual states:
+
+### Normal
+
+The button displays:
+
+```text
+Share   ↗
+```
+
+The share icon is visible and the arrow continuously moves slightly upward.
+
+---
+
+### Sending
+
+When the user clicks the button:
+
+1. The current page URL is copied.
+2. The button enters the `sending` state.
+3. The normal share icon disappears.
+4. The paper plane appears.
+5. The paper plane flies upward.
+6. Motion trails appear.
+7. Particles fly away from the icon.
+8. The glow becomes visible.
+9. Text changes to `Sending...`.
+10. The arrow disappears.
+
+The state is controlled using the CSS class:
+
+```js
+shareButton.classList.add("sending");
+```
+
+---
+
+### Shared
+
+After the plane animation finishes:
+
+* `sending` is removed.
+* `shared` is added.
+* A success check mark appears.
+* Button text changes to `Shared`.
+* Success animation plays.
+* The glow remains visible temporarily.
+
+The state is changed with:
+
+```js
+shareButton.classList.remove("sending");
+shareButton.classList.add("shared");
+```
+
+---
+
+## 7. COPY THE CURRENT URL
+
+The component automatically attempts to copy the current page URL:
+
+```js
+await navigator.clipboard.writeText(
+  window.location.href
+);
+```
+
+This means if the component is placed on:
+
+```text
+https://example.com/product/123
+```
+
+that page URL will be copied when the user clicks Share.
+
+---
+
+## 8. CHANGE THE URL
+
+If you want to share a specific URL instead of the current page, change:
+
+```js
+window.location.href
+```
+
+to your desired URL:
+
+```js
+await navigator.clipboard.writeText(
+  "https://example.com"
+);
+```
+
+You can also create a dynamic URL:
+
+```js
+const shareUrl = "https://example.com/product/123";
+
+await navigator.clipboard.writeText(shareUrl);
+```
+
+---
+
+## 9. PREVENT MULTIPLE CLICKS
+
+The component uses:
+
+```js
+let isAnimating = false;
+```
+
+Before starting the animation, it checks:
+
+```js
+if (isAnimating) return;
+```
+
+This prevents users from starting multiple animations while the current animation is running.
+
+When the animation starts:
+
+```js
+isAnimating = true;
+```
+
+After the reset:
+
+```js
+isAnimating = false;
+```
+
+---
+
+## 10. CHANGE BUTTON TEXT
+
+The default text states are:
+
+```text
+Share
+Sending...
+Shared
+```
+
+You can change them directly in the HTML.
+
+For example:
+
+```html
+<span class="text share-text">
+  Send
+</span>
+
+<span class="text sending-text">
+  Sending...
+</span>
+
+<span class="text shared-text">
+  Sent ✓
+</span>
+```
+
+---
+
+## 11. PAPER PLANE ANIMATION
+
+The paper plane uses a CSS keyframe animation:
+
+```css
+@keyframes planeFlight
+```
+
+Its movement is controlled through:
+
+```css
+translate()
+scale()
+rotate()
+opacity
+```
+
+The animation starts small:
+
+```css
+scale(0.65)
+```
+
+then moves upward and outward before disappearing.
+
+The main animation duration is:
+
+```css
+1.15s
+```
+
+---
+
+## 12. CHANGE PLANE SPEED
+
+Current:
+
+```css
+animation:
+  planeFlight 1.15s
+  cubic-bezier(0.22, 1, 0.36, 1)
+  forwards;
+```
+
+For a faster animation:
+
+```css
+animation:
+  planeFlight 0.8s
+  cubic-bezier(0.22, 1, 0.36, 1)
+  forwards;
+```
+
+For a slower animation:
+
+```css
+animation:
+  planeFlight 1.8s
+  cubic-bezier(0.22, 1, 0.36, 1)
+  forwards;
+```
+
+---
+
+## 13. TRAIL EFFECT
+
+The paper plane has two separate trails:
+
+```html
+<span class="trail trail-one"></span>
+<span class="trail trail-two"></span>
+```
+
+They use gradient backgrounds to create the flight effect.
+
+The first trail:
+
+```css
+.trail-one
+```
+
+is larger and brighter.
+
+The second trail:
+
+```css
+.trail-two
+```
+
+is smaller and more subtle.
+
+You can change their width and opacity to customize the effect.
+
+---
+
+## 14. PARTICLE EFFECT
+
+The component contains seven particles:
+
+```html
+<span class="particle p1"></span>
+<span class="particle p2"></span>
+<span class="particle p3"></span>
+<span class="particle p4"></span>
+<span class="particle p5"></span>
+<span class="particle p6"></span>
+<span class="particle p7"></span>
+```
+
+Each particle has a different vertical movement.
+
+For example:
+
+```css
+.p1 {
+  --particle-y: 12px;
+}
+
+.p2 {
+  --particle-y: -8px;
+}
+```
+
+This creates a scattered particle effect instead of making every particle move in the same direction.
+
+---
+
+## 15. ADD MORE PARTICLES
+
+You can add additional particle elements:
+
+```html
+<span class="particle p8"></span>
+```
+
+Then define its movement:
+
+```css
+.p8 {
+  --particle-y: -28px;
+  animation-delay: 0.43s !important;
+}
+```
+
+This allows you to create a stronger particle effect.
+
+---
+
+## 16. BUTTON GLOW
+
+The component contains a dedicated glow element:
+
+```html
+<span class="button-glow"></span>
+```
+
+Normally its opacity is:
+
+```css
+opacity: 0;
+```
+
+During sending or success:
+
+```css
+.share-button.sending .button-glow,
+.share-button.shared .button-glow {
+  opacity: 0.75;
+  transform: scale(1.2);
+}
+```
+
+This creates the glowing glass effect around the button.
+
+---
+
+## 17. SUCCESS ANIMATION
+
+After sharing completes, the success check mark becomes visible:
+
+```html
+<span class="success-icon" id="successIcon">
+```
+
+The check mark uses:
+
+```css
+@keyframes successPop
+```
+
+The animation starts small:
+
+```css
+scale(0.25)
+```
+
+then grows:
+
+```css
+scale(1.18)
+```
+
+and finally settles at:
+
+```css
+scale(1)
+```
+
+This creates a small pop effect when sharing is completed.
+
+---
+
+## 18. CHANGE BUTTON SIZE
+
+The default button size is:
+
+```css
+width: 180px;
+height: 58px;
+```
+
+For a smaller button:
+
+```css
+width: 160px;
+height: 52px;
+```
+
+For a larger button:
+
+```css
+width: 210px;
+height: 64px;
+```
+
+The mobile version currently changes the width to:
+
+```css
+@media (max-width: 480px) {
+  .share-button {
+    width: 170px;
+  }
+}
+```
+
+---
+
+## 19. CHANGE BORDER RADIUS
+
+The default radius is:
+
+```css
+border-radius: 17px;
+```
+
+You can change it to:
+
+```css
+border-radius: 12px;
+```
+
+for a sharper design.
+
+Or:
+
+```css
+border-radius: 30px;
+```
+
+for a pill-style button.
+
+---
+
+## 20. CHANGE COLORS
+
+The current design uses a dark glassmorphism style.
+
+Page background:
+
+```css
+background:
+  radial-gradient(
+    circle at center,
+    #181818 0%,
+    #090909 55%,
+    #030303 100%
+  );
+```
+
+Button background:
+
+```css
+background: rgba(255, 255, 255, 0.06);
+```
+
+Button border:
+
+```css
+border: 1px solid rgba(255, 255, 255, 0.12);
+```
+
+Text:
+
+```css
+color: white;
+```
+
+You can customize these values according to your website theme.
+
+---
+
+## 21. CHANGE HOVER EFFECT
+
+The button currently moves upward when hovered:
+
+```css
+.share-button:hover {
+  transform: translateY(-3px);
+}
+```
+
+You can increase the movement:
+
+```css
+transform: translateY(-6px);
+```
+
+Or remove the movement completely:
+
+```css
+transform: translateY(0);
+```
+
+---
+
+## 22. CHANGE CLICK EFFECT
+
+The current click animation is:
+
+```css
+.share-button:active {
+  transform: scale(0.94);
+}
+```
+
+For a softer click:
+
+```css
+transform: scale(0.97);
+```
+
+For a stronger click:
+
+```css
+transform: scale(0.90);
+```
+
+---
+
+## 23. CHANGE ARROW ANIMATION
+
+The arrow:
+
+```text
+↗
+```
+
+uses:
+
+```css
+@keyframes arrowMove
+```
+
+It continuously moves:
+
+```css
+transform: translate(3px, -3px);
+```
+
+This gives the normal button a subtle animated indicator.
+
+The arrow automatically disappears while sending or after sharing:
+
+```css
+.share-button.sending .arrow,
+.share-button.shared .arrow {
+  opacity: 0;
+}
+```
+
+---
+
+## 24. CHANGE RESET TIME
+
+The component changes to `shared` after:
+
+```js
+1200
+```
+
+milliseconds.
+
+```js
+setTimeout(() => {
+  shareButton.classList.remove("sending");
+  shareButton.classList.add("shared");
+}, 1200);
+```
+
+The component then resets after:
+
+```js
+3000
+```
+
+milliseconds:
+
+```js
+setTimeout(() => {
+  shareButton.classList.remove("shared");
+  isAnimating = false;
+}, 3000);
+```
+
+You can change these values to control how long each state remains visible.
+
+---
+
+## 25. USE FOR DIFFERENT ACTIONS
+
+Although this component is designed as a Share button, the animation can be adapted for other actions.
+
+For example:
+
+* Send
+* Upload
+* Submit
+* Publish
+* Export
+* Send Message
+* Send Invitation
+* Share Product
+* Share Portfolio
+* Share Component
+
+You can keep the same animation and replace the underlying JavaScript functionality.
+
+---
+
+## 26. CONNECT TO A REAL SHARE SYSTEM
+
+The current component copies the URL to the clipboard.
+
+You can replace the Clipboard API with your own functionality.
+
+For example, you could connect the click handler to:
+
+* WhatsApp sharing
+* Telegram sharing
+* Social media sharing
+* Web Share API
+* Your own backend
+* Custom sharing logic
+
+The animation does not depend on the clipboard functionality, so the visual effect can remain unchanged.
+
+---
+
+## 27. WEB SHARE API
+
+For supported browsers, you can replace the clipboard logic with the Web Share API:
+
+```js
+await navigator.share({
+  title: document.title,
+  url: window.location.href
+});
+```
+
+The existing animation can still be used around this functionality.
+
+---
+
+## 28. COMPONENT STRUCTURE
+
+```text
+FlyShare
+│
+├── Button
+│   ├── Glow
+│   └── Content
+│
+├── Icon Area
+│   ├── Share Icon
+│   ├── Paper Plane
+│   ├── Trail One
+│   ├── Trail Two
+│   ├── Particles
+│   └── Success Icon
+│
+├── Button Text
+│   ├── Share
+│   ├── Sending...
+│   └── Shared
+│
+└── Animated Arrow
+```
+
+---
+
+## 29. QUICK SETUP
+
+### 1. Create the files
+
+```text
+index.html
+style.css
+script.js
+```
+
+### 2. Add the HTML
+
+Place the FlyShare markup inside `index.html`.
+
+### 3. Add the CSS
+
+Place the animation and styling code inside:
+
+```text
+style.css
+```
+
+### 4. Add JavaScript
+
+Place the click and sharing logic inside:
+
+```text
+script.js
+```
+
+### 5. Open `index.html`
+
+No build tool or package installation is required.
+
+---
+
+## SUMMARY
+
+**FlyShare** is a lightweight animated sharing button built entirely with HTML, CSS and JavaScript.
+
+It provides:
+
+* Glassmorphism UI
+* Animated share icon
+* Flying paper-plane animation
+* Flight trails
+* Seven particle effects
+* Button glow
+* Animated status text
+* Animated success check
+* Hover interaction
+* Click interaction
+* Clipboard URL copying
+* Automatic state reset
+* Mobile responsive sizing
+* No external libraries
+
+The component can be used for websites, portfolios, product pages, blogs, social sharing, component libraries and modern landing pages.

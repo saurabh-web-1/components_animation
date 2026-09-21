@@ -1,30 +1,30 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function AnimatedSearch() {
+export default function ScanPulse() {
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState("idle");
 
-  // Store timeout so it can be cancelled safely
+  // store timeout so it can be cancelled safely
   const searchTimeoutRef = useRef(null);
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    // Don't start  while searching
+    // don't start  while search
     if (!query.trim() || status === "searching") {
       return;
     }
 
-    // Start loading
+    // start loading
     setStatus("searching");
 
-    // Clear previous timeout
+    // clear previous timeout
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
     }
 
-    // Demo search/API delay
+    // demo search
     searchTimeoutRef.current = setTimeout(() => {
       setStatus("success");
       searchTimeoutRef.current = null;
@@ -32,7 +32,7 @@ export default function AnimatedSearch() {
   };
 
   const resetSearch = () => {
-    // Clear  timeout
+    // clear  timeout
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
       searchTimeoutRef.current = null;
@@ -42,7 +42,7 @@ export default function AnimatedSearch() {
     setStatus("idle");
   };
 
-  // Cleanup timeout when component unmounts
+  // clean timeout when component unmounts
   useEffect(() => {
     return () => {
       if (searchTimeoutRef.current) {
@@ -54,7 +54,7 @@ export default function AnimatedSearch() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-5">
       <div className="w-full max-w-xl">
-        {/* Heading */}
+        {/* heading */}
         <div className="mb-8 text-center">
           <motion.h1
             initial={{
@@ -97,7 +97,7 @@ export default function AnimatedSearch() {
           </motion.p>
         </div>
 
-        {/* Search Form */}
+        {/* search form */}
         <form onSubmit={handleSearch} className="relative">
           {/* Search Box */}
           <motion.div
@@ -117,7 +117,7 @@ export default function AnimatedSearch() {
             className=" relative flex  h-16 items-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] shadow-2xl backdrop-blur-xl
             "
           >
-            {/* Top Highlight */}
+            {/* top highlight */}
             <div
               className="
                 pointer-events-none
@@ -132,7 +132,7 @@ export default function AnimatedSearch() {
               "
             />
 
-            {/* Animated Search Icon */}
+            {/* animated search icon */}
             <motion.div
               animate={
                 status === "searching"
@@ -166,7 +166,7 @@ export default function AnimatedSearch() {
               "
             >
               <AnimatePresence mode="wait">
-                {/* SUCCESS ICON */}
+                {/* success icon*/}
                 {status === "success" ? (
                   <motion.svg
                     key="success"
@@ -216,7 +216,7 @@ export default function AnimatedSearch() {
                     />
                   </motion.svg>
                 ) : (
-                  /* Search ICON */
+                  /* search icon */
                   <motion.svg
                     key="search"
                     initial={{
@@ -255,7 +255,7 @@ export default function AnimatedSearch() {
               </AnimatePresence>
             </motion.div>
 
-            {/* Input */}
+            {/* input */}
             <input
               value={query}
               onChange={(e) => {
@@ -281,7 +281,7 @@ export default function AnimatedSearch() {
               "
             />
 
-            {/* Search Button */}
+            {/* search button */}
             <motion.button
               type="submit"
               disabled={!query.trim() || status === "searching"}
@@ -318,7 +318,7 @@ export default function AnimatedSearch() {
                 disabled:opacity-40
               "
             >
-              {/* SEARCHING */}
+              {/* searching*/}
               {status === "searching" ? (
                 <>
                   <motion.span
@@ -343,7 +343,7 @@ export default function AnimatedSearch() {
                   <span>Searching</span>
                 </>
               ) : status === "success" ? (
-                /* SUCCESS */
+                /* success */
                 <motion.span
                   initial={{
                     opacity: 0,
@@ -407,7 +407,7 @@ export default function AnimatedSearch() {
           </motion.div>
         </form>
 
-        {/* SUCCESS RESULT */}
+        {/* success result */}
         <AnimatePresence>
           {status === "success" && (
             <motion.div
@@ -512,7 +512,7 @@ export default function AnimatedSearch() {
           )}
         </AnimatePresence>
 
-        {/* SEARCH AGAIN */}
+        {/* search agin */}
         <AnimatePresence>
           {status === "success" && (
             <motion.button

@@ -1,0 +1,667 @@
+# BellNova — Component Guide
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section or code part.
+
+For example:
+
+* `CHANGE NOTIFICATIONS`
+* `CHANGE COLORS`
+* `UNREAD COUNT`
+* `ANIMATION`
+* `PANEL SIZE`
+* `MARK AS READ`
+
+Find the section you want, then change the required code/value.
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+**BellNova** is an animated notification bell built with:
+
+* React
+* Tailwind CSS
+* Framer Motion
+
+Features included:
+
+* Animated notification bell
+* Unread notification count
+* Pulsing unread indicator
+* Bell shake animation
+* Expanding sound waves
+* Animated notification panel
+* Individual notification read state
+* Mark all as read
+* Notification count animation
+* Responsive notification layout
+
+---
+
+## 2. IMPORTS
+
+```jsx
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+```
+
+### Dependencies
+
+Install Framer Motion if required:
+
+```bash
+npm install framer-motion
+```
+
+---
+
+## 3. CHANGE NOTIFICATIONS
+
+All notification data is stored in:
+
+```jsx
+const notifications = [
+  {
+    id: 1,
+    icon: "⚡",
+    title: "New component added",
+    text: "Animated search component is now live.",
+    time: "2 min ago",
+  },
+];
+```
+
+Add another notification:
+
+```jsx
+{
+  id: 4,
+  icon: "✓",
+  title: "New update",
+  text: "Your profile has been updated.",
+  time: "5 min ago",
+}
+```
+
+Each notification should have:
+
+```jsx
+id
+icon
+title
+text
+time
+```
+
+---
+
+## 4. CHANGE NOTIFICATION ICON
+
+Change:
+
+```jsx
+icon: "⚡",
+```
+
+Example:
+
+```jsx
+icon: "🔔",
+```
+
+You can also replace the emoji with a React icon or custom SVG.
+
+---
+
+## 5. CHANGE NOTIFICATION TITLE
+
+```jsx
+title: "New component added",
+```
+
+Example:
+
+```jsx
+title: "New message received",
+```
+
+---
+
+## 6. CHANGE NOTIFICATION DESCRIPTION
+
+```jsx
+text: "Animated search component is now live.",
+```
+
+Example:
+
+```jsx
+text: "Your new project has been published.",
+```
+
+---
+
+## 7. CHANGE NOTIFICATION TIME
+
+```jsx
+time: "2 min ago",
+```
+
+Example:
+
+```jsx
+time: "Just now",
+```
+
+---
+
+## 8. UNREAD COUNT
+
+Unread notifications are calculated with:
+
+```jsx
+const unreadCount = notifications.length - read.length;
+```
+
+The count automatically updates when notifications are marked as read.
+
+---
+
+## 9. MARK NOTIFICATION AS READ
+
+Each notification uses:
+
+```jsx
+onClick={() => markAsRead(item.id)}
+```
+
+The function prevents duplicate IDs:
+
+```jsx
+const markAsRead = (id) => {
+  setRead((prev) =>
+    prev.includes(id) ? prev : [...prev, id]
+  );
+};
+```
+
+Clicking a notification changes it to the read state.
+
+---
+
+## 10. MARK ALL AS READ
+
+The button uses:
+
+```jsx
+const markAllRead = () => {
+  setRead(notifications.map((item) => item.id));
+};
+```
+
+This marks every notification as read.
+
+---
+
+## 11. CHANGE BELL SIZE
+
+Current bell button:
+
+```jsx
+className="... h-[70px] w-[70px] ..."
+```
+
+Change:
+
+```jsx
+h-[80px] w-[80px]
+```
+
+for a larger bell.
+
+---
+
+## 12. CHANGE BELL ICON SIZE
+
+Current SVG:
+
+```jsx
+className="h-7 w-7"
+```
+
+Examples:
+
+```jsx
+className="h-6 w-6"
+```
+
+or:
+
+```jsx
+className="h-8 w-8"
+```
+
+---
+
+## 13. CHANGE BELL COLOR
+
+The SVG uses:
+
+```jsx
+stroke="white"
+```
+
+Change it to:
+
+```jsx
+stroke="#60a5fa"
+```
+
+or another color.
+
+---
+
+## 14. BELL SHAKE ANIMATION
+
+When the panel opens:
+
+```jsx
+rotate: [0, 16, -14, 11, -8, 5, -3, 0]
+```
+
+Change these values to create a stronger or softer shake.
+
+Animation duration:
+
+```jsx
+duration: 0.8
+```
+
+Increase it for a slower animation.
+
+---
+
+## 15. UNREAD BADGE
+
+The notification count uses:
+
+```jsx
+bg-red-500
+```
+
+Change it to another Tailwind color:
+
+```jsx
+bg-blue-500
+```
+
+The badge size is:
+
+```jsx
+h-5 min-w-5
+```
+
+---
+
+## 16. UNREAD PULSE
+
+The unread pulse uses:
+
+```jsx
+scale: [1, 1.7, 1],
+opacity: [0.35, 0, 0.35],
+```
+
+Change:
+
+```jsx
+1.7
+```
+
+to control the pulse expansion.
+
+Animation speed:
+
+```jsx
+duration: 1.8
+```
+
+---
+
+## 17. SOUND WAVES
+
+Sound waves appear only when the notification panel is open.
+
+The component creates three waves:
+
+```jsx
+[0, 1, 2].map((i) => ...)
+```
+
+Wave delay:
+
+```jsx
+delay: i * 0.12
+```
+
+Change `0.12` to control the spacing between waves.
+
+---
+
+## 18. SOUND WAVE SIZE
+
+Initial size:
+
+```jsx
+width: 30,
+height: 30,
+```
+
+Final size:
+
+```jsx
+width: 100,
+height: 100,
+```
+
+Increase `100` for larger waves.
+
+---
+
+## 19. PANEL WIDTH
+
+Current panel:
+
+```jsx
+w-[360px]
+```
+
+Change to:
+
+```jsx
+w-[400px]
+```
+
+for a wider notification panel.
+
+---
+
+## 20. PANEL BACKGROUND
+
+Current background:
+
+```jsx
+bg-[#0d0d0d]/95
+```
+
+Change the color or opacity as required.
+
+Example:
+
+```jsx
+bg-[#111827]/95
+```
+
+---
+
+## 21. PANEL BORDER
+
+Current border:
+
+```jsx
+border-white/10
+```
+
+Change opacity:
+
+```jsx
+border-white/20
+```
+
+---
+
+## 22. PANEL ANIMATION
+
+Opening animation:
+
+```jsx
+initial={{
+  opacity: 0,
+  y: -15,
+  scale: 0.94,
+}}
+```
+
+Final state:
+
+```jsx
+animate={{
+  opacity: 1,
+  y: 0,
+  scale: 1,
+}}
+```
+
+Exit animation:
+
+```jsx
+exit={{
+  opacity: 0,
+  y: -10,
+  scale: 0.95,
+}}
+```
+
+Adjust these values to customize the panel motion.
+
+---
+
+## 23. NOTIFICATION HOVER
+
+Each notification uses:
+
+```jsx
+whileHover={{ x: 3 }}
+```
+
+Increase `3` for more horizontal movement.
+
+Example:
+
+```jsx
+whileHover={{ x: 6 }}
+```
+
+---
+
+## 24. READ NOTIFICATION STYLE
+
+Read notifications use:
+
+```jsx
+opacity-50
+```
+
+Unread notifications use:
+
+```jsx
+bg-white/[0.04]
+```
+
+Read notifications use:
+
+```jsx
+bg-white/[0.02]
+```
+
+Modify these classes to change the visual difference.
+
+---
+
+## 25. UNREAD DOT
+
+Unread notifications display:
+
+```jsx
+bg-red-500
+```
+
+The dot size is:
+
+```jsx
+h-1.5 w-1.5
+```
+
+Change these classes to customize the indicator.
+
+---
+
+## 26. MARK ALL BUTTON
+
+Current button:
+
+```jsx
+Mark all as read
+```
+
+Button styling:
+
+```jsx
+bg-white/[0.04]
+border-white/[0.08]
+```
+
+Change these Tailwind classes to match your project theme.
+
+---
+
+## 27. CHANGE PAGE BACKGROUND
+
+Current page background:
+
+```jsx
+bg-[#050505]
+```
+
+Example:
+
+```jsx
+bg-slate-950
+```
+
+---
+
+## 28. OPEN / CLOSE STATE
+
+The panel is controlled by:
+
+```jsx
+const [open, setOpen] = useState(false);
+```
+
+Toggle:
+
+```jsx
+setOpen((prev) => !prev)
+```
+
+Close:
+
+```jsx
+setOpen(false)
+```
+
+---
+
+## 29. READ STATE
+
+Read notification IDs are stored in:
+
+```jsx
+const [read, setRead] = useState([]);
+```
+
+Example:
+
+```jsx
+[1, 3]
+```
+
+means notifications `1` and `3` are read.
+
+---
+
+## 30. CONNECT TO AN API
+
+Currently notifications are static:
+
+```jsx
+const notifications = [...]
+```
+
+For a real application, replace this with API data.
+
+Expected notification structure:
+
+```js
+{
+  id,
+  icon,
+  title,
+  text,
+  time
+}
+```
+
+You can load the notifications using `useEffect()` and an API request.
+
+---
+
+## 31. COMPONENT USAGE
+
+Import:
+
+```jsx
+import BellNova from "./BellNova";
+```
+
+Use:
+
+```jsx
+<BellNova />
+```
+
+---
+
+## 32. CUSTOMIZATION CHECKLIST
+
+You can easily customize:
+
+* Notification data
+* Notification icons
+* Titles
+* Descriptions
+* Time labels
+* Bell size
+* Bell color
+* Badge color
+* Unread pulse
+* Sound wave animation
+* Panel width
+* Panel background
+* Panel animation
+* Notification hover effect
+* Read/unread appearance
+* Mark-all button
+
+---
+
+## 33. IMPORTANT
+
+BellNova currently uses local React state.
+
+The notifications and read status will reset when the component is refreshed.
+
+For production use, connect notifications and read status to your backend or persistent storage.

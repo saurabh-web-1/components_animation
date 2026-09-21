@@ -1,0 +1,325 @@
+ANIMATED SEARCH — COMPONENT GUIDE
+
+
+Component: ScanPulse
+Type: React + Tailwind CSS + Framer Motion
+File: ScanPulse.jsx
+
+
+
+
+
+1. REQUIREMENTS
+
+Make sure your React project has Tailwind CSS and Framer Motion installed.
+
+npm install tailwindcss @tailwindcss/vite
+npm install framer-motion
+
+The component uses React hooks:
+- useState
+- useRef
+- useEffect
+
+
+2. ADD THE COMPONENT TO YOUR PROJECT
+
+Create a file such as:
+
+src/components/ScanPulse.jsx
+
+Paste the downloaded component code into that file.
+
+
+3. IMPORT THE COMPONENT
+-----------------------
+In the page where you want to use it:
+
+import ScanPulse from "./components/ScanPulse";
+
+If your folder structure is different, change the import path.
+
+
+4. USE THE COMPONENT
+--------------------
+Then render it like this:
+
+function App() {
+  return (
+    <div>
+      <ScanPulse />
+    </div>
+  );
+}
+
+export default App;
+
+
+5. HOW THE SEARCH WORKS
+-----------------------
+The component has three main states:
+
+idle
+- Normal search state.
+- Button shows "Search".
+- User can enter text and search.
+
+searching
+- Starts after submitting the form.
+- Input is disabled.
+- Button shows "Searching".
+- Search icon animates.
+- Search box pulses.
+- Scanning line moves across the bottom.
+
+success
+- After the demo search finishes.
+- Button changes to "Done ✓".
+- Search icon changes to a check mark.
+- Result card appears.
+- User can click "Search again" to reset.
+
+The state is controlled with:
+
+const [status, setStatus] = useState("idle");
+
+
+6. CONNECT IT TO A REAL API
+----------------------------
+Currently the component uses:
+
+setTimeout(() => {
+  setStatus("success");
+}, 1400);
+
+This only simulates a search.
+
+For a real project, replace the demo timeout with your API request.
+
+Example:
+
+const handleSearch = async (e) => {
+  e.preventDefault();
+
+  if (!query.trim() || status === "searching") {
+    return;
+  }
+
+  setStatus("searching");
+
+  try {
+    const response = await fetch(
+      `/api/search?q=${encodeURIComponent(query)}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Search failed");
+    }
+
+    const data = await response.json();
+
+    // Store/use your search results here
+    console.log(data);
+
+    setStatus("success");
+  } catch (error) {
+    console.error(error);
+    setStatus("idle");
+  }
+};
+
+This allows the animation to represent an actual API search.
+
+
+7. CHANGE THE SEARCH RESULT
+---------------------------
+The current result card displays:
+
+Results found for "{query}"
+
+You can replace it with your actual results.
+
+For example:
+
+{results.map((item) => (
+  <div key={item.id}>
+    {item.name}
+  </div>
+))}
+
+You would normally create a results state such as:
+
+const [results, setResults] = useState([]);
+
+
+8. CHANGE THE PLACEHOLDER
+-------------------------
+Find:
+
+placeholder="Search anything..."
+
+Change it to whatever you need:
+
+placeholder="Search products..."
+placeholder="Search users..."
+placeholder="Search components..."
+placeholder="Search articles..."
+
+
+9. CHANGE THE BUTTON TEXT
+-------------------------
+The default button states are:
+
+Search
+Searching
+Done ✓
+
+You can change these directly in the JSX.
+
+Example:
+
+"Find"
+"Loading..."
+"Found ✓"
+
+
+10. CHANGE THE SEARCH DELAY
+---------------------------
+The demo currently waits 1400 milliseconds.
+
+Find:
+
+}, 1400);
+
+Change it to:
+
+}, 2000);
+
+for a 2-second demo.
+
+IMPORTANT:
+When connecting a real API, you normally do not need this timeout.
+
+
+11. CHANGE COLORS
+-----------------
+The component uses Tailwind CSS.
+
+Examples:
+
+bg-zinc-950
+- Main dark background.
+
+text-white
+- White text.
+
+text-zinc-500
+- Secondary/placeholder text.
+
+bg-white
+- Search button background.
+
+text-emerald-400
+- Success/check color.
+
+You can replace these Tailwind classes to match your website.
+
+
+12. MAKE THE COMPONENT SMALLER / SHORTER
+----------------------------------------
+If you want a simpler version, you can remove:
+
+- Heading and description
+- Success result card
+- "Search again" button
+- Scanning line
+- Some icon animations
+- Demo timeout cleanup logic
+
+For a basic search component, keep only:
+
+1. query state
+2. status state
+3. handleSearch
+4. input
+5. submit button
+
+Example structure:
+
+const [query, setQuery] = useState("");
+
+const handleSearch = (e) => {
+  e.preventDefault();
+
+  if (!query.trim()) return;
+
+  console.log("Searching:", query);
+};
+
+return (
+  <form onSubmit={handleSearch}>
+    <input
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      placeholder="Search..."
+    />
+
+    <button type="submit">
+      Search
+    </button>
+  </form>
+);
+
+
+13. IMPORTANT CUSTOMIZATION
+---------------------------
+This component is designed as a UI component, so you can connect it to:
+
+- Product search
+- Website search
+- Component library search
+- User search
+- Blog/article search
+- API search
+- Database search
+
+The animation does not perform the real search by itself. Your project's API or search logic should provide the actual data.
+
+
+14. QUICK SETUP
+--------------
+1. Install Framer Motion:
+
+npm install framer-motion
+
+2. Create:
+
+src/components/ScanPulse.jsx
+
+3. Paste the component code.
+
+4. Import it:
+
+import ScanPulse from "./components/ScanPulse";
+
+5. Render:
+
+<ScanPulse />
+
+6. Replace the demo setTimeout with your real API/search logic when needed.
+
+
+SUMMARY
+-------
+ScanPulse is a ready-to-use animated search UI.
+
+For a quick demo:
+- Download the component.
+- Install Framer Motion.
+- Import and render <ScanPulse />.
+
+For production:
+- Replace the demo timeout with your API request.
+- Store the returned results in state.
+- Render the real search results.
+- Customize Tailwind classes, text, icons and animations according to your project.

@@ -1,0 +1,640 @@
+# ScanPulse — Component Guide
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section or code part.
+
+For example:
+
+* `CHANGE TEXT`
+* `CHANGE SEARCH DELAY`
+* `CHANGE COLORS`
+* `ANIMATION`
+* `SEARCH API`
+* `MOBILE`
+
+Find the section you want, then change the required code/value.
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+`ScanPulse` is an animated search component built with:
+
+* HTML
+* CSS
+* JavaScript
+
+It includes:
+
+* Animated search box
+* Search icon animation
+* Loading spinner
+* Scanning line
+* Success animation
+* Result card
+* Search again button
+* Responsive mobile layout
+
+The JavaScript uses three states:
+
+```js
+idle
+searching
+success
+```
+
+---
+
+## 2. FILE STRUCTURE
+
+```text
+ScanPulse/
+├── index.html
+├── style.css
+└── script.js
+```
+
+HTML loads:
+
+```html
+<link rel="stylesheet" href="style.css" />
+<script src="script.js"></script>
+```
+
+---
+
+## 3. CHANGE HEADING
+
+Open `index.html` and find:
+
+```html
+<div class="badge">
+  Premium Search
+</div>
+
+<h1>Animated Search</h1>
+
+<p>
+  Search with a little bit of magic ✨
+</p>
+```
+
+Change these values to customize the heading.
+
+Example:
+
+```html
+<div class="badge">
+  Smart Search
+</div>
+
+<h1>Find Anything</h1>
+
+<p>
+  Search faster with a smooth experience.
+</p>
+```
+
+---
+
+## 4. CHANGE PLACEHOLDER
+
+Find:
+
+```html
+<input
+  id="searchInput"
+  type="text"
+  placeholder="Search anything..."
+/>
+```
+
+Change:
+
+```text
+Search anything...
+```
+
+to your required placeholder.
+
+---
+
+## 5. CHANGE BUTTON TEXT
+
+The default button text is:
+
+```html
+<span id="buttonText">
+  Search
+</span>
+```
+
+After searching, JavaScript changes it to:
+
+```js
+buttonText.textContent = "Searching";
+```
+
+After success:
+
+```js
+buttonText.textContent = "Done ✓";
+```
+
+---
+
+## 6. CHANGE SEARCH DELAY
+
+The demo currently waits `1400ms` before completing the search:
+
+```js
+searchTimeout = setTimeout(
+  function () {
+    completeSearch(query);
+  },
+  1400
+);
+```
+
+For faster testing:
+
+```js
+500
+```
+
+For slower animation:
+
+```js
+2000
+```
+
+This is only a simulated API delay.
+
+---
+
+## 7. CONNECT REAL SEARCH API
+
+Currently the component uses:
+
+```js
+setTimeout(...)
+```
+
+instead of a real API.
+
+Replace the simulated search with your API request.
+
+Example structure:
+
+```js
+async function searchAPI(query) {
+  const response = await fetch(
+    `/api/search?q=${encodeURIComponent(query)}`
+  );
+
+  return response.json();
+}
+```
+
+Then call your API before:
+
+```js
+completeSearch(query);
+```
+
+The current code does not contain a real backend/API.
+
+---
+
+## 8. SEARCH VALIDATION
+
+Empty searches are prevented here:
+
+```js
+const query =
+  searchInput.value.trim();
+
+if (!query) {
+  return;
+}
+```
+
+You can replace this with an error message if required.
+
+---
+
+## 9. SEARCHING ANIMATION
+
+When searching starts:
+
+```js
+searchBox.classList.add("searching");
+iconWrapper.classList.add("icon-searching");
+```
+
+The search box uses:
+
+```css
+.searching {
+  animation:
+    searchPulse 0.5s ease-in-out infinite;
+}
+```
+
+The search icon uses:
+
+```css
+.icon-searching {
+  animation:
+    iconSearch 0.7s ease-in-out infinite;
+}
+```
+
+---
+
+## 10. CHANGE SEARCH BOX ANIMATION
+
+Find:
+
+```css
+@keyframes searchPulse
+```
+
+Current scale:
+
+```css
+50% {
+  transform: scale(1.012);
+}
+```
+
+Increase `1.012` for a stronger pulse.
+
+Example:
+
+```css
+transform: scale(1.03);
+```
+
+---
+
+## 11. CHANGE ICON ANIMATION
+
+Find:
+
+```css
+@keyframes iconSearch
+```
+
+The animation moves and rotates the search icon.
+
+Important values:
+
+```css
+translateX(4px)
+rotate(12deg)
+rotate(-12deg)
+```
+
+Change these values to adjust the icon movement.
+
+---
+
+## 12. SCANNING LINE
+
+The scanning line is:
+
+```html
+<div
+  id="scanningLine"
+  class="scanning-line hidden"
+></div>
+```
+
+Its animation is:
+
+```css
+@keyframes scanLine
+```
+
+Current duration:
+
+```css
+animation:
+  scanLine 1.1s linear infinite;
+```
+
+Change `1.1s` to control the scanning speed.
+
+---
+
+## 13. CHANGE SEARCH BUTTON COLOR
+
+Current button:
+
+```css
+.search-box button {
+  background: white;
+  color: black;
+}
+```
+
+You can change it to:
+
+```css
+background: #34d399;
+color: white;
+```
+
+Hover and active states are controlled separately.
+
+---
+
+## 14. CHANGE MAIN BACKGROUND
+
+Find:
+
+```css
+body {
+  background: #09090b;
+  color: white;
+}
+```
+
+Change:
+
+```css
+background: #09090b;
+```
+
+to your preferred background.
+
+Example:
+
+```css
+background: #020617;
+```
+
+---
+
+## 15. CHANGE SUCCESS COLOR
+
+The success icon uses:
+
+```css
+.success-icon {
+  color: #34d399;
+}
+```
+
+The result icon also uses:
+
+```css
+color: #34d399;
+```
+
+Change `#34d399` to your preferred success color.
+
+---
+
+## 16. SUCCESS ANIMATION
+
+When search completes:
+
+```js
+successIcon.classList.add("success-pop");
+```
+
+The animation is:
+
+```css
+@keyframes successPop
+```
+
+It starts with:
+
+```css
+scale(0)
+rotate(-45deg)
+```
+
+and ends at:
+
+```css
+scale(1)
+rotate(0deg)
+```
+
+Change these values to customize the success effect.
+
+---
+
+## 17. RESULT CARD
+
+After successful search:
+
+```js
+resultQuery.textContent = query;
+
+resultCard.classList.remove("hidden");
+```
+
+The result displays:
+
+```text
+Search completed
+Results found for "your query"
+```
+
+The result card animation is:
+
+```css
+@keyframes resultAppear
+```
+
+---
+
+## 18. CHANGE RESULT TEXT
+
+Find in `index.html`:
+
+```html
+<h3>
+  Search completed
+</h3>
+
+<p>
+  Results found for
+  "<span id="resultQuery"></span>"
+</p>
+```
+
+Change these texts according to your project.
+
+---
+
+## 19. SEARCH AGAIN
+
+The button:
+
+```html
+<button
+  id="searchAgain"
+  class="search-again"
+>
+  Search again
+</button>
+```
+
+resets:
+
+* Search status
+* Input
+* Button text
+* Search icon
+* Success icon
+* Result card
+
+Then it focuses the input:
+
+```js
+searchInput.focus();
+```
+
+---
+
+## 20. SEARCH STATE
+
+The component uses:
+
+```js
+let status = "idle";
+```
+
+During search:
+
+```js
+status = "searching";
+```
+
+After completion:
+
+```js
+status = "success";
+```
+
+This prevents multiple searches while one search is running.
+
+---
+
+## 21. CHANGE SEARCH BOX SIZE
+
+Find:
+
+```css
+.search-box {
+  height: 64px;
+}
+```
+
+Increase it:
+
+```css
+height: 72px;
+```
+
+The maximum component width is:
+
+```css
+.search-wrapper {
+  max-width: 560px;
+}
+```
+
+---
+
+## 22. MOBILE DESIGN
+
+Mobile styles start at:
+
+```css
+@media (max-width: 520px)
+```
+
+On mobile:
+
+```css
+.heading h1 {
+  font-size: 32px;
+}
+```
+
+The search box becomes:
+
+```css
+height: 60px;
+```
+
+The button becomes:
+
+```css
+min-width: 85px;
+```
+
+Change these values to customize the mobile layout.
+
+---
+
+## 23. MAIN CUSTOMIZATION AREAS
+
+Use **Ctrl + F** to quickly find:
+
+```text
+Premium Search
+Animated Search
+Search anything...
+1400
+searchPulse
+iconSearch
+scanLine
+successPop
+resultAppear
+successPop
+background: #09090b
+color: #34d399
+```
+
+These are the main areas to customize.
+
+---
+
+## 24. CURRENT LIMITATION
+
+The current search is a frontend demo.
+
+It does not include:
+
+* Real search API
+* Database
+* Search results from backend
+* Authentication
+* Search history
+
+You need to connect your own API/backend for real search functionality.
+
+---
+
+## 25. QUICK SETUP
+
+Keep these three files together:
+
+```text
+index.html
+style.css
+script.js
+```
+
+Then open `index.html` in your browser.
+
+No external JavaScript library is required.

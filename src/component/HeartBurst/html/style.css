@@ -1,0 +1,611 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #1c1c1c,
+      #080808 65%,
+      #030303
+    );
+
+  font-family:
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.like-button {
+  position: relative;
+
+  width: 175px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  overflow: visible;
+
+  border: 1px solid rgba(255,255,255,.14);
+
+  border-radius: 17px;
+
+  background:
+    rgba(255,255,255,.06);
+
+  color: #aaa;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45);
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    border .25s ease,
+    box-shadow .25s ease;
+}
+
+
+.like-button:hover {
+  transform: translateY(-3px);
+
+  background:
+    rgba(255,255,255,.09);
+
+  border-color:
+    rgba(255,255,255,.25);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.5);
+}
+
+
+.like-button:active {
+  transform: scale(.94);
+}
+
+
+/* =========================================
+   HEART AREA
+========================================= */
+
+.heart-wrapper {
+  position: relative;
+
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10;
+}
+
+
+.heart-icon {
+  width: 25px;
+  height: 25px;
+
+  color: #aaa;
+
+  overflow: visible;
+
+  transition:
+    color .25s ease,
+    filter .25s ease;
+}
+
+
+/* =========================================
+   LIKED HEART
+========================================= */
+
+.like-button.liked
+.heart-icon {
+  color: #ff3b6b;
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(255,59,107,.55)
+    );
+
+  animation:
+    heartPop
+    .55s
+    cubic-bezier(.16,1,.3,1);
+}
+
+
+@keyframes heartPop {
+
+  0% {
+    transform:
+      scale(.35);
+  }
+
+  45% {
+    transform:
+      scale(1.35)
+      rotate(-7deg);
+  }
+
+  65% {
+    transform:
+      scale(.9)
+      rotate(5deg);
+  }
+
+  82% {
+    transform:
+      scale(1.12)
+      rotate(-2deg);
+  }
+
+  100% {
+    transform:
+      scale(1)
+      rotate(0);
+  }
+
+}
+
+
+/* =========================================
+   HEART FILL
+========================================= */
+
+.like-button.liked
+.heart-icon path {
+  fill: currentColor;
+}
+
+
+/* =========================================
+   TEXT
+========================================= */
+
+.like-content {
+  position: relative;
+
+  width: 75px;
+  height: 20px;
+
+  overflow: hidden;
+
+  text-align: left;
+}
+
+
+.like-text,
+.liked-text {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  line-height: 20px;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  transition:
+    opacity .25s ease,
+    transform .3s ease;
+}
+
+
+.like-text {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+.liked-text {
+  color: #ff6b91;
+
+  opacity: 0;
+
+  transform:
+    translateY(10px);
+}
+
+
+/* =========================================
+   LIKED TEXT
+========================================= */
+
+.like-button.liked
+.like-text {
+  opacity: 0;
+
+  transform:
+    translateY(-10px);
+}
+
+
+.like-button.liked
+.liked-text {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================
+   COUNT
+========================================= */
+
+.like-count {
+  position: absolute;
+
+  left: 39px;
+
+  top: 0;
+
+  line-height: 20px;
+
+  color: #777;
+
+  font-size: 11px;
+
+  transition:
+    color .25s ease;
+}
+
+
+.like-button.liked
+.like-count {
+  color: #ff6b91;
+}
+
+
+/* =========================================
+   RIPPLE
+========================================= */
+
+.heart-ripple {
+  position: absolute;
+
+  left: 48px;
+  top: 50%;
+
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid
+    rgba(255,59,107,.8);
+
+  border-radius: 50%;
+
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(.3);
+
+  pointer-events: none;
+}
+
+
+.like-button.liked
+.heart-ripple {
+  animation:
+    ripple .65s ease-out;
+}
+
+
+@keyframes ripple {
+
+  0% {
+    opacity: .8;
+
+    transform:
+      translate(-50%, -50%)
+      scale(.3);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(2.3);
+  }
+
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.particle {
+  position: absolute;
+
+  left: 48px;
+  top: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #ff3b6b;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+
+.like-button.liked
+.particle {
+  animation:
+    particleBurst
+    .65s
+    cubic-bezier(.2,.8,.3,1);
+}
+
+
+/* Different directions */
+
+.particle-1 {
+  --x: -30px;
+  --y: -28px;
+}
+
+.particle-2 {
+  --x: 2px;
+  --y: -40px;
+}
+
+.particle-3 {
+  --x: 32px;
+  --y: -25px;
+}
+
+.particle-4 {
+  --x: 43px;
+  --y: 4px;
+}
+
+.particle-5 {
+  --x: 30px;
+  --y: 31px;
+}
+
+.particle-6 {
+  --x: 0px;
+  --y: 39px;
+}
+
+.particle-7 {
+  --x: -34px;
+  --y: 25px;
+}
+
+.particle-8 {
+  --x: -43px;
+  --y: -2px;
+}
+
+
+@keyframes particleBurst {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0);
+  }
+
+  20% {
+    opacity: 1;
+
+    transform:
+      translate(
+        calc(-50% + var(--x) * .25),
+        calc(-50% + var(--y) * .25)
+      )
+      scale(1);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      scale(.2);
+  }
+
+}
+
+
+/* =========================================
+   MINI HEARTS
+========================================= */
+
+.mini-heart {
+  position: absolute;
+
+  left: 45px;
+  top: 50%;
+
+  color: #ff3b6b;
+
+  font-size: 11px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+.like-button.liked
+.mini-heart {
+  animation:
+    miniHeartFloat
+    .9s
+    ease-out;
+}
+
+
+.mini-heart-1 {
+  --hx: -25px;
+  --hy: -45px;
+}
+
+
+.mini-heart-2 {
+  --hx: 30px;
+  --hy: -52px;
+}
+
+
+.mini-heart-3 {
+  --hx: 45px;
+  --hy: -18px;
+}
+
+
+@keyframes miniHeartFloat {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(0,0)
+      scale(.3);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        var(--hx),
+        var(--hy)
+      )
+      scale(.8);
+  }
+
+}
+
+
+/* =========================================
+   GLOW
+========================================= */
+
+.like-button.liked::after {
+  content: "";
+
+  position: absolute;
+
+  left: 34px;
+  top: 50%;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,59,107,.25);
+
+  filter: blur(15px);
+
+  opacity: 0;
+
+  transform:
+    translateY(-50%)
+    scale(.4);
+
+  pointer-events: none;
+
+  animation:
+    glowHeart .7s ease-out;
+}
+
+
+@keyframes glowHeart {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(-50%)
+      scale(.4);
+  }
+
+  35% {
+    opacity: .8;
+
+    transform:
+      translateY(-50%)
+      scale(1.4);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateY(-50%)
+      scale(1.8);
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .like-button {
+    width: 165px;
+  }
+
+}

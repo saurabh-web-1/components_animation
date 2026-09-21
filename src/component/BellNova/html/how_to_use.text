@@ -1,0 +1,711 @@
+# BellNova — HTML, CSS & JavaScript Component Guide
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section or code part.
+
+For example:
+
+* `CHANGE NOTIFICATIONS`
+* `CHANGE COLORS`
+* `UNREAD COUNT`
+* `BELL ANIMATION`
+* `PANEL SIZE`
+* `MARK ALL AS READ`
+
+Find the section you want, then change the required code/value.
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+**BellNova** is an animated notification component built with:
+
+* HTML
+* CSS
+* Vanilla JavaScript
+* Inline SVG
+
+Features:
+
+* Animated notification bell
+* Unread notification counter
+* Bell ringing animation
+* Expanding sound waves
+* Notification dropdown panel
+* Read/unread notification states
+* Mark all as read
+* Outside-click closing
+* Responsive mobile layout
+
+No external JavaScript library is required.
+
+---
+
+## 2. CHANGE NOTIFICATIONS
+
+Notifications are written directly inside the HTML:
+
+```html
+<div class="notification-item unread" data-index="1">
+```
+
+Each notification contains:
+
+```html
+<strong>New component added</strong>
+<p>Animated search component is now live.</p>
+<small>2 min ago</small>
+```
+
+Change these values to create your own notifications.
+
+---
+
+## 3. ADD A NEW NOTIFICATION
+
+Copy an existing notification:
+
+```html
+<div class="notification-item unread" data-index="4">
+
+  <div class="notification-avatar">
+    <span>!</span>
+  </div>
+
+  <div class="notification-content">
+    <strong>New update</strong>
+    <p>A new update is available.</p>
+    <small>Just now</small>
+  </div>
+
+  <span class="unread-dot"></span>
+
+</div>
+```
+
+Also update the JavaScript initial count:
+
+```js
+let unreadCount = 4;
+```
+
+And the HTML counter:
+
+```html
+<span class="notification-count" id="notificationCount">4</span>
+```
+
+---
+
+## 4. CHANGE NOTIFICATION ICON
+
+Current icon:
+
+```html
+<span>⚡</span>
+```
+
+You can replace it with:
+
+```html
+<span>!</span>
+```
+
+or:
+
+```html
+<span>✓</span>
+```
+
+---
+
+## 5. CHANGE NOTIFICATION COLORS
+
+First notification avatar:
+
+```css
+.notification-avatar {
+  background: rgba(255,255,255,0.08);
+}
+```
+
+Purple notification:
+
+```css
+.notification-avatar.purple {
+  background: rgba(150,100,255,0.13);
+}
+```
+
+Green notification:
+
+```css
+.notification-avatar.green {
+  background: rgba(60,220,140,0.12);
+}
+```
+
+---
+
+## 6. CHANGE UNREAD COLOR
+
+The unread counter uses:
+
+```css
+background: #ff3b30;
+```
+
+The unread dot also uses:
+
+```css
+background: #ff3b30;
+```
+
+Change both values to your preferred color.
+
+Example:
+
+```css
+background: #6366f1;
+```
+
+---
+
+## 7. CHANGE BELL SIZE
+
+Current bell button:
+
+```css
+.bell-button {
+  width: 70px;
+  height: 70px;
+}
+```
+
+Example:
+
+```css
+width: 80px;
+height: 80px;
+```
+
+---
+
+## 8. CHANGE BELL ICON SIZE
+
+Current SVG:
+
+```css
+.bell-icon svg {
+  width: 27px;
+  height: 27px;
+}
+```
+
+Increase these values for a larger icon.
+
+---
+
+## 9. CHANGE BELL COLOR
+
+Current SVG color:
+
+```css
+stroke: #ffffff;
+```
+
+Example:
+
+```css
+stroke: #60a5fa;
+```
+
+---
+
+## 10. BELL RING ANIMATION
+
+The bell animation is controlled by:
+
+```css
+.bell-button.ringing .bell-icon svg {
+  animation: bellRing 0.8s cubic-bezier(.36,.07,.19,.97);
+}
+```
+
+The rotation sequence is inside:
+
+```css
+@keyframes bellRing
+```
+
+Example values:
+
+```css
+12% {
+  transform: rotate(16deg);
+}
+
+24% {
+  transform: rotate(-14deg);
+}
+```
+
+Increase the degree values for a stronger ring.
+
+---
+
+## 11. CHANGE RING SPEED
+
+Current duration:
+
+```css
+animation: bellRing 0.8s ...
+```
+
+Faster:
+
+```css
+animation: bellRing 0.5s ...
+```
+
+Slower:
+
+```css
+animation: bellRing 1.2s ...
+```
+
+---
+
+## 12. NOTIFICATION COUNTER
+
+HTML:
+
+```html
+<span class="notification-count" id="notificationCount">3</span>
+```
+
+JavaScript:
+
+```js
+let unreadCount = 3;
+```
+
+These should match the number of initially unread notifications.
+
+---
+
+## 13. COUNTER PULSE
+
+The badge uses:
+
+```css
+animation: notificationPulse 1.8s infinite;
+```
+
+Change `1.8s` to control the pulse speed.
+
+The pulse size is controlled here:
+
+```css
+@keyframes notificationPulse {
+  50% {
+    box-shadow:
+      0 0 0 7px rgba(255,59,48,0);
+  }
+}
+```
+
+---
+
+## 14. SOUND WAVES
+
+Three sound waves are created:
+
+```html
+<span class="wave wave-1"></span>
+<span class="wave wave-2"></span>
+<span class="wave wave-3"></span>
+```
+
+They animate when the bell receives the `ringing` class:
+
+```css
+.bell-button.ringing .wave {
+  animation: waveExpand 0.9s ease-out;
+}
+```
+
+---
+
+## 15. CHANGE WAVE SIZE
+
+Initial size:
+
+```css
+width: 30px;
+height: 30px;
+```
+
+Final size:
+
+```css
+width: 100px;
+height: 100px;
+```
+
+Increase `100px` for larger waves.
+
+---
+
+## 16. CHANGE WAVE DELAY
+
+Current delays:
+
+```css
+.wave-1 {
+  animation-delay: 0s !important;
+}
+
+.wave-2 {
+  animation-delay: 0.12s !important;
+}
+
+.wave-3 {
+  animation-delay: 0.24s !important;
+}
+```
+
+Change the values to control the spacing between waves.
+
+---
+
+## 17. PANEL WIDTH
+
+Current panel:
+
+```css
+.notification-panel {
+  width: 360px;
+}
+```
+
+Example:
+
+```css
+width: 400px;
+```
+
+---
+
+## 18. PANEL POSITION
+
+Current position:
+
+```css
+top: 84px;
+right: 0;
+```
+
+Increase `top` to move the panel farther below the bell.
+
+Change `right` to adjust horizontal positioning.
+
+---
+
+## 19. PANEL BACKGROUND
+
+Current background:
+
+```css
+background:
+  linear-gradient(
+    145deg,
+    rgba(30,30,30,0.97),
+    rgba(10,10,10,0.97)
+  );
+```
+
+Change the gradient colors to create your own theme.
+
+---
+
+## 20. PANEL OPEN ANIMATION
+
+Closed state:
+
+```css
+opacity: 0;
+visibility: hidden;
+transform:
+  translateY(-15px)
+  scale(0.94);
+```
+
+Open state:
+
+```css
+.notification-panel.open {
+  opacity: 1;
+  visibility: visible;
+  transform:
+    translateY(0)
+    scale(1);
+}
+```
+
+Change `translateY()` and `scale()` to customize the entrance.
+
+---
+
+## 21. PANEL TRANSITION SPEED
+
+Current transition:
+
+```css
+transition:
+  opacity 0.28s ease,
+  transform 0.35s cubic-bezier(.16,1,.3,1),
+  visibility 0.28s;
+```
+
+Increase the values for a slower panel animation.
+
+---
+
+## 22. NOTIFICATION HOVER
+
+Current hover movement:
+
+```css
+.notification-item:hover {
+  transform: translateX(3px);
+}
+```
+
+Change `3px` to:
+
+```css
+transform: translateX(6px);
+```
+
+for stronger movement.
+
+---
+
+## 23. READ NOTIFICATION
+
+When a notification is read, JavaScript adds:
+
+```js
+item.classList.remove("unread");
+item.classList.add("read");
+```
+
+Read styling:
+
+```css
+.notification-item.read {
+  opacity: 0.55;
+}
+```
+
+Change `0.55` to control the faded appearance.
+
+---
+
+## 24. UNREAD DOT
+
+Current dot:
+
+```css
+.unread-dot {
+  width: 6px;
+  height: 6px;
+  background: #ff3b30;
+}
+```
+
+Change the size or color as required.
+
+---
+
+## 25. MARK ALL AS READ
+
+Button:
+
+```html
+<button class="mark-read" id="markRead">
+  Mark all as read
+</button>
+```
+
+Its JavaScript changes every notification to:
+
+```js
+item.classList.remove("unread");
+item.classList.add("read");
+```
+
+Then:
+
+```js
+unreadCount = 0;
+updateCounter();
+```
+
+---
+
+## 26. COUNTER UPDATE
+
+The `updateCounter()` function updates:
+
+* Notification count
+* Counter visibility
+* Notification status text
+
+When there are no unread notifications:
+
+```js
+statusElement.textContent =
+  "You're all caught up";
+```
+
+Otherwise:
+
+```js
+statusElement.textContent =
+  `${unreadCount} unread notification${
+    unreadCount > 1 ? "s" : ""
+  }`;
+```
+
+---
+
+## 27. OPEN / CLOSE PANEL
+
+Bell click toggles:
+
+```js
+isOpen = !isOpen;
+```
+
+When open:
+
+```js
+notificationPanel.classList.add("open");
+```
+
+When closed:
+
+```js
+notificationPanel.classList.remove("open");
+```
+
+---
+
+## 28. CLOSE BUTTON
+
+The close button uses:
+
+```js
+closeButton.addEventListener("click", () => {
+  notificationPanel.classList.remove("open");
+  isOpen = false;
+});
+```
+
+---
+
+## 29. OUTSIDE CLICK
+
+The component automatically closes when the user clicks outside the bell or panel:
+
+```js
+document.addEventListener("click", (event) => {
+  if (
+    isOpen &&
+    !notificationPanel.contains(event.target) &&
+    !bellButton.contains(event.target)
+  ) {
+    notificationPanel.classList.remove("open");
+    isOpen = false;
+  }
+});
+```
+
+---
+
+## 30. MOBILE RESPONSIVE
+
+At screens below `480px`:
+
+```css
+@media (max-width: 480px) {
+  .notification-panel {
+    width: calc(100vw - 30px);
+    right: -80px;
+  }
+}
+```
+
+Change `-80px` if you need to reposition the panel on mobile.
+
+---
+
+## 31. COMPONENT STRUCTURE
+
+Recommended files:
+
+```text
+BellNova/
+├── index.html
+├── style.css
+└── script.js
+```
+
+HTML loads:
+
+```html
+<link rel="stylesheet" href="style.css" />
+```
+
+and:
+
+```html
+<script src="script.js"></script>
+```
+
+---
+
+## 32. CUSTOMIZATION CHECKLIST
+
+You can customize:
+
+* Notification content
+* Notification icons
+* Notification colors
+* Unread count
+* Bell size
+* Bell color
+* Bell ring speed
+* Ring intensity
+* Sound wave size
+* Sound wave delay
+* Panel width
+* Panel position
+* Panel background
+* Panel animation
+* Notification hover effect
+* Read opacity
+* Mobile panel position
+
+---
+
+## 33. IMPORTANT
+
+The current component uses static HTML notifications and JavaScript state.
+
+The read/unread state exists only while the page is open. Refreshing the page resets the notifications to their initial state.
+
+For a production notification system, the notification data and read status can be connected to an API or backend.

@@ -1,0 +1,594 @@
+# CartGlide — Component Guide
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section or code part.
+
+For example:
+
+* `CHANGE PRODUCTS`
+* `CHANGE COLORS`
+* `FLYING ANIMATION`
+* `CART`
+* `QUANTITY`
+* `DELIVERY OPTIONS`
+* `CHECKOUT`
+
+Find the section you want, then change the required code/value.
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+`CartGlide` is a shopping cart component built with:
+
+* HTML
+* CSS
+* JavaScript
+
+It includes:
+
+* Product cards
+* Add-to-cart animation
+* Flying product effect
+* Cart preview bar
+* Cart drawer
+* Quantity controls
+* Remove item
+* Delivery options
+* Order note
+* Subtotal
+* Checkout button
+
+The product data is managed in JavaScript through the `products` object.
+
+---
+
+## 2. FILE STRUCTURE
+
+```text
+CartGlide/
+├── index.html
+├── style.css
+└── script.js
+```
+
+HTML loads both files:
+
+```html
+<link rel="stylesheet" href="style.css" />
+<script src="script.js"></script>
+```
+
+---
+
+## 3. CHANGE PRODUCTS
+
+Open `script.js` and find:
+
+```js
+const products = {
+```
+
+Each product contains:
+
+```js
+1: {
+  id: 1,
+  name: "Shoe 1",
+  category: "SHOES",
+  price: 3.99,
+  image: "IMAGE_URL"
+}
+```
+
+Change:
+
+```text
+name     → Product name
+category → Product category
+price    → Product price
+image    → Product image
+```
+
+The HTML product card must use the same `data-id` as the JavaScript product ID.
+
+---
+
+## 4. CHANGE PRODUCT IMAGE
+
+In `script.js`:
+
+```js
+image:
+  "YOUR_IMAGE_URL"
+```
+
+You can replace the current image URL with your own hosted image.
+
+The image is also displayed in the HTML product card:
+
+```html
+<img src="IMAGE_URL" alt="Shoe 1" />
+```
+
+---
+
+## 5. CHANGE PRODUCT TEXT
+
+In `index.html`, change:
+
+```html
+<h1>Popular Products</h1>
+<p>Discover our most loved products</p>
+```
+
+You can also change:
+
+```html
+<h2>Shoe 1</h2>
+<strong>$3.99</strong>
+```
+
+and the rating:
+
+```html
+<span>★★★★★</span>
+<small>4.5 (52)</small>
+```
+
+---
+
+## 6. CHANGE COLORS
+
+The main theme uses emerald green.
+
+Important CSS values:
+
+```css
+#10b981
+#059669
+#ecfdf7
+#d1fae5
+```
+
+The main cart bar uses:
+
+```css
+background: #10b981;
+```
+
+The checkout button also uses:
+
+```css
+background: #10b981;
+```
+
+Change these values to customize the theme color.
+
+---
+
+## 7. CHANGE PRODUCT CARD SIZE
+
+Find:
+
+```css
+.product-image {
+  height: 175px;
+}
+```
+
+Increase the value for a larger image area:
+
+```css
+height: 220px;
+```
+
+The product grid currently uses two columns:
+
+```css
+grid-template-columns:
+  repeat(2, minmax(0, 300px));
+```
+
+---
+
+## 8. CHANGE FLYING PRODUCT SIZE
+
+Find:
+
+```css
+.flying-product {
+  width: 64px;
+  height: 64px;
+}
+```
+
+For a larger flying product:
+
+```css
+width: 80px;
+height: 80px;
+```
+
+---
+
+## 9. FLYING ANIMATION
+
+The animation is controlled inside:
+
+```js
+function addProduct(product, button) {
+```
+
+The animation route uses:
+
+```text
+START
+  ↓
+UP
+  ↓
+RIGHT + UP
+  ↓
+RIGHT
+  ↓
+DOWN
+  ↓
+CART
+```
+
+The main animation duration is:
+
+```js
+duration: 1150
+```
+
+For faster animation:
+
+```js
+duration: 800
+```
+
+For slower animation:
+
+```js
+duration: 1500
+```
+
+The animation positions are controlled by:
+
+```js
+point1X
+point1Y
+point2X
+point2Y
+point3X
+point3Y
+```
+
+The current animation implementation uses the browser Web Animations API.
+
+---
+
+## 10. CART QUANTITY
+
+Cart data is stored in:
+
+```js
+let cart = {};
+```
+
+When a product is added again:
+
+```js
+cart[product.id].quantity++;
+```
+
+So the same product increases its quantity instead of creating another cart entry.
+
+---
+
+## 11. CHANGE QUANTITY
+
+The quantity controls use:
+
+```js
+changeQuantity(id, amount)
+```
+
+Increase:
+
+```js
+changeQuantity(id, 1)
+```
+
+Decrease:
+
+```js
+changeQuantity(id, -1)
+```
+
+When quantity reaches `0`, the product is removed automatically.
+
+---
+
+## 12. REMOVE PRODUCT
+
+The remove button calls:
+
+```js
+removeItem(item.id)
+```
+
+The function removes the product from the cart:
+
+```js
+delete cart[id];
+```
+
+The product card and cart are then updated.
+
+---
+
+## 13. CART PREVIEW BAR
+
+The bottom cart bar shows:
+
+* Product thumbnails
+* Total item count
+* Total price
+* View cart button
+
+Maximum three product thumbnails are displayed:
+
+```js
+items.slice(0, 3)
+```
+
+If there are more than three products, it displays:
+
+```text
++1
++2
++3
+```
+
+depending on the number of additional products.
+
+---
+
+## 14. CART PULSE
+
+After adding a product, the cart bar receives:
+
+```css
+.cart-bar.pulse
+```
+
+The animation is:
+
+```css
+@keyframes cartPulse
+```
+
+You can change the scale values to make the pulse stronger or softer.
+
+---
+
+## 15. OPEN / CLOSE CART
+
+The cart opens when:
+
+```js
+viewCartButton.addEventListener("click", ...)
+```
+
+and adds:
+
+```js
+cartOverlay.classList.add("open");
+```
+
+The cart closes using:
+
+```js
+cartOverlay.classList.remove("open");
+```
+
+Clicking the close button or outside the drawer closes the cart.
+
+---
+
+## 16. CART DRAWER
+
+The drawer is styled using:
+
+```css
+.cart-drawer
+```
+
+Current maximum width:
+
+```css
+max-width: 480px;
+```
+
+Current maximum height:
+
+```css
+max-height: 92vh;
+```
+
+Change these values to adjust the drawer size.
+
+---
+
+## 17. DELIVERY OPTIONS
+
+The component contains:
+
+```text
+Home
+Store
+Schedule
+```
+
+Each option uses:
+
+```html
+<button class="placement-option">
+```
+
+The selected option receives:
+
+```css
+.active
+```
+
+You can change the text directly in `index.html`:
+
+```html
+<strong>Home</strong>
+<small>3–5 days</small>
+```
+
+The JavaScript handles the active state.
+
+---
+
+## 18. ORDER NOTE
+
+The note field is:
+
+```html
+<textarea
+  id="orderNote"
+  placeholder="E.g. Gate no, landmark, special instructions..."
+></textarea>
+```
+
+Change the placeholder to your own instruction.
+
+---
+
+## 19. SUBTOTAL
+
+The subtotal is calculated from:
+
+```js
+item.price * item.quantity
+```
+
+The final amount is displayed using:
+
+```js
+subtotal.textContent =
+  `$${total.toFixed(2)}`;
+```
+
+The item count is also updated automatically.
+
+---
+
+## 20. CHECKOUT
+
+The checkout button is:
+
+```html
+<button
+  class="checkout-button"
+  id="checkoutButton"
+>
+  Proceed to Checkout
+</button>
+```
+
+Currently it only shows:
+
+```js
+alert("Checkout started!");
+```
+
+To connect a real checkout system, replace this alert with your checkout function/API.
+
+---
+
+## 21. RESPONSIVE DESIGN
+
+For screens below `600px`:
+
+```css
+@media (max-width: 600px)
+```
+
+The product grid remains two columns and the product image becomes:
+
+```css
+height: 140px;
+```
+
+For screens below `380px`, delivery options become one column:
+
+```css
+@media (max-width: 380px)
+```
+
+The responsive rules are already included in the CSS.
+
+---
+
+## 22. MAIN CUSTOMIZATION AREAS
+
+Use **Ctrl + F** to quickly find:
+
+```text
+const products
+addProduct
+duration: 1150
+changeQuantity
+removeItem
+renderCartBar
+renderCartItems
+updateSummary
+placement-option
+checkoutButton
+```
+
+These are the main areas you will edit when integrating CartGlide into another project.
+
+---
+
+## 23. CURRENT LIMITATIONS
+
+The current component does not include:
+
+* Backend cart storage
+* User authentication
+* Database
+* Real payment gateway
+* Real checkout API
+* Order creation API
+
+The checkout is currently a frontend demo.
+
+---
+
+## 24. QUICK SETUP
+
+Place the three files together:
+
+```text
+index.html
+style.css
+script.js
+```
+
+Then open:
+
+```text
+index.html
+```
+
+in your browser.
+
+No external JavaScript library is required for the cart logic or animation.

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>HeartBurst</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <button class="like-button" id="likeButton">
+
+    <!-- Ripple -->
+    <span class="heart-ripple"></span>
+
+    <!-- Particles -->
+    <span class="particle particle-1"></span>
+    <span class="particle particle-2"></span>
+    <span class="particle particle-3"></span>
+    <span class="particle particle-4"></span>
+    <span class="particle particle-5"></span>
+    <span class="particle particle-6"></span>
+    <span class="particle particle-7"></span>
+    <span class="particle particle-8"></span>
+
+    <!-- Floating Hearts -->
+    <span class="mini-heart mini-heart-1">♥</span>
+    <span class="mini-heart mini-heart-2">♥</span>
+    <span class="mini-heart mini-heart-3">♥</span>
+
+    <!-- Main Heart -->
+    <span class="heart-wrapper">
+
+      <svg
+        class="heart-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M20.84 4.61
+             C19.32 3.09 16.85 3.09 15.33 4.61
+             L12 7.94
+             L8.67 4.61
+             C7.15 3.09 4.68 3.09 3.16 4.61
+             C1.61 6.16 1.61 8.68 3.16 10.23
+             L12 19
+             L20.84 10.23
+             C22.39 8.68 22.39 6.16 20.84 4.61Z"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+    </span>
+
+    <!-- Text -->
+    <span class="like-content">
+
+      <span class="like-text">
+        Like
+      </span>
+
+      <span class="liked-text">
+        Liked
+      </span>
+
+      <span class="like-count" id="likeCount">
+        124
+      </span>
+
+    </span>
+
+  </button>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

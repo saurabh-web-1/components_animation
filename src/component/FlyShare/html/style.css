@@ -1,0 +1,716 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #181818 0%,
+      #090909 55%,
+      #030303 100%
+    );
+
+  font-family: Arial, sans-serif;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.share-button {
+  position: relative;
+
+  width: 180px;
+  height: 58px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 17px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: white;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.share-button:hover {
+  transform: translateY(-3px);
+
+  background: rgba(255, 255, 255, 0.09);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.55),
+    0 0 35px rgba(255, 255, 255, 0.06);
+}
+
+
+.share-button:active {
+  transform: scale(0.94);
+}
+
+
+.share-button.sending {
+  cursor: default;
+}
+
+
+/* =========================================
+   GLOW
+========================================= */
+
+.button-glow {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  filter: blur(20px);
+
+  opacity: 0;
+
+  transform: scale(0.8);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.share-button.sending .button-glow,
+.share-button.shared .button-glow {
+  opacity: 0.75;
+
+  transform: scale(1.2);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.button-content {
+  position: relative;
+
+  z-index: 10;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 11px;
+}
+
+
+/* =========================================
+   ICON AREA
+========================================= */
+
+.icon-area {
+  position: relative;
+
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================
+   SHARE ICON
+========================================= */
+
+.share-icon {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: scale(1);
+
+  z-index: 2;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s ease,
+    visibility 0s linear 0s;
+}
+
+
+.share-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* =========================================
+   SENDING -> HIDE SHARE ICON
+========================================= */
+
+.share-button.sending .share-icon {
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform:
+    translateX(-8px)
+    scale(0.35);
+
+  transition:
+    opacity 0.15s ease,
+    transform 0.2s ease,
+    visibility 0s linear 0.2s;
+}
+
+
+/* =========================================
+   SHARED -> FORCE HIDE SHARE ICON
+========================================= */
+
+.share-button.shared .share-icon {
+  opacity: 0 !important;
+
+  visibility: hidden !important;
+
+  transform: scale(0.3);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   PAPER PLANE
+========================================= */
+
+.paper-plane {
+  position: absolute;
+
+  left: -1px;
+  top: -1px;
+
+  width: 32px;
+  height: 32px;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+
+.paper-plane svg {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================
+   PLANE FLIGHT
+========================================= */
+
+.share-button.sending .paper-plane {
+  visibility: visible;
+
+  animation:
+    planeFlight 1.15s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+@keyframes planeFlight {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(0, 0)
+      scale(0.65)
+      rotate(-8deg);
+  }
+
+  12% {
+    opacity: 1;
+
+    transform:
+      translate(3px, 4px)
+      scale(0.85)
+      rotate(-8deg);
+  }
+
+  55% {
+    opacity: 1;
+
+    transform:
+      translate(78px, -28px)
+      scale(1)
+      rotate(-3deg);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(140px, -90px)
+      scale(0.7)
+      rotate(8deg);
+  }
+}
+
+
+/* =========================================
+   TRAIL
+========================================= */
+
+.trail {
+  position: absolute;
+
+  left: 0;
+
+  height: 2px;
+
+  border-radius: 50px;
+
+  transform-origin: left center;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.trail-one {
+  top: 12px;
+
+  width: 65px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.7),
+      transparent
+    );
+}
+
+
+.trail-two {
+  top: 19px;
+
+  width: 42px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.35),
+      transparent
+    );
+}
+
+
+.share-button.sending .trail-one {
+  animation:
+    trailOne 0.8s ease-out 0.12s forwards;
+}
+
+
+.share-button.sending .trail-two {
+  animation:
+    trailTwo 0.7s ease-out 0.22s forwards;
+}
+
+
+@keyframes trailOne {
+
+  0% {
+    opacity: 0;
+
+    transform: scaleX(0);
+  }
+
+  35% {
+    opacity: 0.75;
+
+    transform: scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: scaleX(1);
+  }
+}
+
+
+@keyframes trailTwo {
+
+  0% {
+    opacity: 0;
+
+    transform: scaleX(0);
+  }
+
+  40% {
+    opacity: 0.6;
+
+    transform: scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: scaleX(0.5);
+  }
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.particle {
+  position: absolute;
+
+  left: 4px;
+  top: 13px;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.share-button.sending .particle {
+  animation:
+    particleFly 0.65s ease-out forwards;
+}
+
+
+.p1 {
+  --particle-y: 12px;
+  animation-delay: 0.15s !important;
+}
+
+.p2 {
+  --particle-y: -8px;
+  animation-delay: 0.19s !important;
+}
+
+.p3 {
+  --particle-y: 18px;
+  animation-delay: 0.23s !important;
+}
+
+.p4 {
+  --particle-y: -15px;
+  animation-delay: 0.27s !important;
+}
+
+.p5 {
+  --particle-y: 5px;
+  animation-delay: 0.31s !important;
+}
+
+.p6 {
+  --particle-y: -20px;
+  animation-delay: 0.35s !important;
+}
+
+.p7 {
+  --particle-y: 25px;
+  animation-delay: 0.39s !important;
+}
+
+
+@keyframes particleFly {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(0, 0)
+      scale(0);
+  }
+
+  25% {
+    opacity: 1;
+
+    transform:
+      translate(-5px, 0)
+      scale(1);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(-25px, var(--particle-y))
+      scale(0);
+  }
+}
+
+
+/* =========================================
+   TEXT
+========================================= */
+
+.button-text {
+  position: relative;
+
+  width: 70px;
+  height: 20px;
+
+  overflow: hidden;
+
+  text-align: left;
+}
+
+
+.text {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  line-height: 20px;
+
+  white-space: nowrap;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s ease;
+}
+
+
+/* SHARE */
+
+.share-text {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* SENDING */
+
+.sending-text {
+  opacity: 0;
+
+  transform: translateY(8px);
+}
+
+
+.share-button.sending .share-text {
+  opacity: 0;
+
+  transform: translateY(-8px);
+}
+
+
+.share-button.sending .sending-text {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* SHARED */
+
+.shared-text {
+  opacity: 0;
+
+  transform: translateY(8px);
+}
+
+
+.share-button.shared .share-text,
+.share-button.shared .sending-text {
+  opacity: 0;
+
+  transform: translateY(-8px);
+}
+
+
+.share-button.shared .shared-text {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   ARROW
+========================================= */
+
+.arrow {
+  color: #777;
+
+  font-size: 15px;
+
+  line-height: 1;
+
+  animation:
+    arrowMove 1.5s ease-in-out infinite;
+
+  transition: opacity 0.2s ease;
+}
+
+
+@keyframes arrowMove {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(3px, -3px);
+  }
+}
+
+
+.share-button.sending .arrow,
+.share-button.shared .arrow {
+  opacity: 0;
+}
+
+
+/* =========================================
+   SUCCESS ICON
+========================================= */
+
+.success-icon {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: scale(0.25);
+
+  z-index: 30;
+
+  pointer-events: none;
+}
+
+
+.success-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* =========================================
+   SHARED SUCCESS
+========================================= */
+
+.share-button.shared .success-icon {
+  visibility: visible;
+
+  animation:
+    successPop 0.4s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    forwards;
+}
+
+
+@keyframes successPop {
+
+  0% {
+    opacity: 0;
+
+    transform: scale(0.25);
+  }
+
+  65% {
+    opacity: 1;
+
+    transform: scale(1.18);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .share-button {
+    width: 170px;
+  }
+
+}

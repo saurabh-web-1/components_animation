@@ -1,0 +1,685 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  width: 100%;
+  min-height: 100vh;
+
+  background: #050b12;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  overflow: hidden;
+}
+
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+.download-btn {
+  position: relative;
+
+  width: 86px;
+  height: 86px;
+
+  padding: 0;
+
+  border: none;
+  outline: none;
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform-origin: center;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/*  BUTTON BACKGROUND */
+
+.button-background {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 999px;
+
+  background: #0891b2;
+
+  box-shadow:
+    0 0 30px rgba(8, 145, 178, 0.35);
+
+  z-index: 0;
+
+  transition:
+    background-color 0.8s ease,
+    box-shadow 0.8s ease;
+}
+
+
+  
+.inner-ring {
+  position: absolute;
+
+  inset: 9px;
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(255,255,255,0.25);
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+
+
+.icon {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+
+
+
+.download-icon {
+  opacity: 0;
+  transform:
+    translate(-50%, -50%)
+    scale(0.5);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+.download-icon.active {
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+
+
+/* Exit animation */
+
+.download-icon.leaving {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.4)
+    rotate(90deg);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+
+.morph-line {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 0;
+  height: 3px;
+
+  border-radius: 999px;
+
+  background: white;
+
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%);
+
+  z-index: 10;
+}
+
+
+.morph-line.active {
+  animation:
+    lineMorph 0.55s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+@keyframes lineMorph {
+
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 34px;
+    opacity: 1;
+  }
+
+}
+
+
+
+
+.wave-loader {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 48px;
+  height: 35px;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+
+.wave-loader.active {
+  animation: waveLoaderAppear 0.25s ease forwards;
+}
+
+
+@keyframes waveLoaderAppear {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+
+
+.wave-path {
+  fill: none;
+
+  stroke: white;
+
+  stroke-width: 2.5;
+
+  stroke-linecap: round;
+
+  transform-origin: center;
+}
+
+
+/* GLOW WAVE */
+
+.wave-glow {
+  fill: none;
+
+  stroke: white;
+
+  stroke-width: 7;
+
+  stroke-linecap: round;
+
+  opacity: 0.12;
+
+  transform-origin: center;
+}
+
+
+/*    WAVE ANIMATION */
+
+.wave-loader.active .wave-path,
+.wave-loader.active .wave-glow {
+
+  animation:
+    waveMorph 0.8s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes waveMorph {
+
+  0% {
+
+    d: path(
+      "M2 18
+       C6 10, 10 26, 14 18
+       C18 10, 22 26, 26 18
+       C30 10, 34 26, 38 18
+       C42 10, 46 26, 50 18"
+    );
+
+  }
+
+  50% {
+
+    d: path(
+      "M2 18
+       C6 25, 10 10, 14 18
+       C18 25, 22 10, 26 18
+       C30 25, 34 10, 38 18
+       C42 25, 46 10, 50 18"
+    );
+
+  }
+
+  100% {
+
+    d: path(
+      "M2 18
+       C6 10, 10 26, 14 18
+       C18 10, 22 26, 26 18
+       C30 10, 34 26, 38 18
+       C42 10, 46 26, 50 18"
+    );
+
+  }
+
+}
+
+
+
+
+.loading-dots {
+  position: absolute;
+
+  left: 50%;
+  bottom: -1px;
+
+  transform: translateX(-50%);
+
+  color: rgba(255,255,255,0.8);
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  animation:
+    dotsPulse 1s
+    ease-in-out
+    infinite;
+}
+
+
+@keyframes dotsPulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+}
+
+
+/* SUCCESS */
+
+.success-icon {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.5);
+}
+
+
+.success-icon.active {
+  animation:
+    successAppear
+    0.35s
+    ease-out
+    forwards;
+}
+
+
+@keyframes successAppear {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+}
+
+
+/* SUCCESS CHECK DRAW */
+
+#successPath {
+
+  stroke-dasharray: 100;
+
+  stroke-dashoffset: 100;
+}
+
+
+.success-icon.active #successPath {
+
+  animation:
+    checkDraw
+    0.55s
+    ease-out
+    forwards;
+
+}
+
+
+@keyframes checkDraw {
+
+  to {
+    stroke-dashoffset: 0;
+  }
+
+}
+
+
+
+.fail-icon {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.4);
+}
+
+
+.fail-icon.active {
+
+  animation:
+    failAppear
+    0.35s
+    ease-out
+    0.15s
+    forwards;
+
+}
+
+
+@keyframes failAppear {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.4);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+}
+
+
+
+
+#failPath1,
+#failPath2 {
+
+  stroke-dasharray: 100;
+
+  stroke-dashoffset: 100;
+}
+
+
+.fail-icon.active #failPath1 {
+
+  animation:
+    failDraw
+    0.25s
+    ease-out
+    forwards;
+
+}
+
+
+.fail-icon.active #failPath2 {
+
+  animation:
+    failDraw
+    0.25s
+    ease-out
+    0.12s
+    forwards;
+
+}
+
+
+@keyframes failDraw {
+
+  to {
+    stroke-dashoffset: 0;
+  }
+
+}
+
+
+/* =========================================
+   FAIL BUTTON MORPH
+========================================= */
+
+.download-btn.fail-animation {
+
+  animation:
+    failButton
+    0.8s
+    ease-in-out
+    forwards;
+
+}
+
+
+@keyframes failButton {
+
+  0% {
+    transform: scaleX(1);
+  }
+
+  45% {
+    transform: scaleX(0.12);
+  }
+
+  70% {
+    transform: scaleX(0.55);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+
+}
+
+
+/* =========================================
+   FAIL BACKGROUND
+========================================= */
+
+.button-background.fail {
+
+  animation:
+    failBackground
+    0.8s
+    ease forwards;
+
+}
+
+
+@keyframes failBackground {
+
+  0% {
+
+    background: #0891b2;
+
+    box-shadow:
+      0 0 25px rgba(8,145,178,0.35);
+
+  }
+
+  45% {
+
+    background: #ef4444;
+
+    box-shadow:
+      0 0 45px rgba(239,68,68,0.75);
+
+  }
+
+  100% {
+
+    background: #ef4444;
+
+    box-shadow:
+      0 0 25px rgba(239,68,68,0.45);
+
+  }
+
+}
+
+
+/* =========================================
+   STATUS TEXT
+========================================= */
+
+.status-container {
+
+  position: relative;
+
+  height: 20px;
+
+  margin-top: 20px;
+}
+
+
+.status-text {
+
+  position: absolute;
+
+  left: 50%;
+
+  top: 0;
+
+  transform:
+    translateX(-50%)
+    translateY(5px);
+
+  white-space: nowrap;
+
+  font-size: 11px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.status-text.active {
+
+  opacity: 1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+
+}
+
+
+.loading-text {
+  color: rgba(255,255,255,0.5);
+}
+
+
+.success-text {
+  color: #67e8f9;
+}
+
+
+.fail-text {
+  color: #f87171;
+}

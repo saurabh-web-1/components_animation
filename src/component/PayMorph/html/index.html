@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PayMorph</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="page">
+
+    <div class="container">
+
+      <!-- ================= CARD ================= -->
+
+      <div class="card-scene">
+
+        <div class="card" id="card">
+
+          <!-- FRONT -->
+
+          <div class="card-face card-front">
+
+            <div class="glow glow-cyan"></div>
+            <div class="glow glow-violet"></div>
+
+            <div class="card-content">
+
+              <div class="card-top">
+
+                <!-- CHIP -->
+
+                <div class="chip">
+                  <span class="chip-v"></span>
+                  <span class="chip-h"></span>
+                  <span class="chip-inner"></span>
+                </div>
+
+                <!-- BRAND -->
+
+                <div class="brand" id="frontBrand">
+                  CARD
+                </div>
+
+              </div>
+
+
+              <!-- CARD NUMBER -->
+
+              <div
+                class="card-number"
+                id="displayNumber"
+              >
+                •••• •••• •••• ••••
+              </div>
+
+
+              <!-- CARD BOTTOM -->
+
+              <div class="card-bottom">
+
+                <div>
+
+                  <p class="micro-label">
+                    Card Holder
+                  </p>
+
+                  <p
+                    class="holder-display"
+                    id="displayHolder"
+                  >
+                    YOUR NAME
+                  </p>
+
+                </div>
+
+
+                <div>
+
+                  <p class="micro-label">
+                    Valid Thru
+                  </p>
+
+                  <p
+                    class="expiry-display"
+                    id="displayExpiry"
+                  >
+                    MM/YY
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ================= BACK ================= -->
+
+          <div class="card-face card-back">
+
+            <div class="back-content">
+
+              <div class="magnetic-strip"></div>
+
+
+              <div class="cvv-row">
+
+                <div class="signature-strip">
+
+                  <span>
+                    CVV
+                  </span>
+
+                </div>
+
+
+                <div
+                  class="cvv-box"
+                  id="displayCvv"
+                >
+                  •••
+                </div>
+
+              </div>
+
+
+              <p class="security-note">
+                This card is protected by secure payment technology.
+                Never share your CVV with anyone.
+              </p>
+
+            </div>
+
+
+            <div
+              class="back-brand"
+              id="backBrand"
+            >
+              CARD
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= FORM ================= -->
+
+      <form
+        class="form"
+        id="paymentForm"
+      >
+
+        <!-- CARD NUMBER -->
+
+        <div class="field">
+
+          <label for="cardNumber">
+            Card Number
+          </label>
+
+          <input
+            id="cardNumber"
+            type="text"
+            inputmode="numeric"
+            autocomplete="cc-number"
+            placeholder="4242 4242 4242 4242"
+            maxlength="19"
+          >
+
+        </div>
+
+
+        <!-- HOLDER -->
+
+        <div class="field">
+
+          <label for="holder">
+            Card Holder
+          </label>
+
+          <input
+            id="holder"
+            type="text"
+            autocomplete="cc-name"
+            placeholder="SAURABH THAKUR"
+            maxlength="30"
+          >
+
+        </div>
+
+
+        <!-- EXPIRY + CVV -->
+
+        <div class="two-fields">
+
+          <div class="field">
+
+            <label for="expiry">
+              Expiry
+            </label>
+
+            <input
+              id="expiry"
+              type="text"
+              inputmode="numeric"
+              autocomplete="cc-exp"
+              placeholder="MM/YY"
+              maxlength="5"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="cvv">
+              CVV
+            </label>
+
+            <input
+              id="cvv"
+              type="password"
+              inputmode="numeric"
+              autocomplete="cc-csc"
+              placeholder="•••"
+              maxlength="4"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- PAY BUTTON -->
+
+        <button
+          class="pay-button"
+          id="payButton"
+          type="submit"
+        >
+
+          <span
+            class="button-content"
+            id="buttonContent"
+          >
+            Pay ₹2,499
+          </span>
+
+        </button>
+
+      </form>
+
+
+      <!-- SUCCESS PARTICLES -->
+
+      <div
+        class="particles"
+        id="particles"
+      ></div>
+
+    </div>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

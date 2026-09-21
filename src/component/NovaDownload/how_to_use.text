@@ -1,0 +1,532 @@
+# NovaDownload — Component Guide
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section or code part.
+
+For example:
+
+* `BUTTON SIZE`
+* `COLORS`
+* `ANIMATION`
+* `LOADING`
+* `SUCCESS`
+* `TIMING`
+
+Find the section you want, then change the required value.
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+**NovaDownload** is an animated React download button using:
+
+* React
+* Tailwind CSS
+* Framer Motion
+* SVG
+
+Animation flow:
+
+```text
+Download
+   ↓
+Diamond Morph
+   ↓
+Loading Ring
+   ↓
+Complete
+   ↓
+Open
+```
+
+---
+
+## 2. IMPORTS
+
+```jsx
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+```
+
+Install Framer Motion:
+
+```bash
+npm install framer-motion
+```
+
+---
+
+## 3. STATUS SYSTEM
+
+The component uses:
+
+```jsx
+const [status, setStatus] = useState("idle");
+```
+
+Available states:
+
+```text
+idle
+morphing
+loading
+complete
+```
+
+The state controls the button size and displayed animation.
+
+---
+
+## 4. BUTTON SIZE
+
+Idle and complete:
+
+```jsx
+width: 148,
+height: 48,
+```
+
+Morphing and loading:
+
+```jsx
+width: 64,
+height: 64,
+```
+
+Change these values inside the `animate` property to customize the button dimensions.
+
+---
+
+## 5. BUTTON ANIMATION SPEED
+
+Current morph transition:
+
+```jsx
+transition={{
+  duration: 0.85,
+  ease: [0.22, 1, 0.36, 1],
+}}
+```
+
+Change `0.85` to make the button transformation faster or slower.
+
+---
+
+## 6. BACKGROUND
+
+Current page background:
+
+```jsx
+bg-[#03070d]
+```
+
+Change it to any Tailwind color:
+
+```jsx
+bg-slate-950
+```
+
+---
+
+## 7. BUTTON STYLE
+
+Current button styling includes:
+
+```text
+border-white/30
+bg-white/[0.035]
+backdrop-blur-xl
+rounded-full
+```
+
+You can change these classes for:
+
+* Border
+* Background
+* Blur
+* Radius
+* Shadow
+
+---
+
+## 8. DOWNLOAD ICON
+
+The download icon appears when:
+
+```jsx
+status === "idle"
+```
+
+Current icon color:
+
+```jsx
+text-lime-300
+```
+
+Change it to:
+
+```jsx
+text-cyan-300
+```
+
+The icon size is:
+
+```jsx
+w-6 h-6
+```
+
+---
+
+## 9. DOWNLOAD TEXT
+
+Current text:
+
+```text
+Download
+```
+
+It appears at:
+
+```jsx
+left-[50px]
+```
+
+Change the text or `left` value to adjust its position.
+
+---
+
+## 10. DIAMOND MORPH
+
+When the button is clicked:
+
+```jsx
+setStatus("morphing");
+```
+
+The download icon is replaced by a diamond.
+
+The diamond moves from:
+
+```jsx
+left: 15
+```
+
+to:
+
+```jsx
+left: 18
+```
+
+Its scale animation is:
+
+```jsx
+scale: [0.7, 1.15, 1]
+```
+
+Change these values to customize the diamond movement.
+
+---
+
+## 11. DIAMOND COLOR
+
+Current morphing diamond:
+
+```jsx
+text-amber-300
+```
+
+Change this class to customize its color.
+
+Example:
+
+```jsx
+text-purple-300
+```
+
+---
+
+## 12. DIAMOND ROTATION
+
+Initial rotation:
+
+```jsx
+rotate: -45
+```
+
+Final rotation:
+
+```jsx
+rotate: 0
+```
+
+Animation duration:
+
+```jsx
+duration: 0.45
+```
+
+Change these values to customize the diamond rotation.
+
+---
+
+## 13. MORPHING TIMING
+
+The component switches from morphing to loading after:
+
+```jsx
+setTimeout(() => {
+  setStatus("loading");
+}, 850);
+```
+
+Current delay:
+
+```text
+850ms
+```
+
+Increase it for a longer diamond animation.
+
+---
+
+## 14. LOADING STATE
+
+Loading starts when:
+
+```jsx
+status === "loading"
+```
+
+The diamond remains in the center while a circular progress ring appears around it.
+
+The loading diamond uses:
+
+```jsx
+text-amber-300
+```
+
+---
+
+## 15. LOADING RING
+
+The progress ring uses:
+
+```jsx
+stroke="#21d5bc"
+```
+
+Change this color to customize the loading indicator.
+
+The ring radius is:
+
+```jsx
+r="28"
+```
+
+Change `28` to modify the ring size.
+
+---
+
+## 16. LOADING DURATION
+
+The progress animation uses:
+
+```jsx
+duration: 2.2
+```
+
+The loading state itself changes to complete after:
+
+```jsx
+setTimeout(() => {
+  setStatus("complete");
+}, 2300);
+```
+
+Keep these values close together for synchronized animation.
+
+---
+
+## 17. LOADING RING GLOW
+
+Current glow:
+
+```jsx
+filter:
+  "drop-shadow(0 0 6px rgba(33,213,188,.8))"
+```
+
+Increase `6px` for a larger glow.
+
+Increase `.8` for a stronger glow.
+
+---
+
+## 18. SUCCESS STATE
+
+When loading completes:
+
+```jsx
+setStatus("complete");
+```
+
+The button returns to:
+
+```text
+Width: 148px
+Height: 48px
+```
+
+A green check icon appears.
+
+---
+
+## 19. SUCCESS ICON
+
+Current success color:
+
+```jsx
+text-emerald-300
+```
+
+Check animation:
+
+```jsx
+pathLength: 0
+```
+
+to:
+
+```jsx
+pathLength: 1
+```
+
+Duration:
+
+```jsx
+duration: 0.4
+```
+
+Change the duration to control how quickly the check is drawn.
+
+---
+
+## 20. OPEN TEXT
+
+After completion, the text changes from:
+
+```text
+Download
+```
+
+to:
+
+```text
+Open
+```
+
+Current position:
+
+```jsx
+left-[48px]
+```
+
+Change the text or position as required.
+
+---
+
+## 21. SUCCESS RESET
+
+Clicking the completed button runs:
+
+```jsx
+if (status === "complete") {
+  setStatus("idle");
+}
+```
+
+This returns the component to its initial Download state.
+
+---
+
+## 22. DISABLED STATE
+
+The button is disabled during loading:
+
+```jsx
+disabled={isLoading}
+```
+
+This prevents another click while the progress animation is running.
+
+---
+
+## 23. CUSTOMIZATION CHECKLIST
+
+You can customize:
+
+* Button width
+* Button height
+* Button transition
+* Background
+* Border
+* Shadow
+* Download icon
+* Download icon color
+* Download text
+* Diamond color
+* Diamond position
+* Diamond scale
+* Diamond rotation
+* Loading ring color
+* Loading ring size
+* Loading duration
+* Ring glow
+* Success icon
+* Success animation
+* Open text
+
+---
+
+## 24. REAL DOWNLOAD INTEGRATION
+
+The current component only simulates the download process with timers.
+
+For a real download, replace the loading timer with your API or file-download logic:
+
+```text
+Click
+ ↓
+Start API / Download
+ ↓
+Loading
+ ↓
+Success
+```
+
+If the request fails, you can add an additional `error` state.
+
+---
+
+## 25. COMPONENT USAGE
+
+Import:
+
+```jsx
+import NovaDownload from "./NovaDownload";
+```
+
+Use:
+
+```jsx
+<NovaDownload />
+```
+
+---
+
+## 26. IMPORTANT
+
+The current code does **not download an actual file**.
+
+The `morphing`, `loading`, and `complete` states are currently controlled by `setTimeout()` for demonstration purposes.

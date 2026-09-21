@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FlyShare</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <button class="share-button" id="shareButton">
+
+    <!-- Glow -->
+    <span class="button-glow"></span>
+
+    <span class="button-content">
+
+      <!-- Icon area -->
+      <span class="icon-area">
+
+        <!-- Normal Share Icon -->
+        <span class="share-icon" id="shareIcon">
+
+          <svg viewBox="0 0 24 24" fill="none">
+
+            <circle
+              cx="18"
+              cy="5"
+              r="2.3"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+
+            <circle
+              cx="6"
+              cy="12"
+              r="2.3"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+
+            <circle
+              cx="18"
+              cy="19"
+              r="2.3"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+
+            <path
+              d="M8.2 10.8L15.8 6.3"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M8.2 13.2L15.8 17.7"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+            />
+
+          </svg>
+
+        </span>
+
+
+        <!-- Paper Plane -->
+        <span class="paper-plane" id="paperPlane">
+
+          <svg viewBox="0 0 40 40" fill="none">
+
+            <path
+              d="M4 20L35 4L25 35L18 23L4 20Z"
+              fill="white"
+            />
+
+            <path
+              d="M18 23L35 4"
+              stroke="#777"
+              stroke-width="1.5"
+            />
+
+            <path
+              d="M18 23L20 31"
+              stroke="#999"
+              stroke-width="1.5"
+            />
+
+          </svg>
+
+        </span>
+
+
+        <!-- Trail -->
+        <span class="trail trail-one"></span>
+        <span class="trail trail-two"></span>
+
+
+        <!-- Particles -->
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+        <span class="particle p7"></span>
+
+
+        <!-- Success -->
+        <span class="success-icon" id="successIcon">
+
+          <svg viewBox="0 0 24 24" fill="none">
+
+            <path
+              d="M5 12.5L9.5 17L19 7"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+          </svg>
+
+        </span>
+
+      </span>
+
+
+      <!-- Text -->
+      <span class="button-text">
+
+        <span class="text share-text" id="shareText">
+          Share
+        </span>
+
+        <span class="text sending-text" id="sendingText">
+          Sending...
+        </span>
+
+        <span class="text shared-text" id="sharedText">
+          Shared
+        </span>
+
+      </span>
+
+
+      <!-- Arrow -->
+      <span class="arrow" id="arrow">
+        ↗
+      </span>
+
+    </span>
+
+  </button>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
