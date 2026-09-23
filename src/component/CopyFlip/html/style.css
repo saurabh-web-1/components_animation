@@ -1,0 +1,379 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  min-height: 100vh;
+
+  background: #050b12;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: white;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.copy-button {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  min-width: 145px;
+  height: 48px;
+
+  padding: 0 20px;
+
+  border: 1px solid rgba(255,255,255,0.10);
+
+  border-radius: 12px;
+
+  outline: none;
+
+  background: #11151f;
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  perspective: 500px;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.15s ease;
+}
+
+
+.copy-button:hover {
+  border-color: rgba(34,211,238,0.40);
+
+  background: #171c29;
+}
+
+
+.copy-button:active {
+  transform: scale(0.95);
+}
+
+
+/* =========================================
+   SUCCESS STATE
+========================================= */
+
+.copy-button.copied {
+  border-color: rgba(34,211,238,0.50);
+
+  background: rgba(34,211,238,0.10);
+
+  color: #22d3ee;
+}
+
+
+/* =========================================
+   ICON
+========================================= */
+
+.icon-container {
+  position: relative;
+
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10;
+}
+
+
+.icon {
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  display: block;
+}
+
+
+.copy-icon {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.3s ease;
+}
+
+
+.copy-button.copied .copy-icon {
+  opacity: 0;
+
+  transform:
+    perspective(300px)
+    rotateX(90deg)
+    scale(0.5);
+}
+
+
+/* =========================================
+   CHECK ICON
+========================================= */
+
+.check-icon {
+  opacity: 0;
+
+  transform:
+    perspective(300px)
+    rotateX(-90deg)
+    scale(0.5);
+}
+
+
+.copy-button.copied .check-icon {
+  animation:
+    flipCheck
+    0.5s
+    cubic-bezier(
+      0.34,
+      1.56,
+      0.64,
+      1
+    )
+    forwards;
+}
+
+
+@keyframes flipCheck {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      perspective(300px)
+      rotateX(-90deg)
+      scale(0.5);
+  }
+
+
+  45% {
+    opacity: 1;
+
+    transform:
+      perspective(300px)
+      rotateX(20deg)
+      scale(1.2);
+  }
+
+
+  70% {
+    transform:
+      perspective(300px)
+      rotateX(-8deg)
+      scale(0.95);
+  }
+
+
+  100% {
+    opacity: 1;
+
+    transform:
+      perspective(300px)
+      rotateX(0deg)
+      scale(1);
+  }
+
+}
+
+
+/* =========================================
+   TEXT
+========================================= */
+
+.button-text {
+  position: relative;
+
+  z-index: 10;
+
+  white-space: nowrap;
+
+  transform-origin: center;
+}
+
+
+.copy-button.text-flip .button-text {
+  animation:
+    flipText
+    0.4s
+    ease-out;
+}
+
+
+@keyframes flipText {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      perspective(300px)
+      rotateX(-70deg)
+      translateY(-4px);
+  }
+
+
+  100% {
+    opacity: 1;
+
+    transform:
+      perspective(300px)
+      rotateX(0deg)
+      translateY(0);
+  }
+
+}
+
+
+/* =========================================
+   FLASH CONTAINER
+========================================= */
+
+.flash-container {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  pointer-events: none;
+
+  z-index: 5;
+}
+
+
+/* =========================================
+   FLASH
+========================================= */
+
+.copy-flash {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  left: 0;
+
+  width: 35%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+
+  transform:
+    translateX(-120%)
+    skewX(-20deg);
+
+  opacity: 0;
+}
+
+
+/* Start flash */
+
+.copy-button.flash .copy-flash {
+  animation:
+    copyFlash
+    0.65s
+    ease-out;
+}
+
+
+@keyframes copyFlash {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(-120%)
+      skewX(-20deg);
+  }
+
+
+  30% {
+    opacity: 0.5;
+  }
+
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateX(120%)
+      skewX(-20deg);
+  }
+
+}
+
+
+/* =========================================
+   HOVER ICON
+========================================= */
+
+.copy-button:not(.copied):hover .copy-icon {
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.copy-button:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(34,211,238,0.15);
+}

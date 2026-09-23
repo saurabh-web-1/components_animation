@@ -1,0 +1,365 @@
+# CopyFlip
+
+A modern animated copy button built with **React, Tailwind CSS, and Lucide React**.
+When the user clicks the button, the text is copied to the clipboard and the button smoothly changes from **Copy Code** to **Copied!** with a flip animation and success flash.
+
+---
+
+## 1. Requirements
+
+Make sure your project has:
+
+* React
+* Tailwind CSS
+* Lucide React
+
+Install Lucide React:
+
+```bash
+npm install lucide-react
+```
+
+---
+
+## 2. Component Setup
+
+Create a component file:
+
+```text
+src/
+└── components/
+    └── CopyFlip.jsx
+```
+
+Add the `CopyFlip` component code to `CopyFlip.jsx`.
+
+Then import it wherever you want to use the component:
+
+```jsx
+import CopyFlip from "./components/CopyFlip";
+```
+
+---
+
+## 3. Basic Usage
+
+The component works without passing any props.
+
+```jsx
+<CopyFlip />
+```
+
+By default, it copies:
+
+```text
+const message = 'Hello World';
+```
+
+---
+
+## 4. Copy Custom Text
+
+You can pass your own text using the `text` prop.
+
+```jsx
+<CopyFlip text="npm install react" />
+```
+
+For example:
+
+```jsx
+<CopyFlip
+  text="const greeting = 'Hello World';"
+/>
+```
+
+The button will copy the exact value provided through the `text` prop.
+
+---
+
+## 5. Copy Code
+
+CopyFlip is especially useful for code snippets.
+
+```jsx
+<CopyFlip
+  text={`const user = {
+  name: "Saurabh",
+  role: "Developer"
+};`}
+/>
+```
+
+You can use template literals when the text contains multiple lines.
+
+---
+
+## 6. Using It With Code Blocks
+
+Example:
+
+```jsx
+<div className="relative">
+  <pre className="rounded-xl bg-black p-5 text-white">
+    {code}
+  </pre>
+
+  <div className="absolute right-3 top-3">
+    <CopyFlip text={code} />
+  </div>
+</div>
+```
+
+Example code variable:
+
+```jsx
+const code = `function hello() {
+  console.log("Hello World");
+}`;
+```
+
+This creates a code block with a CopyFlip button.
+
+---
+
+## 7. How It Works
+
+The component uses React state to track whether the text has been copied.
+
+```jsx
+const [copied, setCopied] = useState(false);
+```
+
+When the button is clicked:
+
+1. The text is copied.
+2. `copied` becomes `true`.
+3. The Copy icon changes to a Check icon.
+4. `Copy Code` changes to `Copied!`.
+5. A light flash animation appears.
+6. After 1.6 seconds, the button returns to its original state.
+
+---
+
+## 8. Clipboard Support
+
+CopyFlip first tries the modern Clipboard API:
+
+```jsx
+navigator.clipboard.writeText(text);
+```
+
+It also includes a fallback method using a temporary textarea for environments where the Clipboard API is unavailable.
+
+This makes the component more compatible across different environments.
+
+---
+
+## 9. Custom Example
+
+```jsx
+import CopyFlip from "./components/CopyFlip";
+
+export default function App() {
+  const code = `const app = express();
+
+app.get("/", (req, res) => {
+  res.json({
+    message: "Hello World"
+  });
+});`;
+
+  return (
+    <div className="min-h-screen bg-[#050505] p-10">
+      <div className="relative max-w-2xl">
+        <pre className="overflow-x-auto rounded-xl bg-[#11151f] p-6 text-sm text-white">
+          {code}
+        </pre>
+
+        <div className="absolute right-4 top-4">
+          <CopyFlip text={code} />
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## 10. Props
+
+| Prop   | Type     | Default                            | Description              |
+| ------ | -------- | ---------------------------------- | ------------------------ |
+| `text` | `string` | `"const message = 'Hello World';"` | Text that will be copied |
+
+Example:
+
+```jsx
+<CopyFlip text="Hello from CopyFlip!" />
+```
+
+---
+
+## 11. Animation States
+
+CopyFlip has two main visual states.
+
+### Default
+
+```text
+[ Copy Icon ] Copy Code
+```
+
+### After Clicking
+
+```text
+[ ✓ ] Copied!
+```
+
+The transition includes:
+
+* Icon flip animation
+* Text flip animation
+* Success flash
+* Button color transition
+* Hover animation
+* Active scale animation
+
+---
+
+## 12. Styling
+
+The component is styled directly with Tailwind CSS.
+
+The default design uses:
+
+* Dark background
+* Cyan success color
+* Glass-style button
+* Rounded corners
+* Subtle borders
+* Hover effects
+* Smooth transitions
+
+You can modify the Tailwind classes inside the button to match your project's design system.
+
+---
+
+## 13. Accessibility
+
+The button includes an accessible label:
+
+```jsx
+aria-label={copied ? "Copied" : "Copy code"}
+```
+
+This allows screen readers to understand the current button state.
+
+The component also uses:
+
+```jsx
+type="button"
+```
+
+so it does not accidentally submit a form when placed inside one.
+
+---
+
+## 14. Recommended Usage
+
+CopyFlip works well for:
+
+* Component libraries
+* Documentation websites
+* Code preview sections
+* Developer portfolios
+* API documentation
+* GitHub-style code blocks
+* Tutorials
+* Online code editors
+
+---
+
+## 15. Complete Example
+
+```jsx
+import CopyFlip from "./components/CopyFlip";
+
+const code = `import React from "react";
+
+function App() {
+  return <h1>Hello World</h1>;
+}`;
+
+export default function App() {
+  return (
+    <main className="min-h-screen bg-[#050505] p-8">
+      <section className="mx-auto max-w-3xl">
+        <div className="relative">
+          <pre className="overflow-x-auto rounded-2xl border border-white/10 bg-[#11151f] p-6 text-sm text-white">
+            {code}
+          </pre>
+
+          <div className="absolute right-4 top-4">
+            <CopyFlip text={code} />
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+```
+
+---
+
+## 16. Important
+
+Make sure the text passed to `CopyFlip` is a string:
+
+```jsx
+<CopyFlip text="Hello World" />
+```
+
+For multiline code, use a template literal:
+
+```jsx
+<CopyFlip
+  text={`line one
+line two
+line three`}
+/>
+```
+
+The component does not require any API, backend, database, or external clipboard package.
+
+---
+
+## Summary
+
+**CopyFlip** is a lightweight React copy-to-clipboard component with animated feedback.
+
+### Features
+
+* React component
+* Tailwind CSS styling
+* Lucide icons
+* Clipboard API
+* Clipboard fallback
+* Copy success state
+* Flip animation
+* Success flash
+* Hover animation
+* Accessible button
+* Custom text support
+* Easy integration
+
+### Quick Start
+
+```jsx
+import CopyFlip from "./components/CopyFlip";
+
+<CopyFlip text="Your text here" />
+```
+
+That's all you need to start using CopyFlip.

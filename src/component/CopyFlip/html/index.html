@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>CopyFlip</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  />
+</head>
+
+<body>
+
+  <main class="page">
+
+    <button
+      id="copyButton"
+      class="copy-button"
+      type="button"
+      aria-label="Copy code"
+    >
+
+      <!-- ICON -->
+      <span
+        id="iconContainer"
+        class="icon-container"
+      >
+
+        <!-- COPY ICON -->
+        <svg
+          id="copyIcon"
+          class="icon copy-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <rect
+            x="9"
+            y="9"
+            width="11"
+            height="11"
+            rx="2"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+
+          <path
+            d="M5 15H4C2.9 15 2 14.1 2 13V4C2 2.9 2.9 2 4 2H13C14.1 2 15 2.9 15 4V5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+
+
+        <!-- CHECK ICON -->
+        <svg
+          id="checkIcon"
+          class="icon check-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M5 12.5L9.5 17L19 7"
+            stroke="currentColor"
+            stroke-width="2.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+      </span>
+
+
+      <!-- TEXT -->
+
+      <span
+        id="buttonText"
+        class="button-text"
+      >
+        Copy Code
+      </span>
+
+
+      <!-- SUCCESS FLASH -->
+
+      <span
+        id="flashContainer"
+        class="flash-container"
+      >
+        <span class="copy-flash"></span>
+      </span>
+
+    </button>
+
+
+    <!-- Hidden source text -->
+
+    <textarea
+      id="sourceText"
+      hidden
+    >const message = 'Hello World';</textarea>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

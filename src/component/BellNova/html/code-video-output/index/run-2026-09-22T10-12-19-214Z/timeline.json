@@ -1,0 +1,923 @@
+{
+  "steps": [
+    {
+      "id": 0,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n",
+      "duration": 2
+    },
+    {
+      "id": 1,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n",
+      "duration": 2
+    },
+    {
+      "id": 2,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n",
+      "duration": 2
+    },
+    {
+      "id": 3,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n",
+      "duration": 2
+    },
+    {
+      "id": 4,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n",
+      "duration": 2
+    },
+    {
+      "id": 5,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n",
+      "duration": 2
+    },
+    {
+      "id": 6,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n",
+      "duration": 2
+    },
+    {
+      "id": 7,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n",
+      "duration": 2
+    },
+    {
+      "id": 8,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 9,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n",
+      "duration": 2
+    },
+    {
+      "id": 10,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n",
+      "duration": 2
+    },
+    {
+      "id": 11,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n",
+      "duration": 2
+    },
+    {
+      "id": 12,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n",
+      "duration": 2
+    },
+    {
+      "id": 13,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n",
+      "duration": 2
+    },
+    {
+      "id": 14,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n",
+      "duration": 2
+    },
+    {
+      "id": 15,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 16,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n",
+      "duration": 2
+    },
+    {
+      "id": 17,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 18,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n",
+      "duration": 2
+    },
+    {
+      "id": 19,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 20,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n",
+      "duration": 2
+    },
+    {
+      "id": 21,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n",
+      "duration": 2
+    },
+    {
+      "id": 22,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n",
+      "duration": 2
+    },
+    {
+      "id": 23,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 24,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n",
+      "duration": 2
+    },
+    {
+      "id": 25,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 26,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n",
+      "duration": 2
+    },
+    {
+      "id": 27,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 28,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n",
+      "duration": 2
+    },
+    {
+      "id": 29,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n",
+      "duration": 2
+    },
+    {
+      "id": 30,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n",
+      "duration": 2
+    },
+    {
+      "id": 31,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 32,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n",
+      "duration": 2
+    },
+    {
+      "id": 33,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 34,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n",
+      "duration": 2
+    },
+    {
+      "id": 35,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 36,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n",
+      "duration": 2
+    },
+    {
+      "id": 37,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n",
+      "duration": 2
+    },
+    {
+      "id": 38,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n",
+      "duration": 2
+    },
+    {
+      "id": 39,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 40,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n",
+      "duration": 2
+    },
+    {
+      "id": 41,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 42,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 43,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n</div>\n<button class=\"mark-read\" id=\"markRead\">\nMark all as read\n</button>\n",
+      "duration": 2
+    },
+    {
+      "id": 44,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n</div>\n<button class=\"mark-read\" id=\"markRead\">\nMark all as read\n</button>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 45,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n</div>\n<button class=\"mark-read\" id=\"markRead\">\nMark all as read\n</button>\n</div>\n</div>\n",
+      "duration": 2
+    },
+    {
+      "id": 46,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n</div>\n<button class=\"mark-read\" id=\"markRead\">\nMark all as read\n</button>\n</div>\n</div>\n<script src=\"script.js\"></script>\n",
+      "duration": 2
+    },
+    {
+      "id": 47,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n</div>\n<button class=\"mark-read\" id=\"markRead\">\nMark all as read\n</button>\n</div>\n</div>\n<script src=\"script.js\"></script>\n</body>\n",
+      "duration": 2
+    },
+    {
+      "id": 48,
+      "type": "html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>BellNova</title>\n<link rel=\"stylesheet\" href=\"style.css\" />\n</head>\n<body>\n<div class=\"notification-wrapper\">\n<!-- Bell Button -->\n<button class=\"bell-button\" id=\"bellButton\" aria-label=\"Notifications\">\n<div class=\"bell-icon\">\n<svg viewBox=\"0 0 24 24\" fill=\"none\">\n<path\nd=\"M18 8C18 4.686 15.314 2 12 2C8.686 2 6 4.686 6 8C6 13 4 15 3 17H21C20 15 18 13 18 8Z\"\n/>\n<path d=\"M9.5 20C10.05 21.2 10.9 22 12 22C13.1 22 13.95 21.2 14.5 20\" />\n</svg>\n<!-- Notification Count -->\n<span class=\"notification-count\" id=\"notificationCount\">3</span>\n</div>\n<!-- Sound Waves -->\n<span class=\"wave wave-1\"></span>\n<span class=\"wave wave-2\"></span>\n<span class=\"wave wave-3\"></span>\n</button>\n<!-- Notification Panel -->\n<div class=\"notification-panel\" id=\"notificationPanel\">\n<div class=\"panel-header\">\n<div>\n<h3>Notifications</h3>\n<span id=\"notificationStatus\">3 unread notifications</span>\n</div>\n<button class=\"close-button\" id=\"closeButton\">\n×\n</button>\n</div>\n<div class=\"notification-list\">\n<!-- Notification 1 -->\n<div class=\"notification-item unread\" data-index=\"1\">\n<div class=\"notification-avatar\">\n<span>⚡</span>\n</div>\n<div class=\"notification-content\">\n<strong>New component added</strong>\n<p>Animated search component is now live.</p>\n<small>2 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 2 -->\n<div class=\"notification-item unread\" data-index=\"2\">\n<div class=\"notification-avatar purple\">\n<span>✨</span>\n</div>\n<div class=\"notification-content\">\n<strong>New animation</strong>\n<p>A fresh micro interaction has been published.</p>\n<small>15 min ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n<!-- Notification 3 -->\n<div class=\"notification-item unread\" data-index=\"3\">\n<div class=\"notification-avatar green\">\n<span>✓</span>\n</div>\n<div class=\"notification-content\">\n<strong>Deployment successful</strong>\n<p>Your latest component is live.</p>\n<small>1 hour ago</small>\n</div>\n<span class=\"unread-dot\"></span>\n</div>\n</div>\n<button class=\"mark-read\" id=\"markRead\">\nMark all as read\n</button>\n</div>\n</div>\n<script src=\"script.js\"></script>\n</body>\n</html>\n",
+      "duration": 2
+    },
+    {
+      "id": 49,
+      "type": "css",
+      "content": "* {\r\n  box-sizing: border-box;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 50,
+      "type": "css",
+      "content": "body {\r\n  margin: 0;\r\n  min-height: 100vh;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  background:\r\n    radial-gradient(circle at center, #151515 0%, #080808 55%, #030303 100%);\r\n  font-family: Inter, Arial, sans-serif;\r\n  color: white;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 51,
+      "type": "css",
+      "content": "/* wrapper */\r\n\r\n.notification-wrapper {\r\n  position: relative;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 52,
+      "type": "css",
+      "content": "/* bell button */\r\n\r\n.bell-button {\r\n  position: relative;\r\n\r\n  width: 70px;\r\n  height: 70px;\r\n\r\n  border: 1px solid rgba(255,255,255,0.1);\r\n  border-radius: 22px;\r\n\r\n  background: rgba(255,255,255,0.055);\r\n\r\n  backdrop-filter: blur(14px);\r\n\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n\r\n  cursor: pointer;\r\n\r\n  transition:\r\n    transform 0.25s ease,\r\n    background 0.25s ease,\r\n    box-shadow 0.25s ease;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 53,
+      "type": "css",
+      "content": ".bell-button:hover {\r\n  transform: translateY(-3px);\r\n\r\n  background: rgba(255,255,255,0.09);\r\n\r\n  box-shadow:\r\n    0 12px 35px rgba(0,0,0,0.45),\r\n    0 0 30px rgba(255,255,255,0.07);\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 54,
+      "type": "css",
+      "content": ".bell-button:active {\r\n  transform: scale(0.94);\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 55,
+      "type": "css",
+      "content": "/* bell  */\r\n\r\n.bell-icon {\r\n  position: relative;\r\n\r\n  width: 30px;\r\n  height: 30px;\r\n\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n\r\n  z-index: 2;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 56,
+      "type": "css",
+      "content": ".bell-icon svg {\r\n  width: 27px;\r\n  height: 27px;\r\n\r\n  stroke: #ffffff;\r\n  stroke-width: 1.7;\r\n\r\n  stroke-linecap: round;\r\n  stroke-linejoin: round;\r\n\r\n  transform-origin: 50% 15%;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 57,
+      "type": "css",
+      "content": "/* Bell Swing */\r\n\r\n.bell-button.ringing .bell-icon svg {\r\n  animation: bellRing 0.8s cubic-bezier(.36,.07,.19,.97);\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 58,
+      "type": "css",
+      "content": "0% {\r\n    transform: rotate(0deg);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 59,
+      "type": "css",
+      "content": "12% {\r\n    transform: rotate(16deg);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 60,
+      "type": "css",
+      "content": "24% {\r\n    transform: rotate(-14deg);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 61,
+      "type": "css",
+      "content": "36% {\r\n    transform: rotate(11deg);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 62,
+      "type": "css",
+      "content": "48% {\r\n    transform: rotate(-8deg);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 63,
+      "type": "css",
+      "content": "60% {\r\n    transform: rotate(5deg);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 64,
+      "type": "css",
+      "content": "72% {\r\n    transform: rotate(-3deg);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 65,
+      "type": "css",
+      "content": "100% {\r\n    transform: rotate(0deg);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 66,
+      "type": "css",
+      "content": "/* count */\r\n\r\n.notification-count {\r\n  position: absolute;\r\n\r\n  top: -7px;\r\n  right: -8px;\r\n\r\n  min-width: 20px;\r\n  height: 20px;\r\n\r\n  padding: 0 5px;\r\n\r\n  border-radius: 50px;\r\n\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n\r\n  background: #ff3b30;\r\n\r\n  color: white;\r\n\r\n  font-size: 11px;\r\n  font-weight: 700;\r\n\r\n  border: 2px solid #090909;\r\n\r\n  box-shadow:\r\n    0 0 15px rgba(255,59,48,0.5);\r\n\r\n  z-index: 5;\r\n\r\n  animation: notificationPulse 1.8s infinite;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 67,
+      "type": "css",
+      "content": "0%,\r\n  100% {\r\n    box-shadow:\r\n      0 0 0 0 rgba(255,59,48,0.45);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 68,
+      "type": "css",
+      "content": "50% {\r\n    box-shadow:\r\n      0 0 0 7px rgba(255,59,48,0);\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 69,
+      "type": "css",
+      "content": "/* sound waves */\r\n\r\n.wave {\r\n  position: absolute;\r\n\r\n  width: 30px;\r\n  height: 30px;\r\n\r\n  border: 1px solid rgba(255,255,255,0.5);\r\n\r\n  border-radius: 50%;\r\n\r\n  opacity: 0;\r\n\r\n  pointer-events: none;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 70,
+      "type": "css",
+      "content": ".bell-button.ringing .wave {\r\n  animation: waveExpand 0.9s ease-out;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 71,
+      "type": "css",
+      "content": ".wave-1 {\r\n  animation-delay: 0s !important;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 72,
+      "type": "css",
+      "content": ".wave-2 {\r\n  animation-delay: 0.12s !important;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 73,
+      "type": "css",
+      "content": ".wave-3 {\r\n  animation-delay: 0.24s !important;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 74,
+      "type": "css",
+      "content": "0% {\r\n    width: 30px;\r\n    height: 30px;\r\n    opacity: 0.55;\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 75,
+      "type": "css",
+      "content": "100% {\r\n    width: 100px;\r\n    height: 100px;\r\n    opacity: 0;\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 76,
+      "type": "css",
+      "content": "/* panel */\r\n\r\n.notification-panel {\r\n  position: absolute;\r\n\r\n  top: 84px;\r\n  right: 0;\r\n\r\n  width: 360px;\r\n\r\n  padding: 18px;\r\n\r\n  border-radius: 22px;\r\n\r\n  background:\r\n    linear-gradient(\r\n      145deg,\r\n      rgba(30,30,30,0.97),\r\n      rgba(10,10,10,0.97)\r\n    );\r\n\r\n  border: 1px solid rgba(255,255,255,0.1);\r\n\r\n  box-shadow:\r\n    0 30px 80px rgba(0,0,0,0.6),\r\n    0 0 40px rgba(255,255,255,0.03);\r\n\r\n  backdrop-filter: blur(25px);\r\n\r\n  opacity: 0;\r\n\r\n  visibility: hidden;\r\n\r\n  transform:\r\n    translateY(-15px)\r\n    scale(0.94);\r\n\r\n  transform-origin: top right;\r\n\r\n  transition:\r\n    opacity 0.28s ease,\r\n    transform 0.35s cubic-bezier(.16,1,.3,1),\r\n    visibility 0.28s;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 77,
+      "type": "css",
+      "content": ".notification-panel.open {\r\n  opacity: 1;\r\n\r\n  visibility: visible;\r\n\r\n  transform:\r\n    translateY(0)\r\n    scale(1);\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 78,
+      "type": "css",
+      "content": "/* panel holder */\r\n\r\n.panel-header {\r\n  display: flex;\r\n  align-items: flex-start;\r\n  justify-content: space-between;\r\n\r\n  padding: 3px 3px 15px;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 79,
+      "type": "css",
+      "content": ".panel-header h3 {\r\n  margin: 0 0 5px;\r\n\r\n  font-size: 17px;\r\n\r\n  letter-spacing: -0.3px;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 80,
+      "type": "css",
+      "content": ".panel-header span {\r\n  color: #777;\r\n\r\n  font-size: 12px;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 81,
+      "type": "css",
+      "content": ".close-button {\r\n  width: 30px;\r\n  height: 30px;\r\n\r\n  border: 0;\r\n\r\n  border-radius: 9px;\r\n\r\n  background: rgba(255,255,255,0.06);\r\n\r\n  color: #aaa;\r\n\r\n  font-size: 20px;\r\n\r\n  cursor: pointer;\r\n\r\n  transition: 0.2s;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 82,
+      "type": "css",
+      "content": ".close-button:hover {\r\n  background: rgba(255,255,255,0.11);\r\n  color: white;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 83,
+      "type": "css",
+      "content": "/* notf item */\r\n\r\n.notification-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 8px;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 84,
+      "type": "css",
+      "content": ".notification-item {\r\n  position: relative;\r\n\r\n  display: flex;\r\n  align-items: flex-start;\r\n\r\n  gap: 12px;\r\n\r\n  padding: 13px;\r\n\r\n  border-radius: 15px;\r\n\r\n  background: rgba(255,255,255,0.035);\r\n\r\n  border: 1px solid transparent;\r\n\r\n  cursor: pointer;\r\n\r\n  transition:\r\n    transform 0.2s ease,\r\n    background 0.2s ease;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 85,
+      "type": "css",
+      "content": ".notification-item:hover {\r\n  transform: translateX(3px);\r\n\r\n  background: rgba(255,255,255,0.065);\r\n\r\n  border-color: rgba(255,255,255,0.07);\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 86,
+      "type": "css",
+      "content": "/* Avatar */\r\n\r\n.notification-avatar {\r\n  width: 38px;\r\n  height: 38px;\r\n\r\n  flex-shrink: 0;\r\n\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n\r\n  border-radius: 12px;\r\n\r\n  background: rgba(255,255,255,0.08);\r\n\r\n  font-size: 16px;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 87,
+      "type": "css",
+      "content": ".notification-avatar.purple {\r\n  background: rgba(150,100,255,0.13);\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 88,
+      "type": "css",
+      "content": ".notification-avatar.green {\r\n  background: rgba(60,220,140,0.12);\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 89,
+      "type": "css",
+      "content": "/* Content */\r\n\r\n.notification-content {\r\n  padding-right: 12px;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 90,
+      "type": "css",
+      "content": ".notification-content strong {\r\n  display: block;\r\n\r\n  margin-bottom: 4px;\r\n\r\n  font-size: 13px;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 91,
+      "type": "css",
+      "content": ".notification-content p {\r\n  margin: 0 0 6px;\r\n\r\n  color: #888;\r\n\r\n  font-size: 11px;\r\n\r\n  line-height: 1.5;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 92,
+      "type": "css",
+      "content": ".notification-content small {\r\n  color: #555;\r\n\r\n  font-size: 10px;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 93,
+      "type": "css",
+      "content": "/* Unread Dot */\r\n\r\n.unread-dot {\r\n  position: absolute;\r\n\r\n  top: 17px;\r\n  right: 12px;\r\n\r\n  width: 6px;\r\n  height: 6px;\r\n\r\n  border-radius: 50%;\r\n\r\n  background: #ff3b30;\r\n\r\n  box-shadow:\r\n    0 0 10px rgba(255,59,48,0.7);\r\n\r\n  transition: 0.25s;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 94,
+      "type": "css",
+      "content": ".notification-item.read .unread-dot {\r\n  opacity: 0;\r\n  transform: scale(0);\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 95,
+      "type": "css",
+      "content": "/* Read Item */\r\n\r\n.notification-item.read {\r\n  opacity: 0.55;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 96,
+      "type": "css",
+      "content": ".mark-read {\r\n  width: 100%;\r\n\r\n  margin-top: 12px;\r\n\r\n  padding: 11px;\r\n\r\n  border: 1px solid rgba(255,255,255,0.08);\r\n\r\n  border-radius: 12px;\r\n\r\n  background: rgba(255,255,255,0.045);\r\n\r\n  color: #aaa;\r\n\r\n  font-size: 12px;\r\n\r\n  cursor: pointer;\r\n\r\n  transition: 0.2s;\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 97,
+      "type": "css",
+      "content": ".mark-read:hover {\r\n  color: white;\r\n\r\n  background: rgba(255,255,255,0.08);\r\n}",
+      "duration": 2
+    },
+    {
+      "id": 98,
+      "type": "css",
+      "content": ".notification-panel {\r\n    width: calc(100vw - 30px);\r\n\r\n    right: -80px;\r\n  }",
+      "duration": 2
+    },
+    {
+      "id": 99,
+      "type": "js",
+      "content": "const bellButton = document.getElementById(\"bellButton\");\n",
+      "duration": 2
+    },
+    {
+      "id": 100,
+      "type": "js",
+      "content": "const notificationPanel = document.getElementById(\"notificationPanel\");\n",
+      "duration": 2
+    },
+    {
+      "id": 101,
+      "type": "js",
+      "content": "const closeButton = document.getElementById(\"closeButton\");\n",
+      "duration": 2
+    },
+    {
+      "id": 102,
+      "type": "js",
+      "content": "const markRead = document.getElementById(\"markRead\");\n",
+      "duration": 2
+    },
+    {
+      "id": 103,
+      "type": "js",
+      "content": "const countElement = document.getElementById(\"notificationCount\");\n",
+      "duration": 2
+    },
+    {
+      "id": 104,
+      "type": "js",
+      "content": "const statusElement = document.getElementById(\"notificationStatus\");\n",
+      "duration": 2
+    },
+    {
+      "id": 105,
+      "type": "js",
+      "content": "const notificationItems = document.querySelectorAll(\n",
+      "duration": 2
+    },
+    {
+      "id": 106,
+      "type": "js",
+      "content": "\".notification-item\"\n);\n",
+      "duration": 2
+    },
+    {
+      "id": 107,
+      "type": "js",
+      "content": "let unreadCount = 3;\n",
+      "duration": 2
+    },
+    {
+      "id": 108,
+      "type": "js",
+      "content": "let isOpen = false;\n",
+      "duration": 2
+    },
+    {
+      "id": 109,
+      "type": "js",
+      "content": "//    BELL CLICK\nbellButton.addEventListener(\"click\", (event) => {\nevent.stopPropagation();\n",
+      "duration": 2
+    },
+    {
+      "id": 110,
+      "type": "js",
+      "content": "/* Ring animation */\nbellButton.classList.remove(\"ringing\");\n",
+      "duration": 2
+    },
+    {
+      "id": 111,
+      "type": "js",
+      "content": "void bellButton.offsetWidth;\n",
+      "duration": 2
+    },
+    {
+      "id": 112,
+      "type": "js",
+      "content": "bellButton.classList.add(\"ringing\");\n",
+      "duration": 2
+    },
+    {
+      "id": 113,
+      "type": "js",
+      "content": "//Open / close panel\nisOpen = !isOpen;\n",
+      "duration": 2
+    },
+    {
+      "id": 114,
+      "type": "js",
+      "content": "if (isOpen) {\nnotificationPanel.classList.add(\"open\");\n",
+      "duration": 2
+    },
+    {
+      "id": 115,
+      "type": "js",
+      "content": "} else {\nnotificationPanel.classList.remove(\"open\");\n",
+      "duration": 2
+    },
+    {
+      "id": 116,
+      "type": "js",
+      "content": "}\n",
+      "duration": 2
+    },
+    {
+      "id": 117,
+      "type": "js",
+      "content": "});\n",
+      "duration": 2
+    },
+    {
+      "id": 118,
+      "type": "js",
+      "content": "//  CLOSE BUTTON\ncloseButton.addEventListener(\"click\", () => {\nnotificationPanel.classList.remove(\"open\");\n",
+      "duration": 2
+    },
+    {
+      "id": 119,
+      "type": "js",
+      "content": "isOpen = false;\n",
+      "duration": 2
+    },
+    {
+      "id": 120,
+      "type": "js",
+      "content": "});\n",
+      "duration": 2
+    },
+    {
+      "id": 121,
+      "type": "js",
+      "content": "//   CLICK NOTIFICATION\nnotificationItems.forEach((item) => {\nitem.addEventListener(\"click\", () => {\nif (!item.classList.contains(\"unread\")) {\nreturn;\n",
+      "duration": 2
+    },
+    {
+      "id": 122,
+      "type": "js",
+      "content": "}\n",
+      "duration": 2
+    },
+    {
+      "id": 123,
+      "type": "js",
+      "content": "item.classList.remove(\"unread\");\n",
+      "duration": 2
+    },
+    {
+      "id": 124,
+      "type": "js",
+      "content": "item.classList.add(\"read\");\n",
+      "duration": 2
+    },
+    {
+      "id": 125,
+      "type": "js",
+      "content": "unreadCount--;\n",
+      "duration": 2
+    },
+    {
+      "id": 126,
+      "type": "js",
+      "content": "updateCounter();\n",
+      "duration": 2
+    },
+    {
+      "id": 127,
+      "type": "js",
+      "content": "});\n",
+      "duration": 2
+    },
+    {
+      "id": 128,
+      "type": "js",
+      "content": "});\n",
+      "duration": 2
+    },
+    {
+      "id": 129,
+      "type": "js",
+      "content": "// MARK ALL AS READ\nmarkRead.addEventListener(\"click\", () => {\nnotificationItems.forEach((item) => {\nitem.classList.remove(\"unread\");\n",
+      "duration": 2
+    },
+    {
+      "id": 130,
+      "type": "js",
+      "content": "item.classList.add(\"read\");\n",
+      "duration": 2
+    },
+    {
+      "id": 131,
+      "type": "js",
+      "content": "});\n",
+      "duration": 2
+    },
+    {
+      "id": 132,
+      "type": "js",
+      "content": "unreadCount = 0;\n",
+      "duration": 2
+    },
+    {
+      "id": 133,
+      "type": "js",
+      "content": "updateCounter();\n",
+      "duration": 2
+    },
+    {
+      "id": 134,
+      "type": "js",
+      "content": "});\n",
+      "duration": 2
+    },
+    {
+      "id": 135,
+      "type": "js",
+      "content": "// UPDATE COUNTER\nfunction updateCounter() {\n",
+      "duration": 2
+    },
+    {
+      "id": 136,
+      "type": "js",
+      "content": "countElement.textContent = unreadCount;\n",
+      "duration": 2
+    },
+    {
+      "id": 137,
+      "type": "js",
+      "content": "if (unreadCount === 0) {\ncountElement.style.transform = \"scale(0)\";\n",
+      "duration": 2
+    },
+    {
+      "id": 138,
+      "type": "js",
+      "content": "countElement.style.opacity = \"0\";\n",
+      "duration": 2
+    },
+    {
+      "id": 139,
+      "type": "js",
+      "content": "statusElement.textContent =\n\"You're all caught up\";\n",
+      "duration": 2
+    },
+    {
+      "id": 140,
+      "type": "js",
+      "content": "} else {\ncountElement.style.transform = \"scale(1)\";\n",
+      "duration": 2
+    },
+    {
+      "id": 141,
+      "type": "js",
+      "content": "countElement.style.opacity = \"1\";\n",
+      "duration": 2
+    },
+    {
+      "id": 142,
+      "type": "js",
+      "content": "statusElement.textContent =\n`${unreadCount} unread notification${\nunreadCount > 1 ? \"s\" : \"\"\n}`;\n",
+      "duration": 2
+    },
+    {
+      "id": 143,
+      "type": "js",
+      "content": "}\n",
+      "duration": 2
+    },
+    {
+      "id": 144,
+      "type": "js",
+      "content": "}\n",
+      "duration": 2
+    },
+    {
+      "id": 145,
+      "type": "js",
+      "content": "// OUTSIDE CLICK\ndocument.addEventListener(\"click\", (event) => {\n",
+      "duration": 2
+    },
+    {
+      "id": 146,
+      "type": "js",
+      "content": "if (\nisOpen &&\n!notificationPanel.contains(event.target) &&\n!bellButton.contains(event.target)\n) {\nnotificationPanel.classList.remove(\"open\");\n",
+      "duration": 2
+    },
+    {
+      "id": 147,
+      "type": "js",
+      "content": "isOpen = false;\n",
+      "duration": 2
+    },
+    {
+      "id": 148,
+      "type": "js",
+      "content": "}\n",
+      "duration": 2
+    },
+    {
+      "id": 149,
+      "type": "js",
+      "content": "});\n",
+      "duration": 2
+    },
+    {
+      "id": 150,
+      "type": "js",
+      "content": "// REMOVE RING CLASS\nbellButton.addEventListener(\"animationend\", () => {\nbellButton.classList.remove(\"ringing\");\n",
+      "duration": 2
+    },
+    {
+      "id": 151,
+      "type": "js",
+      "content": "});\n",
+      "duration": 2
+    },
+    {
+      "id": 152,
+      "type": "final",
+      "content": "",
+      "duration": 4
+    }
+  ],
+  "duration": 308
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>CopyMorph</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+<body>
+
+  <main class="page">
+
+    <button
+      id="copyButton"
+      class="copy-button"
+      type="button"
+      aria-label="Copy code"
+    >
+
+      <!-- ICON AREA -->
+
+      <span class="icon-area">
+
+        <!-- PARTICLES -->
+
+        <span
+          id="particleOne"
+          class="orbit-particle particle-one"
+        ></span>
+
+        <span
+          id="particleTwo"
+          class="orbit-particle particle-two"
+        ></span>
+
+        <span
+          id="particleThree"
+          class="orbit-particle particle-three"
+        ></span>
+
+
+        <!-- COPY ICON -->
+
+        <svg
+          id="copyIcon"
+          class="copy-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <rect
+            x="9"
+            y="9"
+            width="11"
+            height="11"
+            rx="2"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+
+          <path
+            d="M5 15H4C2.9 15 2 14.1 2 13V4C2 2.9 2.9 2 4 2H13C14.1 2 15 2.9 15 4V5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+
+
+        <!-- CHECK ICON -->
+
+        <span
+          id="checkWrapper"
+          class="check-wrapper"
+        >
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M5 12.5L9.5 17L19 7"
+              stroke="currentColor"
+              stroke-width="2.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+        </span>
+
+      </span>
+
+
+      <!-- TEXT -->
+
+      <span
+        id="buttonText"
+        class="button-text"
+      >
+        Copy Code
+      </span>
+
+    </button>
+
+
+    <!-- SOURCE TEXT -->
+
+    <textarea
+      id="sourceText"
+      hidden
+    >const message = 'Hello World';</textarea>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

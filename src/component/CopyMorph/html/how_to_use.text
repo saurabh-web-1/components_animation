@@ -1,0 +1,508 @@
+# CopyFlip
+
+CopyFlip is a lightweight **HTML, CSS, and JavaScript** copy-to-clipboard button with a smooth flip animation.
+
+When the user clicks the button:
+
+**Copy Code → ✓ Copied!**
+
+The component includes a copy icon, animated check icon, text flip animation, success flash, hover effect, and clipboard fallback.
+
+---
+
+## 1. Requirements
+
+CopyFlip does not require any library or framework.
+
+You only need:
+
+* HTML
+* CSS
+* JavaScript
+
+No npm package is required.
+
+---
+
+## 2. File Structure
+
+Create three files:
+
+```text
+CopyFlip/
+├── index.html
+├── style.css
+└── script.js
+```
+
+---
+
+## 3. HTML Setup
+
+Add the CopyFlip button to your HTML.
+
+```html
+<button
+  id="copyButton"
+  class="copy-button"
+  type="button"
+  aria-label="Copy code"
+>
+  <span class="icon-container">
+
+    <svg
+      class="icon copy-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <rect
+        x="9"
+        y="9"
+        width="11"
+        height="11"
+        rx="2"
+        stroke="currentColor"
+        stroke-width="2"
+      />
+
+      <path
+        d="M5 15H4C2.9 15 2 14.1 2 13V4C2 2.9 2.9 2 4 2H13C14.1 2 15 2.9 15 4V5"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+
+    <svg
+      class="icon check-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M5 12.5L9.5 17L19 7"
+        stroke="currentColor"
+        stroke-width="2.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+
+  </span>
+
+  <span id="buttonText" class="button-text">
+    Copy Code
+  </span>
+
+  <span class="flash-container">
+    <span class="copy-flash"></span>
+  </span>
+</button>
+```
+
+---
+
+## 4. Source Text
+
+The text that will be copied is stored inside a hidden textarea.
+
+```html
+<textarea id="sourceText" hidden>
+const message = 'Hello World';
+</textarea>
+```
+
+Change the content to whatever you want the button to copy.
+
+For example:
+
+```html
+<textarea id="sourceText" hidden>
+npm install express
+</textarea>
+```
+
+Now clicking the button copies:
+
+```text
+npm install express
+```
+
+---
+
+## 5. JavaScript Setup
+
+Connect the button and source text:
+
+```javascript
+const copyButton =
+  document.getElementById("copyButton");
+
+const buttonText =
+  document.getElementById("buttonText");
+
+const sourceText =
+  document.getElementById("sourceText");
+```
+
+When the button is clicked, the `copyText()` function runs.
+
+```javascript
+copyButton.addEventListener(
+  "click",
+  copyText
+);
+```
+
+---
+
+## 6. Clipboard Function
+
+CopyFlip first uses the modern Clipboard API:
+
+```javascript
+await navigator.clipboard.writeText(text);
+```
+
+For environments where the Clipboard API is unavailable, it automatically uses a textarea fallback with:
+
+```javascript
+document.execCommand("copy");
+```
+
+This gives the component a fallback copy mechanism.
+
+---
+
+## 7. Copy Custom Text
+
+To change the copied content, edit:
+
+```html
+<textarea id="sourceText" hidden>
+Your text here
+</textarea>
+```
+
+Example:
+
+```html
+<textarea id="sourceText" hidden>
+const user = {
+  name: "Saurabh",
+  role: "Developer"
+};
+</textarea>
+```
+
+The complete text will be copied when the user clicks the button.
+
+---
+
+## 8. Using It With Code Blocks
+
+CopyFlip works especially well with code snippets.
+
+```html
+<div class="code-container">
+
+  <pre>
+const message = "Hello World";
+console.log(message);
+  </pre>
+
+  <button
+    id="copyButton"
+    class="copy-button"
+    type="button"
+  >
+    Copy Code
+  </button>
+
+</div>
+
+<textarea id="sourceText" hidden>
+const message = "Hello World";
+console.log(message);
+</textarea>
+```
+
+You can position the button over the code block using CSS.
+
+---
+
+## 9. Animation
+
+The component has two visual states.
+
+### Default
+
+```text
+[ Copy Icon ] Copy Code
+```
+
+### Copied
+
+```text
+[ ✓ ] Copied!
+```
+
+The copied state includes:
+
+* Copy icon disappearing
+* Check icon flipping in
+* Text flip animation
+* Cyan success color
+* Light flash animation
+* Smooth transition
+
+---
+
+## 10. Success State
+
+After successful copying, JavaScript adds:
+
+```javascript
+copyButton.classList.add("copied");
+```
+
+This changes the button appearance.
+
+The text changes to:
+
+```javascript
+buttonText.textContent = "Copied!";
+```
+
+After **1.6 seconds**, the button automatically returns to:
+
+```text
+Copy Code
+```
+
+---
+
+## 11. Reset Behavior
+
+The reset is handled with:
+
+```javascript
+resetTimer = setTimeout(
+  resetButton,
+  1600
+);
+```
+
+The reset function removes:
+
+```javascript
+copied
+text-flip
+flash
+```
+
+and restores the original text.
+
+---
+
+## 12. Styling
+
+The component uses a dark modern UI.
+
+Main styling includes:
+
+* Rounded button
+* Glass/dark background
+* Cyan success state
+* Smooth hover effect
+* Active scale effect
+* Animated icons
+* Flash effect
+* Focus-visible outline
+
+You can change the colors directly inside `style.css`.
+
+For example:
+
+```css
+.copy-button.copied {
+  border-color: rgba(34,211,238,.50);
+  background: rgba(34,211,238,.10);
+  color: #22d3ee;
+}
+```
+
+---
+
+## 13. Button Size
+
+The default button size is controlled by:
+
+```css
+.copy-button {
+  min-width: 145px;
+  height: 48px;
+}
+```
+
+You can make it larger:
+
+```css
+.copy-button {
+  min-width: 170px;
+  height: 52px;
+}
+```
+
+---
+
+## 14. Changing Button Text
+
+Default text:
+
+```html
+Copy Code
+```
+
+The JavaScript changes it to:
+
+```text
+Copied!
+```
+
+You can change the initial text:
+
+```html
+<span id="buttonText">
+  Copy
+</span>
+```
+
+If you change the text, also update the reset text inside JavaScript.
+
+---
+
+## 15. Accessibility
+
+The button uses:
+
+```html
+aria-label="Copy code"
+```
+
+The SVG icons use:
+
+```html
+aria-hidden="true"
+```
+
+This prevents decorative SVG icons from being unnecessarily announced by screen readers.
+
+The button also uses:
+
+```html
+type="button"
+```
+
+so it will not submit a form accidentally.
+
+---
+
+## 16. Complete Usage
+
+A basic implementation looks like this:
+
+```html
+<button
+  id="copyButton"
+  class="copy-button"
+  type="button"
+  aria-label="Copy code"
+>
+  <span id="buttonText">
+    Copy Code
+  </span>
+</button>
+
+<textarea id="sourceText" hidden>
+const message = 'Hello World';
+</textarea>
+
+<script src="script.js"></script>
+```
+
+Then include:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+---
+
+## 17. Best Use Cases
+
+CopyFlip is useful for:
+
+* Documentation websites
+* Component libraries
+* Code snippets
+* Developer portfolios
+* Tutorials
+* API documentation
+* Code preview pages
+* Installation commands
+* CLI commands
+* Configuration examples
+
+---
+
+## 18. Customization
+
+You can customize:
+
+* Button width
+* Button height
+* Border radius
+* Background
+* Success color
+* Animation duration
+* Copy timeout
+* Icon size
+* Text size
+* Flash intensity
+
+The component does not depend on any external library.
+
+---
+
+## Summary
+
+**CopyFlip** is a simple animated copy-to-clipboard component built with pure HTML, CSS, and JavaScript.
+
+### Features
+
+* No dependencies
+* Clipboard API
+* Copy fallback
+* Animated copy icon
+* Animated success check
+* Text flip animation
+* Success flash
+* Hover effect
+* Active effect
+* Accessible markup
+* Custom copy text
+* Easy integration
+
+### Quick Start
+
+```html
+<textarea id="sourceText" hidden>
+Hello World
+</textarea>
+
+<button id="copyButton">
+  Copy Code
+</button>
+```
+
+Add the provided `style.css` and `script.js`, and CopyFlip is ready to use.
