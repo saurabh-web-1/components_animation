@@ -1,0 +1,889 @@
+# HeartBurst — Component Documentation
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section.
+
+Search for:
+
+* `INSTALLATION`
+* `HOW TO USE`
+* `CHANGE COUNT`
+* `CHANGE COLORS`
+* `CHANGE HEART`
+* `CHANGE PARTICLES`
+* `CHANGE ANIMATION`
+* `CHANGE TEXT`
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+`HeartBurst` is an animated Like button built with:
+
+* React
+* Framer Motion
+* Tailwind CSS
+
+The component includes:
+
+* Like / Unlike state
+* Animated heart
+* Like count
+* Ripple effect
+* Particle burst
+* Floating mini hearts
+* Heart glow
+* Animated Like / Liked text
+* Hover animation
+* Tap animation
+
+---
+
+## 2. REQUIREMENTS
+
+Install Framer Motion:
+
+```bash
+npm install framer-motion
+```
+
+Make sure Tailwind CSS is already configured in your React project.
+
+---
+
+## 3. FILE SETUP
+
+Create a component file:
+
+```text
+src/
+└── components/
+    └── HeartBurst.jsx
+```
+
+Paste the `HeartBurst` component code into the file.
+
+---
+
+## 4. IMPORT THE COMPONENT
+
+Inside your page:
+
+```jsx
+import HeartBurst from "./components/HeartBurst";
+```
+
+Then render it:
+
+```jsx
+<HeartBurst />
+```
+
+Example:
+
+```jsx
+function App() {
+  return (
+    <div>
+      <HeartBurst />
+    </div>
+  );
+}
+
+export default App;
+```
+
+---
+
+## 5. HOW THE LIKE BUTTON WORKS
+
+The component uses two states:
+
+```jsx
+const [liked, setLiked] = useState(false);
+const [count, setCount] = useState(124);
+```
+
+`liked` controls whether the button is liked.
+
+`count` stores the current like count.
+
+---
+
+## 6. CHANGE DEFAULT LIKE COUNT
+
+Find:
+
+```jsx
+const [count, setCount] = useState(124);
+```
+
+Change `124`:
+
+```jsx
+const [count, setCount] = useState(500);
+```
+
+The component will start with:
+
+```text
+500
+```
+
+likes.
+
+---
+
+## 7. CHANGE BUTTON WIDTH
+
+Find:
+
+```text
+w-[175px]
+```
+
+Example:
+
+```text
+w-[200px]
+```
+
+This makes the button wider.
+
+---
+
+## 8. CHANGE BUTTON HEIGHT
+
+Find:
+
+```text
+h-[58px]
+```
+
+Change it:
+
+```text
+h-[64px]
+```
+
+---
+
+## 9. CHANGE BUTTON RADIUS
+
+Find:
+
+```text
+rounded-[17px]
+```
+
+Example:
+
+```text
+rounded-[22px]
+```
+
+For a pill-style button:
+
+```text
+rounded-full
+```
+
+---
+
+## 10. CHANGE BUTTON BACKGROUND
+
+Current background:
+
+```text
+bg-white/[0.06]
+```
+
+You can use:
+
+```text
+bg-white/[0.10]
+```
+
+For a custom dark color:
+
+```text
+bg-slate-900
+```
+
+---
+
+## 11. CHANGE BUTTON BORDER
+
+Current border:
+
+```text
+border-white/15
+```
+
+Change it:
+
+```text
+border-white/25
+```
+
+For a pink border:
+
+```text
+border-pink-500/30
+```
+
+---
+
+## 12. CHANGE HEART COLOR
+
+The liked heart currently uses:
+
+```text
+text-pink-500
+```
+
+Change it to:
+
+```text
+text-red-500
+```
+
+or:
+
+```text
+text-violet-500
+```
+
+---
+
+## 13. CHANGE HEART SIZE
+
+Find:
+
+```text
+w-[25px]
+h-[25px]
+```
+
+Example:
+
+```text
+w-[30px]
+h-[30px]
+```
+
+There is also a heart wrapper:
+
+```text
+w-[27px]
+h-[27px]
+```
+
+Adjust both if you want the heart to remain centered.
+
+---
+
+## 14. CHANGE HEART STROKE
+
+Find:
+
+```jsx
+strokeWidth="1.8"
+```
+
+Thicker:
+
+```jsx
+strokeWidth="2.4"
+```
+
+Thinner:
+
+```jsx
+strokeWidth="1.3"
+```
+
+---
+
+## 15. CHANGE HEART ANIMATION
+
+The liked animation is:
+
+```jsx
+scale: [0.35, 1.35, 0.9, 1.12, 1],
+rotate: [-7, -7, 5, -2, 0],
+```
+
+Increase the first scale values for a bigger pop.
+
+Example:
+
+```jsx
+scale: [0.2, 1.6, 0.9, 1.15, 1]
+```
+
+---
+
+## 16. CHANGE HEART ANIMATION SPEED
+
+Find:
+
+```jsx
+duration: 0.55
+```
+
+Faster:
+
+```jsx
+duration: 0.35
+```
+
+Slower:
+
+```jsx
+duration: 0.9
+```
+
+---
+
+## 17. CHANGE RIPPLE SIZE
+
+The ripple uses:
+
+```text
+w-7
+h-7
+```
+
+Change to:
+
+```text
+w-9
+h-9
+```
+
+---
+
+## 18. CHANGE RIPPLE COLOR
+
+Current:
+
+```text
+border-pink-500/80
+```
+
+Example:
+
+```text
+border-red-500/80
+```
+
+---
+
+## 19. CHANGE RIPPLE SPEED
+
+Find:
+
+```jsx
+duration: 0.65
+```
+
+Use:
+
+```jsx
+duration: 1
+```
+
+for a slower ripple.
+
+---
+
+## 20. CHANGE PARTICLE COUNT
+
+The particles are created from this array:
+
+```jsx
+[
+  [-30, -28],
+  [2, -40],
+  [32, -25],
+  [43, 4],
+  [30, 31],
+  [0, 39],
+  [-34, 25],
+  [-43, -2],
+]
+```
+
+Each array item represents one particle.
+
+Add another coordinate pair to create another particle:
+
+```jsx
+[55, 15],
+```
+
+---
+
+## 21. CHANGE PARTICLE POSITION
+
+Each particle uses:
+
+```text
+[x, y]
+```
+
+Example:
+
+```jsx
+[50, -30]
+```
+
+`x` controls horizontal movement.
+
+`y` controls vertical movement.
+
+Negative `y` moves upward.
+
+Positive `y` moves downward.
+
+---
+
+## 22. CHANGE PARTICLE SIZE
+
+Current:
+
+```text
+w-[5px]
+h-[5px]
+```
+
+Larger:
+
+```text
+w-[7px]
+h-[7px]
+```
+
+---
+
+## 23. CHANGE PARTICLE COLOR
+
+Current:
+
+```text
+bg-pink-500
+```
+
+Change to:
+
+```text
+bg-red-500
+```
+
+or:
+
+```text
+bg-fuchsia-500
+```
+
+---
+
+## 24. CHANGE PARTICLE SPEED
+
+Find:
+
+```jsx
+duration: 0.65
+```
+
+Change to:
+
+```jsx
+duration: 1
+```
+
+---
+
+## 25. CHANGE PARTICLE DELAY
+
+Current:
+
+```jsx
+delay: index * 0.02
+```
+
+Increase the value:
+
+```jsx
+delay: index * 0.05
+```
+
+This creates a larger delay between particles.
+
+---
+
+## 26. CHANGE FLOATING HEART COUNT
+
+Floating hearts use:
+
+```jsx
+[
+  [-25, -45],
+  [30, -52],
+  [45, -18],
+]
+```
+
+Add more coordinate pairs to create additional floating hearts.
+
+---
+
+## 27. CHANGE FLOATING HEART COLOR
+
+Current:
+
+```text
+text-pink-500
+```
+
+Example:
+
+```text
+text-red-500
+```
+
+---
+
+## 28. CHANGE FLOATING HEART SIZE
+
+Current:
+
+```text
+text-[11px]
+```
+
+Change:
+
+```text
+text-[14px]
+```
+
+---
+
+## 29. CHANGE HEART GLOW
+
+The glow uses:
+
+```text
+bg-pink-500/25
+```
+
+Change the color:
+
+```text
+bg-red-500/25
+```
+
+The blur is:
+
+```text
+blur-[15px]
+```
+
+Increase it for a softer glow:
+
+```text
+blur-[25px]
+```
+
+---
+
+## 30. CHANGE LIKE TEXT
+
+Find:
+
+```jsx
+Like
+```
+
+Change it:
+
+```jsx
+Love
+```
+
+You can also use:
+
+```jsx
+Favorite
+```
+
+---
+
+## 31. CHANGE LIKED TEXT
+
+Find:
+
+```jsx
+Liked
+```
+
+Change it:
+
+```jsx
+Loved
+```
+
+or:
+
+```jsx
+Favorited
+```
+
+---
+
+## 32. CHANGE TEXT COLOR
+
+Liked text currently uses:
+
+```text
+text-pink-400
+```
+
+Change it:
+
+```text
+text-red-400
+```
+
+---
+
+## 33. CHANGE LIKE COUNT COLOR
+
+Normal count:
+
+```text
+text-[#777]
+```
+
+Liked count:
+
+```text
+text-pink-400
+```
+
+Change both according to your design.
+
+---
+
+## 34. CHANGE COUNT ANIMATION
+
+The count uses:
+
+```jsx
+duration: 0.3
+```
+
+Faster:
+
+```jsx
+duration: 0.2
+```
+
+Slower:
+
+```jsx
+duration: 0.5
+```
+
+---
+
+## 35. CHANGE HOVER ANIMATION
+
+The button moves upward on hover:
+
+```jsx
+whileHover={{ y: -3 }}
+```
+
+Increase movement:
+
+```jsx
+whileHover={{ y: -6 }}
+```
+
+Disable movement:
+
+```jsx
+whileHover={{ y: 0 }}
+```
+
+---
+
+## 36. CHANGE TAP ANIMATION
+
+Current:
+
+```jsx
+whileTap={{ scale: 0.94 }}
+```
+
+Stronger press:
+
+```jsx
+whileTap={{ scale: 0.88 }}
+```
+
+Small press:
+
+```jsx
+whileTap={{ scale: 0.97 }}
+```
+
+---
+
+## 37. CHANGE PAGE BACKGROUND
+
+The component wrapper uses:
+
+```text
+bg-[#080808]
+```
+
+Change it:
+
+```text
+bg-black
+```
+
+or:
+
+```text
+bg-slate-950
+```
+
+---
+
+## 38. USE INSIDE YOUR OWN LAYOUT
+
+The component currently contains:
+
+```jsx
+min-h-screen
+w-full
+flex
+items-center
+justify-center
+```
+
+If you want to place the button inside an existing layout, you can remove:
+
+```text
+min-h-screen
+w-full
+```
+
+and keep:
+
+```text
+flex
+items-center
+justify-center
+```
+
+---
+
+## 39. CONNECT TO A REAL API
+
+The current count is local React state.
+
+For a real application, you can replace the local count logic with an API request.
+
+Example:
+
+```js
+await fetch("/api/likes", {
+  method: "POST",
+});
+```
+
+Then update the count using the API response.
+
+---
+
+## 40. IMPORTANT
+
+The current component does not connect to a backend.
+
+The like count exists only in React state.
+
+Refreshing the page resets the count to the initial value.
+
+For permanent likes, connect the button to your backend/database.
+
+---
+
+## 41. QUICK CUSTOMIZATION
+
+```text
+Default Count:
+useState(124)
+
+Button Width:
+w-[175px]
+
+Button Height:
+h-[58px]
+
+Button Radius:
+rounded-[17px]
+
+Heart Color:
+text-pink-500
+
+Particle Color:
+bg-pink-500
+
+Heart Size:
+w-[25px] h-[25px]
+
+Heart Animation:
+duration: 0.55
+
+Ripple Animation:
+duration: 0.65
+
+Particle Animation:
+duration: 0.65
+
+Floating Heart Animation:
+duration: 0.9
+```
+
+---
+
+## 42. FINAL USAGE
+
+```jsx
+import HeartBurst from "./components/HeartBurst";
+
+function App() {
+  return (
+    <main>
+      <HeartBurst />
+    </main>
+  );
+}
+
+export default App;
+```
+
+Make sure Framer Motion is installed:
+
+```bash
+npm install framer-motion
+```
+
+Then run your React application normally.

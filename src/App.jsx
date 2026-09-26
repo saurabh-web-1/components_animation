@@ -48,7 +48,7 @@ function App() {
               key={item.path}
               path={item.path}
               element={
-                <div className="min-h-screen bg-black w-full flex items-center justify-center">
+                <div className="min-h-screen w-full bg-[#07090d] flex items-center justify-center p-6">
                   <Component />
                 </div>
               }

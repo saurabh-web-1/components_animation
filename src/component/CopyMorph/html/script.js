@@ -13,9 +13,7 @@ let copied = false;
 let resetTimer;
 
 
-/* =========================================
-   COPY
-========================================= */
+/* COPY */
 
 async function copyText() {
 
@@ -25,9 +23,7 @@ async function copyText() {
 
   try {
 
-    /* =====================================
-       MODERN CLIPBOARD
-    ===================================== */
+    /* MODERN CLIPBOARD */
 
     if (
       navigator.clipboard &&
@@ -40,9 +36,7 @@ async function copyText() {
 
     }
 
-    /* =====================================
-       FALLBACK
-    ===================================== */
+    /* FALLBACK */
 
     else {
 
@@ -106,9 +100,7 @@ async function copyText() {
 }
 
 
-/* =========================================
-   SHOW COPIED
-========================================= */
+/* SHOW COPIED*/
 
 function showCopied() {
 
@@ -120,26 +112,20 @@ function showCopied() {
   );
 
 
-  /* ===============================
-     STATE
-  =============================== */
+  /* STATE*/
 
   copyButton.classList.add(
     "copied"
   );
 
 
-  /* ===============================
-     TEXT
-  =============================== */
+  /*TEXT*/
 
   buttonText.textContent =
     "Copied!";
 
 
-  /* ===============================
-     TEXT ANIMATION
-  =============================== */
+  /* TEXT ANIMATION */
 
   copyButton.classList.remove(
     "text-morph"
@@ -154,9 +140,7 @@ function showCopied() {
   );
 
 
-  /* ===============================
-     RESET
-  =============================== */
+  /* RESET */
 
   resetTimer =
     setTimeout(
@@ -167,9 +151,7 @@ function showCopied() {
 }
 
 
-/* =========================================
-   RESET
-========================================= */
+/* RESET */
 
 function resetButton() {
 
@@ -191,9 +173,7 @@ function resetButton() {
 }
 
 
-/* =========================================
-   BUTTON CLICK
-========================================= */
+/* BUTTON CLICK */
 
 copyButton.addEventListener(
   "click",

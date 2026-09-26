@@ -10,9 +10,7 @@ let liked = false;
 let count = 124;
 
 
-/* =========================================
-   CLICK
-========================================= */
+/* CLICK*/
 
 likeButton.addEventListener(
   "click",
@@ -73,9 +71,7 @@ likeButton.addEventListener(
 );
 
 
-/* =========================================
-   COUNT ANIMATION
-========================================= */
+/* COUNT ANIMATION */
 
 function animateCount(
   from,

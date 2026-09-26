@@ -1,0 +1,1025 @@
+# PayMorph — How to Use
+
+PayMorph is a React payment-card UI built with **React, Tailwind CSS, and Framer Motion**.
+
+It includes:
+
+* Live card preview
+* Card number formatting
+* Card brand detection
+* Card flip animation
+* CVV interaction
+* Expiry formatting
+* Payment validation
+* Processing animation
+* Success animation
+* Success particles
+
+---
+
+## 1. Requirements
+
+Install Framer Motion:
+
+```bash
+npm install framer-motion
+```
+
+Make sure Tailwind CSS is configured in your React project.
+
+---
+
+## 2. Component Setup
+
+Create:
+
+```text
+src/
+└── components/
+    └── PayMorph.jsx
+```
+
+Paste the PayMorph component code into `PayMorph.jsx`.
+
+---
+
+## 3. Import Component
+
+```jsx
+import PayMorph from "./components/PayMorph";
+```
+
+Then render:
+
+```jsx
+<PayMorph />
+```
+
+Example:
+
+```jsx
+export default function App() {
+  return (
+    <main className="min-h-screen bg-[#07090d]">
+      <PayMorph />
+    </main>
+  );
+}
+```
+
+---
+
+# CUSTOMIZATION
+
+## 4. Change Payment Amount
+
+Find:
+
+```jsx
+Pay ₹2,499
+```
+
+Change it to:
+
+```jsx
+Pay ₹4,999
+```
+
+or:
+
+```jsx
+Pay $99
+```
+
+This changes the amount displayed on the payment button.
+
+Note: this component does not process a real payment.
+
+---
+
+## 5. Change Card Background
+
+The front card uses:
+
+```jsx
+bg-gradient-to-br
+from-[#20252f]
+via-[#11151d]
+to-[#080a0f]
+```
+
+Change these colors to customize the card.
+
+Example:
+
+```jsx
+bg-gradient-to-br
+from-purple-900
+via-slate-900
+to-black
+```
+
+You can create your own gradient using any Tailwind colors.
+
+---
+
+## 6. Change Card Glow
+
+The card has two glow effects.
+
+Top-right:
+
+```jsx
+bg-cyan-400/20
+```
+
+Bottom-left:
+
+```jsx
+bg-violet-500/15
+```
+
+Change them to:
+
+```jsx
+bg-blue-400/20
+```
+
+and:
+
+```jsx
+bg-purple-500/15
+```
+
+You can also reduce or increase opacity.
+
+---
+
+## 7. Change Card Size
+
+The card currently uses:
+
+```jsx
+w-full h-[245px]
+```
+
+To make it taller:
+
+```jsx
+w-full h-[280px]
+```
+
+To make it smaller:
+
+```jsx
+w-full h-[220px]
+```
+
+The component maximum width is:
+
+```jsx
+max-w-[430px]
+```
+
+Change this value if you want a wider card.
+
+---
+
+## 8. Change Card Border Radius
+
+The card currently uses:
+
+```jsx
+rounded-[28px]
+```
+
+More rounded:
+
+```jsx
+rounded-[36px]
+```
+
+Less rounded:
+
+```jsx
+rounded-[20px]
+```
+
+---
+
+## 9. Change Card Number Style
+
+The card number uses:
+
+```jsx
+text-[22px]
+tracking-[3px]
+font-mono
+```
+
+Increase the size:
+
+```jsx
+text-[26px]
+```
+
+Reduce spacing:
+
+```jsx
+tracking-[2px]
+```
+
+Change the font by removing:
+
+```jsx
+font-mono
+```
+
+or replacing it with another Tailwind font class.
+
+---
+
+## 10. Change Card Number Placeholder
+
+Current placeholder:
+
+```jsx
+•••• •••• •••• ••••
+```
+
+Find:
+
+```jsx
+{cardNumber || "•••• •••• •••• ••••"}
+```
+
+Replace it with:
+
+```jsx
+{cardNumber || "0000 0000 0000 0000"}
+```
+
+---
+
+## 11. Change Card Holder Placeholder
+
+Current:
+
+```jsx
+{holder || "YOUR NAME"}
+```
+
+Change it to:
+
+```jsx
+{holder || "CARD HOLDER"}
+```
+
+The input placeholder is currently:
+
+```jsx
+placeholder="SAURABH THAKUR"
+```
+
+You can replace it with your preferred example.
+
+---
+
+## 12. Change Expiry Placeholder
+
+The card displays:
+
+```jsx
+{expiry || "MM/YY"}
+```
+
+You can change the placeholder to:
+
+```jsx
+{expiry || "12/30"}
+```
+
+The input placeholder can also be changed:
+
+```jsx
+placeholder="MM/YY"
+```
+
+---
+
+## 13. Change CVV Placeholder
+
+The card currently displays:
+
+```jsx
+{cvv || "•••"}
+```
+
+You can change it to:
+
+```jsx
+{cvv || "123"}
+```
+
+The input placeholder is:
+
+```jsx
+placeholder="•••"
+```
+
+---
+
+## 14. Change Card Holder Format
+
+The holder is automatically converted to uppercase:
+
+```jsx
+setHolder(
+  e.target.value.toUpperCase()
+)
+```
+
+If you want to preserve the user's original capitalization, use:
+
+```jsx
+setHolder(e.target.value)
+```
+
+---
+
+## 15. Change Card Number Limit
+
+The card number is limited to 16 digits:
+
+```jsx
+.slice(0, 16)
+```
+
+For a different maximum length, change the number.
+
+Example:
+
+```jsx
+.slice(0, 19)
+```
+
+The current formatter adds a space after every four digits.
+
+---
+
+## 16. Change Expiry Format
+
+The expiry formatter converts:
+
+```text
+1228
+```
+
+into:
+
+```text
+12/28
+```
+
+This behavior is controlled by:
+
+```jsx
+formatExpiry()
+```
+
+You can modify this function if your project requires a different date format.
+
+---
+
+## 17. Card Brand Detection
+
+PayMorph currently detects:
+
+```text
+VISA
+MASTERCARD
+AMEX
+CARD
+```
+
+Visa:
+
+```jsx
+/^4/
+```
+
+Mastercard:
+
+```jsx
+/^(5[1-5]|2[2-7])/
+```
+
+American Express:
+
+```jsx
+/^3[47]/
+```
+
+If no pattern matches, it returns:
+
+```jsx
+"CARD"
+```
+
+---
+
+## 18. Add Another Card Brand
+
+Card brands are detected inside:
+
+```jsx
+getCardBrand()
+```
+
+Add another condition before:
+
+```jsx
+return "CARD";
+```
+
+Example:
+
+```jsx
+if (/^6/.test(value)) {
+  return "DISCOVER";
+}
+```
+
+You would also need to add its visual design where the brand is rendered.
+
+---
+
+## 19. Change Card Flip Speed
+
+The card flip currently uses:
+
+```jsx
+duration: 0.7
+```
+
+Faster:
+
+```jsx
+duration: 0.4
+```
+
+Slower:
+
+```jsx
+duration: 1
+```
+
+The animation uses:
+
+```jsx
+rotateY
+```
+
+with:
+
+```jsx
+transformStyle: "preserve-3d"
+```
+
+---
+
+## 20. Change Card Perspective
+
+The card uses:
+
+```jsx
+perspective: "1200px"
+```
+
+Stronger 3D effect:
+
+```jsx
+perspective: "800px"
+```
+
+More subtle:
+
+```jsx
+perspective: "1600px"
+```
+
+---
+
+## 21. Change When Card Flips
+
+The card flips to the back when CVV is focused:
+
+```jsx
+onFocus={() => setShowBack(true)}
+```
+
+It also flips when CVV contains a value.
+
+When Card Number, Holder, or Expiry receives focus:
+
+```jsx
+setShowBack(false)
+```
+
+This keeps the front visible while editing those fields.
+
+---
+
+## 22. Change Validation
+
+Payment validation checks:
+
+```jsx
+cardNumber.replace(/\s/g, "").length < 16
+```
+
+```jsx
+holder.trim().length < 2
+```
+
+```jsx
+expiry.length < 5
+```
+
+```jsx
+cvv.length < 3
+```
+
+Change these conditions if your form requires different validation rules.
+
+---
+
+## 23. Change Validation Message
+
+Current message:
+
+```jsx
+alert(
+  "Please complete all payment details."
+);
+```
+
+Replace it with:
+
+```jsx
+alert(
+  "Please enter valid payment details."
+);
+```
+
+For production projects, you can replace the browser alert with your own error UI.
+
+---
+
+## 24. Change Processing Time
+
+The simulated payment currently waits:
+
+```jsx
+2200
+```
+
+milliseconds.
+
+Find:
+
+```jsx
+setTimeout(() => {
+  setPaymentStatus("success");
+}, 2200);
+```
+
+For 1 second:
+
+```jsx
+}, 1000);
+```
+
+For 3 seconds:
+
+```jsx
+}, 3000);
+```
+
+---
+
+## 25. Change Processing Text
+
+Current:
+
+```text
+Processing...
+```
+
+Change it to:
+
+```text
+Verifying...
+```
+
+or:
+
+```text
+Please wait...
+```
+
+This text is inside the `processing` payment state.
+
+---
+
+## 26. Change Success Text
+
+Current:
+
+```text
+Payment Successful
+```
+
+You can change it to:
+
+```text
+Payment Complete
+```
+
+or:
+
+```text
+Transaction Complete
+```
+
+---
+
+## 27. Change Payment Button Color
+
+Normal button:
+
+```jsx
+bg-cyan-300 text-black
+```
+
+Success button:
+
+```jsx
+bg-emerald-400 text-black
+```
+
+Example normal color:
+
+```jsx
+bg-violet-400 text-black
+```
+
+Example success color:
+
+```jsx
+bg-green-400 text-black
+```
+
+---
+
+## 28. Change Button Height
+
+Current:
+
+```jsx
+h-14
+```
+
+Smaller:
+
+```jsx
+h-12
+```
+
+Larger:
+
+```jsx
+h-16
+```
+
+---
+
+## 29. Change Button Radius
+
+Current:
+
+```jsx
+rounded-xl
+```
+
+Change to:
+
+```jsx
+rounded-lg
+```
+
+or:
+
+```jsx
+rounded-2xl
+```
+
+---
+
+## 30. Customize Spinner
+
+The processing spinner uses:
+
+```jsx
+w-5 h-5
+border-2
+border-black/20
+border-t-black
+```
+
+Increase size:
+
+```jsx
+w-6 h-6
+```
+
+Change spinner color:
+
+```jsx
+border-t-white
+```
+
+Change rotation speed:
+
+```jsx
+duration: 0.7
+```
+
+---
+
+## 31. Customize Success Check
+
+The success check uses:
+
+```jsx
+w-6 h-6
+rounded-full
+bg-black/10
+```
+
+Change its size:
+
+```jsx
+w-7 h-7
+```
+
+Change its background:
+
+```jsx
+bg-white/20
+```
+
+---
+
+## 32. Customize Success Particles
+
+PayMorph creates:
+
+```jsx
+[...Array(14)]
+```
+
+This means there are **14 particles**.
+
+For fewer:
+
+```jsx
+[...Array(8)]
+```
+
+For more:
+
+```jsx
+[...Array(20)]
+```
+
+---
+
+## 33. Change Particle Color
+
+Current:
+
+```jsx
+bg-cyan-300
+```
+
+Change to:
+
+```jsx
+bg-violet-300
+```
+
+or:
+
+```jsx
+bg-emerald-300
+```
+
+---
+
+## 34. Change Particle Size
+
+Current:
+
+```jsx
+w-2 h-2
+```
+
+Smaller:
+
+```jsx
+w-1 h-1
+```
+
+Larger:
+
+```jsx
+w-3 h-3
+```
+
+---
+
+## 35. Change Particle Speed
+
+Current:
+
+```jsx
+duration: 1
+```
+
+Faster:
+
+```jsx
+duration: 0.6
+```
+
+Slower:
+
+```jsx
+duration: 1.5
+```
+
+The particles also use:
+
+```jsx
+delay: index * 0.03
+```
+
+Increase this value to spread the particles further apart in time.
+
+---
+
+## 36. Customize Form Background
+
+The inputs currently use:
+
+```jsx
+bg-white/[0.05]
+```
+
+You can make them brighter:
+
+```jsx
+bg-white/[0.10]
+```
+
+Or darker:
+
+```jsx
+bg-black/30
+```
+
+---
+
+## 37. Customize Input Border
+
+Current:
+
+```jsx
+border-white/10
+```
+
+Focus:
+
+```jsx
+focus:border-cyan-400/50
+```
+
+You can replace cyan with another Tailwind color.
+
+Example:
+
+```jsx
+focus:border-violet-400/50
+```
+
+---
+
+## 38. Customize Input Height
+
+Current:
+
+```jsx
+h-12
+```
+
+Smaller:
+
+```jsx
+h-10
+```
+
+Larger:
+
+```jsx
+h-14
+```
+
+---
+
+## 39. Customize Form Spacing
+
+The form currently uses:
+
+```jsx
+space-y-4
+```
+
+More spacing:
+
+```jsx
+space-y-6
+```
+
+Less spacing:
+
+```jsx
+space-y-3
+```
+
+Expiry and CVV use:
+
+```jsx
+grid grid-cols-2 gap-4
+```
+
+Change `gap-4` to control their spacing.
+
+---
+
+## 40. Important
+
+PayMorph is currently a **frontend payment UI demonstration**.
+
+The component does not connect to:
+
+* Razorpay
+* Stripe
+* PayPal
+* Any payment gateway
+* Backend API
+* Database
+
+The `processing` and `success` states are simulated using `setTimeout`.
+
+For a real payment system, connect the button to your backend/payment provider instead of treating the local success state as a completed transaction.
+
+---
+
+## 41. Complete Usage
+
+```jsx
+import PayMorph from "./components/PayMorph";
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-[#07090d]">
+      <PayMorph />
+    </div>
+  );
+}
+```
+
+Install the dependency:
+
+```bash
+npm install framer-motion
+```
+
+Then render:
+
+```jsx
+<PayMorph />
+```
+
+PayMorph is ready to customize and use.

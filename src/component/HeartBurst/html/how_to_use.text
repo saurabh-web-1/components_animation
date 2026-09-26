@@ -1,0 +1,967 @@
+# HeartBurst — HTML, CSS & JavaScript
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section.
+
+Search for:
+
+* `INSTALLATION`
+* `HOW TO USE`
+* `CHANGE COUNT`
+* `CHANGE COLORS`
+* `CHANGE SIZE`
+* `PARTICLES`
+* `ANIMATION`
+* `MOBILE`
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+HeartBurst is an animated Like button built with:
+
+* HTML
+* CSS
+* JavaScript
+
+The component includes:
+
+* Like / Unlike state
+* Animated heart
+* Like counter
+* Ripple animation
+* Particle burst
+* Floating hearts
+* Heart glow
+* Text transition
+* Counter animation
+* Hover animation
+* Mobile responsive styling
+
+No external library is required.
+
+---
+
+## 2. FILE STRUCTURE
+
+Create three files:
+
+```text
+HeartBurst/
+├── index.html
+├── style.css
+└── script.js
+```
+
+---
+
+## 3. CONNECT THE FILES
+
+Inside `index.html`, include the CSS:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+At the bottom of the HTML:
+
+```html
+<script src="script.js"></script>
+```
+
+Make sure all three files are in the correct location.
+
+---
+
+## 4. HOW TO USE
+
+Open `index.html` in your browser.
+
+The button will appear in the center of the page.
+
+Click the button to:
+
+1. Change Like to Liked
+2. Increase the count
+3. Fill the heart
+4. Start the ripple
+5. Create particles
+6. Show floating hearts
+7. Show the heart glow
+
+Click again to return to the Like state.
+
+---
+
+## 5. CHANGE DEFAULT LIKE COUNT
+
+In `script.js`, find:
+
+```js
+let count = 124;
+```
+
+Change it:
+
+```js
+let count = 500;
+```
+
+Also update the HTML:
+
+```html
+<span class="like-count" id="likeCount">
+  500
+</span>
+```
+
+The component will now start from 500.
+
+---
+
+## 6. CHANGE LIKE TEXT
+
+In `index.html`, find:
+
+```html
+<span class="like-text">
+  Like
+</span>
+```
+
+Change it:
+
+```html
+<span class="like-text">
+  Love
+</span>
+```
+
+---
+
+## 7. CHANGE LIKED TEXT
+
+Find:
+
+```html
+<span class="liked-text">
+  Liked
+</span>
+```
+
+Change it:
+
+```html
+<span class="liked-text">
+  Loved
+</span>
+```
+
+---
+
+## 8. CHANGE BUTTON WIDTH
+
+In `style.css`:
+
+```css
+.like-button {
+  width: 175px;
+}
+```
+
+Example:
+
+```css
+.like-button {
+  width: 200px;
+}
+```
+
+For mobile, the current width is:
+
+```css
+@media (max-width: 480px) {
+  .like-button {
+    width: 165px;
+  }
+}
+```
+
+Change `165px` if required.
+
+---
+
+## 9. CHANGE BUTTON HEIGHT
+
+Find:
+
+```css
+height: 58px;
+```
+
+Example:
+
+```css
+height: 64px;
+```
+
+---
+
+## 10. CHANGE BUTTON RADIUS
+
+Current:
+
+```css
+border-radius: 17px;
+```
+
+More rounded:
+
+```css
+border-radius: 24px;
+```
+
+Pill style:
+
+```css
+border-radius: 999px;
+```
+
+---
+
+## 11. CHANGE BUTTON BACKGROUND
+
+Current:
+
+```css
+background:
+  rgba(255,255,255,.06);
+```
+
+Increase brightness:
+
+```css
+background:
+  rgba(255,255,255,.10);
+```
+
+You can also use a solid background:
+
+```css
+background: #111827;
+```
+
+---
+
+## 12. CHANGE PAGE BACKGROUND
+
+The page currently uses:
+
+```css
+background:
+  radial-gradient(
+    circle at center,
+    #1c1c1c,
+    #080808 65%,
+    #030303
+  );
+```
+
+Change these colors to create your own background.
+
+Example:
+
+```css
+background:
+  radial-gradient(
+    circle at center,
+    #1e293b,
+    #020617 65%,
+    #000
+  );
+```
+
+---
+
+## 13. CHANGE HEART COLOR
+
+The liked heart currently uses:
+
+```css
+.like-button.liked .heart-icon {
+  color: #ff3b6b;
+}
+```
+
+Change it:
+
+```css
+color: #ef4444;
+```
+
+Other examples:
+
+```css
+color: #a855f7;
+```
+
+```css
+color: #ec4899;
+```
+
+---
+
+## 14. CHANGE HEART SIZE
+
+Find:
+
+```css
+.heart-icon {
+  width: 25px;
+  height: 25px;
+}
+```
+
+Example:
+
+```css
+.heart-icon {
+  width: 30px;
+  height: 30px;
+}
+```
+
+---
+
+## 15. CHANGE HEART STROKE
+
+Inside the SVG:
+
+```html
+stroke-width="1.8"
+```
+
+Thicker:
+
+```html
+stroke-width="2.4"
+```
+
+Thinner:
+
+```html
+stroke-width="1.3"
+```
+
+---
+
+## 16. CHANGE HEART ANIMATION SPEED
+
+Find:
+
+```css
+animation:
+  heartPop
+  .55s
+  cubic-bezier(.16,1,.3,1);
+```
+
+Faster:
+
+```css
+animation:
+  heartPop
+  .35s
+  cubic-bezier(.16,1,.3,1);
+```
+
+Slower:
+
+```css
+animation:
+  heartPop
+  .9s
+  cubic-bezier(.16,1,.3,1);
+```
+
+---
+
+## 17. CHANGE HEART POP SCALE
+
+Inside `@keyframes heartPop`:
+
+```css
+45% {
+  transform:
+    scale(1.35)
+    rotate(-7deg);
+}
+```
+
+Increase the scale:
+
+```css
+scale(1.6)
+```
+
+This makes the heart pop larger.
+
+---
+
+## 18. CHANGE RIPPLE COLOR
+
+Find:
+
+```css
+border:
+  1px solid
+  rgba(255,59,107,.8);
+```
+
+Change it:
+
+```css
+border:
+  1px solid
+  rgba(239,68,68,.8);
+```
+
+---
+
+## 19. CHANGE RIPPLE SIZE
+
+Current:
+
+```css
+width: 28px;
+height: 28px;
+```
+
+Example:
+
+```css
+width: 35px;
+height: 35px;
+```
+
+---
+
+## 20. CHANGE RIPPLE SPEED
+
+Find:
+
+```css
+ripple
+.65s
+ease-out
+```
+
+Example:
+
+```css
+ripple
+1s
+ease-out
+```
+
+---
+
+## 21. CHANGE PARTICLE COLOR
+
+Find:
+
+```css
+.particle {
+  background: #ff3b6b;
+}
+```
+
+Example:
+
+```css
+background: #ef4444;
+```
+
+---
+
+## 22. CHANGE PARTICLE SIZE
+
+Current:
+
+```css
+width: 5px;
+height: 5px;
+```
+
+Larger particles:
+
+```css
+width: 7px;
+height: 7px;
+```
+
+---
+
+## 23. CHANGE PARTICLE DIRECTION
+
+Each particle has its own position.
+
+Example:
+
+```css
+.particle-1 {
+  --x: -30px;
+  --y: -28px;
+}
+```
+
+`--x` controls horizontal movement.
+
+`--y` controls vertical movement.
+
+Negative `--y` moves upward.
+
+Positive `--y` moves downward.
+
+---
+
+## 24. ADD MORE PARTICLES
+
+Add another HTML element:
+
+```html
+<span class="particle particle-9"></span>
+```
+
+Then add CSS:
+
+```css
+.particle-9 {
+  --x: 55px;
+  --y: 20px;
+}
+```
+
+The common `.particle` animation will automatically apply.
+
+---
+
+## 25. CHANGE PARTICLE ANIMATION SPEED
+
+Find:
+
+```css
+particleBurst
+.65s
+```
+
+Faster:
+
+```css
+particleBurst
+.4s
+```
+
+Slower:
+
+```css
+particleBurst
+1s
+```
+
+---
+
+## 26. CHANGE FLOATING HEART COLOR
+
+Find:
+
+```css
+.mini-heart {
+  color: #ff3b6b;
+}
+```
+
+Example:
+
+```css
+color: #ef4444;
+```
+
+---
+
+## 27. CHANGE FLOATING HEART SIZE
+
+Current:
+
+```css
+font-size: 11px;
+```
+
+Example:
+
+```css
+font-size: 15px;
+```
+
+---
+
+## 28. CHANGE FLOATING HEART POSITION
+
+Example:
+
+```css
+.mini-heart-1 {
+  --hx: -25px;
+  --hy: -45px;
+}
+```
+
+Change `--hx` for horizontal movement.
+
+Change `--hy` for vertical movement.
+
+---
+
+## 29. CHANGE FLOATING HEART SPEED
+
+Find:
+
+```css
+miniHeartFloat
+.9s
+ease-out
+```
+
+Example:
+
+```css
+miniHeartFloat
+1.2s
+ease-out
+```
+
+---
+
+## 30. CHANGE HEART GLOW
+
+The glow is created using:
+
+```css
+.like-button.liked::after
+```
+
+Current color:
+
+```css
+background:
+  rgba(255,59,107,.25);
+```
+
+Change it:
+
+```css
+background:
+  rgba(239,68,68,.25);
+```
+
+---
+
+## 31. CHANGE GLOW BLUR
+
+Current:
+
+```css
+filter: blur(15px);
+```
+
+Soft glow:
+
+```css
+filter: blur(25px);
+```
+
+Sharper glow:
+
+```css
+filter: blur(8px);
+```
+
+---
+
+## 32. CHANGE COUNT ANIMATION SPEED
+
+In `script.js`:
+
+```js
+const duration = 350;
+```
+
+Faster:
+
+```js
+const duration = 200;
+```
+
+Slower:
+
+```js
+const duration = 600;
+```
+
+The value is in milliseconds.
+
+---
+
+## 33. CHANGE COUNT ANIMATION STYLE
+
+The counter currently uses:
+
+```js
+const eased =
+  1 -
+  Math.pow(
+    1 - progress,
+    3
+  );
+```
+
+This creates a smooth easing effect.
+
+You can change the easing calculation if you want a different counting motion.
+
+---
+
+## 34. CHANGE HOVER MOVEMENT
+
+Find:
+
+```css
+.like-button:hover {
+  transform: translateY(-3px);
+}
+```
+
+More movement:
+
+```css
+transform: translateY(-6px);
+```
+
+Disable the movement:
+
+```css
+transform: translateY(0);
+```
+
+---
+
+## 35. CHANGE CLICK SCALE
+
+Current:
+
+```css
+.like-button:active {
+  transform: scale(.94);
+}
+```
+
+Stronger press:
+
+```css
+transform: scale(.88);
+```
+
+Smaller press:
+
+```css
+transform: scale(.97);
+```
+
+---
+
+## 36. CHANGE TEXT COLORS
+
+Normal text:
+
+```css
+color: #aaa;
+```
+
+Liked text:
+
+```css
+color: #ff6b91;
+```
+
+Count:
+
+```css
+color: #777;
+```
+
+Change these values according to your theme.
+
+---
+
+## 37. CHANGE FONT
+
+Current:
+
+```css
+font-family:
+  Arial,
+  sans-serif;
+```
+
+Example:
+
+```css
+font-family:
+  Inter,
+  Arial,
+  sans-serif;
+```
+
+Make sure the font is available in your project.
+
+---
+
+## 38. RESPONSIVE DESIGN
+
+The component already includes:
+
+```css
+@media (max-width: 480px)
+```
+
+Inside it, the button width becomes:
+
+```css
+width: 165px;
+```
+
+You can add more mobile changes:
+
+```css
+@media (max-width: 480px) {
+  .like-button {
+    width: 165px;
+    height: 54px;
+  }
+
+  .heart-icon {
+    width: 23px;
+    height: 23px;
+  }
+}
+```
+
+---
+
+## 39. JAVASCRIPT LIKE LOGIC
+
+The current state starts with:
+
+```js
+let liked = false;
+let count = 124;
+```
+
+When clicked:
+
+```js
+liked = !liked;
+```
+
+If liked:
+
+```js
+count++;
+```
+
+If unliked:
+
+```js
+count--;
+```
+
+The displayed count is updated using:
+
+```js
+likeCount.textContent = value;
+```
+
+---
+
+## 40. IMPORTANT
+
+This component uses local JavaScript state.
+
+The like count is not stored in a database.
+
+Refreshing the page resets the count.
+
+For a real application, connect the click event to your backend/API to permanently store likes.
+
+---
+
+## 41. QUICK CUSTOMIZATION
+
+```text
+Button Width:
+175px
+
+Button Height:
+58px
+
+Button Radius:
+17px
+
+Default Count:
+124
+
+Heart Color:
+#ff3b6b
+
+Heart Size:
+25px
+
+Heart Animation:
+.55s
+
+Ripple Animation:
+.65s
+
+Particle Animation:
+.65s
+
+Floating Heart Animation:
+.9s
+
+Count Animation:
+350ms
+```
+
+---
+
+## 42. FINAL USAGE
+
+Keep the three files together:
+
+```text
+HeartBurst/
+├── index.html
+├── style.css
+└── script.js
+```
+
+Open:
+
+```text
+index.html
+```
+
+in your browser.
+
+The HeartBurst component is ready to use and customize.

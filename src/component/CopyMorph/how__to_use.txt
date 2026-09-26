@@ -1,0 +1,546 @@
+# CopyMorph
+
+CopyMorph is an animated React copy-to-clipboard button built with **React, Tailwind CSS, and Lucide React**.
+
+When the user copies the text, the button changes from **Copy Code** to **Copied!**, while cyan particles orbit around the Check icon.
+
+---
+
+## 1. Requirements
+
+CopyMorph requires:
+
+* React
+* Tailwind CSS
+* Lucide React
+
+Install Lucide React:
+
+```bash
+npm install lucide-react
+```
+
+---
+
+## 2. File Setup
+
+Create:
+
+```text
+src/
+└── components/
+    └── CopyMorph.jsx
+```
+
+Add the CopyMorph component code to this file.
+
+---
+
+## 3. Import
+
+Import the component:
+
+```jsx
+import CopyMorph from "./components/CopyMorph";
+```
+
+Adjust the path according to your project structure.
+
+---
+
+## 4. Basic Usage
+
+CopyMorph can be used without any props:
+
+```jsx
+<CopyMorph />
+```
+
+The default copied text is:
+
+```text
+const message = 'Hello World';
+```
+
+---
+
+## 5. Custom Text
+
+Use the `text` prop to specify what should be copied:
+
+```jsx
+<CopyMorph text="Hello World!" />
+```
+
+For a command:
+
+```jsx
+<CopyMorph text="npm install lucide-react" />
+```
+
+The exact `text` value is copied to the clipboard.
+
+---
+
+## 6. Copy Code
+
+CopyMorph is useful for code snippets:
+
+```jsx
+const code = `const user = {
+  name: "Saurabh",
+  role: "Developer"
+};`;
+
+<CopyMorph text={code} />
+```
+
+For multiline code, use a template literal.
+
+---
+
+## 7. Code Block Example
+
+```jsx
+import CopyMorph from "./components/CopyMorph";
+
+export default function App() {
+  const code = `function hello() {
+  console.log("Hello World");
+}`;
+
+  return (
+    <div className="relative">
+      <pre className="rounded-xl bg-[#11151f] p-6 text-white">
+        {code}
+      </pre>
+
+      <div className="absolute right-3 top-3">
+        <CopyMorph text={code} />
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## 8. Clipboard
+
+CopyMorph first uses the modern Clipboard API:
+
+```jsx
+await navigator.clipboard.writeText(text);
+```
+
+It checks:
+
+```jsx
+navigator.clipboard && window.isSecureContext
+```
+
+If unavailable, it creates a temporary textarea and uses:
+
+```jsx
+document.execCommand("copy");
+```
+
+The temporary textarea is removed after copying.
+
+---
+
+## 9. Copy State
+
+The component tracks the copied state with:
+
+```jsx
+const [copied, setCopied] = useState(false);
+```
+
+After a successful copy:
+
+```jsx
+setCopied(true);
+```
+
+The state automatically resets after **1600ms**:
+
+```jsx
+setTimeout(() => {
+  setCopied(false);
+}, 1600);
+```
+
+---
+
+## 10. Default State
+
+Before copying:
+
+```text
+[ Copy ] Copy Code
+```
+
+The button uses:
+
+* Dark background
+* White text
+* Subtle border
+* Cyan hover border
+* Copy icon hover movement
+
+---
+
+## 11. Copied State
+
+After copying:
+
+```text
+[ ✓ ] Copied!
+```
+
+The button changes to:
+
+* Cyan border
+* Cyan-tinted background
+* Cyan text
+* Check icon
+* Three orbiting particles
+
+---
+
+## 12. Orbit Particles
+
+CopyMorph creates three particles when `copied` becomes true.
+
+```jsx
+<span className="orbit-particle particle-one" />
+<span className="orbit-particle particle-two" />
+<span className="orbit-particle particle-three" />
+```
+
+Each particle follows the same animation but starts at a different time.
+
+### Particle delays
+
+```text
+Particle 1: 0s
+Particle 2: 0.06s
+Particle 3: 0.12s
+```
+
+This creates a sequential orbit effect.
+
+---
+
+## 13. Particle Animation
+
+The particle animation lasts:
+
+```css
+0.75s
+```
+
+The particles:
+
+1. Start small and invisible.
+2. Move outward while rotating.
+3. Reach their visible state.
+4. Continue outward.
+5. Fade and shrink away.
+
+The final horizontal movement reaches approximately:
+
+```css
+translateX(18px)
+```
+
+---
+
+## 14. Change Particle Color
+
+The current particle color is:
+
+```css
+background: rgb(34 211 238);
+```
+
+This is a cyan color.
+
+You can replace it with another CSS color:
+
+```css
+background: #a855f7;
+```
+
+Or:
+
+```css
+background: #22c55e;
+```
+
+---
+
+## 15. Change Particle Size
+
+Current particle size:
+
+```css
+width: 4px;
+height: 4px;
+```
+
+Larger particles:
+
+```css
+width: 6px;
+height: 6px;
+```
+
+Smaller particles:
+
+```css
+width: 3px;
+height: 3px;
+```
+
+---
+
+## 16. Check Animation
+
+The Check icon uses:
+
+```jsx
+className="animate-orbitCheck"
+```
+
+The animation starts at:
+
+```text
+scale(0) rotate(-90deg)
+```
+
+Then grows to:
+
+```text
+scale(1.35) rotate(15deg)
+```
+
+and settles at:
+
+```text
+scale(1) rotate(0deg)
+```
+
+---
+
+## 17. Check Animation Timing
+
+Current animation:
+
+```css
+animation:
+  orbitCheck
+  0.5s
+  0.2s
+  cubic-bezier(
+    0.34,
+    1.56,
+    0.64,
+    1
+  )
+  both;
+```
+
+The animation duration is **0.5 seconds** with a **0.2 second delay**.
+
+---
+
+## 18. Button Colors
+
+Default state:
+
+```jsx
+border-white/10
+bg-[#11151f]
+text-white
+```
+
+Hover:
+
+```jsx
+hover:border-cyan-400/40
+hover:bg-[#171c29]
+```
+
+Copied:
+
+```jsx
+border-cyan-400/50
+bg-cyan-400/10
+text-cyan-400
+```
+
+Change these Tailwind classes to match your design.
+
+---
+
+## 19. Button Size
+
+Current padding:
+
+```jsx
+px-5 py-3
+```
+
+Larger:
+
+```jsx
+px-6 py-3.5
+```
+
+Smaller:
+
+```jsx
+px-4 py-2
+```
+
+The button also uses:
+
+```jsx
+rounded-xl
+```
+
+for its rounded corners.
+
+---
+
+## 20. Icon Size
+
+The Copy icon:
+
+```jsx
+<Copy
+  size={18}
+  strokeWidth={2}
+/>
+```
+
+The Check icon:
+
+```jsx
+<Check
+  size={18}
+  strokeWidth={2.8}
+/>
+```
+
+You can change the size and stroke width independently.
+
+---
+
+## 21. Props
+
+| Prop   | Type     | Default                            | Description                  |
+| ------ | -------- | ---------------------------------- | ---------------------------- |
+| `text` | `string` | `"const message = 'Hello World';"` | Text copied to the clipboard |
+
+Example:
+
+```jsx
+<CopyMorph text="Your custom text" />
+```
+
+---
+
+## 22. Accessibility
+
+CopyMorph includes:
+
+```jsx
+aria-label={copied ? "Copied" : "Copy code"}
+```
+
+The label changes according to the current state.
+
+The button also uses:
+
+```jsx
+type="button"
+```
+
+so it will not accidentally submit a form.
+
+---
+
+## 23. No Backend Required
+
+CopyMorph works completely on the client side.
+
+It does not require:
+
+* API
+* Backend
+* Database
+* Authentication
+* External clipboard service
+
+The provided `text` is copied directly to the user's clipboard.
+
+---
+
+## 24. Complete Example
+
+```jsx
+import CopyMorph from "./components/CopyMorph";
+
+export default function App() {
+  const code = `const message = "Hello World";
+
+console.log(message);`;
+
+  return (
+    <main className="min-h-screen bg-[#050505] p-10">
+      <div className="mx-auto max-w-2xl">
+        <div className="relative">
+          <pre className="overflow-x-auto rounded-xl bg-[#11151f] p-6 text-white">
+            {code}
+          </pre>
+
+          <div className="absolute right-3 top-3">
+            <CopyMorph text={code} />
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+```
+
+---
+
+## 25. Best Use Cases
+
+CopyMorph works well for:
+
+* Component libraries
+* Documentation websites
+* Code snippets
+* Developer portfolios
+* Tutorials
+* API documentation
+* Installation commands
+* CLI commands
+* Code preview sections
+
+---
+
+## Quick Start
+
+```jsx
+import CopyMorph from "./components/CopyMorph";
+
+<CopyMorph text="Hello World!" />
+```
+
+CopyMorph is ready to use.

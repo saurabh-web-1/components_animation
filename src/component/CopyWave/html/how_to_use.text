@@ -1,0 +1,622 @@
+# CopyWave — How to Use
+
+CopyWave is an animated copy button for HTML, CSS, and JavaScript projects. When the user clicks the button, it copies predefined text to the clipboard and displays three expanding wave rings with a checkmark success animation.
+
+## Features
+
+* One-click clipboard copy
+* Three expanding wave animations
+* Animated success checkmark
+* `"Copy Code"` → `"Copied!"` transition
+* Automatic reset after 1.6 seconds
+* Modern Clipboard API support
+* Fallback copy method
+* No external JavaScript library required
+* Works with standalone HTML/CSS/JS
+
+---
+
+## 1. Folder Structure
+
+Create a folder named `CopyWave`:
+
+```text
+CopyWave/
+├── index.html
+├── style.css
+└── script.js
+```
+
+---
+
+## 2. Add the HTML
+
+Add the CopyWave button to your HTML:
+
+```html
+<button
+  id="copyWave"
+  class="copy-wave"
+  type="button"
+  aria-label="Copy code"
+>
+  <span id="waveOne" class="wave wave-one"></span>
+  <span id="waveTwo" class="wave wave-two"></span>
+  <span id="waveThree" class="wave wave-three"></span>
+
+  <span class="icon-wrapper">
+
+    <svg
+      id="copyIcon"
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect
+        width="14"
+        height="14"
+        x="8"
+        y="8"
+        rx="2"
+      ></rect>
+
+      <path
+        d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+      ></path>
+    </svg>
+
+    <svg
+      id="checkIcon"
+      class="hidden"
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M20 6 9 17l-5-5"></path>
+    </svg>
+
+  </span>
+
+  <span id="copyText" class="copy-text">
+    Copy Code
+  </span>
+</button>
+```
+
+---
+
+## 3. Connect CSS
+
+Inside the `<head>` of your HTML file:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+The CSS controls the button design, hover effect, success state, wave animation, and checkmark animation.
+
+---
+
+## 4. Connect JavaScript
+
+Before the closing `</body>` tag:
+
+```html
+<script src="script.js"></script>
+```
+
+The JavaScript controls copying, state changes, animations, and reset behavior.
+
+---
+
+## 5. Change the Text to Copy
+
+Open `script.js` and find:
+
+```javascript
+const textToCopy = "const message = 'Hello World';";
+```
+
+Replace it with the content you want to copy.
+
+Example:
+
+```javascript
+const textToCopy = "npm install react";
+```
+
+Clicking the button now copies:
+
+```text
+npm install react
+```
+
+---
+
+## 6. Copy HTML Code
+
+You can copy HTML snippets:
+
+```javascript
+const textToCopy = `
+<div class="card">
+  <h2>Hello World</h2>
+</div>
+`;
+```
+
+The complete snippet will be copied to the clipboard.
+
+---
+
+## 7. Copy CSS Code
+
+You can also use CopyWave for CSS:
+
+```javascript
+const textToCopy = `
+.card {
+  padding: 20px;
+  border-radius: 12px;
+}
+`;
+```
+
+---
+
+## 8. Copy JavaScript Code
+
+Example:
+
+```javascript
+const textToCopy = `
+const message = "Hello World";
+
+console.log(message);
+`;
+```
+
+---
+
+## 9. Copy Dynamic Content
+
+You can copy content from another HTML element.
+
+Example:
+
+```html
+<pre id="code">
+const name = "Saurabh";
+console.log(name);
+</pre>
+```
+
+Then use:
+
+```javascript
+const textToCopy =
+  document.getElementById("code").textContent;
+```
+
+This allows CopyWave to work with dynamically displayed code.
+
+---
+
+## 10. How the Copy Process Works
+
+When the user clicks the button, JavaScript first checks whether the browser supports the modern Clipboard API:
+
+```javascript
+navigator.clipboard.writeText(textToCopy);
+```
+
+If it is available, the text is copied using the Clipboard API.
+
+If it is unavailable, CopyWave uses a fallback method:
+
+```javascript
+document.execCommand("copy");
+```
+
+This provides compatibility with environments where the modern Clipboard API cannot be used.
+
+---
+
+## 11. Initial State
+
+When the component first loads, the button displays:
+
+```text
+📋 Copy Code
+```
+
+The three wave elements are present but invisible.
+
+---
+
+## 12. Success State
+
+After a successful copy:
+
+```text
+✓ Copied!
+```
+
+The button changes to the success style.
+
+The copy icon is replaced by the check icon.
+
+The three wave animations start from the center of the button.
+
+---
+
+## 13. Wave Animation
+
+CopyWave uses three separate wave elements.
+
+### Wave 1
+
+Starts immediately:
+
+```text
+Delay: 0s
+```
+
+### Wave 2
+
+Starts slightly later:
+
+```text
+Delay: 0.15s
+```
+
+### Wave 3
+
+Starts after Wave 2:
+
+```text
+Delay: 0.30s
+```
+
+All waves expand from:
+
+```text
+scale(1)
+```
+
+to:
+
+```text
+scale(8)
+```
+
+while their opacity decreases to zero.
+
+This creates the ripple/wave effect.
+
+---
+
+## 14. Checkmark Animation
+
+The checkmark uses four animation stages:
+
+```text
+scale(0.3) + rotate(-30°)
+        ↓
+scale(1.3) + rotate(8°)
+        ↓
+scale(0.9) + rotate(-3°)
+        ↓
+scale(1) + rotate(0°)
+```
+
+This gives the checkmark a small pop/bounce effect.
+
+The animation duration is:
+
+```text
+0.45 seconds
+```
+
+---
+
+## 15. Automatic Reset
+
+After successful copying, the component stays in the success state for:
+
+```text
+1600ms
+```
+
+After that, it automatically returns to:
+
+```text
+📋 Copy Code
+```
+
+The success color is removed, the check icon is hidden, and the copy icon becomes visible again.
+
+---
+
+## 16. Button States
+
+CopyWave has two main visual states.
+
+### Normal
+
+```text
+Copy Code
+```
+
+Dark background with a white copy icon.
+
+### Copied
+
+```text
+Copied!
+```
+
+Green success color with a checkmark and expanding waves.
+
+---
+
+## 17. Customize Button Colors
+
+Normal button background:
+
+```css
+.copy-wave {
+  background: #11151f;
+}
+```
+
+Normal hover background:
+
+```css
+.copy-wave:hover {
+  background: #171c29;
+}
+```
+
+Success background:
+
+```css
+.copy-wave.copied {
+  background: rgba(16, 185, 129, 0.1);
+}
+```
+
+Success text:
+
+```css
+.copy-wave.copied {
+  color: #34d399;
+}
+```
+
+---
+
+## 18. Customize Button Size
+
+Change:
+
+```css
+.copy-wave {
+  padding: 12px 20px;
+}
+```
+
+For a larger button:
+
+```css
+.copy-wave {
+  padding: 14px 24px;
+}
+```
+
+For a smaller button:
+
+```css
+.copy-wave {
+  padding: 9px 16px;
+}
+```
+
+---
+
+## 19. Customize Border Radius
+
+Default:
+
+```css
+border-radius: 12px;
+```
+
+More rounded:
+
+```css
+border-radius: 20px;
+```
+
+Pill style:
+
+```css
+border-radius: 999px;
+```
+
+---
+
+## 20. Customize Wave Color
+
+The waves use emerald green.
+
+Example:
+
+```css
+.wave-one {
+  border-color: rgba(52, 211, 153, 0.8);
+}
+```
+
+You can change the color to another value.
+
+For example:
+
+```css
+border-color: rgba(139, 92, 246, 0.8);
+```
+
+---
+
+## 21. Change Reset Duration
+
+Current JavaScript:
+
+```javascript
+setTimeout(() => {
+  // reset
+}, 1600);
+```
+
+For a 2-second reset:
+
+```javascript
+setTimeout(() => {
+  // reset
+}, 2000);
+```
+
+---
+
+## 22. Use in a Code Block
+
+CopyWave is useful for component libraries and documentation.
+
+Example:
+
+```html
+<pre>
+const message = "Hello World";
+console.log(message);
+</pre>
+
+<button id="copyWave">
+  Copy Code
+</button>
+```
+
+The JavaScript can copy the code shown inside the `<pre>` element.
+
+---
+
+## 23. Recommended Use Cases
+
+CopyWave can be used for:
+
+* Code snippets
+* API examples
+* Configuration values
+* Commands
+* JSON
+* HTML snippets
+* CSS snippets
+* JavaScript snippets
+* Installation commands
+* Documentation pages
+* Component libraries
+
+---
+
+## 24. Complete Setup
+
+The basic setup is:
+
+```text
+1. Create CopyWave folder
+2. Create index.html
+3. Create style.css
+4. Create script.js
+5. Add CopyWave HTML
+6. Connect CSS
+7. Connect JavaScript
+8. Set textToCopy
+9. Open the page
+10. Click Copy Code
+```
+
+---
+
+## 25. Quick Example
+
+```javascript
+const textToCopy = `
+const user = {
+  name: "Saurabh",
+  role: "Developer"
+};
+`;
+```
+
+The user clicks:
+
+```text
+Copy Code
+```
+
+CopyWave displays:
+
+```text
+✓ Copied!
+```
+
+Three green waves expand from the button while the checkmark performs its pop animation.
+
+After 1.6 seconds, the component returns to:
+
+```text
+Copy Code
+```
+
+---
+
+## Browser Compatibility
+
+CopyWave first attempts to use:
+
+```javascript
+navigator.clipboard.writeText()
+```
+
+If the modern Clipboard API is unavailable, it uses:
+
+```javascript
+document.execCommand("copy")
+```
+
+No external JavaScript package is required.
+
+---
+
+## Final Result
+
+CopyWave provides a compact copy interaction with:
+
+* Copy icon
+* Clipboard functionality
+* Three ripple waves
+* Checkmark animation
+* Success text
+* Automatic reset
+* Customizable styling
+
+It can be integrated directly into any HTML/CSS/JavaScript project.

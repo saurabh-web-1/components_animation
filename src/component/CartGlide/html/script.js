@@ -1,6 +1,4 @@
-/* =========================================
-   PRODUCT DATA
-========================================= */
+/*    PRODUCT DATA */
 
 const products = {
   1: {
@@ -41,18 +39,14 @@ const products = {
 };
 
 
-/* =========================================
-   CART STATE
-========================================= */
+/* CART STATE */
 
 let cart = {};
 
 let isFlying = false;
 
 
-/* =========================================
-   ELEMENTS
-========================================= */
+/* ELEMENTS */
 
 const flyingProduct =
   document.getElementById("flyingProduct");
@@ -97,9 +91,7 @@ const addMore =
   document.getElementById("addMore");
 
 
-/* =========================================
-   ADD BUTTONS
-========================================= */
+/* ADD BUTTONS */
 
 document
   .querySelectorAll(".add-button")
@@ -123,9 +115,7 @@ document
   });
 
 
-/* =========================================
-   ADD PRODUCT
-========================================= */
+/* ADD PRODUCT */
 
 function addProduct(product, button) {
 
@@ -134,9 +124,7 @@ function addProduct(product, button) {
   isFlying = true;
 
 
-  /* ======================================
-     GET PRODUCT IMAGE POSITION
-  ====================================== */
+  /* GET PRODUCT IMAGE POSITION */
 
   const card =
     document.querySelector(
@@ -153,17 +141,13 @@ function addProduct(product, button) {
     image.getBoundingClientRect();
 
 
-  /* ======================================
-     GET CART POSITION
-  ====================================== */
+  /* GET CART POSITION */
 
   const cartRect =
     cartBar.getBoundingClientRect();
 
 
-  /* ======================================
-     START POSITION
-  ====================================== */
+  /* START POSITION */
 
   const startX =
     imageRect.left +
@@ -176,9 +160,7 @@ function addProduct(product, button) {
     32;
 
 
-  /* ======================================
-     END POSITION
-  ====================================== */
+  /* END POSITION*/
 
   const endX =
     cartRect.left +
@@ -189,9 +171,7 @@ function addProduct(product, button) {
     5;
 
 
-  /* ======================================
-     SHOW FLYING IMAGE
-  ====================================== */
+  /* SHOW FLYING IMAGE */
 
   flyingImage.src =
     product.image;
@@ -249,9 +229,7 @@ function addProduct(product, button) {
     endY - 65;
 
 
-  /* ======================================
-     ANIMATION
-  ====================================== */
+  /* ANIMATION */
 
   const animation =
     flyingProduct.animate(
@@ -320,9 +298,7 @@ function addProduct(product, button) {
     );
 
 
-  /* ======================================
-     AFTER FLIGHT
-  ====================================== */
+  /* AFTER FLIGHT */
 
   animation.onfinish = () => {
 
@@ -387,9 +363,7 @@ function addProduct(product, button) {
 }
 
 
-/* =========================================
-   CART BAR
-========================================= */
+/* CART BAR */
 
 function renderCartBar() {
 
@@ -516,9 +490,7 @@ function renderCartBar() {
 }
 
 
-/* =========================================
-   RENDER CART ITEMS
-========================================= */
+/* RENDER CART ITEMS */
 
 function renderCartItems() {
 
@@ -639,9 +611,7 @@ function renderCartItems() {
 }
 
 
-/* =========================================
-   CHANGE QUANTITY
-========================================= */
+/* CHANGE QUANTITY */
 
 function changeQuantity(id, amount) {
 
@@ -670,9 +640,7 @@ function changeQuantity(id, amount) {
 }
 
 
-/* =========================================
-   REMOVE ITEM
-========================================= */
+/* REMOVE ITEM */
 
 function removeItem(id) {
 
@@ -688,9 +656,7 @@ function removeItem(id) {
 }
 
 
-/* =========================================
-   UPDATE PRODUCT CARD
-========================================= */
+/* UPDATE PRODUCT CARD */
 
 function updateProductCard(id) {
 
@@ -755,9 +721,7 @@ function updateProductCard(id) {
 }
 
 
-/* =========================================
-   SUMMARY
-========================================= */
+/* SUMMARY */
 
 function updateSummary() {
 
@@ -798,9 +762,7 @@ function updateSummary() {
 }
 
 
-/* =========================================
-   OPEN CART
-========================================= */
+/* OPEN CART */
 
 viewCartButton.addEventListener(
   "click",
@@ -819,9 +781,7 @@ viewCartButton.addEventListener(
 );
 
 
-/* =========================================
-   CLOSE CART
-========================================= */
+/* CLOSE CART*/
 
 closeCart.addEventListener(
   "click",
@@ -856,9 +816,7 @@ function closeCartDrawer() {
 }
 
 
-/* =========================================
-   ADD MORE
-========================================= */
+/* ADD MORE */
 
 addMore.addEventListener(
   "click",
@@ -875,9 +833,7 @@ addMore.addEventListener(
 );
 
 
-/* =========================================
-   PLACEMENT OPTIONS
-========================================= */
+/* PLACEMENT OPTIONS */
 
 document
   .querySelectorAll(
@@ -912,9 +868,7 @@ document
   });
 
 
-/* =========================================
-   CHECKOUT
-========================================= */
+/* CHECKOUT*/
 
 document
   .getElementById("checkoutButton")
@@ -943,9 +897,7 @@ document
   );
 
 
-/* =========================================
-   INITIAL RENDER
-========================================= */
+/* INITIAL RENDER*/
 
 renderCartBar();
 

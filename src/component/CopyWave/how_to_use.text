@@ -1,0 +1,482 @@
+# CopyWave
+
+CopyWave is an animated React copy-to-clipboard button built with **React, Tailwind CSS, and Lucide React**.
+
+When the text is copied, three expanding emerald waves appear behind the button content and the Copy icon changes into an animated Check icon.
+
+---
+
+## 1. Requirements
+
+CopyWave requires:
+
+* React
+* Tailwind CSS
+* Lucide React
+
+Install Lucide React:
+
+```bash
+npm install lucide-react
+```
+
+---
+
+## 2. File Setup
+
+Create the component:
+
+```text
+src/
+└── components/
+    └── CopyWave.jsx
+```
+
+Add the provided CopyWave code to `CopyWave.jsx`.
+
+---
+
+## 3. Import
+
+Import the component into your page:
+
+```jsx
+import CopyWave from "./components/CopyWave";
+```
+
+Update the path if your component is stored elsewhere.
+
+---
+
+## 4. Basic Usage
+
+CopyWave works without any props:
+
+```jsx
+<CopyWave />
+```
+
+The default copied text is:
+
+```text
+const message = 'Hello World';
+```
+
+---
+
+## 5. Custom Text
+
+Use the `text` prop to define what should be copied:
+
+```jsx
+<CopyWave text="Hello World!" />
+```
+
+Another example:
+
+```jsx
+<CopyWave
+  text="npm install lucide-react"
+/>
+```
+
+The exact value passed to `text` is copied to the clipboard.
+
+---
+
+## 6. Copy Code
+
+CopyWave is useful for code snippets:
+
+```jsx
+const code = `const user = {
+  name: "Saurabh",
+  role: "Developer"
+};`;
+
+<CopyWave text={code} />
+```
+
+For multiline code, use a template literal.
+
+---
+
+## 7. Code Block Example
+
+You can place CopyWave over a code block:
+
+```jsx
+import CopyWave from "./components/CopyWave";
+
+export default function App() {
+  const code = `function hello() {
+  console.log("Hello World");
+}`;
+
+  return (
+    <div className="relative">
+      <pre className="rounded-xl bg-[#11151f] p-6 text-white">
+        {code}
+      </pre>
+
+      <div className="absolute right-3 top-3">
+        <CopyWave text={code} />
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## 8. How Copy Works
+
+CopyWave first checks for the modern Clipboard API:
+
+```jsx
+navigator.clipboard.writeText(text);
+```
+
+If the Clipboard API is unavailable, it creates a temporary textarea and uses:
+
+```jsx
+document.execCommand("copy");
+```
+
+The temporary textarea is removed after copying.
+
+---
+
+## 9. Copy State
+
+The component tracks the copied state with:
+
+```jsx
+const [copied, setCopied] = useState(false);
+```
+
+After a successful copy:
+
+```jsx
+setCopied(true);
+```
+
+After **1600ms**, the state resets:
+
+```jsx
+setCopied(false);
+```
+
+---
+
+## 10. Default State
+
+Before clicking, the button displays:
+
+```text
+[ Copy ] Copy Code
+```
+
+The default styling includes:
+
+* Dark background
+* White text
+* Subtle border
+* Violet hover border
+* Hover icon movement
+
+---
+
+## 11. Copied State
+
+After copying:
+
+```text
+[ ✓ ] Copied!
+```
+
+The button changes to:
+
+* Emerald border
+* Emerald background
+* Emerald text
+* Check icon
+* Three expanding waves
+
+---
+
+## 12. Wave Animation
+
+CopyWave creates three separate wave elements.
+
+### Wave 1
+
+```text
+Duration: 0.9s
+Delay: 0s
+```
+
+### Wave 2
+
+```text
+Duration: 0.9s
+Delay: 0.15s
+```
+
+### Wave 3
+
+```text
+Duration: 0.9s
+Delay: 0.3s
+```
+
+Each wave starts from the center and expands to `scale(8)` while fading out.
+
+This creates the ripple/wave effect.
+
+---
+
+## 13. Change Wave Color
+
+The current wave color is emerald:
+
+```jsx
+border-emerald-400/80
+border-emerald-400/60
+border-emerald-400/40
+```
+
+You can replace these with another Tailwind color.
+
+For example:
+
+```jsx
+border-cyan-400/80
+```
+
+Use matching opacity values for the other waves.
+
+---
+
+## 14. Change Wave Speed
+
+The current animation duration is:
+
+```css
+0.9s
+```
+
+For a faster wave:
+
+```css
+0.6s
+```
+
+For a slower wave:
+
+```css
+1.2s
+```
+
+Keep the delays smaller than the total animation duration for a continuous ripple effect.
+
+---
+
+## 15. Check Animation
+
+The Check icon uses:
+
+```jsx
+className="animate-checkIn"
+```
+
+The animation starts small and rotated, grows slightly, then settles into its normal position.
+
+Current duration:
+
+```css
+0.45s
+```
+
+You can increase or decrease this value to change the check animation speed.
+
+---
+
+## 16. Button Colors
+
+Default state:
+
+```jsx
+border-white/10
+bg-[#11151f]
+text-white
+```
+
+Hover state:
+
+```jsx
+hover:border-violet-400/40
+hover:bg-[#171c29]
+```
+
+Copied state:
+
+```jsx
+border-emerald-400/50
+bg-emerald-500/10
+text-emerald-400
+```
+
+These Tailwind classes can be changed to match your design.
+
+---
+
+## 17. Button Size
+
+The current button uses:
+
+```jsx
+px-5 py-3
+```
+
+Larger button:
+
+```jsx
+px-6 py-3.5
+```
+
+Smaller button:
+
+```jsx
+px-4 py-2
+```
+
+---
+
+## 18. Icon Size
+
+The Copy icon currently uses:
+
+```jsx
+<Copy
+  size={18}
+  strokeWidth={2}
+/>
+```
+
+The Check icon uses:
+
+```jsx
+<Check
+  size={18}
+  strokeWidth={2.7}
+/>
+```
+
+You can change both independently.
+
+---
+
+## 19. Props
+
+| Prop   | Type     | Default                            | Description                  |
+| ------ | -------- | ---------------------------------- | ---------------------------- |
+| `text` | `string` | `"const message = 'Hello World';"` | Text copied to the clipboard |
+
+Example:
+
+```jsx
+<CopyWave text="Your custom text" />
+```
+
+---
+
+## 20. Accessibility
+
+CopyWave provides an accessible button label:
+
+```jsx
+aria-label={copied ? "Copied" : "Copy code"}
+```
+
+The button also uses:
+
+```jsx
+type="button"
+```
+
+so it does not accidentally submit a form.
+
+---
+
+## 21. No Backend Required
+
+CopyWave works entirely in the browser.
+
+It does not require:
+
+* API
+* Backend
+* Database
+* Authentication
+* External copy service
+
+The supplied `text` value is copied directly to the user's clipboard.
+
+---
+
+## 22. Complete Example
+
+```jsx
+import CopyWave from "./components/CopyWave";
+
+export default function App() {
+  const code = `const message = "Hello World";
+
+console.log(message);`;
+
+  return (
+    <main className="min-h-screen bg-[#050505] p-10">
+      <div className="mx-auto max-w-2xl">
+        <div className="relative">
+          <pre className="overflow-x-auto rounded-xl bg-[#11151f] p-6 text-white">
+            {code}
+          </pre>
+
+          <div className="absolute right-3 top-3">
+            <CopyWave text={code} />
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+```
+
+---
+
+## 23. Best Use Cases
+
+CopyWave works well for:
+
+* Component libraries
+* Documentation websites
+* Code snippets
+* Developer portfolios
+* Tutorials
+* API documentation
+* Installation commands
+* CLI commands
+* Code preview sections
+
+---
+
+## Quick Start
+
+```jsx
+import CopyWave from "./components/CopyWave";
+
+<CopyWave text="Hello World!" />
+```
+
+CopyWave is ready to use.

@@ -71,9 +71,7 @@ export default function CartGlide() {
     [cart]
   );
 
-  /* ==========================================
-     ADD PRODUCT
-  ========================================== */
+  /* ADD PRODUCT */
 
   const addToCart = (product) => {
     if (flying) return;
@@ -174,9 +172,7 @@ export default function CartGlide() {
     }, 1150);
   };
 
-  /* ==========================================
-     QUANTITY
-  ========================================== */
+  /* QUANTITY */
 
   const changeQuantity = (id, amount) => {
     setCart((previous) =>
@@ -196,9 +192,7 @@ export default function CartGlide() {
     );
   };
 
-  /* ==========================================
-     REMOVE
-  ========================================== */
+  /* REMOVE */
 
   const removeItem = (id) => {
     setCart((previous) =>
@@ -211,9 +205,7 @@ export default function CartGlide() {
 
       <div className="mx-auto max-w-5xl">
 
-        {/* =====================================
-            HEADER
-        ===================================== */}
+        {/*HEADER*/}
 
         <div className="mb-7">
 
@@ -228,9 +220,7 @@ export default function CartGlide() {
         </div>
 
 
-        {/* =====================================
-            PRODUCT GRID
-        ===================================== */}
+        {/* PRODUCT GRID*/}
 
         <div className="grid max-w-[650px] grid-cols-2 gap-4 sm:gap-5">
 
@@ -396,9 +386,7 @@ export default function CartGlide() {
       </div>
 
 
-      {/* =========================================
-          FLYING PRODUCT
-      ========================================= */}
+      {/*FLYING PRODUCT*/}
 
       <AnimatePresence>
 
@@ -487,9 +475,7 @@ export default function CartGlide() {
       </AnimatePresence>
 
 
-      {/* =========================================
-          CART BAR
-      ========================================= */}
+      {/* CART BAR */}
 
       <motion.div
         ref={cartRef}
@@ -641,9 +627,7 @@ export default function CartGlide() {
       </motion.div>
 
 
-      {/* =========================================
-          CART OVERLAY
-      ========================================= */}
+      {/* CART OVERLAY*/}
 
       <AnimatePresence>
 
@@ -663,9 +647,7 @@ export default function CartGlide() {
             onClick={() => setCartOpen(false)}
           >
 
-            {/* ===================================
-                CART DRAWER
-            =================================== */}
+            {/*  CART DRAWER*/}
 
             <motion.div
               onClick={(event) =>
@@ -780,9 +762,7 @@ export default function CartGlide() {
               </div>
 
 
-              {/* =================================
-                  CART ITEMS
-              ================================= */}
+              {/* CART ITEMS */}
 
               <div className="mt-6 space-y-3">
 
@@ -922,9 +902,7 @@ export default function CartGlide() {
               </div>
 
 
-              {/* =================================
-                  ADD MORE
-              ================================= */}
+              {/* ADD MORE */}
 
               <button
                 onClick={() => setCartOpen(false)}
@@ -934,9 +912,7 @@ export default function CartGlide() {
               </button>
 
 
-              {/* =================================
-                  PLACEMENT OPTIONS
-              ================================= */}
+              {/* PLACEMENT OPTIONS */}
 
               <div className="mt-7">
 
@@ -1008,9 +984,7 @@ export default function CartGlide() {
               </div>
 
 
-              {/* =================================
-                  NOTE
-              ================================= */}
+              {/* NOTE */}
 
               <div className="mt-5">
 
@@ -1034,9 +1008,7 @@ export default function CartGlide() {
               </div>
 
 
-              {/* =================================
-                  SUMMARY
-              ================================= */}
+              {/* SUMMARY */}
 
               <div className="mt-6 border-t border-neutral-100 pt-5">
 
@@ -1091,9 +1063,7 @@ export default function CartGlide() {
 }
 
 
-/* ============================================
-   PLACEMENT OPTION
-============================================ */
+/* PLACEMENT OPTION */
 
 function PlacementOption({
   active,

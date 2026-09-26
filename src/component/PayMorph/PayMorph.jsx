@@ -72,7 +72,7 @@ export default function PayMorph() {
 
       <div className="w-full max-w-[430px]">
 
-        {/* ================= CARD ================= */}
+        {/* CARD */}
 
         <div
           className="relative w-full h-[245px]"
@@ -94,7 +94,7 @@ export default function PayMorph() {
             }}
           >
 
-            {/* ================= FRONT ================= */}
+            {/*FRONT*/}
 
             <div
               className="absolute inset-0 rounded-[28px] overflow-hidden p-7
@@ -199,7 +199,7 @@ export default function PayMorph() {
             </div>
 
 
-            {/* ================= BACK ================= */}
+            {/*  BACK*/}
 
             <div
               className="absolute inset-0 rounded-[28px] overflow-hidden
@@ -258,7 +258,7 @@ export default function PayMorph() {
         </div>
 
 
-        {/* ================= FORM ================= */}
+        {/* FORM */}
 
         <div className="mt-8 space-y-4">
 
@@ -358,7 +358,7 @@ export default function PayMorph() {
           </div>
 
 
-          {/* ================= PAY BUTTON ================= */}
+          {/*  PAY BUTTON  */}
 
           <motion.button
             onClick={handlePayment}

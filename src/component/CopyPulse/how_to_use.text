@@ -1,0 +1,491 @@
+# CopyPulse
+
+CopyPulse is a lightweight animated copy-to-clipboard button built with **React, Tailwind CSS, and Lucide React**.
+
+It provides a simple interaction:
+
+```text
+Copy Code → Copied!
+```
+
+After copying, the Copy icon changes to a Check icon with a short pulse animation.
+
+---
+
+## 1. Requirements
+
+CopyPulse requires:
+
+* React
+* Tailwind CSS
+* Lucide React
+
+Install Lucide React:
+
+```bash
+npm install lucide-react
+```
+
+---
+
+## 2. File Setup
+
+Create the component:
+
+```text
+src/
+└── components/
+    └── CopyPulse.jsx
+```
+
+Add the CopyPulse code to `CopyPulse.jsx`.
+
+---
+
+## 3. Import the Component
+
+Import it into the page where you want to use it:
+
+```jsx
+import CopyPulse from "./components/CopyPulse";
+```
+
+If your component is stored in another folder, update the import path accordingly.
+
+---
+
+## 4. Basic Usage
+
+CopyPulse can be used without passing any props:
+
+```jsx
+<CopyPulse />
+```
+
+The default copied text is:
+
+```text
+const message = 'Hello World';
+```
+
+---
+
+## 5. Copy Custom Text
+
+The component accepts a `text` prop.
+
+```jsx
+<CopyPulse text="Hello World!" />
+```
+
+For example:
+
+```jsx
+<CopyPulse
+  text="npm install lucide-react"
+/>
+```
+
+Clicking the button copies the exact text passed through the `text` prop.
+
+---
+
+## 6. Copy Code
+
+CopyPulse can be used for code snippets.
+
+```jsx
+const code = `const user = {
+  name: "Saurabh",
+  role: "Developer"
+};`;
+
+<CopyPulse text={code} />
+```
+
+For multiline code, use a template literal.
+
+---
+
+## 7. Using With a Code Block
+
+A common setup is:
+
+```jsx
+const code = `function hello() {
+  console.log("Hello World");
+}`;
+
+return (
+  <div className="relative">
+    <pre className="rounded-xl bg-[#11151f] p-5 text-white">
+      {code}
+    </pre>
+
+    <div className="absolute right-3 top-3">
+      <CopyPulse text={code} />
+    </div>
+  </div>
+);
+```
+
+The displayed code and copied content can therefore use the same variable.
+
+---
+
+## 8. How Copy Works
+
+CopyPulse first checks whether the modern Clipboard API is available:
+
+```jsx
+if (navigator.clipboard && window.isSecureContext) {
+  await navigator.clipboard.writeText(text);
+}
+```
+
+If it is unavailable, the component creates a temporary textarea and uses:
+
+```jsx
+document.execCommand("copy");
+```
+
+The temporary textarea is removed after copying.
+
+---
+
+## 9. Copy State
+
+The component uses React state:
+
+```jsx
+const [copied, setCopied] = useState(false);
+```
+
+When copying succeeds:
+
+```jsx
+setCopied(true);
+```
+
+After **1600ms**, the state automatically returns to:
+
+```jsx
+setCopied(false);
+```
+
+---
+
+## 10. Button States
+
+### Default
+
+```text
+[ Copy ] Copy Code
+```
+
+The button uses:
+
+* Dark background
+* White text
+* Subtle border
+* Violet hover border
+
+### Copied
+
+```text
+[ ✓ ] Copied!
+```
+
+The button changes to:
+
+* Emerald border
+* Emerald background
+* Emerald text
+* Check icon
+
+---
+
+## 11. Copy Icon
+
+The default state uses the Lucide `Copy` icon:
+
+```jsx
+<Copy
+  size={18}
+/>
+```
+
+The icon has a smooth transform transition:
+
+```jsx
+className="transition-transform duration-300"
+```
+
+---
+
+## 12. Success Icon
+
+After copying, the Copy icon is replaced with:
+
+```jsx
+<Check
+  size={18}
+  strokeWidth={2.5}
+/>
+```
+
+The Check icon uses the `copyCheck` animation.
+
+---
+
+## 13. Check Animation
+
+The animation is defined inside the component:
+
+```css
+@keyframes copyCheck {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-20deg);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.2) rotate(5deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+```
+
+Animation duration:
+
+```css
+0.35s
+```
+
+---
+
+## 14. Change Animation Speed
+
+Current animation:
+
+```css
+animation: copyCheck 0.35s ease-out;
+```
+
+Faster:
+
+```css
+animation: copyCheck 0.2s ease-out;
+```
+
+Slower:
+
+```css
+animation: copyCheck 0.6s ease-out;
+```
+
+---
+
+## 15. Change Copy Duration
+
+The copied state currently lasts:
+
+```jsx
+1600
+```
+
+milliseconds.
+
+To keep `Copied!` visible for 2 seconds:
+
+```jsx
+setTimeout(() => {
+  setCopied(false);
+}, 2000);
+```
+
+---
+
+## 16. Customize Colors
+
+Default state:
+
+```jsx
+border-white/10
+bg-[#11151f]
+text-white
+```
+
+Hover:
+
+```jsx
+hover:border-violet-400/40
+hover:bg-[#171c29]
+```
+
+Copied state:
+
+```jsx
+border-emerald-400/40
+bg-emerald-500/10
+text-emerald-400
+```
+
+You can replace these Tailwind classes with your own colors.
+
+---
+
+## 17. Customize Button Size
+
+The current button uses:
+
+```jsx
+px-5 py-3
+```
+
+Make it larger:
+
+```jsx
+px-6 py-3.5
+```
+
+Make it smaller:
+
+```jsx
+px-4 py-2
+```
+
+---
+
+## 18. Customize Border Radius
+
+Current:
+
+```jsx
+rounded-xl
+```
+
+More rounded:
+
+```jsx
+rounded-2xl
+```
+
+Less rounded:
+
+```jsx
+rounded-lg
+```
+
+---
+
+## 19. Customize Icon Size
+
+Current Copy icon:
+
+```jsx
+<Copy size={18} />
+```
+
+Larger:
+
+```jsx
+<Copy size={20} />
+```
+
+Smaller:
+
+```jsx
+<Copy size={16} />
+```
+
+The Check icon can be customized independently.
+
+---
+
+## 20. Props
+
+| Prop   | Type     | Default                            | Description                  |
+| ------ | -------- | ---------------------------------- | ---------------------------- |
+| `text` | `string` | `"const message = 'Hello World';"` | Text copied to the clipboard |
+
+Example:
+
+```jsx
+<CopyPulse text="Your custom text" />
+```
+
+---
+
+## 21. Complete Example
+
+```jsx
+import CopyPulse from "./components/CopyPulse";
+
+export default function App() {
+  const code = `const message = "Hello World";
+
+console.log(message);`;
+
+  return (
+    <main className="min-h-screen bg-[#050505] p-10">
+      <div className="mx-auto max-w-2xl">
+
+        <div className="relative">
+          <pre className="overflow-x-auto rounded-xl bg-[#11151f] p-6 text-white">
+            {code}
+          </pre>
+
+          <div className="absolute right-3 top-3">
+            <CopyPulse text={code} />
+          </div>
+        </div>
+
+      </div>
+    </main>
+  );
+}
+```
+
+---
+
+## 22. Best Use Cases
+
+CopyPulse is suitable for:
+
+* Component libraries
+* Documentation websites
+* Code snippets
+* Developer portfolios
+* Tutorials
+* API documentation
+* Installation commands
+* CLI commands
+* Code preview sections
+
+---
+
+## 23. Important
+
+CopyPulse does not download or send the copied text to a server.
+
+The component only copies the supplied `text` value to the user's clipboard.
+
+No backend or API is required.
+
+---
+
+## Quick Start
+
+```jsx
+import CopyPulse from "./components/CopyPulse";
+
+<CopyPulse text="Hello World!" />
+```
+
+That is enough to start using CopyPulse.

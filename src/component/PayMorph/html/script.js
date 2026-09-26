@@ -47,7 +47,7 @@ const particles =
   document.getElementById("particles");
 
 
-/* ================= CARD NUMBER ================= */
+/* CARD NUMBER  */
 
 function formatCardNumber(value) {
 
@@ -62,7 +62,7 @@ function formatCardNumber(value) {
 }
 
 
-/* ================= EXPIRY ================= */
+/*  EXPIRY  */
 
 function formatExpiry(value) {
 
@@ -85,7 +85,7 @@ function formatExpiry(value) {
 }
 
 
-/* ================= CARD BRAND ================= */
+/*  CARD BRAND*/
 
 function getCardBrand(number) {
 
@@ -120,7 +120,7 @@ function getCardBrand(number) {
 }
 
 
-/* ================= BRAND UI ================= */
+/* BRAND UI */
 
 function setBrand(brand) {
 
@@ -155,7 +155,7 @@ function setBrand(brand) {
 }
 
 
-/* ================= FLIP ================= */
+/*  FLIP */
 
 function flipToBack() {
 
@@ -175,7 +175,7 @@ function flipToFront() {
 }
 
 
-/* ================= CARD NUMBER INPUT ================= */
+/* CARD NUMBER INPUT */
 
 cardNumberInput.addEventListener(
   "input",
@@ -210,7 +210,7 @@ cardNumberInput.addEventListener(
 );
 
 
-/* ================= HOLDER ================= */
+/*  HOLDER  */
 
 holderInput.addEventListener(
   "input",
@@ -234,7 +234,7 @@ holderInput.addEventListener(
 );
 
 
-/* ================= EXPIRY ================= */
+/*  EXPIRY  */
 
 expiryInput.addEventListener(
   "input",
@@ -260,7 +260,7 @@ expiryInput.addEventListener(
 );
 
 
-/* ================= CVV ================= */
+/* CVV */
 
 cvvInput.addEventListener(
   "input",
@@ -295,7 +295,7 @@ cvvInput.addEventListener(
 );
 
 
-/* ================= PAYMENT ================= */
+/* PAYMENT */
 
 paymentForm.addEventListener(
   "submit",
@@ -380,7 +380,7 @@ paymentForm.addEventListener(
 );
 
 
-/* ================= PARTICLES ================= */
+/* PARTICLES */
 
 function createParticles() {
 
@@ -444,6 +444,6 @@ function createParticles() {
 }
 
 
-/* ================= INITIAL ================= */
+/* INITIAL  */
 
 setBrand("CARD");

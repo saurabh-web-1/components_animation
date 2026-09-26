@@ -13,9 +13,7 @@ let copied = false;
 let resetTimer;
 
 
-/* =========================================
-   COPY FUNCTION
-========================================= */
+// COPY FUNCTION
 
 async function copyText() {
 
@@ -24,9 +22,7 @@ async function copyText() {
 
   try {
 
-    /* =====================================
-       MODERN CLIPBOARD
-    ===================================== */
+    // MODERN CLIPBOARD
 
     if (
       navigator.clipboard &&
@@ -37,9 +33,7 @@ async function copyText() {
 
     }
 
-    /* =====================================
-       FALLBACK
-    ===================================== */
+    // FALLBACK
 
     else {
 
@@ -79,9 +73,7 @@ async function copyText() {
     }
 
 
-    /* =====================================
-       SUCCESS
-    ===================================== */
+    // SUCCESS
 
     showCopied();
 
@@ -98,9 +90,7 @@ async function copyText() {
 }
 
 
-/* =========================================
-   SHOW COPIED
-========================================= */
+// SHOW COPIED
 
 function showCopied() {
 
@@ -177,9 +167,7 @@ function showCopied() {
 }
 
 
-/* =========================================
-   RESET
-========================================= */
+// RESET
 
 function resetButton() {
 
@@ -213,9 +201,7 @@ function resetButton() {
 }
 
 
-/* =========================================
-   CLICK
-========================================= */
+/*CLICK */
 
 copyButton.addEventListener(
   "click",

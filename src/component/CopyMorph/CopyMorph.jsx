@@ -118,9 +118,7 @@ const CopyMorph = ({
       </span>
 
       <style>{`
-        /* =========================
-           ORBIT PARTICLES
-        ========================= */
+        /* ORBIT PARTICLES */
 
         .orbit-particle {
           position: absolute;
@@ -202,9 +200,7 @@ const CopyMorph = ({
         }
 
 
-        /* =========================
-           CHECK POP
-        ========================= */
+        /* CHECK POP */
 
         @keyframes orbitCheck {
 

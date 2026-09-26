@@ -22,9 +22,7 @@ body {
 }
 
 
-/* =========================================
-   PAGE
-========================================= */
+/* PAGE */
 
 .page {
   min-height: 100vh;
@@ -36,9 +34,7 @@ body {
 }
 
 
-/* =========================================
-   BUTTON
-========================================= */
+/* BUTTON*/
 
 .copy-button {
   position: relative;
@@ -91,9 +87,7 @@ body {
 }
 
 
-/* =========================================
-   COPIED STATE
-========================================= */
+/* COPIED STATE */
 
 .copy-button.copied {
   border-color: rgba(34,211,238,0.5);
@@ -104,9 +98,7 @@ body {
 }
 
 
-/* =========================================
-   ICON AREA
-========================================= */
+/* ICON AREA */
 
 .icon-area {
   position: relative;
@@ -120,9 +112,7 @@ body {
 }
 
 
-/* =========================================
-   COPY ICON
-========================================= */
+/*COPY ICON */
 
 .copy-icon {
   position: relative;
@@ -150,9 +140,7 @@ body {
 }
 
 
-/* =========================================
-   CHECK WRAPPER
-========================================= */
+/* CHECK WRAPPER*/
 
 .check-wrapper {
   position: absolute;
@@ -178,9 +166,7 @@ body {
 }
 
 
-/* =========================================
-   CHECK ANIMATION
-========================================= */
+/* CHECK ANIMATION*/
 
 .copy-button.copied .check-wrapper {
   animation:
@@ -235,9 +221,7 @@ body {
 }
 
 
-/* =========================================
-   ORBIT PARTICLES
-========================================= */
+/* ORBIT PARTICLES */
 
 .orbit-particle {
   position: absolute;
@@ -261,9 +245,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 1
-========================================= */
+/* PARTICLE 1 */
 
 .copy-button.copied .particle-one {
   animation:
@@ -279,9 +261,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 2
-========================================= */
+/* PARTICLE 2 */
 
 .copy-button.copied .particle-two {
   animation:
@@ -298,9 +278,7 @@ body {
 }
 
 
-/* =========================================
-   PARTICLE 3
-========================================= */
+/* PARTICLE 3 */
 
 .copy-button.copied .particle-three {
   animation:
@@ -317,9 +295,7 @@ body {
 }
 
 
-/* =========================================
-   ORBIT KEYFRAMES
-========================================= */
+/* ORBIT KEYFRAMES */
 
 @keyframes orbitParticle {
 
@@ -377,9 +353,7 @@ body {
 }
 
 
-/* =========================================
-   TEXT
-========================================= */
+/* TEXT*/
 
 .button-text {
   position: relative;
@@ -393,9 +367,7 @@ body {
 }
 
 
-/* =========================================
-   TEXT COPIED ANIMATION
-========================================= */
+/* TEXT COPIED ANIMATION */
 
 .copy-button.text-morph .button-text {
   animation:
@@ -442,9 +414,7 @@ body {
 }
 
 
-/* =========================================
-   FOCUS
-========================================= */
+/* FOCUS*/
 
 .copy-button:focus-visible {
   box-shadow:

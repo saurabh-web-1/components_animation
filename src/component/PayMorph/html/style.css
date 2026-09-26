@@ -29,7 +29,7 @@ input {
 }
 
 
-/* ================= PAGE ================= */
+/* PAGE  */
 
 .page {
   min-height: 100vh;
@@ -52,7 +52,7 @@ input {
 }
 
 
-/* ================= CARD ================= */
+/*  CARD  */
 
 .card-scene {
   width: 100%;
@@ -100,7 +100,7 @@ input {
 }
 
 
-/* ================= FRONT ================= */
+/* FRONT  */
 
 .card-front {
   padding: 28px;
@@ -162,7 +162,7 @@ input {
 }
 
 
-/* ================= TOP ================= */
+/*  TOP  */
 
 .card-top {
   display: flex;
@@ -173,7 +173,7 @@ input {
 }
 
 
-/* ================= CHIP ================= */
+/*  CHIP  */
 
 .chip {
   width: 48px;
@@ -235,7 +235,7 @@ input {
 }
 
 
-/* ================= BRAND ================= */
+/*  BRAND  */
 
 .brand {
   font-size: 18px;
@@ -286,7 +286,7 @@ input {
 }
 
 
-/* ================= NUMBER ================= */
+/* NUMBER */
 
 .card-number {
   font-size: 22px;
@@ -312,7 +312,7 @@ input {
 }
 
 
-/* ================= BOTTOM ================= */
+/*  BOTTOM  */
 
 .card-bottom {
   display: flex;
@@ -361,7 +361,7 @@ input {
 }
 
 
-/* ================= BACK ================= */
+/*  BACK  */
 
 .card-back {
   background:
@@ -482,7 +482,7 @@ input {
 }
 
 
-/* ================= FORM ================= */
+/* FORM  */
 
 .form {
   margin-top: 32px;
@@ -559,7 +559,7 @@ input {
 }
 
 
-/* ================= PAY BUTTON ================= */
+/*  PAY BUTTON  */
 
 .pay-button {
   position: relative;
@@ -625,7 +625,7 @@ input {
 }
 
 
-/* ================= SPINNER ================= */
+/*  SPINNER  */
 
 .spinner {
   width: 20px;
@@ -644,7 +644,7 @@ input {
 }
 
 
-/* ================= SUCCESS ================= */
+/*  SUCCESS  */
 
 .success-icon {
   width: 24px;
@@ -668,7 +668,7 @@ input {
 }
 
 
-/* ================= PARTICLES ================= */
+/*  PARTICLES  */
 
 .particles {
   position: fixed;
@@ -700,7 +700,7 @@ input {
 }
 
 
-/* ================= ANIMATIONS ================= */
+/*  ANIMATIONS  */
 
 @keyframes spin {
 
@@ -793,7 +793,7 @@ input {
 }
 
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media (max-width: 500px) {
 
