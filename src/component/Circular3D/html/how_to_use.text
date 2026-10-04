@@ -1,0 +1,654 @@
+# Circular3D — How to Use
+
+Circular3D is an interactive 3D card carousel built with pure HTML, CSS, and JavaScript. Cards rotate around a circular 3D stage and support drag rotation, autoplay, navigation arrows, pagination dots, front/back flipping, and page redirects.
+
+## Features
+
+- 3D circular card carousel
+- Mouse drag rotation
+- Touch/pointer support
+- Automatic card rotation
+- Previous and next buttons
+- Pagination dots
+- Front and back card faces
+- Click front card to flip
+- Click back card to open page
+- Return-to-front button
+- Individual card accent colors
+- Card images
+- Smooth depth scaling
+- Blur and opacity effects
+- Light sweep animation
+- Responsive layout
+- No external library required
+
+## 1. Folder Structure
+
+```text
+Circular3D/
+├── index.html
+├── style.css
+└── script.js
+```
+
+## 2. Connect CSS
+
+Add the stylesheet inside the `<head>`.
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+## 3. Connect JavaScript
+
+Add JavaScript before the closing `</body>` tag.
+
+```html
+<script src="script.js"></script>
+```
+
+## 4. Main HTML Structure
+
+```html
+<main class="circular-page">
+
+  <div class="background-glow"></div>
+
+  <div class="circular-wrapper">
+
+    <div class="card-stage" id="cardStage">
+
+      <div class="center-glow"></div>
+
+      <div
+        class="cards-container"
+        id="cardsContainer">
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+```
+
+JavaScript automatically generates the cards inside `cardsContainer`.
+
+## 5. Navigation Controls
+
+Add navigation inside `cardStage`.
+
+```html
+<div class="controls" id="controls">
+
+  <button
+    class="control-btn"
+    id="previousBtn"
+    type="button">
+    ←
+  </button>
+
+  <div class="dots" id="dots"></div>
+
+  <button
+    class="control-btn"
+    id="nextBtn"
+    type="button">
+    →
+  </button>
+
+</div>
+```
+
+The arrows move backward and forward through the carousel.
+
+## 6. Instruction Text
+
+```html
+<div class="instruction">
+  Drag to rotate · Click front card · Back to open
+</div>
+```
+
+This explains the main interactions to users.
+
+## 7. Add Cards
+
+Cards are stored inside `DEFAULT_CARDS`.
+
+```js
+const DEFAULT_CARDS = [
+  {
+    category: "LANGUAGE • PYTHON",
+
+    title: "First Line of Code",
+
+    description:
+      "The terminal glowed with my first program.",
+
+    detail:
+      "More information about this card.",
+
+    meta: "code / 01",
+
+    accent: "#a855f7",
+
+    image:
+      "https://example.com/image.jpg",
+
+    link: "/card"
+  }
+];
+```
+
+The original component uses the same card-data approach for category, title, description, detail, accent, image, metadata, and destination.
+
+## 8. Card Category
+
+```js
+category: "LANGUAGE • PYTHON"
+```
+
+Displayed at the top of the card.
+
+## 9. Card Title
+
+```js
+title: "First Line of Code"
+```
+
+This is the main card heading.
+
+## 10. Card Description
+
+```js
+description:
+  "The terminal glowed with my first program."
+```
+
+Displayed on the front side.
+
+## 11. Back Description
+
+```js
+detail:
+  "More information about this card."
+```
+
+Displayed after the card flips.
+
+## 12. Card Accent
+
+Each card can have a different theme color.
+
+```js
+accent: "#a855f7"
+```
+
+For example:
+
+```js
+accent: "#ec4899"
+```
+
+```js
+accent: "#06b6d4"
+```
+
+## 13. Card Image
+
+Add an image URL:
+
+```js
+image:
+  "https://example.com/image.jpg"
+```
+
+The front and back designs automatically use the image.
+
+## 14. Card Link
+
+Set the page that should open from the back side.
+
+```js
+link: "/card"
+```
+
+Example:
+
+```js
+link: "/components/copypulse"
+```
+
+## 15. Front Card Click
+
+Only the card currently facing the user is flipped when clicked.
+
+```js
+if (
+  clickedCard !== null &&
+  clickedCard === getFrontIndex()
+) {
+  flipped =
+    flipped === clickedCard
+      ? null
+      : clickedCard;
+
+  updateCards();
+}
+```
+
+This matches the original front-card click behavior.
+
+## 16. Back Card Click
+
+Clicking the back side redirects to the card's `link`.
+
+```js
+window.location.href =
+  card.link || "/card";
+```
+
+The source component similarly navigates to `card.link` with `/card` as its fallback.
+
+## 17. Return Button
+
+The back side contains a return button.
+
+```html
+<button
+  type="button"
+  class="return-btn">
+  ↶
+</button>
+```
+
+Clicking it returns the card to its front side without redirecting.
+
+## 18. Drag to Rotate
+
+Users can drag horizontally.
+
+```js
+const deltaX =
+  event.clientX -
+  interaction.startX;
+
+rotation =
+  interaction.startRotation +
+  deltaX * CONFIG.dragSensitivity;
+```
+
+The original component begins dragging after horizontal movement exceeds 8px.
+
+## 19. Drag Sensitivity
+
+Control how quickly cards rotate.
+
+```js
+dragSensitivity: 0.42
+```
+
+Lower value:
+
+```js
+dragSensitivity: 0.25
+```
+
+Higher value:
+
+```js
+dragSensitivity: 0.7
+```
+
+## 20. Snap to Nearest Card
+
+After dragging, the carousel automatically aligns the nearest card.
+
+```js
+function snapToNearest() {
+  const nearest =
+    Math.round(rotation / step);
+
+  animateRotation(
+    nearest * step
+  );
+}
+```
+
+## 21. Previous Button
+
+```js
+function previous() {
+  const nearest =
+    Math.round(rotation / step);
+
+  animateRotation(
+    (nearest + 1) * step
+  );
+}
+```
+
+Click:
+
+```text
+← Previous Card
+```
+
+## 22. Next Button
+
+```js
+function next() {
+  const nearest =
+    Math.round(rotation / step);
+
+  animateRotation(
+    (nearest - 1) * step
+  );
+}
+```
+
+Click:
+
+```text
+Next Card →
+```
+
+## 23. Arrow Button Fix
+
+The controls must be isolated from the carousel drag handler.
+
+```js
+controls.addEventListener(
+  "pointerdown",
+  (event) => {
+    event.stopPropagation();
+  }
+);
+```
+
+Also prevent the stage from starting drag when controls are clicked.
+
+```js
+if (
+  event.target.closest("#controls")
+) {
+  return;
+}
+```
+
+This keeps the arrows and dots independently clickable, matching the source's control event isolation.
+
+## 24. Pagination Dots
+
+Dots are automatically generated based on the number of cards.
+
+```js
+cards.forEach((_, index) => {
+  const button =
+    document.createElement("button");
+
+  button.className = "dot-btn";
+});
+```
+
+Clicking a dot opens that specific card position.
+
+## 25. Active Dot
+
+The current card receives:
+
+```css
+.dot.active {
+  width: 22px;
+  opacity: 1;
+}
+```
+
+Inactive dots remain smaller.
+
+## 26. Autoplay
+
+Enable automatic carousel movement:
+
+```js
+autoPlay: true
+```
+
+Disable it:
+
+```js
+autoPlay: false
+```
+
+The original component pauses automatic movement during dragging or while a card is flipped.
+
+## 27. Autoplay Delay
+
+```js
+holdDuration: 2200
+```
+
+This means approximately 2.2 seconds before the next automatic movement begins.
+
+Example:
+
+```js
+holdDuration: 4000
+```
+
+for a slower carousel.
+
+## 28. Animation Speed
+
+```js
+moveDuration: 1.45
+```
+
+Faster:
+
+```js
+moveDuration: 0.8
+```
+
+Slower:
+
+```js
+moveDuration: 2
+```
+
+## 29. Card Size
+
+```js
+cardWidth: 300,
+cardHeight: 410
+```
+
+Example:
+
+```js
+cardWidth: 320,
+cardHeight: 430
+```
+
+## 30. Circle Radius
+
+```js
+radius: 390
+```
+
+Increase the radius to create more space between cards.
+
+```js
+radius: 450
+```
+
+Decrease it for a tighter carousel.
+
+```js
+radius: 330
+```
+
+## 31. 3D Perspective
+
+The stage uses CSS perspective.
+
+```css
+.card-stage {
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+}
+```
+
+This creates the 3D depth effect.
+
+## 32. Depth Effect
+
+JavaScript calculates card position using:
+
+```js
+const x =
+  Math.sin(radians) * CONFIG.radius;
+
+const z =
+  Math.cos(radians) * CONFIG.radius;
+```
+
+Cards closer to the viewer appear larger and clearer, while distant cards become smaller, dimmer, and slightly blurred. This follows the source component's depth calculations.
+
+## 33. Flip Animation
+
+The front/back animation uses:
+
+```css
+.card-flipper {
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.72s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-flipper.flipped {
+  transform: rotateY(180deg);
+}
+```
+
+## 34. Light Sweep
+
+The front card receives a moving light effect.
+
+```css
+.light-sweep {
+  animation:
+    lightSweep 3.7s
+    ease-in-out infinite;
+}
+```
+
+This gives the active card a subtle premium highlight.
+
+## 35. Redirect Control
+
+Redirect behavior can be controlled using:
+
+```js
+redirectOnBackClick: true
+```
+
+Disable redirect:
+
+```js
+redirectOnBackClick: false
+```
+
+## 36. Add More Cards
+
+Simply add another object:
+
+```js
+{
+  category: "UI DESIGN",
+  title: "Glass Interface",
+  description:
+    "Exploring modern glass interfaces.",
+  detail:
+    "A detailed explanation.",
+  meta: "design / 07",
+  accent: "#22d3ee",
+  image:
+    "https://example.com/design.jpg",
+  link: "/glass-interface"
+}
+```
+
+The carousel automatically recalculates spacing.
+
+## 37. Responsive Design
+
+Use media queries to adjust the stage on smaller screens.
+
+```css
+@media (max-width: 480px) {
+  .card-stage {
+    height: 570px;
+  }
+
+  .card-title {
+    font-size: 26px;
+  }
+}
+```
+
+## 38. Dependencies
+
+This version does not require:
+
+- React
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- React Router
+- npm
+- Vite
+
+It runs directly with HTML, CSS, and JavaScript.
+
+## 39. Quick Setup
+
+1. Create the `Circular3D` folder.
+2. Add `index.html`.
+3. Add `style.css`.
+4. Add `script.js`.
+5. Connect CSS.
+6. Connect JavaScript.
+7. Add your card data.
+8. Change card links.
+9. Open `index.html` in the browser.
+
+## 40. Final Structure
+
+```text
+Circular3D/
+│
+├── index.html
+│   └── Carousel structure
+│
+├── style.css
+│   ├── 3D cards
+│   ├── Flip animation
+│   ├── Controls
+│   └── Responsive design
+│
+└── script.js
+    ├── Card data
+    ├── 3D rotation
+    ├── Drag controls
+    ├── Arrow controls
+    ├── Pagination
+    ├── Autoplay
+    ├── Card flip
+    └── Redirect
+```
+
+Circular3D is now ready to use as a standalone interactive 3D carousel component.

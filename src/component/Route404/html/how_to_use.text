@@ -1,0 +1,528 @@
+# Route404 — How to Use
+
+Route404 is an interactive 404 error page where the broken-page experience is represented by an unplugged power plug. Users can drag the plug into the socket to restore the connection.
+
+## Features
+
+- Interactive 404 error page
+- Draggable plug
+- Socket snapping
+- Magnetic target effect
+- Plug insertion animation
+- Animated connector pins
+- Connection flash effect
+- Connected/disconnected states
+- Responsive socket positioning
+- Interactive bottom action button
+- No external JavaScript library required
+
+## 1. Folder Structure
+
+Create the component folder:
+
+```text
+Route404/
+├── index.html
+├── style.css
+└── script.js
+```
+
+## 2. HTML Setup
+
+The main page container is:
+
+```html
+<main class="route-page">
+  ...
+</main>
+```
+
+The page contains four major areas:
+
+```text
+Page
+├── Hero content
+├── Interactive stage
+├── Action button
+└── Route label
+```
+
+## 3. Hero Section
+
+The hero displays the current connection state:
+
+```text
+Signal lost
+404
+This page came unplugged.
+```
+
+After successful connection:
+
+```text
+Power restored
+404
+This page came unplugged.
+```
+
+The status automatically changes when the plug connects.
+
+## 4. Connect CSS
+
+Add the stylesheet inside `<head>`:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+The stylesheet controls:
+
+- Page layout
+- 404 typography
+- Background glow
+- Socket design
+- Plug design
+- Cable
+- Animations
+- Buttons
+- Responsive behavior
+
+## 5. Connect JavaScript
+
+Add the script before `</body>`:
+
+```html
+<script src="script.js"></script>
+```
+
+JavaScript controls the complete interaction.
+
+## 6. Interactive Plug
+
+The plug is represented by:
+
+```html
+<div
+  class="plug"
+  id="plug"
+  role="button"
+  tabindex="0"
+>
+```
+
+It can be dragged using pointer events.
+
+The component supports:
+
+```text
+Mouse
+Touch
+Pointer devices
+```
+
+## 7. Drag the Plug
+
+Press and drag the plug toward the socket.
+
+While dragging:
+
+- The plug follows the pointer.
+- The cable follows the plug.
+- The plug slightly scales up.
+- The plug rotates slightly.
+- The socket target becomes active when nearby.
+
+## 8. Magnetic Socket
+
+When the plug gets close to the socket, a circular magnetic target appears.
+
+The target uses:
+
+```html
+<div
+  class="magnetic-target"
+  id="magneticTarget"
+></div>
+```
+
+The default snap distance is:
+
+```javascript
+const SNAP_DISTANCE = 125;
+```
+
+## 9. Change Snap Distance
+
+To make the socket easier to connect:
+
+```javascript
+const SNAP_DISTANCE = 160;
+```
+
+To make the connection more precise:
+
+```javascript
+const SNAP_DISTANCE = 90;
+```
+
+A larger value means the plug can connect from farther away.
+
+## 10. Connection Flow
+
+When the plug is released inside the snap distance:
+
+```text
+Drag
+  ↓
+Near socket
+  ↓
+Magnetic target
+  ↓
+Release
+  ↓
+Plug moves near socket
+  ↓
+Pins slide inside
+  ↓
+Connected
+  ↓
+Connection flash
+  ↓
+Power restored
+```
+
+## 11. Insertion Animation
+
+The connection happens in two phases.
+
+First, the plug moves to the pre-insert position.
+
+Then the plug moves into the connected position.
+
+The default timing is:
+
+```text
+Pre-insert: 430ms
+Pin insertion: 420ms
+Flash: 320ms
+```
+
+## 12. Connector Pins
+
+The plug has two animated pins:
+
+```html
+<div class="plug-pin plug-pin-top"></div>
+<div class="plug-pin plug-pin-bottom"></div>
+```
+
+During insertion, the pins move toward the socket.
+
+When connected, they become partially hidden to create the appearance that they are inside the socket.
+
+## 13. Connection Flash
+
+After successful connection, a small white flash appears around the socket.
+
+It contains:
+
+- Flash core
+- Four rays
+- Scale animation
+- Fade animation
+
+The effect automatically disappears after the connection animation.
+
+## 14. Connected State
+
+When connected, the page receives:
+
+```html
+connected
+```
+
+on the main container:
+
+```html
+<main class="route-page connected">
+```
+
+This changes:
+
+- 404 opacity
+- Heading opacity
+- Description opacity
+- Background glow
+- Socket shadow
+- Status indicator
+
+The status changes to:
+
+```text
+Power restored
+```
+
+## 15. Disconnecting
+
+A connected plug can be dragged again.
+
+When dragging starts:
+
+```text
+Connected
+   ↓
+Plug released from socket
+   ↓
+Disconnected
+```
+
+The page returns to the original disconnected state.
+
+## 16. Action Button
+
+The bottom button starts with:
+
+```text
+Plug it back in
+```
+
+Clicking it automatically connects the plug.
+
+After connection it changes to:
+
+```text
+Unplug it
+```
+
+Clicking it again disconnects the plug.
+
+## 17. Button States
+
+The action button has three possible states:
+
+```text
+Plug it back in
+      ↓
+Connecting
+      ↓
+Unplug it
+```
+
+During the connection animation, a loading spinner is displayed.
+
+## 18. Programmatic Connection
+
+You can trigger the connection from JavaScript:
+
+```javascript
+connect();
+```
+
+For example:
+
+```javascript
+document
+  .getElementById("actionButton")
+  .click();
+```
+
+## 19. Programmatic Disconnect
+
+To disconnect the plug:
+
+```javascript
+disconnect();
+```
+
+This returns the plug to its initial position.
+
+## 20. Home Button
+
+The page includes a:
+
+```text
+Take me home
+```
+
+button.
+
+The default JavaScript sends the user to:
+
+```javascript
+window.location.href = "/";
+```
+
+To use another URL:
+
+```javascript
+window.location.href = "/home";
+```
+
+Or:
+
+```javascript
+window.location.href = "https://example.com";
+```
+
+## 21. Changing the 404 Heading
+
+Change:
+
+```html
+This page came unplugged.
+```
+
+to your preferred message.
+
+Examples:
+
+```text
+Looks like this page lost power.
+```
+
+```text
+Oops! This page is disconnected.
+```
+
+```text
+This route is currently offline.
+```
+
+## 22. Changing the Description
+
+Replace:
+
+```html
+We couldn't find the page you were looking for.
+It may have moved, or the link may be broken.
+```
+
+with your own 404 description.
+
+## 23. Changing the Background
+
+The main background is:
+
+```css
+.route-page {
+  background: #0b0912;
+}
+```
+
+You can replace it with another dark color.
+
+Example:
+
+```css
+.route-page {
+  background: #020617;
+}
+```
+
+## 24. Changing the 404 Size
+
+Desktop size:
+
+```css
+.error-code {
+  font-size: 120px;
+}
+```
+
+Larger:
+
+```css
+.error-code {
+  font-size: 180px;
+}
+```
+
+The component also includes responsive sizes for larger screens.
+
+## 25. Responsive Design
+
+The socket position and plug position are calculated from the stage size.
+
+The geometry is recalculated when the browser is resized:
+
+```javascript
+window.addEventListener(
+  "resize",
+  updateGeometry
+);
+```
+
+This keeps the interaction responsive.
+
+## 26. Cable
+
+The cable is rendered using SVG.
+
+The cable path changes according to the plug position:
+
+```text
+Ground
+  ↓
+Cable curve
+  ↓
+Plug
+```
+
+When the plug moves, the cable automatically follows it.
+
+## 27. Keyboard Interaction
+
+The plug also supports keyboard activation.
+
+Press:
+
+```text
+Enter
+```
+
+or:
+
+```text
+Space
+```
+
+to connect or disconnect the plug.
+
+## 28. Recommended Use Cases
+
+Route404 works well for:
+
+- Creative 404 pages
+- Developer portfolios
+- Component libraries
+- SaaS websites
+- Dark-themed websites
+- Interactive landing pages
+- Developer tools
+- Technology websites
+
+## 29. Quick Setup
+
+```text
+1. Create Route404 folder
+2. Add index.html
+3. Add style.css
+4. Add script.js
+5. Open index.html
+6. Drag the plug
+7. Move it toward the socket
+8. Release it
+9. Connection animation starts
+10. Use Unplug it to reset
+```
+
+## 30. Final Structure
+
+```text
+Route404/
+├── index.html
+├── style.css
+└── script.js
+```
+
+Route404 combines a standard 404 experience with an interactive plug-and-socket animation, creating a visual connection between a broken route and a restored page state.

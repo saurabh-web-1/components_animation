@@ -1,0 +1,434 @@
+# FlowLogin — How to Use
+
+FlowLogin is a compact, expandable login component with animated UI, email/password fields, password visibility, remember-me, forgot-password, social login buttons, and loading states.
+
+## Features
+
+- Expandable login card
+- Compact login state
+- Email address field
+- Password field
+- Show/hide password
+- Remember me
+- Forgot password
+- Loading state
+- Google login button
+- Apple login button
+- Create account link
+- Responsive design
+- No external dependency required
+
+## 1. Folder Structure
+
+```text
+FlowLogin/
+├── index.html
+├── style.css
+└── script.js
+```
+
+## 2. HTML Setup
+
+Create `index.html` and add the FlowLogin structure.
+
+```html
+<div class="flow-page">
+  <div class="flow-glow"></div>
+
+  <div class="flow-wrapper">
+    <div class="flow-orb">
+      <div class="orb-core"></div>
+      <div class="orb-highlight"></div>
+    </div>
+
+    <div class="login-card" id="loginCard">
+      <!-- Login content -->
+    </div>
+  </div>
+</div>
+```
+
+## 3. Connect CSS
+
+Add the stylesheet inside `<head>`.
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+## 4. Connect JavaScript
+
+Add the script before `</body>`.
+
+```html
+<script src="script.js"></script>
+```
+
+## 5. Login Card
+
+The card starts in compact mode and expands when the user clicks the login button.
+
+```html
+<div class="login-card" id="loginCard">
+  <div class="login-header">
+    <h1>Flow</h1>
+    <p>Good to see you. Dive back in.</p>
+  </div>
+
+  <button class="compact-login" id="expandBtn">
+    Log in
+  </button>
+</div>
+```
+
+## 6. Expand Card
+
+JavaScript controls the expanded state.
+
+```js
+expandBtn.addEventListener("click", () => {
+  loginCard.classList.add("expanded");
+});
+```
+
+## 7. Email Field
+
+Use a dedicated label class so the email label styling does not conflict with other elements.
+
+```html
+<div class="field-group">
+  <label class="input-label" for="email">
+    Email address
+  </label>
+
+  <input
+    class="input-field"
+    type="email"
+    id="email"
+    placeholder="you@example.com"
+  />
+</div>
+```
+
+## 8. Email CSS
+
+```css
+.input-label {
+  display: block;
+  width: 100%;
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.input-field {
+  width: 100%;
+  height: 46px;
+  box-sizing: border-box;
+  padding: 0 14px;
+}
+```
+
+## 9. Password Field
+
+The password field contains a visibility toggle.
+
+```html
+<div class="field-group">
+  <label class="input-label" for="password">
+    Password
+  </label>
+
+  <div class="password-wrapper">
+    <input
+      class="input-field"
+      type="password"
+      id="password"
+      placeholder="Enter your password"
+    />
+
+    <button
+      type="button"
+      class="password-toggle"
+      id="passwordToggle">
+      👁
+    </button>
+  </div>
+</div>
+```
+
+## 10. Password Visibility
+
+JavaScript switches between `password` and `text`.
+
+```js
+passwordToggle.addEventListener("click", () => {
+  const visible = password.type === "text";
+
+  password.type = visible ? "password" : "text";
+});
+```
+
+## 11. Remember Me
+
+```html
+<label class="remember-row">
+  <input type="checkbox" id="remember">
+  <span>Remember me</span>
+</label>
+```
+
+The selected value can be sent with the login request.
+
+## 12. Forgot Password
+
+```html
+<button type="button" id="forgotBtn">
+  Forgot password?
+</button>
+```
+
+Replace the button handler with your password-reset route.
+
+```js
+forgotBtn.addEventListener("click", () => {
+  window.location.href = "/forgot-password";
+});
+```
+
+## 13. Sign In Button
+
+```html
+<button type="submit" class="signin-btn" id="signinBtn">
+  <span id="signinText">Sign in</span>
+  <span class="loader" id="loader"></span>
+</button>
+```
+
+## 14. Loading State
+
+When the form is submitted, show the loader.
+
+```js
+function setLoading(state) {
+  signinBtn.disabled = state;
+  loader.classList.toggle("active", state);
+  signinText.textContent = state
+    ? "Signing in..."
+    : "Sign in";
+}
+```
+
+## 15. Login Data
+
+Collect the user's credentials.
+
+```js
+const loginData = {
+  email: email.value.trim(),
+  password: password.value,
+  remember: remember.checked
+};
+```
+
+## 16. API Integration
+
+Replace the demo submit logic with your backend API.
+
+```js
+const response = await fetch(
+  "https://your-api.com/api/auth/login",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(loginData)
+  }
+);
+
+const data = await response.json();
+```
+
+## 17. Successful Login
+
+After authentication, redirect the user.
+
+```js
+if (response.ok) {
+  window.location.href = "/dashboard";
+}
+```
+
+Use your own authentication and token-storage strategy.
+
+## 18. Google Login
+
+The Google button is provided as a UI element.
+
+```html
+<button class="social-btn" id="googleBtn">
+  Continue with Google
+</button>
+```
+
+Connect it to your Google OAuth implementation.
+
+## 19. Apple Login
+
+```html
+<button class="social-btn" id="appleBtn">
+  Continue with Apple
+</button>
+```
+
+Connect it to your Apple authentication flow.
+
+## 20. Create Account
+
+The footer can redirect to signup.
+
+```html
+<button id="createAccountBtn">
+  Create account
+</button>
+```
+
+```js
+createAccountBtn.addEventListener("click", () => {
+  window.location.href = "/signup";
+});
+```
+
+## 21. Card Size
+
+The component uses two main states:
+
+```css
+.login-card {
+  height: 198px;
+}
+
+.login-card.expanded {
+  height: 575px;
+}
+```
+
+Adjust these values if you add more fields.
+
+## 22. Rounded Design
+
+The card uses a large rounded appearance.
+
+```css
+.login-card {
+  border-radius: 22px;
+}
+
+.login-card.expanded {
+  border-radius: 27px;
+}
+```
+
+## 23. Responsive Layout
+
+Keep the wrapper flexible on smaller screens.
+
+```css
+.flow-wrapper {
+  width: min(410px, calc(100% - 32px));
+  margin: auto;
+}
+```
+
+## 24. Custom Colors
+
+Change the main UI colors in CSS.
+
+```css
+:root {
+  --accent: #22d3ee;
+  --text: #ffffff;
+  --muted: #94a3b8;
+  --border: rgba(255,255,255,.1);
+}
+```
+
+## 25. Custom Title
+
+Change:
+
+```html
+<h1>Flow</h1>
+```
+
+to your brand name.
+
+Example:
+
+```html
+<h1>InfiWeb</h1>
+```
+
+## 26. Custom Subtitle
+
+Change:
+
+```html
+<p>Good to see you. Dive back in.</p>
+```
+
+to your preferred message.
+
+## 27. Form Validation
+
+Check required fields before sending the request.
+
+```js
+if (!email.value.trim()) {
+  alert("Enter your email");
+  return;
+}
+
+if (!password.value) {
+  alert("Enter your password");
+  return;
+}
+```
+
+## 28. Dependencies
+
+The HTML/CSS/JS version does not require:
+
+- React
+- Framer Motion
+- Tailwind CSS
+- npm
+- Build tools
+
+It can run directly in a browser.
+
+## 29. Quick Setup
+
+1. Create a `FlowLogin` folder.
+2. Add `index.html`.
+3. Add `style.css`.
+4. Add `script.js`.
+5. Connect CSS and JS.
+6. Open `index.html`.
+7. Replace demo login logic with your API.
+8. Connect Google and Apple authentication if required.
+
+## 30. Final Structure
+
+```text
+FlowLogin/
+│
+├── index.html
+├── style.css
+└── script.js
+```
+
+FlowLogin is ready to use as a standalone login component and can be connected to any custom authentication backend.

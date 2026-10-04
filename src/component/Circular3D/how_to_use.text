@@ -1,0 +1,404 @@
+# Circular3D — How to Use
+
+Circular3D is an interactive 3D card carousel for React. Cards rotate around a circular 3D path and support autoplay, drag rotation, front-card flipping, navigation controls, indicators, and optional routing from the back side.
+
+## Features
+
+- Circular 3D card layout
+- Automatic card rotation
+- Mouse and touch drag support
+- Click front card to flip
+- Back card opens a route
+- Previous/Next controls
+- Card indicator controls
+- Custom card data
+- Custom card dimensions
+- Custom 3D perspective
+- Adjustable rotation sensitivity
+- Framer Motion animations
+- React Router navigation
+
+## Requirements
+
+Install the required packages:
+
+```bash
+npm install framer-motion lucide-react react-router-dom
+```
+
+Make sure Tailwind CSS is configured in your React project.
+
+## File Structure
+
+```text
+src/
+└── components/
+    └── Circular3D.jsx
+```
+
+## Import
+
+```jsx
+import Circular3D from "./components/Circular3D";
+```
+
+## Basic Usage
+
+```jsx
+<Circular3D />
+```
+
+The component includes six demo cards through `DEFAULT_CARDS`.
+
+## Custom Usage
+
+```jsx
+<Circular3D
+  autoPlay={true}
+  moveDuration={1.45}
+  holdDuration={2200}
+  cardWidth={300}
+  cardHeight={410}
+  radius={390}
+  perspective={1400}
+  dragSensitivity={0.42}
+  redirectOnBackClick={true}
+/>
+```
+
+## Custom Cards
+
+Pass your own cards using the `cards` prop:
+
+```jsx
+const cards = [
+  {
+    category: "WEB DEVELOPMENT",
+    title: "Modern Interfaces",
+    description: "Build clean and interactive interfaces.",
+    detail: "Create reusable interfaces with modern frontend technologies.",
+    meta: "web / 01",
+    accent: "#06b6d4",
+    image: "/images/web.jpg",
+    link: "/web-development",
+  },
+];
+```
+
+Then:
+
+```jsx
+<Circular3D cards={cards} />
+```
+
+## Card Data
+
+Each card supports:
+
+| Property | Purpose |
+|---|---|
+| `category` | Small category label |
+| `title` | Main card heading |
+| `description` | Front-side description |
+| `detail` | Back-side content |
+| `meta` | Small metadata text |
+| `accent` | Card accent color |
+| `image` | Card background image |
+| `link` | Route opened from back |
+
+## Multiple Cards
+
+```jsx
+const cards = [
+  {
+    category: "DESIGN",
+    title: "Creative Design",
+    description: "Visual systems for modern products.",
+    detail: "Design creates clarity and visual hierarchy.",
+    meta: "design / 01",
+    accent: "#a855f7",
+    image: "/design.jpg",
+    link: "/design",
+  },
+  {
+    category: "CODE",
+    title: "Clean Code",
+    description: "Build scalable frontend systems.",
+    detail: "Reusable components make projects easier to maintain.",
+    meta: "code / 02",
+    accent: "#06b6d4",
+    image: "/code.jpg",
+    link: "/code",
+  },
+];
+```
+
+## Props
+
+| Prop | Default | Description |
+|---|---:|---|
+| `cards` | `DEFAULT_CARDS` | Cards displayed in carousel |
+| `autoPlay` | `true` | Enables automatic rotation |
+| `moveDuration` | `1.45` | Rotation animation duration |
+| `holdDuration` | `2200` | Pause time between rotations |
+| `cardWidth` | `300` | Card width in pixels |
+| `cardHeight` | `410` | Card height in pixels |
+| `radius` | `390` | Circular carousel radius |
+| `perspective` | `1400` | 3D perspective depth |
+| `dragSensitivity` | `0.42` | Drag rotation sensitivity |
+| `redirectOnBackClick` | `true` | Enables back-card navigation |
+
+## Disable Autoplay
+
+```jsx
+<Circular3D autoPlay={false} />
+```
+
+Users can still rotate cards manually.
+
+## Adjust Autoplay Speed
+
+Faster movement:
+
+```jsx
+<Circular3D
+  moveDuration={0.8}
+  holdDuration={1200}
+/>
+```
+
+Slower movement:
+
+```jsx
+<Circular3D
+  moveDuration={2}
+  holdDuration={3500}
+/>
+```
+
+`moveDuration` controls the rotation animation, while `holdDuration` controls how long the carousel waits before moving again.
+
+## Card Size
+
+Change card dimensions:
+
+```jsx
+<Circular3D
+  cardWidth={340}
+  cardHeight={450}
+/>
+```
+
+For smaller cards:
+
+```jsx
+<Circular3D
+  cardWidth={260}
+  cardHeight={360}
+/>
+```
+
+## 3D Radius
+
+The `radius` controls how far cards travel around the center.
+
+```jsx
+<Circular3D radius={450} />
+```
+
+Smaller radius:
+
+```jsx
+<Circular3D radius={300} />
+```
+
+## Perspective
+
+Increase perspective for a stronger 3D effect:
+
+```jsx
+<Circular3D perspective={1700} />
+```
+
+Lower values create a stronger perspective effect.
+
+## Drag Sensitivity
+
+```jsx
+<Circular3D dragSensitivity={0.6} />
+```
+
+Higher value = faster rotation while dragging.
+
+Lower value:
+
+```jsx
+<Circular3D dragSensitivity={0.25} />
+```
+
+## Card Interaction
+
+The component supports two different click behaviors.
+
+### Front Card
+
+Clicking the front card flips it to the back.
+
+### Back Card
+
+Clicking the back card opens its configured `link`.
+
+The component uses React Router's `navigate()` for routing.
+
+## Disable Back Navigation
+
+```jsx
+<Circular3D redirectOnBackClick={false} />
+```
+
+The back card will remain visible without navigating.
+
+## Routing Setup
+
+Make sure your application uses `BrowserRouter`:
+
+```jsx
+import { BrowserRouter } from "react-router-dom";
+
+<BrowserRouter>
+  <App />
+</BrowserRouter>
+```
+
+Create matching routes:
+
+```jsx
+<Route path="/web-development" element={<WebDevelopment />} />
+<Route path="/design" element={<Design />} />
+```
+
+## Navigation Controls
+
+The component includes:
+
+- Previous button
+- Next button
+- Card indicators
+
+The indicator corresponding to the front card expands automatically.
+
+## Drag Interaction
+
+Users can:
+
+- Drag left/right to rotate
+- Release to snap to the nearest card
+- Click the front card to flip
+- Use touch gestures on supported devices
+
+Dragging temporarily pauses autoplay.
+
+## Flip Animation
+
+The card uses a 3D `rotateY` animation.
+
+Current flip duration:
+
+```text
+0.72 seconds
+```
+
+To customize it, modify:
+
+```jsx
+duration: 0.72
+```
+
+## Card Styling
+
+Cards currently use:
+
+```text
+Width: 300px
+Height: 410px
+Radius: 28px
+Background: Dark purple
+Border: White with low opacity
+```
+
+The front background uses each card's `accent` color.
+
+## Accent Color
+
+Change the accent per card:
+
+```jsx
+accent: "#06b6d4"
+```
+
+Examples:
+
+```text
+Purple: #a855f7
+Pink:   #ec4899
+Blue:   #6366f1
+Cyan:   #06b6d4
+Violet: #7c3aed
+```
+
+The accent affects gradients, labels, highlights, and glow effects.
+
+## Images
+
+Use a local image:
+
+```jsx
+image: "/images/project.jpg"
+```
+
+Or an external image:
+
+```jsx
+image: "https://example.com/image.jpg"
+```
+
+If no image is provided, the card still works without the image section.
+
+## Background Theme
+
+The main carousel background is dark:
+
+```text
+#05040a
+```
+
+The component also uses purple radial glow effects.
+
+Change the main container class if you want a different page background.
+
+## Recommended Setup
+
+```jsx
+<Circular3D
+  cards={cards}
+  autoPlay={true}
+  moveDuration={1.45}
+  holdDuration={2200}
+  cardWidth={300}
+  cardHeight={410}
+  radius={390}
+  perspective={1400}
+  dragSensitivity={0.42}
+  redirectOnBackClick={true}
+/>
+```
+
+## Important
+
+The component itself does not fetch card data from an API.
+
+Pass your data through the `cards` prop.
+
+Routing requires React Router and valid routes for each card's `link`.
+
+Circular3D works best with 3–8 cards for a balanced circular layout.

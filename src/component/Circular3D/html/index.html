@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circular 3D Cards</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="circular-page">
+
+    <div class="background-glow"></div>
+
+    <div class="circular-wrapper">
+
+      <div class="card-stage" id="cardStage">
+
+        <div class="center-glow"></div>
+
+        <div class="cards-container" id="cardsContainer"></div>
+
+        <div class="controls" id="controls">
+
+          <button
+            class="control-btn"
+            id="previousBtn"
+            type="button"
+            aria-label="Previous card"
+          >
+            <span>←</span>
+          </button>
+
+          <div class="dots" id="dots"></div>
+
+          <button
+            class="control-btn"
+            id="nextBtn"
+            type="button"
+            aria-label="Next card"
+          >
+            <span>→</span>
+          </button>
+
+        </div>
+
+        <div class="instruction">
+          Drag to rotate · Click front card · Back to open
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,964 @@
+# NovaNav — React Component Documentation
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section.
+
+Search for:
+- `INSTALLATION`
+- `HOW TO USE`
+- `CHANGE ITEMS`
+- `CHANGE ICONS`
+- `ACTIVE COLOR`
+- `CHANGE SIZE`
+- `NOTIFICATION`
+- `CUSTOMIZE ANIMATION`
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+`NovaNav` is a responsive bottom-style navigation component built with:
+
+- React
+- Tailwind CSS
+- Lucide React
+
+The component includes:
+
+- 5 navigation items
+- Active navigation state
+- Animated active pill
+- Lucide icons
+- Notification indicator
+- Hover animation
+- Active icon animation
+- Responsive width
+- Dark navigation design
+
+---
+
+## 2. REQUIREMENTS
+
+Install Lucide React:
+
+```bash
+npm install lucide-react
+```
+
+Make sure Tailwind CSS is configured in your React project.
+
+---
+
+## 3. FILE STRUCTURE
+
+Create:
+
+```text
+src/
+└── components/
+    └── NovaNav/
+        └── NovaNav.jsx
+```
+
+Paste the component code inside `NovaNav.jsx`.
+
+---
+
+## 4. HOW TO USE
+
+Import the component:
+
+```jsx
+import NovaNav from "./components/NovaNav/NovaNav";
+```
+
+Render it:
+
+```jsx
+<NovaNav />
+```
+
+Example:
+
+```jsx
+function App() {
+  return (
+    <main className="min-h-screen flex items-center justify-center">
+      <NovaNav />
+    </main>
+  );
+}
+
+export default App;
+```
+
+---
+
+## 5. ACTIVE NAVIGATION
+
+The active item is controlled by:
+
+```jsx
+const [active, setActive] = useState("Home");
+```
+
+The default active item is:
+
+```text
+Home
+```
+
+To start with Search:
+
+```jsx
+const [active, setActive] = useState("Search");
+```
+
+---
+
+## 6. CHANGE NAVIGATION ITEMS
+
+Items are stored inside:
+
+```jsx
+const items = [
+  {
+    name: "Home",
+    icon: Home,
+  },
+];
+```
+
+Add a new item:
+
+```jsx
+{
+  name: "Profile",
+  icon: UserRound,
+}
+```
+
+The component will automatically render it.
+
+---
+
+## 7. REMOVE AN ITEM
+
+Simply remove its object from the `items` array.
+
+Example:
+
+```jsx
+{
+  name: "Saved",
+  icon: UserRound,
+}
+```
+
+Delete that object to remove Saved from the navigation.
+
+---
+
+## 8. CHANGE ITEM NAME
+
+Find:
+
+```jsx
+name: "Home"
+```
+
+Change it:
+
+```jsx
+name: "Dashboard"
+```
+
+The label and active-state logic will automatically use the new name.
+
+---
+
+## 9. CHANGE ICON
+
+Icons come from `lucide-react`.
+
+Current imports:
+
+```jsx
+import {
+  Home,
+  Search,
+  Plus,
+  MessageCircle,
+  UserRound,
+} from "lucide-react";
+```
+
+Example:
+
+```jsx
+import {
+  Home,
+  Settings,
+} from "lucide-react";
+```
+
+Then:
+
+```jsx
+{
+  name: "Settings",
+  icon: Settings,
+}
+```
+
+---
+
+## 10. CHANGE ICON SIZE
+
+Current icon size:
+
+```jsx
+<Icon size={19} />
+```
+
+Larger:
+
+```jsx
+<Icon size={22} />
+```
+
+Smaller:
+
+```jsx
+<Icon size={17} />
+```
+
+---
+
+## 11. CHANGE ICON STROKE
+
+The active icon uses:
+
+```jsx
+strokeWidth={isActive ? 2.5 : 1.8}
+```
+
+Increase active stroke:
+
+```jsx
+strokeWidth={isActive ? 3 : 1.8}
+```
+
+This makes the active icon visually stronger.
+
+---
+
+## 12. CHANGE NAVIGATION WIDTH
+
+Current:
+
+```text
+w-[390px]
+```
+
+Change it:
+
+```text
+w-[450px]
+```
+
+For a smaller navigation:
+
+```text
+w-[320px]
+```
+
+The component also has:
+
+```text
+max-w-[calc(100vw-32px)]
+```
+
+which prevents it from exceeding the available mobile screen width.
+
+---
+
+## 13. CHANGE NAVIGATION HEIGHT
+
+The navigation uses:
+
+```text
+px-3
+py-2
+```
+
+Increase vertical padding:
+
+```text
+px-3
+py-3
+```
+
+This makes the navigation taller.
+
+---
+
+## 14. CHANGE NAVIGATION BACKGROUND
+
+Current:
+
+```text
+bg-[#17151a]
+```
+
+Example:
+
+```text
+bg-[#111827]
+```
+
+Or:
+
+```text
+bg-black
+```
+
+---
+
+## 15. CHANGE NAVIGATION RADIUS
+
+Current:
+
+```text
+rounded-full
+```
+
+For less rounded corners:
+
+```text
+rounded-3xl
+```
+
+For a custom radius:
+
+```text
+rounded-[24px]
+```
+
+---
+
+## 16. CHANGE NAVIGATION SHADOW
+
+Current:
+
+```text
+shadow-[0_15px_40px_rgba(0,0,0,0.35)]
+```
+
+Stronger shadow:
+
+```text
+shadow-[0_20px_60px_rgba(0,0,0,0.45)]
+```
+
+Reduce the shadow values for a flatter design.
+
+---
+
+## 17. CHANGE ACTIVE COLOR
+
+The active item currently uses:
+
+```text
+bg-red-600
+```
+
+Change it to:
+
+```text
+bg-blue-600
+```
+
+Or:
+
+```text
+bg-violet-600
+```
+
+Or:
+
+```text
+bg-emerald-600
+```
+
+---
+
+## 18. CHANGE ACTIVE GLOW
+
+Current active shadow:
+
+```text
+shadow-[0_6px_18px_rgba(220,38,38,0.35)]
+```
+
+For a blue active pill:
+
+```text
+shadow-[0_6px_18px_rgba(37,99,235,0.35)]
+```
+
+Match the shadow color with your active background.
+
+---
+
+## 19. CHANGE ACTIVE PILL SIZE
+
+Current:
+
+```text
+h-14
+w-18
+```
+
+Increase width:
+
+```text
+w-20
+```
+
+Increase height:
+
+```text
+h-16
+```
+
+Make sure the active pill still fits inside the navigation.
+
+---
+
+## 20. CHANGE ACTIVE PILL RADIUS
+
+Current:
+
+```text
+rounded-full
+```
+
+Use:
+
+```text
+rounded-2xl
+```
+
+for a less circular active background.
+
+---
+
+## 21. CHANGE ACTIVE ANIMATION SPEED
+
+The active pill uses:
+
+```text
+duration-500
+```
+
+Faster:
+
+```text
+duration-300
+```
+
+Slower:
+
+```text
+duration-700
+```
+
+---
+
+## 22. CHANGE ACTIVE SCALE
+
+Active:
+
+```text
+scale-100
+```
+
+Inactive:
+
+```text
+scale-75
+```
+
+A larger inactive transition can use:
+
+```text
+scale-90
+```
+
+---
+
+## 23. CHANGE ICON HOVER COLOR
+
+Inactive icons currently use:
+
+```text
+text-neutral-400
+```
+
+Hover:
+
+```text
+group-hover:text-white
+```
+
+Change the hover color:
+
+```text
+group-hover:text-red-400
+```
+
+---
+
+## 24. CHANGE ICON HOVER MOVEMENT
+
+Current:
+
+```text
+group-hover:-translate-y-0.5
+```
+
+More movement:
+
+```text
+group-hover:-translate-y-1
+```
+
+Remove the movement by removing:
+
+```text
+group-hover:-translate-y-0.5
+```
+
+---
+
+## 25. CHANGE LABEL SIZE
+
+Current:
+
+```text
+text-[10px]
+```
+
+Larger:
+
+```text
+text-xs
+```
+
+Or:
+
+```text
+text-[12px]
+```
+
+---
+
+## 26. CHANGE LABEL FONT WEIGHT
+
+Current:
+
+```text
+font-medium
+```
+
+Stronger:
+
+```text
+font-semibold
+```
+
+or:
+
+```text
+font-bold
+```
+
+---
+
+## 27. CHANGE LABEL COLOR
+
+Active:
+
+```text
+text-white
+```
+
+Inactive:
+
+```text
+text-neutral-500
+```
+
+Hover:
+
+```text
+group-hover:text-neutral-300
+```
+
+Customize these colors according to your theme.
+
+---
+
+## 28. ADD NOTIFICATION INDICATOR
+
+A notification indicator is enabled using:
+
+```jsx
+notification: true
+```
+
+Example:
+
+```jsx
+{
+  name: "Inbox",
+  icon: MessageCircle,
+  notification: true,
+}
+```
+
+To remove it:
+
+```jsx
+{
+  name: "Inbox",
+  icon: MessageCircle,
+}
+```
+
+---
+
+## 29. CHANGE NOTIFICATION COLOR
+
+Current:
+
+```text
+bg-red-500
+```
+
+Change to:
+
+```text
+bg-blue-500
+```
+
+or:
+
+```text
+bg-emerald-500
+```
+
+---
+
+## 30. CHANGE NOTIFICATION SIZE
+
+Current:
+
+```text
+h-1.5
+w-1.5
+```
+
+Larger:
+
+```text
+h-2
+w-2
+```
+
+---
+
+## 31. CHANGE NOTIFICATION POSITION
+
+Current:
+
+```text
+right-[-2px]
+top-[-1px]
+```
+
+Move it:
+
+```text
+right-[-4px]
+top-[-3px]
+```
+
+Adjust these values according to the icon size.
+
+---
+
+## 32. CHANGE NOTIFICATION RING
+
+Current:
+
+```text
+ring-2
+ring-[#17151a]
+```
+
+The ring separates the notification dot from the dark navigation background.
+
+If you change the navigation background, update the ring color too.
+
+---
+
+## 33. CHANGE ITEM SPACING
+
+Each navigation button uses:
+
+```text
+min-w-[58px]
+flex-1
+```
+
+Increase minimum width:
+
+```text
+min-w-[65px]
+```
+
+The `flex-1` keeps the navigation items distributed evenly.
+
+---
+
+## 34. CHANGE ITEM VERTICAL SPACING
+
+Current:
+
+```text
+gap-1
+py-1
+```
+
+Increase:
+
+```text
+gap-2
+py-2
+```
+
+This creates more space between icon and label.
+
+---
+
+## 35. CHANGE NAVIGATION POSITION
+
+The component itself does not use fixed positioning.
+
+To make it fixed at the bottom:
+
+```jsx
+<main className="min-h-screen flex items-end justify-center pb-6">
+  <NovaNav />
+</main>
+```
+
+For a fixed bottom navigation:
+
+```jsx
+<nav className="fixed bottom-6 left-1/2 -translate-x-1/2">
+```
+
+Use the existing navigation classes together with these positioning classes.
+
+---
+
+## 36. CHANGE ITEMS THROUGH DATA
+
+You can easily create your own navigation:
+
+```jsx
+const items = [
+  {
+    name: "Dashboard",
+    icon: Home,
+  },
+  {
+    name: "Explore",
+    icon: Search,
+  },
+  {
+    name: "Create",
+    icon: Plus,
+  },
+  {
+    name: "Messages",
+    icon: MessageCircle,
+    notification: true,
+  },
+  {
+    name: "Profile",
+    icon: UserRound,
+  },
+];
+```
+
+No changes are required to the `.map()` logic.
+
+---
+
+## 37. ADD CLICK ACTIONS
+
+Currently clicking an item only changes:
+
+```jsx
+setActive(item.name)
+```
+
+For real navigation, you can add routing logic inside:
+
+```jsx
+onClick={() => {
+  setActive(item.name);
+}}
+```
+
+For example, React Router can be used to navigate to different pages.
+
+---
+
+## 38. ACTIVE PILL ANIMATION
+
+The component includes a custom CSS animation:
+
+```css
+@keyframes navWave
+```
+
+The animation uses:
+
+```css
+scaleX(0.2)
+scaleX(1.5)
+scaleX(1)
+```
+
+This creates the expanding navigation effect.
+
+---
+
+## 39. CHANGE NAV WAVE SPEED
+
+Current:
+
+```css
+animation:
+  navWave
+  0.55s
+  cubic-bezier(0.22, 1, 0.36, 1);
+```
+
+Faster:
+
+```css
+animation:
+  navWave
+  0.35s
+  cubic-bezier(0.22, 1, 0.36, 1);
+```
+
+Slower:
+
+```css
+animation:
+  navWave
+  0.8s
+  cubic-bezier(0.22, 1, 0.36, 1);
+```
+
+---
+
+## 40. IMPORTANT
+
+The current component manages the active item only with React state.
+
+It does not automatically change pages or routes.
+
+To connect it with your application pages, add your own navigation or React Router logic.
+
+---
+
+## 41. QUICK CUSTOMIZATION
+
+```text
+Navigation Width:
+390px
+
+Navigation Background:
+#17151a
+
+Navigation Radius:
+rounded-full
+
+Active Color:
+bg-red-600
+
+Active Pill:
+h-14 / w-18
+
+Icon Size:
+19px
+
+Active Icon Stroke:
+2.5
+
+Inactive Icon Stroke:
+1.8
+
+Label Size:
+10px
+
+Notification:
+red dot
+
+Active Animation:
+500ms
+
+Nav Wave:
+0.55s
+```
+
+---
+
+## 42. FINAL USAGE
+
+Install Lucide React:
+
+```bash
+npm install lucide-react
+```
+
+Import:
+
+```jsx
+import NovaNav from "./components/NovaNav/NovaNav";
+```
+
+Render:
+
+```jsx
+function App() {
+  return (
+    <main className="min-h-screen flex items-center justify-center">
+      <NovaNav />
+    </main>
+  );
+}
+
+export default App;
+```
+
+`NovaNav` is now ready to customize and integrate into your React project.

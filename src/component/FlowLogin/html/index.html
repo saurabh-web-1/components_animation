@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flow Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="flow-page">
+    <div class="flow-glow"></div>
+
+    <div class="flow-wrapper">
+
+      <div class="flow-orb">
+        <div class="orb-core"></div>
+        <div class="orb-highlight"></div>
+        <div class="orb-ring"></div>
+        <span class="orb-dot"></span>
+      </div>
+
+      <section class="login-card" id="loginCard">
+
+        <div class="card-glow"></div>
+
+        <div class="card-content">
+
+          <header class="login-header">
+            <h1>Flow</h1>
+            <p>Good to see you. Dive back in.</p>
+          </header>
+
+          <button
+            type="button"
+            class="compact-button"
+            id="compactButton"
+          >
+            <span>Log in</span>
+
+            <svg viewBox="0 0 24 24">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </button>
+
+          <form id="loginForm" class="login-form">
+
+            <div class="field-group">
+  <label class="input-label" for="email">
+    Email address
+  </label>
+
+  <input
+    class="input-field"
+    type="email"
+    id="email"
+    name="email"
+    placeholder="you@example.com"
+    autocomplete="email"
+  />
+</div>
+
+            <div class="form-field password-field">
+              <label for="password">Password</label>
+
+              <div class="input-wrap">
+
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  autocomplete="current-password"
+                />
+
+                <button
+                  type="button"
+                  class="eye-button"
+                  id="passwordToggle"
+                  aria-label="Show password"
+                >
+                  <svg id="passwordEye" viewBox="0 0 24 24">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+
+              </div>
+            </div>
+
+            <div class="remember-row">
+
+              <button
+                type="button"
+                class="remember-button"
+                id="rememberButton"
+              >
+                <span class="checkbox" id="rememberCheckbox">
+                  <svg viewBox="0 0 24 24">
+                    <path d="m5 12 4 4L19 6"></path>
+                  </svg>
+                </span>
+
+                <span>Remember me</span>
+              </button>
+
+              <button
+                type="button"
+                class="forgot-button"
+                id="forgotButton"
+              >
+                Forgot password?
+              </button>
+
+            </div>
+
+            <button
+              type="submit"
+              class="signin-button"
+              id="signinButton"
+            >
+              <span class="loader"></span>
+              <span id="signinText">Sign in</span>
+            </button>
+
+            <div class="divider">
+              <span></span>
+              <small>or continue with</small>
+              <span></span>
+            </div>
+
+            <div class="social-buttons">
+
+              <button
+                type="button"
+                class="social-button"
+                id="googleButton"
+              >
+                <svg
+                  class="google-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill="#4285F4"
+                    d="M21.35 12.23c0-.72-.06-1.42-.18-2.09H12v3.96h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.26Z"
+                  />
+                  <path
+                    fill="#34A853"
+                    d="M12 21.75c2.63 0 4.84-.87 6.46-2.36l-3.14-2.45c-.87.58-1.98.93-3.32.93-2.55 0-4.7-1.72-5.47-4.03H3.28v2.53A9.75 9.75 0 0 0 12 21.75Z"
+                  />
+                  <path
+                    fill="#FBBC05"
+                    d="M6.53 13.84A5.86 5.86 0 0 1 6.22 12c0-.64.11-1.26.31-1.84V7.63H3.28A9.75 9.75 0 0 0 2.25 12c0 1.57.38 3.06 1.03 4.37l3.25-2.53Z"
+                  />
+                  <path
+                    fill="#EA4335"
+                    d="M12 6.13c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.83 3.2 14.62 2.25 12 2.25a9.75 9.75 0 0 0-8.72 5.38l3.25 2.53C7.3 7.85 9.45 6.13 12 6.13Z"
+                  />
+                </svg>
+
+                Google
+              </button>
+
+              <button
+                type="button"
+                class="social-button"
+                id="appleButton"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M16.7 12.8c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.7-.8-2.8-.8-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.2 1 8.2.7 1 1.5 2.1 2.6 2 1 0 1.5-.6 2.8-.6 1.3 0 1.7.6 2.8.6 1.2 0 1.9-1 2.6-2 .8-1.1 1.2-2.2 1.2-2.2-.1 0-2.1-.8-2.1-3Z"></path>
+                  <path d="M14.5 6.3c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.7 1.3-.6.6-1 1.6-.9 2.6 1 .1 2-.5 2.7-1.2Z"></path>
+                </svg>
+
+                Apple
+              </button>
+
+            </div>
+
+            <p class="signup-text">
+              New here?
+
+              <button
+                type="button"
+                id="createAccountButton"
+              >
+                Create account
+              </button>
+            </p>
+
+          </form>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+# NovaNav — How to Use
+
+NovaNav is a compact animated bottom navigation component built with HTML, CSS, and JavaScript. It provides five navigation items with an animated red active pill, icon transitions, labels, and an Inbox notification indicator.
+
+## Features
+
+- Five navigation items
+- Animated active navigation pill
+- Smooth icon transitions
+- Active icon scaling
+- Hover effects
+- Active label styling
+- Inbox notification dot
+- Click-based navigation state
+- Responsive layout
+- No external JavaScript library required
+
+## 1. Folder Structure
+
+Create the component folder:
+
+```text
+NovaNav/
+├── index.html
+├── style.css
+└── script.js
+```
+
+## 2. HTML Setup
+
+Add the navigation markup to your page.
+
+The main navigation container is:
+
+```html
+<nav class="nova-nav">
+  <div class="nav-items">
+    <!-- navigation items -->
+  </div>
+</nav>
+```
+
+Each navigation item uses:
+
+```html
+<button
+  class="nav-item"
+  type="button"
+  data-name="Home"
+>
+```
+
+The `data-name` attribute identifies the navigation item.
+
+Example:
+
+```html
+<button
+  class="nav-item active"
+  type="button"
+  data-name="Home"
+>
+  ...
+</button>
+```
+
+The `active` class defines the initially selected item.
+
+## 3. Navigation Items
+
+NovaNav contains five default items:
+
+```text
+Home
+Search
+Create
+Inbox
+Saved
+```
+
+Each item contains:
+
+- Active background pill
+- Icon
+- Label
+
+Example:
+
+```html
+<span class="active-pill"></span>
+
+<span class="nav-icon">
+  <!-- SVG icon -->
+</span>
+
+<span class="nav-label">
+  Home
+</span>
+```
+
+## 4. Connect CSS
+
+Add the stylesheet inside `<head>`:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+The CSS controls:
+
+- Navigation layout
+- Dark background
+- Rounded container
+- Active pill
+- Icon transitions
+- Label transitions
+- Hover effects
+- Notification dot
+- Responsive behavior
+
+## 5. Connect JavaScript
+
+Add the script before the closing `body` tag:
+
+```html
+<script src="script.js"></script>
+```
+
+JavaScript handles the active navigation state and click animation.
+
+## 6. Active Navigation
+
+The currently selected item has:
+
+```html
+class="nav-item active"
+```
+
+For example:
+
+```html
+<button
+  class="nav-item active"
+  type="button"
+  data-name="Home"
+>
+```
+
+When another item is clicked, JavaScript removes `active` from the previous item and adds it to the clicked item.
+
+## 7. Changing the Default Item
+
+To make Search active when the page loads:
+
+```html
+<button
+  class="nav-item active"
+  type="button"
+  data-name="Search"
+>
+```
+
+Remove `active` from the Home button.
+
+Only one navigation item should normally have the `active` class.
+
+## 8. Navigation Click Behavior
+
+When a user clicks an item:
+
+```javascript
+navItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    navItems.forEach((navItem) => {
+      navItem.classList.remove("active");
+    });
+
+    item.classList.add("active");
+  });
+});
+```
+
+This creates the active navigation interaction.
+
+## 9. Active Pill
+
+The red active background is created using:
+
+```html
+<span class="active-pill"></span>
+```
+
+When the parent has the `active` class, CSS changes the pill to:
+
+```css
+.nav-item.active .active-pill {
+  transform: translateX(-50%) scale(1);
+  background: #dc2626;
+  opacity: 1;
+}
+```
+
+The pill is hidden for inactive items.
+
+## 10. Icon Animation
+
+Active icons become white and slightly larger:
+
+```css
+.nav-item.active .nav-icon {
+  transform: scale(1.05);
+  color: white;
+}
+```
+
+Inactive icons use a neutral gray color.
+
+On hover, inactive icons move slightly upward:
+
+```css
+.nav-item:not(.active):hover .nav-icon {
+  transform: translateY(-2px);
+  color: white;
+}
+```
+
+## 11. Label Animation
+
+Active labels are white:
+
+```css
+.nav-item.active .nav-label {
+  color: white;
+}
+```
+
+Inactive labels use a muted gray color.
+
+On hover:
+
+```css
+.nav-item:not(.active):hover .nav-label {
+  color: #d4d4d4;
+}
+```
+
+## 12. Notification Indicator
+
+The Inbox item contains a small red notification dot:
+
+```html
+<span class="notification-dot"></span>
+```
+
+The dot is positioned near the top-right of the Inbox icon.
+
+To remove it, delete:
+
+```html
+<span class="notification-dot"></span>
+```
+
+## 13. Adding a New Item
+
+You can add another navigation button using the same structure:
+
+```html
+<button
+  class="nav-item"
+  type="button"
+  data-name="Profile"
+>
+  <span class="active-pill"></span>
+
+  <span class="nav-icon">
+    <!-- SVG icon -->
+  </span>
+
+  <span class="nav-label">
+    Profile
+  </span>
+</button>
+```
+
+JavaScript automatically detects `.nav-item`, so no additional event listener is required.
+
+## 14. Changing Icons
+
+NovaNav uses inline SVG icons.
+
+Replace the SVG inside:
+
+```html
+<span class="nav-icon">
+  ...
+</span>
+```
+
+with your preferred SVG icon.
+
+This means no icon library is required.
+
+## 15. Changing the Active Color
+
+Default active color:
+
+```css
+background: #dc2626;
+```
+
+You can replace it with another color:
+
+```css
+background: #7c3aed;
+```
+
+or:
+
+```css
+background: #0891b2;
+```
+
+## 16. Changing Navigation Width
+
+Default width:
+
+```css
+.nova-nav {
+  width: 390px;
+}
+```
+
+For a smaller navigation:
+
+```css
+.nova-nav {
+  width: 340px;
+}
+```
+
+For a larger navigation:
+
+```css
+.nova-nav {
+  width: 440px;
+}
+```
+
+## 17. Responsive Behavior
+
+NovaNav uses:
+
+```css
+max-width: calc(100vw - 32px);
+```
+
+This prevents the navigation from overflowing smaller screens.
+
+A mobile media query further reduces spacing and item width.
+
+## 18. Navigation Background
+
+Default background:
+
+```css
+background: #17151a;
+```
+
+You can customize it:
+
+```css
+background: #0f172a;
+```
+
+or use a transparent glass style:
+
+```css
+background: rgba(255, 255, 255, 0.06);
+backdrop-filter: blur(20px);
+```
+
+## 19. Navigation Shadow
+
+Default shadow:
+
+```css
+box-shadow:
+  0 15px 40px rgba(0, 0, 0, 0.35);
+```
+
+You can increase or reduce the shadow depending on your design.
+
+## 20. Using NovaNav for Page Navigation
+
+NovaNav can be connected to different pages using JavaScript.
+
+Example:
+
+```javascript
+item.addEventListener("click", () => {
+  const page = item.dataset.name;
+
+  if (page === "Home") {
+    window.location.href = "/";
+  }
+
+  if (page === "Search") {
+    window.location.href = "/search.html";
+  }
+});
+```
+
+For a single-page application, you can instead update sections or use your own routing system.
+
+## 21. Recommended Use Cases
+
+NovaNav works well for:
+
+- Mobile websites
+- Social media interfaces
+- Dashboard navigation
+- Component libraries
+- Portfolio websites
+- E-commerce interfaces
+- Messaging applications
+- Community applications
+- Mobile-style web applications
+
+## 22. Quick Setup
+
+```text
+1. Create NovaNav folder
+2. Add index.html
+3. Add style.css
+4. Add script.js
+5. Add the navigation markup
+6. Connect CSS
+7. Connect JavaScript
+8. Select the initial active item
+9. Open the page
+10. Click the navigation items
+```
+
+## 23. Final Structure
+
+```text
+NovaNav/
+├── index.html
+├── style.css
+└── script.js
+```
+
+NovaNav provides a lightweight animated navigation experience using only HTML, CSS, and JavaScript, making it easy to integrate into existing projects without additional dependencies.

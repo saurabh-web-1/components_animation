@@ -1,0 +1,962 @@
+# FlowSignup — React Component Documentation
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find any section.
+
+Search for:
+- `INSTALLATION`
+- `HOW TO USE`
+- `PROPS`
+- `CHANGE TEXT`
+- `CHANGE COLORS`
+- `CHANGE FORM`
+- `PASSWORD`
+- `SOCIAL LOGIN`
+- `CUSTOMIZE ANIMATION`
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+`FlowSignup` is an animated signup component built with:
+
+- React
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+
+It includes:
+
+- Expandable signup card
+- Name field
+- Email field
+- Password field
+- Confirm password field
+- Password visibility toggle
+- Password strength indicator
+- Terms checkbox
+- Signup loading state
+- Google button
+- Apple button
+- Animated floating orb
+- Responsive layout
+
+---
+
+## 2. REQUIREMENTS
+
+Install the required packages:
+
+```bash
+npm install framer-motion lucide-react
+```
+
+Make sure Tailwind CSS is configured in your React project.
+
+---
+
+## 3. FILE SETUP
+
+Create:
+
+```text
+src/
+└── components/
+    └── FlowSignup.jsx
+```
+
+Paste the component code into `FlowSignup.jsx`.
+
+---
+
+## 4. BASIC USAGE
+
+Import the component:
+
+```jsx
+import FlowSignup from "./components/FlowSignup";
+```
+
+Render it:
+
+```jsx
+<FlowSignup />
+```
+
+Example:
+
+```jsx
+function App() {
+  return (
+    <main className="min-h-screen flex items-center justify-center">
+      <FlowSignup />
+    </main>
+  );
+}
+
+export default App;
+```
+
+---
+
+## 5. COMPONENT PROPS
+
+The component supports these props:
+
+```jsx
+<FlowSignup
+  title="Flow"
+  subtitle="Create your account and get started."
+  trigger="click"
+  showSocial={true}
+  showTerms={true}
+  compactText="Sign up"
+  primaryText="Create account"
+  onSubmit={handleSignup}
+/>
+```
+
+---
+
+## 6. CHANGE TITLE
+
+Default:
+
+```jsx
+title = "Flow"
+```
+
+Use:
+
+```jsx
+<FlowSignup title="Create Account" />
+```
+
+---
+
+## 7. CHANGE SUBTITLE
+
+Default:
+
+```jsx
+subtitle = "Create your account and get started."
+```
+
+Example:
+
+```jsx
+<FlowSignup
+  subtitle="Join us and start building today."
+/>
+```
+
+---
+
+## 8. CHANGE TRIGGER
+
+The component supports:
+
+```jsx
+trigger = "click"
+```
+
+Click mode:
+
+```jsx
+<FlowSignup trigger="click" />
+```
+
+Hover mode:
+
+```jsx
+<FlowSignup trigger="hover" />
+```
+
+In hover mode, the card expands when the pointer enters the component.
+
+---
+
+## 9. CHANGE COMPACT BUTTON TEXT
+
+Default:
+
+```jsx
+compactText = "Sign up"
+```
+
+Example:
+
+```jsx
+<FlowSignup compactText="Create account" />
+```
+
+---
+
+## 10. CHANGE PRIMARY BUTTON TEXT
+
+Default:
+
+```jsx
+primaryText = "Create account"
+```
+
+Example:
+
+```jsx
+<FlowSignup
+  primaryText="Get Started"
+/>
+```
+
+When loading, the component automatically displays:
+
+```text
+Creating account...
+```
+
+---
+
+## 11. SHOW OR HIDE SOCIAL LOGIN
+
+Social buttons are controlled by:
+
+```jsx
+showSocial={true}
+```
+
+Show:
+
+```jsx
+<FlowSignup showSocial={true} />
+```
+
+Hide:
+
+```jsx
+<FlowSignup showSocial={false} />
+```
+
+The current social options are Google and Apple.
+
+---
+
+## 12. SHOW OR HIDE TERMS
+
+Terms are controlled by:
+
+```jsx
+showTerms={true}
+```
+
+Hide the terms checkbox:
+
+```jsx
+<FlowSignup showTerms={false} />
+```
+
+When terms are enabled, the signup button remains disabled until the checkbox is selected.
+
+---
+
+## 13. HANDLE SIGNUP
+
+Use the `onSubmit` prop to connect your API:
+
+```jsx
+const handleSignup = async (data) => {
+  console.log(data);
+};
+```
+
+Pass it:
+
+```jsx
+<FlowSignup onSubmit={handleSignup} />
+```
+
+The submitted data contains:
+
+```js
+{
+  name,
+  email,
+  password,
+  confirmPassword,
+  terms
+}
+```
+
+---
+
+## 14. CONNECT YOUR API
+
+Example:
+
+```jsx
+const handleSignup = async (data) => {
+  const response = await fetch("/api/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json();
+
+  console.log(result);
+};
+```
+
+The component waits for the `onSubmit` promise before ending its loading state.
+
+---
+
+## 15. PASSWORD VALIDATION
+
+The component checks whether:
+
+```js
+password !== confirmPassword
+```
+
+If passwords do not match, submission is stopped.
+
+The message displayed is:
+
+```text
+Passwords do not match.
+```
+
+Change this text directly in the JSX.
+
+---
+
+## 16. PASSWORD STRENGTH
+
+Password strength is calculated from length:
+
+```text
+0 = Empty
+1 = Less than 6 characters
+2 = Less than 10 characters
+3 = 10+ characters
+```
+
+You can change these values inside:
+
+```jsx
+const passwordStrength = ...
+```
+
+For example, create stricter password levels by modifying the length conditions.
+
+---
+
+## 17. PASSWORD VISIBILITY
+
+Password visibility is controlled by:
+
+```jsx
+const [passwordVisible, setPasswordVisible] = useState(false);
+```
+
+The eye button toggles between:
+
+```text
+Eye
+EyeOff
+```
+
+The confirm password field has its own visibility state.
+
+---
+
+## 18. CHANGE INPUT PLACEHOLDERS
+
+Name:
+
+```text
+Your name
+```
+
+Email:
+
+```text
+you@example.com
+```
+
+Password:
+
+```text
+Create a password
+```
+
+Confirm password:
+
+```text
+Repeat your password
+```
+
+Change these strings directly inside the corresponding `<input>` elements.
+
+---
+
+## 19. CHANGE INPUT HEIGHT
+
+Current:
+
+```text
+h-[45px]
+```
+
+Larger:
+
+```text
+h-[50px]
+```
+
+Smaller:
+
+```text
+h-[40px]
+```
+
+Apply the change to all input fields for a consistent design.
+
+---
+
+## 20. CHANGE INPUT RADIUS
+
+Current:
+
+```text
+rounded-[11px]
+```
+
+More rounded:
+
+```text
+rounded-[15px]
+```
+
+Less rounded:
+
+```text
+rounded-lg
+```
+
+---
+
+## 21. CHANGE INPUT COLORS
+
+Current background:
+
+```text
+bg-white/[0.025]
+```
+
+Focus border:
+
+```text
+focus:border-cyan-300/[0.28]
+```
+
+Focus background:
+
+```text
+focus:bg-white/[0.04]
+```
+
+Change these classes to match your website theme.
+
+---
+
+## 22. CHANGE PRIMARY BUTTON COLOR
+
+Current button:
+
+```text
+bg-[linear-gradient(90deg,#08baf2,#0b7ef4)]
+```
+
+Example purple gradient:
+
+```text
+bg-[linear-gradient(90deg,#8b5cf6,#6366f1)]
+```
+
+---
+
+## 23. CHANGE PRIMARY BUTTON HEIGHT
+
+Current:
+
+```text
+h-[45px]
+```
+
+Example:
+
+```text
+h-[50px]
+```
+
+---
+
+## 24. CHANGE CARD SIZE
+
+Collapsed card:
+
+```jsx
+height: expanded ? 650 : 198
+```
+
+Expanded:
+
+```jsx
+height: 700
+```
+
+Collapsed:
+
+```jsx
+height: 210
+```
+
+If you add more form content, increase the expanded height.
+
+---
+
+## 25. CHANGE CARD RADIUS
+
+Current:
+
+```jsx
+borderRadius: expanded ? 27 : 22
+```
+
+Example:
+
+```jsx
+borderRadius: expanded ? 32 : 24
+```
+
+---
+
+## 26. CHANGE CARD ANIMATION SPEED
+
+Current:
+
+```jsx
+duration: 0.72
+```
+
+Faster:
+
+```jsx
+duration: 0.5
+```
+
+Slower:
+
+```jsx
+duration: 1
+```
+
+---
+
+## 27. CHANGE CARD WIDTH
+
+Current:
+
+```text
+max-w-[410px]
+```
+
+Larger:
+
+```text
+max-w-[460px]
+```
+
+Smaller:
+
+```text
+max-w-[360px]
+```
+
+---
+
+## 28. CHANGE CARD BACKGROUND
+
+The card uses a dark cyan gradient:
+
+```text
+from rgba(22,43,56)
+to rgba(7,12,22)
+```
+
+These values are inside the `bg-[linear-gradient(...)]` class.
+
+Change them to create your own card theme.
+
+---
+
+## 29. CHANGE CARD GLOW
+
+The main atmospheric glow uses:
+
+```text
+bg-cyan-400/[0.065]
+blur-[110px]
+```
+
+Increase opacity for a stronger glow:
+
+```text
+bg-cyan-400/[0.12]
+```
+
+Increase blur:
+
+```text
+blur-[140px]
+```
+
+---
+
+## 30. CUSTOMIZE FLOATING ORB
+
+The orb is the animated circular element above the card.
+
+Current size:
+
+```text
+h-[46px]
+w-[46px]
+```
+
+Larger:
+
+```text
+h-[56px]
+w-[56px]
+```
+
+Its gradient and glow are controlled by the radial-gradient and shadow classes.
+
+---
+
+## 31. CHANGE ORB ROTATION SPEED
+
+Current:
+
+```jsx
+duration: 7
+repeat: Infinity
+```
+
+Faster:
+
+```jsx
+duration: 4
+```
+
+Slower:
+
+```jsx
+duration: 12
+```
+
+---
+
+## 32. CHANGE FORM ANIMATION
+
+Form fields use:
+
+```jsx
+duration: 0.42
+```
+
+Each field has a small delay:
+
+```text
+0
+0.05
+0.10
+0.15
+0.20
+```
+
+Change these delays to control the order and spacing of the entrance animation.
+
+---
+
+## 33. CHANGE FIELD ANIMATION
+
+The fields start with:
+
+```jsx
+opacity: 0
+y: 12
+filter: "blur(5px)"
+```
+
+They end with:
+
+```jsx
+opacity: 1
+y: 0
+filter: "blur(0px)"
+```
+
+Change these values for a different entrance effect.
+
+---
+
+## 34. CHANGE TERMS CHECKBOX
+
+Checked state:
+
+```text
+border-cyan-300/50
+bg-cyan-300/20
+```
+
+Unchecked state:
+
+```text
+border-white/[0.12]
+bg-white/[0.02]
+```
+
+Change these Tailwind classes to customize the checkbox.
+
+---
+
+## 35. CHANGE SOCIAL BUTTONS
+
+Google and Apple buttons use:
+
+```text
+h-[38px]
+rounded-[10px]
+```
+
+Change the height:
+
+```text
+h-[42px]
+```
+
+Change the radius:
+
+```text
+rounded-full
+```
+
+---
+
+## 36. GOOGLE ICON
+
+The Google icon is a custom SVG component:
+
+```jsx
+const GoogleIcon = ({ size = 15 }) => (...)
+```
+
+Change its default size:
+
+```jsx
+const GoogleIcon = ({ size = 18 }) => (...)
+```
+
+---
+
+## 37. CHANGE SOCIAL LOGIN TEXT
+
+Current:
+
+```text
+Google
+Apple
+```
+
+Change these directly in the social button JSX.
+
+The divider text is:
+
+```text
+or sign up with
+```
+
+It can also be customized.
+
+---
+
+## 38. CHANGE FOOTER TEXT
+
+Current:
+
+```text
+Already have an account?
+```
+
+and:
+
+```text
+Sign in
+```
+
+Replace these with your own authentication text.
+
+---
+
+## 39. SIGN IN ACTION
+
+The current `Sign in` button is a visual button.
+
+To connect it to your login page, add your routing or click handler:
+
+```jsx
+onClick={() => navigate("/login")}
+```
+
+when using React Router.
+
+---
+
+## 40. LOADING STATE
+
+When submitting, the component shows:
+
+```text
+Creating account...
+```
+
+with a spinner.
+
+The form fields and buttons become disabled while loading.
+
+The default demo submission waits:
+
+```js
+1400
+```
+
+milliseconds when no `onSubmit` prop is provided.
+
+---
+
+## 41. CHANGE DEMO LOADING TIME
+
+Find:
+
+```js
+setTimeout(resolve, 1400)
+```
+
+Faster:
+
+```js
+setTimeout(resolve, 800)
+```
+
+Slower:
+
+```js
+setTimeout(resolve, 2000)
+```
+
+For production, use your actual API response instead of the demo delay.
+
+---
+
+## 42. IMPORTANT
+
+The component itself does not create a user account or connect to a database.
+
+Use `onSubmit` to connect it to your backend authentication API.
+
+Google and Apple buttons are currently UI buttons and require your own authentication integration.
+
+---
+
+## 43. QUICK CUSTOMIZATION
+
+```text
+Title:
+Flow
+
+Card Width:
+410px
+
+Collapsed Height:
+198px
+
+Expanded Height:
+650px
+
+Input Height:
+45px
+
+Button Height:
+45px
+
+Primary Color:
+Cyan / Blue
+
+Card Radius:
+22px / 27px
+
+Field Animation:
+0.42s
+
+Card Animation:
+0.72s
+
+Orb Rotation:
+7s
+
+Demo Loading:
+1400ms
+```
+
+---
+
+## 44. FINAL USAGE
+
+```jsx
+import FlowSignup from "./components/FlowSignup";
+
+function App() {
+  const handleSignup = async (data) => {
+    console.log(data);
+  };
+
+  return (
+    <FlowSignup
+      title="Flow"
+      subtitle="Create your account and get started."
+      trigger="click"
+      showSocial={true}
+      showTerms={true}
+      compactText="Sign up"
+      primaryText="Create account"
+      onSubmit={handleSignup}
+    />
+  );
+}
+
+export default App;
+```
+
+Install dependencies:
+
+```bash
+npm install framer-motion lucide-react
+```
+
+The component is ready to integrate with your signup API and customize for your application.

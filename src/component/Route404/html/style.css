@@ -1,0 +1,1174 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #0b0912;
+  color: white;
+}
+
+button {
+  font-family: inherit;
+}
+
+.route-page {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: #0b0912;
+  color: white;
+}
+
+.page-glow {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(46, 36, 68, 0.28),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(37, 29, 54, 0.2),
+      transparent 35%
+    );
+}
+
+.top-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 23%;
+
+  width: 500px;
+  height: 500px;
+
+  transform: translateX(-50%) scale(0.98);
+
+  border-radius: 50%;
+
+  background: rgba(24, 18, 37, 0.55);
+
+  filter: blur(150px);
+
+  opacity: 0.6;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.route-page.connected .top-glow {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.hero {
+  position: relative;
+
+  z-index: 10;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 6.5vh 20px 0;
+
+  text-align: center;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 12px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.28em;
+
+  color: rgba(255, 255, 255, 0.3);
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.connected-status {
+  position: absolute;
+
+  top: 6.5vh;
+
+  opacity: 0;
+
+  transform: translateY(-7px);
+
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.route-page.connected .connected-status {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.route-page.connected #statusDisconnected {
+  opacity: 0;
+  transform: translateY(7px);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.connected-dot {
+  border: 0;
+
+  background: white;
+
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.9);
+}
+
+.error-code {
+  user-select: none;
+
+  font-size: 120px;
+
+  font-weight: 600;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.1em;
+
+  color: white;
+
+  opacity: 0.16;
+
+  transform: scale(0.985);
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+.route-page.connected .error-code {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero h1 {
+  margin: 32px 0 0;
+
+  font-size: 30px;
+
+  font-weight: 600;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.045em;
+
+  opacity: 0.42;
+
+  transition: opacity 0.55s ease;
+}
+
+.route-page.connected .hero h1 {
+  opacity: 1;
+}
+
+.hero p {
+  max-width: 625px;
+
+  margin: 16px 0 0;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  color: white;
+
+  opacity: 0.25;
+
+  transition: opacity 0.55s ease;
+}
+
+.route-page.connected .hero p {
+  opacity: 0.5;
+}
+
+.home-button {
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 32px;
+
+  padding: 0 32px;
+
+  border: 0;
+
+  border-radius: 999px;
+
+  background: #f1f0f3;
+
+  color: #141218;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.3);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.home-button:hover {
+  transform: translateY(-2px);
+
+  background: white;
+}
+
+.home-button:active {
+  transform: scale(0.98);
+}
+
+.interactive-stage {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 30;
+
+  height: 34vh;
+
+  min-height: 255px;
+
+  overflow: hidden;
+
+  touch-action: none;
+}
+
+.ground {
+  position: absolute;
+
+  left: 6vw;
+  right: 2.8vw;
+  bottom: 18px;
+
+  height: 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 7px;
+
+  background: #15131b;
+
+  box-shadow:
+    0 7px 22px rgba(0, 0, 0, 0.5);
+}
+
+.ground-line {
+  position: absolute;
+
+  left: 6vw;
+  right: 2.8vw;
+  bottom: 28px;
+
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ground-support {
+  position: absolute;
+
+  left: 6vw;
+  bottom: 18px;
+
+  width: 10px;
+  height: 72px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 8px 8px 0 0;
+
+  background: #131119;
+}
+
+.cable-svg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  pointer-events: none;
+}
+
+.cable-shadow-svg {
+  z-index: 20;
+}
+
+.cable-shadow-svg path {
+  fill: none;
+
+  stroke: rgba(0, 0, 0, 0.95);
+
+  stroke-width: 14;
+
+  stroke-linecap: round;
+}
+
+.cable-outer {
+  fill: none;
+
+  stroke: #24212b;
+
+  stroke-width: 9;
+
+  stroke-linecap: round;
+}
+
+.cable-highlight {
+  fill: none;
+
+  stroke: rgba(255, 255, 255, 0.09);
+
+  stroke-width: 1.3;
+
+  stroke-linecap: round;
+}
+
+.socket {
+  position: absolute;
+
+  z-index: 65;
+
+  pointer-events: none;
+
+  width: 126px;
+  height: 205px;
+}
+
+.socket-board {
+  position: absolute;
+
+  right: 0;
+  top: 0;
+
+  width: 74px;
+  height: 100%;
+
+  border: 1px solid rgba(255, 255, 255, 0.065);
+
+  border-radius: 9px;
+
+  background: #121018;
+
+  box-shadow:
+    15px 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.socket-back-edge {
+  position: absolute;
+
+  right: -8px;
+  top: 9px;
+
+  width: 8px;
+  height: 187px;
+
+  border-radius: 0 8px 8px 0;
+
+  background: #09080e;
+}
+
+.socket-inner-rear {
+  position: absolute;
+
+  right: 8px;
+  top: 10px;
+
+  width: 61px;
+  height: 184px;
+
+  border: 1px solid rgba(255, 255, 255, 0.035);
+
+  border-radius: 7px;
+
+  background: #0e0c13;
+}
+
+.socket-body {
+  position: absolute;
+
+  left: 0;
+  top: 38px;
+
+  width: 88px;
+  height: 116px;
+
+  border: 1px solid rgba(255, 255, 255, 0.085);
+
+  border-radius: 18px;
+
+  background: #25212b;
+
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.5);
+
+  transform:
+    perspective(700px)
+    rotateY(-17deg);
+
+  transform-origin: left center;
+
+  transition:
+    box-shadow 0.65s ease;
+}
+
+.route-page.connected .socket-body {
+  box-shadow:
+    0 0 65px rgba(139, 120, 183, 0.12),
+    0 20px 35px rgba(0, 0, 0, 0.5);
+}
+
+.socket-face {
+  position: absolute;
+
+  inset: 5px;
+
+  border: 1px solid rgba(255, 255, 255, 0.035);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      to right,
+      #2c2832,
+      #1b1920
+    );
+}
+
+.socket-side {
+  position: absolute;
+
+  right: 5px;
+  top: 13px;
+
+  width: 8px;
+  height: 90px;
+
+  border-radius: 0 6px 6px 0;
+
+  background: #0e0c12;
+}
+
+.socket-reflection {
+  position: absolute;
+
+  right: 18px;
+  top: 19px;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.55);
+}
+
+.socket-reflection-line {
+  position: absolute;
+
+  right: 17px;
+  top: 61px;
+
+  width: 1px;
+  height: 38px;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.magnetic-target {
+  position: absolute;
+
+  width: 116px;
+  height: 116px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.012);
+
+  opacity: 0;
+
+  transform: scale(0.72);
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+
+  pointer-events: none;
+}
+
+.magnetic-target.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.plug {
+  position: absolute;
+
+  z-index: 55;
+
+  width: 130px;
+  height: 74px;
+
+  cursor: grab;
+
+  user-select: none;
+
+  touch-action: none;
+
+  transform-origin: 82% 50%;
+
+  will-change:
+    transform,
+    left,
+    top;
+}
+
+.plug.dragging {
+  cursor: grabbing;
+
+  transform:
+    rotate(var(--plug-rotation, 0deg))
+    scale(1.025);
+}
+
+.plug-shadow {
+  position: absolute;
+
+  left: 5px;
+  top: 14px;
+
+  width: 112px;
+  height: 55px;
+
+  border-radius: 19px;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  filter: blur(20px);
+}
+
+.cable-collar {
+  position: absolute;
+
+  left: -8px;
+  top: 50%;
+
+  width: 15px;
+  height: 45px;
+
+  transform: translateY(-50%);
+
+  border-radius: 6px 0 0 6px;
+
+  background: #111016;
+
+  box-shadow:
+    inset 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.plug-body {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 112px;
+  height: 74px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  border-radius: 18px;
+
+  background: #29262f;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 38px rgba(0, 0, 0, 0.5);
+}
+
+.plug-inner {
+  position: absolute;
+
+  inset: 5px;
+
+  border: 1px solid rgba(255, 255, 255, 0.025);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #34303a,
+      #211f26
+    );
+}
+
+.plug-detail {
+  position: absolute;
+
+  left: 13px;
+  top: 50%;
+
+  width: 36px;
+  height: 36px;
+
+  transform: translateY(-50%);
+
+  border: 1px solid rgba(255, 255, 255, 0.055);
+
+  border-radius: 10px;
+
+  background: #151318;
+}
+
+.plug-hole {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 11px;
+  height: 11px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: #0a090d;
+}
+
+.plug-line {
+  position: absolute;
+
+  left: 59px;
+
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.085);
+}
+
+.plug-line-one {
+  top: 18px;
+  width: 31px;
+}
+
+.plug-line-two {
+  top: 30px;
+  width: 22px;
+
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.plug-depth {
+  position: absolute;
+
+  right: 9px;
+  top: 12px;
+
+  width: 7px;
+  height: 50px;
+
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.plug-pin {
+  position: absolute;
+
+  right: -17px;
+
+  width: 28px;
+  height: 14px;
+
+  border-radius: 0 7px 7px 0;
+
+  background:
+    linear-gradient(
+      to right,
+      #79777b,
+      #dedee0,
+      #737176
+    );
+
+  box-shadow:
+    0 0 7px rgba(255, 255, 255, 0.1);
+
+  transition:
+    transform 0.36s cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    opacity 0.36s ease;
+}
+
+.plug-pin-top {
+  top: 15px;
+}
+
+.plug-pin-bottom {
+  bottom: 15px;
+}
+
+.plug-connector {
+  position: absolute;
+
+  right: 0;
+  top: 10px;
+
+  z-index: 10;
+
+  width: 8px;
+  height: 54px;
+
+  border-radius: 0 7px 7px 0;
+
+  background: #1c1a20;
+
+  transition:
+    transform 0.36s cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+.plug.connecting .plug-pin {
+  transform: translateX(2px);
+}
+
+.plug.inserting .plug-pin {
+  transform: translateX(14px);
+}
+
+.plug.connected .plug-pin {
+  transform: translateX(16px);
+
+  opacity: 0.18;
+}
+
+.plug.inserting .plug-connector {
+  transform: translateX(6px);
+}
+
+.connection-flash {
+  position: absolute;
+
+  z-index: 100;
+
+  width: 10px;
+  height: 10px;
+
+  pointer-events: none;
+
+  opacity: 0;
+}
+
+.connection-flash.show {
+  animation: flashContainer 0.32s ease-out;
+}
+
+.flash-core {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 10px;
+  height: 10px;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.2);
+
+  border-radius: 50%;
+
+  background: white;
+
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.95);
+
+  animation: flashCore 0.3s ease-out forwards;
+}
+
+.flash-ray {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 1px;
+  height: 22px;
+
+  transform-origin: bottom center;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  opacity: 0;
+}
+
+.connection-flash.show .flash-ray {
+  animation: flashRay 0.27s ease-out forwards;
+}
+
+.ray-0 {
+  transform: translate(-50%, -100%) rotate(0deg);
+}
+
+.ray-45 {
+  transform: translate(-50%, -100%) rotate(45deg);
+}
+
+.ray-90 {
+  transform: translate(-50%, -100%) rotate(90deg);
+}
+
+.ray-135 {
+  transform: translate(-50%, -100%) rotate(135deg);
+}
+
+@keyframes flashContainer {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes flashCore {
+  0% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.2);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(3);
+  }
+}
+
+@keyframes flashRay {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -100%)
+      scaleY(0.2);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -100%)
+      scaleY(1);
+  }
+}
+
+.action-button {
+  position: absolute;
+
+  left: 6.8vw;
+  bottom: 46px;
+
+  z-index: 110;
+
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 28px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.015);
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  backdrop-filter: blur(20px);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.action-button:hover {
+  transform: translateX(3px);
+
+  border-color:
+    rgba(255, 255, 255, 0.15);
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  color: white;
+}
+
+.action-button:active {
+  transform: scale(0.97);
+}
+
+.action-button:disabled {
+  cursor: wait;
+}
+
+.loading-spinner {
+  display: none;
+
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid rgba(255, 255, 255, 0.15);
+
+  border-top-color:
+    rgba(255, 255, 255, 0.7);
+
+  border-radius: 50%;
+
+  animation: spin 0.7s linear infinite;
+}
+
+.action-button.loading .loading-spinner {
+  display: block;
+}
+
+.action-button.loading #plugIcon {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.instruction {
+  position: absolute;
+
+  left: 6.9vw;
+  bottom: 111px;
+
+  z-index: 100;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.2em;
+
+  color: rgba(255, 255, 255, 0.3);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.instruction.hidden {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.route-label {
+  position: absolute;
+
+  left: 50%;
+  bottom: 16px;
+
+  z-index: 100;
+
+  transform: translateX(-50%);
+
+  font-size: 8px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.32em;
+
+  color: rgba(255, 255, 255, 0.14);
+}
+
+@media (min-width: 768px) {
+  .error-code {
+    font-size: 165px;
+  }
+
+  .hero h1 {
+    font-size: 39px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .error-code {
+    font-size: 185px;
+  }
+
+  .hero h1 {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 7vh;
+  }
+
+  .error-code {
+    font-size: 90px;
+  }
+
+  .hero h1 {
+    margin-top: 26px;
+
+    font-size: 26px;
+  }
+
+  .hero p {
+    max-width: 340px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+  .home-button {
+    height: 52px;
+
+    padding: 0 24px;
+  }
+
+  .action-button {
+    left: 18px;
+    bottom: 46px;
+
+    padding: 0 20px;
+  }
+
+  .instruction {
+    left: 20px;
+  }
+
+  .route-label {
+    display: none;
+  }
+}

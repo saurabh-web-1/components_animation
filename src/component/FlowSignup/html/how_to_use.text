@@ -1,0 +1,720 @@
+# FlowSignup — How to Use
+
+FlowSignup is an animated signup component built with pure HTML, CSS, and JavaScript. It starts as a compact card and expands into a complete signup form with validation, password strength, social buttons, and loading states.
+
+## Features
+
+- Animated expandable signup card
+- Floating animated orb
+- Full name field
+- Email field
+- Password field
+- Confirm password field
+- Password visibility toggle
+- Password strength indicator
+- Password matching validation
+- Terms and Privacy checkbox
+- Create account loading state
+- Google signup button
+- Apple signup button
+- Sign in button
+- Responsive design
+- No external JavaScript library required
+
+## 1. Folder Structure
+
+Create the component folder:
+
+```text
+FlowSignup/
+├── index.html
+├── style.css
+└── script.js
+```
+
+## 2. HTML Setup
+
+The main page container is:
+
+```html
+<main class="flow-page">
+  ...
+</main>
+```
+
+The page contains:
+
+```text
+Page
+├── Background glow
+├── Floating orb
+└── Signup card
+    ├── Header
+    ├── Compact button
+    └── Signup form
+        ├── Name
+        ├── Email
+        ├── Password
+        ├── Confirm Password
+        ├── Terms
+        ├── Create Account
+        ├── Social Buttons
+        └── Sign In
+```
+
+## 3. Signup Card
+
+The main component uses:
+
+```html
+<section class="signup-card" id="signupCard">
+```
+
+Initially the card is compact.
+
+After clicking the signup button, the `expanded` class is added:
+
+```html
+<section class="signup-card expanded">
+```
+
+This triggers the complete form animation.
+
+## 4. Connect CSS
+
+Add the stylesheet inside `<head>`:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+The stylesheet controls:
+
+- Card layout
+- Background
+- Floating orb
+- Form animations
+- Input design
+- Buttons
+- Password bars
+- Social buttons
+- Responsive behavior
+
+## 5. Connect JavaScript
+
+Add the script before `</body>`:
+
+```html
+<script src="script.js"></script>
+```
+
+JavaScript controls the complete interaction and form logic.
+
+## 6. Floating Orb
+
+The top animated orb uses:
+
+```html
+<div class="flow-orb">
+  ...
+</div>
+```
+
+It contains:
+
+- Orb core
+- Highlight
+- Rotating ring
+- Small light dot
+
+The ring animation uses:
+
+```css
+animation: orbRotate 7s linear infinite;
+```
+
+## 7. Expand the Card
+
+Click:
+
+```text
+Sign up
+```
+
+to expand the card.
+
+JavaScript adds:
+
+```javascript
+signupCard.classList.add("expanded");
+```
+
+The CSS then changes:
+
+```css
+.signup-card.expanded {
+  height: 650px;
+}
+```
+
+## 8. Collapse the Card
+
+The card can be collapsed programmatically:
+
+```javascript
+signupCard.classList.remove("expanded");
+```
+
+The compact state returns automatically.
+
+## 9. Name Field
+
+The name field uses:
+
+```html
+<input
+  id="name"
+  type="text"
+  placeholder="Your name"
+/>
+```
+
+Change the placeholder if required:
+
+```html
+placeholder="Enter your full name"
+```
+
+## 10. Email Field
+
+The email field uses:
+
+```html
+<input
+  id="email"
+  type="email"
+  placeholder="you@example.com"
+/>
+```
+
+Using `type="email"` provides basic browser email validation.
+
+## 11. Password Field
+
+The password field uses:
+
+```html
+<input
+  id="password"
+  type="password"
+  placeholder="Create a password"
+/>
+```
+
+The eye button switches between:
+
+```text
+password
+text
+```
+
+## 12. Confirm Password
+
+The confirmation field uses:
+
+```html
+<input
+  id="confirmPassword"
+  type="password"
+  placeholder="Repeat your password"
+/>
+```
+
+The component checks whether both passwords match.
+
+## 13. Password Visibility
+
+Clicking the eye button changes:
+
+```javascript
+passwordInput.type =
+  passwordVisible ? "text" : "password";
+```
+
+The same functionality is available for the confirm password field.
+
+## 14. Password Strength
+
+The password strength indicator contains three bars:
+
+```html
+<div class="strength-bars">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+```
+
+The default strength logic is:
+
+```text
+0 characters → 0
+1–5 characters → 1
+6–9 characters → 2
+10+ characters → 3
+```
+
+The logic can be customized inside:
+
+```javascript
+getPasswordStrength()
+```
+
+## 15. Password Validation
+
+When the passwords do not match, the component displays:
+
+```text
+Passwords do not match.
+```
+
+The validation uses:
+
+```javascript
+passwordInput.value !== confirmInput.value
+```
+
+The error automatically disappears when the passwords match.
+
+## 16. Terms Checkbox
+
+The terms section uses:
+
+```html
+<button type="button" class="terms">
+```
+
+Clicking it toggles:
+
+```javascript
+termsAccepted
+```
+
+The selected checkbox receives:
+
+```css
+.checked
+```
+
+The Create Account button remains disabled until the terms are accepted.
+
+## 17. Create Account Button
+
+The button starts disabled:
+
+```html
+<button
+  type="submit"
+  class="create-button"
+  disabled
+>
+```
+
+It becomes active when:
+
+```text
+Name entered
++
+Email entered
++
+Password entered
++
+Confirm password entered
++
+Passwords match
++
+Terms accepted
+```
+
+## 18. Loading State
+
+When the form is submitted:
+
+```javascript
+setLoading(true);
+```
+
+The button changes to:
+
+```text
+Creating account...
+```
+
+A loading spinner is displayed while the request is running.
+
+After completion:
+
+```javascript
+setLoading(false);
+```
+
+returns the button to its normal state.
+
+## 19. Signup Data
+
+The form creates the following object:
+
+```javascript
+const signupData = {
+  name: nameInput.value.trim(),
+  email: emailInput.value.trim(),
+  password: passwordInput.value,
+  confirmPassword: confirmInput.value,
+  terms: termsAccepted
+};
+```
+
+This object can be sent directly to your backend.
+
+## 20. Connect Your API
+
+Replace the demo timeout with your API request:
+
+```javascript
+const response = await fetch(
+  "https://your-api.com/api/auth/signup",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(signupData)
+  }
+);
+
+const data = await response.json();
+```
+
+Use your actual backend endpoint.
+
+## 21. Backend Response
+
+After receiving the response:
+
+```javascript
+if (!response.ok) {
+  throw new Error(
+    data.message || "Signup failed"
+  );
+}
+```
+
+You can then redirect the user:
+
+```javascript
+window.location.href = "/dashboard";
+```
+
+## 22. Google Signup
+
+The Google button uses:
+
+```html
+<button class="social-button">
+  Google
+</button>
+```
+
+Currently it can be connected to:
+
+```javascript
+window.location.href = "/auth/google";
+```
+
+Connect this route to your Google OAuth implementation.
+
+## 23. Apple Signup
+
+The Apple button can be connected using:
+
+```javascript
+window.location.href = "/auth/apple";
+```
+
+Connect the route to your Apple authentication system.
+
+## 24. Sign In Button
+
+The Sign In button can redirect to your login page:
+
+```javascript
+signinButton.addEventListener("click", () => {
+  window.location.href = "/login";
+});
+```
+
+You can also use:
+
+```text
+/login
+```
+
+or:
+
+```text
+login.html
+```
+
+## 25. Change Brand Name
+
+Change:
+
+```html
+<h1>Flow</h1>
+```
+
+to:
+
+```html
+<h1>YourBrand</h1>
+```
+
+Example:
+
+```html
+<h1>InfiWeb</h1>
+```
+
+## 26. Change Subtitle
+
+Change:
+
+```html
+<p>Create your account and get started.</p>
+```
+
+to:
+
+```html
+<p>Join us and start building today.</p>
+```
+
+## 27. Change Button Text
+
+Change:
+
+```html
+<span>Sign up</span>
+```
+
+to:
+
+```html
+<span>Get Started</span>
+```
+
+The Create Account button can also be changed:
+
+```html
+<span id="createText">
+  Create account
+</span>
+```
+
+Example:
+
+```text
+Register
+```
+
+or:
+
+```text
+Create Profile
+```
+
+## 28. Change Main Colors
+
+Primary cyan:
+
+```text
+#08baf2
+```
+
+Secondary blue:
+
+```text
+#0b7ef4
+```
+
+The Create Account button uses:
+
+```css
+background: linear-gradient(
+  90deg,
+  #08baf2,
+  #0b7ef4
+);
+```
+
+Change these colors to match your website theme.
+
+## 29. Change Card Width
+
+The default component width is:
+
+```css
+.flow-wrapper {
+  max-width: 410px;
+}
+```
+
+For a wider card:
+
+```css
+.flow-wrapper {
+  max-width: 450px;
+}
+```
+
+## 30. Change Expanded Height
+
+The expanded card uses:
+
+```css
+.signup-card.expanded {
+  height: 650px;
+}
+```
+
+If you add more fields, increase the height:
+
+```css
+.signup-card.expanded {
+  height: 720px;
+}
+```
+
+## 31. Change Orb Size
+
+The default orb size is:
+
+```css
+.flow-orb {
+  width: 46px;
+  height: 46px;
+}
+```
+
+For a larger orb:
+
+```css
+.flow-orb {
+  width: 54px;
+  height: 54px;
+}
+```
+
+## 32. Responsive Design
+
+The component includes responsive breakpoints:
+
+```css
+@media (max-width: 480px)
+```
+
+and:
+
+```css
+@media (max-width: 360px)
+```
+
+These control the layout on smaller devices.
+
+## 33. Disable Social Signup
+
+If social authentication is not required, remove:
+
+```html
+<div class="social-buttons">
+  ...
+</div>
+```
+
+The rest of the signup form will continue working.
+
+## 34. Disable Terms
+
+If terms are not required, remove:
+
+```html
+<button class="terms">
+  ...
+</button>
+```
+
+Then remove the `termsAccepted` requirement from:
+
+```javascript
+updateCreateButton()
+```
+
+## 35. Recommended Use Cases
+
+FlowSignup works well for:
+
+- SaaS websites
+- Component libraries
+- Startup websites
+- Authentication pages
+- Dashboards
+- AI applications
+- E-commerce websites
+- Developer tools
+- Portfolio websites
+
+## 36. Dependencies
+
+This version does not require:
+
+```text
+React
+Framer Motion
+Lucide React
+Tailwind CSS
+```
+
+It uses only:
+
+```text
+HTML
+CSS
+JavaScript
+Inline SVG
+```
+
+## 37. Quick Setup
+
+```text
+1. Create FlowSignup folder
+2. Add index.html
+3. Add style.css
+4. Add script.js
+5. Link CSS
+6. Link JavaScript
+7. Open index.html
+8. Click Sign up
+9. Fill the form
+10. Connect your API
+```
+
+## 38. Final Structure
+
+```text
+FlowSignup/
+├── index.html
+├── style.css
+└── script.js
+```
+
+FlowSignup combines a compact animated signup card with a complete registration form, validation, password feedback, social authentication options, and a clean responsive interface.

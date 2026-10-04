@@ -1,0 +1,661 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: #050b10;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+.flow-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(0, 188, 255, .075), transparent 34%),
+    linear-gradient(180deg, #07131b 0%, #050a10 55%, #03070b 100%);
+}
+
+.flow-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 430px;
+  height: 430px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(34, 211, 238, .065);
+  filter: blur(110px);
+  pointer-events: none;
+  transition: .8s cubic-bezier(.22, 1, .36, 1);
+}
+
+.flow-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+  display: flex;
+  justify-content: center;
+}
+
+.flow-orb {
+  position: absolute;
+  top: -50px;
+  z-index: 30;
+  width: 46px;
+  height: 46px;
+  transition: .75s cubic-bezier(.22, 1, .36, 1);
+}
+
+.orb-core {
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 30% 24%,
+      #effcff 0%,
+      #66e7ff 12%,
+      #17bdf4 42%,
+      #0875da 70%,
+      #06357f 100%
+    );
+  box-shadow:
+    0 0 20px rgba(23, 191, 255, .44),
+    0 0 50px rgba(23, 191, 255, .16);
+}
+
+.orb-highlight {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  width: 13px;
+  height: 9px;
+  transform: rotate(-20deg);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .75);
+  filter: blur(2px);
+}
+
+.orb-ring {
+  position: absolute;
+  inset: -3px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 50%;
+  animation: orbRotate 7s linear infinite;
+}
+
+.orb-dot {
+  position: absolute;
+  right: 4px;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .7);
+  filter: blur(1px);
+}
+
+@keyframes orbRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.signup-card {
+  position: relative;
+  width: 100%;
+  height: 198px;
+  overflow: hidden;
+  border: 1px solid rgba(165, 243, 252, .14);
+  border-radius: 22px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(22, 43, 56, .97) 0%,
+      rgba(11, 27, 37, .98) 43%,
+      rgba(7, 12, 22, .99) 100%
+    );
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, .6),
+    0 0 60px rgba(0, 183, 255, .065);
+  backdrop-filter: blur(24px);
+  transition:
+    height .72s cubic-bezier(.22, 1, .36, 1),
+    border-radius .72s cubic-bezier(.22, 1, .36, 1);
+}
+
+.signup-card.expanded {
+  height: 650px;
+  border-radius: 27px;
+}
+
+.card-glow {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 115px;
+  background:
+    radial-gradient(
+      ellipse at center top,
+      rgba(71, 211, 255, .2),
+      transparent 67%
+    );
+  filter: blur(9px);
+  transition:
+    height .7s cubic-bezier(.22, 1, .36, 1);
+}
+
+.signup-card.expanded .card-glow {
+  height: 180px;
+}
+
+.card-content {
+  position: relative;
+  z-index: 10;
+  padding: 36px 28px 24px;
+}
+
+.signup-header {
+  text-align: center;
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+}
+
+.signup-header h1 {
+  margin: 0;
+  color: #a5f3fc;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -.045em;
+  text-shadow: 0 0 17px rgba(50, 210, 255, .14);
+}
+
+.signup-header p {
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, .45);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.compact-button {
+  position: absolute;
+  top: 121px;
+  left: 50%;
+  height: 38px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 20px;
+  border: 1px solid rgba(103, 232, 249, .2);
+  border-radius: 999px;
+  color: #ecfeff;
+  background: rgba(7, 53, 74, .75);
+  box-shadow: 0 0 20px rgba(0, 177, 255, .12);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.compact-button:hover {
+  background: #0a4057;
+}
+
+.compact-button svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.signup-card.expanded .compact-button {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+}
+
+.signup-form {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition:
+    opacity .42s cubic-bezier(.22, 1, .36, 1) .2s,
+    transform .42s cubic-bezier(.22, 1, .36, 1) .2s;
+}
+
+.signup-card.expanded .signup-form {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.form-field {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(5px);
+  transition:
+    opacity .42s cubic-bezier(.22, 1, .36, 1),
+    transform .42s cubic-bezier(.22, 1, .36, 1),
+    filter .42s cubic-bezier(.22, 1, .36, 1);
+}
+
+.signup-card.expanded .form-field {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.form-field:nth-child(1) {
+  transition-delay: .20s;
+}
+
+.form-field:nth-child(2) {
+  transition-delay: .25s;
+}
+
+.form-field:nth-child(3) {
+  transition-delay: .30s;
+}
+
+.form-field:nth-child(4) {
+  transition-delay: .35s;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, .42);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap input {
+  width: 100%;
+  height: 45px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-radius: 11px;
+  outline: none;
+  color: white;
+  background: rgba(255, 255, 255, .025);
+  font-size: 13px;
+  font-weight: 500;
+  transition: .25s;
+}
+
+.input-wrap input::placeholder {
+  color: rgba(255, 255, 255, .25);
+}
+
+.input-wrap input:focus {
+  border-color: rgba(103, 232, 249, .28);
+  background: rgba(255, 255, 255, .04);
+}
+
+.field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: rgba(255, 255, 255, .25);
+  stroke-width: 1.8;
+  pointer-events: none;
+}
+
+.input-wrap:has(.field-icon) input {
+  padding-left: 40px;
+}
+
+.eye-button {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, .25);
+  background: transparent;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.eye-button:hover {
+  color: rgba(255, 255, 255, .6);
+}
+
+.eye-button svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.input-wrap:has(.eye-button) input {
+  padding-right: 44px;
+}
+
+.strength-bars {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.strength-bars span {
+  height: 3px;
+  flex: 1;
+  border-radius: 999px;
+  background: rgba(103, 232, 249, .7);
+  opacity: .2;
+  transform: scaleX(.92);
+  transform-origin: left;
+  transition: .25s;
+}
+
+.strength-bars span.active {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.password-error {
+  display: none;
+  margin: 6px 0 0;
+  color: rgba(252, 165, 165, .6);
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.password-error.show {
+  display: block;
+}
+
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0;
+  color: rgba(255, 255, 255, .4);
+  background: transparent;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity .42s cubic-bezier(.22, 1, .36, 1) .4s,
+    transform .42s cubic-bezier(.22, 1, .36, 1) .4s;
+}
+
+.signup-card.expanded .terms {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.terms:hover {
+  color: rgba(255, 255, 255, .55);
+}
+
+.terms a {
+  color: rgba(103, 232, 249, .7);
+  text-decoration: none;
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .02);
+}
+
+.checkbox svg {
+  display: none;
+  width: 9px;
+  height: 9px;
+  fill: none;
+  stroke: #ecfeff;
+  stroke-width: 2.5;
+}
+
+.checkbox.checked {
+  border-color: rgba(103, 232, 249, .5);
+  background: rgba(103, 232, 249, .2);
+}
+
+.checkbox.checked svg {
+  display: block;
+}
+
+.create-button {
+  height: 45px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  color: white;
+  background: linear-gradient(90deg, #08baf2, #0b7ef4);
+  box-shadow: 0 11px 25px rgba(0, 159, 255, .2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity .4s cubic-bezier(.22, 1, .36, 1) .44s,
+    transform .4s cubic-bezier(.22, 1, .36, 1) .44s,
+    filter .3s;
+}
+
+.signup-card.expanded .create-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.create-button:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.create-button:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+}
+
+.loader {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, .25);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+.create-button.loading .loader {
+  display: block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity .4s ease .49s,
+    transform .4s ease .49s;
+}
+
+.signup-card.expanded .divider {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.divider span {
+  height: 1px;
+  flex: 1;
+  background: rgba(255, 255, 255, .06);
+}
+
+.divider small {
+  color: rgba(255, 255, 255, .22);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.social-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.social-button {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, .65);
+  background: rgba(255, 255, 255, .025);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity .4s ease .53s,
+    transform .4s ease .53s,
+    background .25s,
+    color .25s;
+}
+
+.social-button:nth-child(2) {
+  transition-delay: .57s;
+}
+
+.signup-card.expanded .social-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.social-button:hover {
+  color: white;
+  background: rgba(255, 255, 255, .05);
+}
+
+.social-button svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+.social-button .google-icon {
+  fill: none;
+}
+
+.signin-text {
+  padding-top: 4px;
+  margin: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, .25);
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity .35s ease .6s,
+    transform .35s ease .6s;
+}
+
+.signup-card.expanded .signin-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.signin-text button {
+  padding: 0;
+  color: rgba(103, 232, 249, .7);
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signin-text button:hover {
+  color: #a5f3fc;
+}
+
+@media (max-width: 480px) {
+  .flow-page {
+    padding: 35px 16px;
+  }
+
+  .signup-card.expanded {
+    height: 650px;
+  }
+
+  .card-content {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .signup-header h1 {
+    font-size: 29px;
+  }
+}
+
+@media (max-width: 360px) {
+  .card-content {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .signup-card.expanded {
+    height: 665px;
+  }
+}

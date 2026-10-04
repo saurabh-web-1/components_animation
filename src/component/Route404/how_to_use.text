@@ -1,0 +1,945 @@
+# Route404 — React Component Documentation
+
+## HOW TO READ THIS DOCUMENT
+
+Press **Ctrl + F** to quickly find a section.
+
+Search for:
+- `INSTALLATION`
+- `HOW TO USE`
+- `CHANGE TEXT`
+- `CHANGE COLORS`
+- `PLUG POSITION`
+- `SNAP DISTANCE`
+- `ANIMATION`
+- `BUTTON`
+- `RESPONSIVE`
+
+---
+
+## 1. COMPONENT OVERVIEW
+
+`Route404` is an interactive 404 page built with:
+
+- React
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+
+The page includes:
+
+- Animated 404 screen
+- Interactive plug and socket
+- Drag-and-drop plug
+- Magnetic socket detection
+- Automatic plug insertion
+- Connection animation
+- Cable animation
+- Connection flash
+- Connect / disconnect button
+- Responsive layout
+
+---
+
+## 2. REQUIREMENTS
+
+Install the required packages:
+
+```bash
+npm install framer-motion lucide-react
+```
+
+Make sure Tailwind CSS is configured in your React project.
+
+---
+
+## 3. FILE SETUP
+
+Create:
+
+```text
+src/
+└── components/
+    └── Route404.jsx
+```
+
+Paste the component code inside `Route404.jsx`.
+
+---
+
+## 4. HOW TO USE
+
+Import the component:
+
+```jsx
+import Route404 from "./components/Route404";
+```
+
+Use it:
+
+```jsx
+<Route404 />
+```
+
+Example:
+
+```jsx
+function App() {
+  return <Route404 />;
+}
+
+export default App;
+```
+
+---
+
+## 5. HOW THE COMPONENT WORKS
+
+The plug can be dragged around the bottom stage.
+
+When the plug comes close enough to the socket:
+
+1. The socket detects the plug.
+2. The plug moves toward the socket.
+3. The pins slide inside.
+4. The connection completes.
+5. A connection flash appears.
+6. The page changes to the connected state.
+
+The plug can then be dragged away to disconnect.
+
+---
+
+## 6. CHANGE SNAP DISTANCE
+
+Find:
+
+```jsx
+const SNAP_DISTANCE = 125;
+```
+
+This controls how close the plug must be to the socket.
+
+Increase it:
+
+```jsx
+const SNAP_DISTANCE = 180;
+```
+
+The plug will connect from farther away.
+
+Decrease it:
+
+```jsx
+const SNAP_DISTANCE = 80;
+```
+
+The plug must be closer to the socket.
+
+---
+
+## 7. CHANGE PLUG SIZE
+
+Find:
+
+```jsx
+const PLUG_BODY = {
+  width: 112,
+  height: 74,
+};
+```
+
+Example:
+
+```jsx
+const PLUG_BODY = {
+  width: 130,
+  height: 84,
+};
+```
+
+Also update the visual Tailwind dimensions if necessary.
+
+---
+
+## 8. CHANGE TOTAL PLUG AREA
+
+Find:
+
+```jsx
+const PLUG_TOTAL = {
+  width: 130,
+  height: 74,
+};
+```
+
+This value is used for:
+
+- Drag boundaries
+- Plug center calculation
+- Position calculations
+
+If you change the plug size significantly, update both `PLUG_BODY` and `PLUG_TOTAL`.
+
+---
+
+## 9. CHANGE INITIAL PLUG POSITION
+
+The initial position is calculated here:
+
+```jsx
+const disconnectedPlug = {
+  x: Math.max(70, width * 0.22),
+  y: groundY - PLUG_BODY.height + 2,
+};
+```
+
+Change:
+
+```jsx
+width * 0.22
+```
+
+to move the plug horizontally.
+
+Example:
+
+```jsx
+width * 0.30
+```
+
+moves the plug farther right.
+
+---
+
+## 10. CHANGE SOCKET POSITION
+
+The socket position is calculated using:
+
+```jsx
+const socket = {
+  x: width - Math.max(92, width * 0.065),
+  y: height * 0.53,
+};
+```
+
+Change `0.53` to move the socket vertically.
+
+Example:
+
+```jsx
+y: height * 0.60
+```
+
+moves it lower.
+
+---
+
+## 11. CHANGE CONNECTED PLUG POSITION
+
+The connected position is:
+
+```jsx
+const connectedPlug = {
+  x: socketOpeningLeft - PLUG_BODY.width + 8,
+  y: socket.y - PLUG_BODY.height / 2,
+};
+```
+
+Change `+ 8` to adjust how far the plug sits inside the socket.
+
+---
+
+## 12. CHANGE PRE-INSERT POSITION
+
+The pre-insert position is:
+
+```jsx
+const preInsertPlug = {
+  x: connectedPlug.x - 22,
+  y: connectedPlug.y,
+};
+```
+
+Change `- 22` to control the distance before insertion.
+
+Example:
+
+```jsx
+x: connectedPlug.x - 35
+```
+
+---
+
+## 13. CHANGE CONNECTION TIMING
+
+The connection currently has multiple phases.
+
+First phase:
+
+```jsx
+setTimeout(() => {
+  setInserting(true);
+}, 430);
+```
+
+Second phase:
+
+```jsx
+setTimeout(() => {
+  setConnected(true);
+}, 420);
+```
+
+Increase these values for a slower connection.
+
+Decrease them for a faster connection.
+
+---
+
+## 14. CHANGE PIN INSERTION SPEED
+
+The plug pins use:
+
+```jsx
+duration: inserting ? 0.36 : 0.18
+```
+
+For faster insertion:
+
+```jsx
+duration: inserting ? 0.2 : 0.12
+```
+
+For slower insertion:
+
+```jsx
+duration: inserting ? 0.6 : 0.3
+```
+
+---
+
+## 15. CHANGE CONNECTION FLASH
+
+The flash is displayed using:
+
+```jsx
+{flash && socketPoint && (...)}
+```
+
+The main flash animation uses:
+
+```jsx
+duration: 0.3
+```
+
+Increase it for a longer flash.
+
+Example:
+
+```jsx
+duration: 0.5
+```
+
+---
+
+## 16. CHANGE PAGE BACKGROUND
+
+The main background is:
+
+```text
+bg-[#0b0912]
+```
+
+Change it to:
+
+```text
+bg-[#050505]
+```
+
+or:
+
+```text
+bg-slate-950
+```
+
+The page also uses radial gradients for additional depth.
+
+---
+
+## 17. CHANGE 404 SIZE
+
+The main 404 uses:
+
+```text
+text-[120px]
+md:text-[165px]
+lg:text-[185px]
+```
+
+For a larger desktop 404:
+
+```text
+lg:text-[220px]
+```
+
+For a smaller mobile 404:
+
+```text
+text-[100px]
+```
+
+---
+
+## 18. CHANGE 404 COLOR
+
+Current:
+
+```text
+text-white
+```
+
+You can change it to:
+
+```text
+text-white/90
+```
+
+or:
+
+```text
+text-neutral-200
+```
+
+---
+
+## 19. CHANGE MAIN HEADING
+
+Current heading:
+
+```text
+This page came unplugged.
+```
+
+Replace it with your own text:
+
+```text
+Looks like this route is disconnected.
+```
+
+---
+
+## 20. CHANGE DESCRIPTION
+
+Current description:
+
+```text
+We couldn't find the page you were looking for.
+It may have moved, or the link may be broken.
+```
+
+Replace it with your own 404 message.
+
+---
+
+## 21. CHANGE HOME BUTTON TEXT
+
+Current:
+
+```text
+Take me home
+```
+
+Change it to:
+
+```text
+Back to homepage
+```
+
+---
+
+## 22. CONNECT THE HOME BUTTON
+
+The current button is visual only.
+
+To make it navigate home, add:
+
+```jsx
+onClick={() => {
+  window.location.href = "/";
+}}
+```
+
+Example:
+
+```jsx
+<motion.button
+  type="button"
+  onClick={() => {
+    window.location.href = "/";
+  }}
+>
+  Take me home
+</motion.button>
+```
+
+You can also use React Router if your application uses routing.
+
+---
+
+## 23. CHANGE HOME BUTTON COLOR
+
+Current background:
+
+```text
+bg-[#f1f0f3]
+```
+
+Change it:
+
+```text
+bg-white
+```
+
+Text:
+
+```text
+text-[#141218]
+```
+
+Change it according to your theme.
+
+---
+
+## 24. CHANGE HOME BUTTON SIZE
+
+Current:
+
+```text
+h-[58px]
+px-8
+```
+
+Larger:
+
+```text
+h-[64px]
+px-10
+```
+
+Smaller:
+
+```text
+h-[50px]
+px-6
+```
+
+---
+
+## 25. CHANGE CONNECT BUTTON
+
+The bottom button changes according to state.
+
+Disconnected:
+
+```text
+Plug it back in
+```
+
+Connecting:
+
+```text
+Connecting
+```
+
+Connected:
+
+```text
+Unplug it
+```
+
+Change these text values directly inside the conditional JSX.
+
+---
+
+## 26. CHANGE CONNECT BUTTON ACTION
+
+The button uses:
+
+```jsx
+onClick={connected ? disconnect : connect}
+```
+
+When disconnected, it calls:
+
+```jsx
+connect()
+```
+
+When connected, it calls:
+
+```jsx
+disconnect()
+```
+
+This allows the same button to control both states.
+
+---
+
+## 27. CHANGE BUTTON ANIMATION
+
+Current hover:
+
+```jsx
+whileHover={{ x: 3 }}
+```
+
+Increase movement:
+
+```jsx
+whileHover={{ x: 6 }}
+```
+
+Current press:
+
+```jsx
+whileTap={{ scale: 0.97 }}
+```
+
+Stronger press:
+
+```jsx
+whileTap={{ scale: 0.93 }}
+```
+
+---
+
+## 28. CHANGE CABLE COLOR
+
+Main cable:
+
+```jsx
+stroke="#24212b"
+```
+
+Change it:
+
+```jsx
+stroke="#302b38"
+```
+
+Cable highlight:
+
+```jsx
+stroke="rgba(255,255,255,0.09)"
+```
+
+Increase the value for a brighter cable.
+
+---
+
+## 29. CHANGE CABLE WIDTH
+
+Main cable:
+
+```jsx
+strokeWidth="9"
+```
+
+Thicker:
+
+```jsx
+strokeWidth="12"
+```
+
+Cable shadow:
+
+```jsx
+strokeWidth="14"
+```
+
+Keep the shadow slightly wider than the main cable.
+
+---
+
+## 30. CHANGE CABLE CURVE
+
+The cable path uses:
+
+```jsx
+const cablePath = `
+  M ${cableStart.x} ${cableStart.y}
+  C ${cableStart.x + 165} ${cableStart.y},
+    ${cableEnd.x - bend} ${cableEnd.y + 108},
+    ${cableEnd.x} ${cableEnd.y}
+`;
+```
+
+Change `165`, `bend`, and `108` to create different cable curves.
+
+---
+
+## 31. CHANGE PLUG COLORS
+
+The plug body uses:
+
+```text
+bg-[#29262f]
+```
+
+Inner plug:
+
+```text
+bg-gradient-to-b
+from-[#34303a]
+to-[#211f26]
+```
+
+Change these values to create your own plug theme.
+
+---
+
+## 32. CHANGE PIN COLORS
+
+The pins use:
+
+```text
+from-[#79777b]
+via-[#dedee0]
+to-[#737176]
+```
+
+Change these gradient colors for gold, copper, or another metal effect.
+
+Example:
+
+```text
+from-yellow-600
+via-yellow-200
+to-yellow-700
+```
+
+---
+
+## 33. CHANGE GROUND
+
+The ground uses:
+
+```text
+bg-[#15131b]
+```
+
+Its position is controlled with:
+
+```text
+bottom-[18px]
+left-[6vw]
+right-[2.8vw]
+```
+
+Adjust these values to change its placement.
+
+---
+
+## 34. CHANGE INSTRUCTION TEXT
+
+Current:
+
+```text
+Drag the plug into the socket
+```
+
+Change it directly in the JSX.
+
+The instruction appears only when:
+
+```jsx
+!connected && !connecting
+```
+
+---
+
+## 35. CHANGE CONNECTION STATUS
+
+Disconnected status:
+
+```text
+Signal lost
+```
+
+Connected status:
+
+```text
+Power restored
+```
+
+Change these strings directly inside the status section.
+
+---
+
+## 36. CHANGE STATUS COLORS
+
+Disconnected uses:
+
+```text
+text-white/30
+```
+
+Connected uses:
+
+```text
+text-white/60
+```
+
+The status indicator also changes from an outlined dot to a glowing white dot.
+
+---
+
+## 37. CHANGE DRAG BOUNDARIES
+
+The plug's horizontal movement is limited by:
+
+```jsx
+22
+```
+
+and:
+
+```jsx
+geometry.width - PLUG_TOTAL.width - 22
+```
+
+Vertical limits use:
+
+```jsx
+30
+```
+
+and:
+
+```jsx
+geometry.height - PLUG_TOTAL.height - 5
+```
+
+Change these values to modify the draggable area.
+
+---
+
+## 38. RESPONSIVE DESIGN
+
+The component calculates its geometry from:
+
+```jsx
+stageRef.current.getBoundingClientRect()
+```
+
+and updates it when the window resizes.
+
+This allows the plug, socket, and cable to adapt to different screen sizes.
+
+---
+
+## 39. CHANGE STAGE HEIGHT
+
+The interactive stage currently uses:
+
+```text
+h-[34vh]
+min-h-[255px]
+```
+
+Increase the height:
+
+```text
+h-[40vh]
+min-h-[300px]
+```
+
+This gives the plug more room to move.
+
+---
+
+## 40. IMPORTANT
+
+The component uses pointer events for dragging:
+
+```jsx
+onPointerDown
+onPointerMove
+onPointerUp
+onPointerCancel
+```
+
+Do not remove these handlers if you want the interactive plug behavior to continue working.
+
+---
+
+## 41. QUICK CUSTOMIZATION
+
+```text
+Snap Distance:
+125
+
+Plug Body:
+112 × 74
+
+Plug Total:
+130 × 74
+
+404 Mobile:
+120px
+
+404 Desktop:
+165px / 185px
+
+Connection Phase:
+430ms
+
+Insertion Phase:
+420ms
+
+Pin Animation:
+0.36s
+
+Flash:
+0.3s
+
+Cable:
+9px
+
+Cable Shadow:
+14px
+
+Stage:
+34vh
+```
+
+---
+
+## 42. FINAL USAGE
+
+Install dependencies:
+
+```bash
+npm install framer-motion lucide-react
+```
+
+Import:
+
+```jsx
+import Route404 from "./components/Route404";
+```
+
+Render:
+
+```jsx
+function App() {
+  return <Route404 />;
+}
+
+export default App;
+```
+
+For a real 404 route, render this component from your application's not-found route.
+
+The component is now ready to customize and integrate.

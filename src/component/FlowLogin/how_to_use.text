@@ -1,0 +1,421 @@
+# FlowLogin — How to Use
+
+FlowLogin is an animated React login component with a compact-to-expanded card interaction, password visibility toggle, remember-me option, forgot-password action, social login buttons, loading state, and Framer Motion transitions.
+
+## Features
+
+- Click or hover based card expansion
+- Animated floating orb and atmospheric glow
+- Email and password fields
+- Password visibility toggle
+- Remember me option
+- Forgot password action
+- Google and Apple buttons
+- Loading state during login
+- Custom submit handler
+- Responsive layout
+- Framer Motion animations
+
+## Requirements
+
+Install the required dependencies:
+
+```bash
+npm install framer-motion lucide-react
+```
+
+Make sure Tailwind CSS is configured in your React project.
+
+## File Structure
+
+```text
+src/
+└── components/
+    └── FlowLogin.jsx
+```
+
+## Import
+
+```jsx
+import FlowLogin from "./components/FlowLogin";
+```
+
+## Basic Usage
+
+```jsx
+<FlowLogin />
+```
+
+The default component starts in compact mode and expands when the compact button is clicked.
+
+## Custom Usage
+
+```jsx
+<FlowLogin
+  title="Welcome Back"
+  subtitle="Sign in to continue."
+  trigger="click"
+  showSocial={true}
+  showRemember={true}
+  showForgot={true}
+  compactText="Log in"
+  primaryText="Sign in"
+/>
+```
+
+## Props
+
+| Prop | Default | Description |
+|---|---|---|
+| `title` | `"Flow"` | Main card heading |
+| `subtitle` | `"Good to see you. Dive back in."` | Supporting text |
+| `trigger` | `"click"` | Expansion method |
+| `showSocial` | `true` | Shows Google and Apple buttons |
+| `showRemember` | `true` | Shows Remember me |
+| `showForgot` | `true` | Shows Forgot password |
+| `compactText` | `"Log in"` | Compact button text |
+| `primaryText` | `"Sign in"` | Submit button text |
+| `onSubmit` | undefined | Login callback |
+
+## Click Trigger
+
+```jsx
+<FlowLogin trigger="click" />
+```
+
+The card expands when the compact login button is clicked.
+
+## Hover Trigger
+
+```jsx
+<FlowLogin trigger="hover" />
+```
+
+The card automatically expands when the pointer enters the component and collapses when it leaves.
+
+## Login Handler
+
+Connect the component to your authentication API using `onSubmit`:
+
+```jsx
+<FlowLogin
+  onSubmit={async ({ email, password, remember }) => {
+    const response = await loginUser({
+      email,
+      password,
+      remember,
+    });
+
+    console.log(response);
+  }}
+/>
+```
+
+The callback receives:
+
+```js
+{
+  email,
+  password,
+  remember
+}
+```
+
+## Example API Request
+
+```jsx
+<FlowLogin
+  onSubmit={async ({ email, password, remember }) => {
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        remember,
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+  }}
+/>
+```
+
+When `onSubmit` is not provided, the component uses a demo loading delay of 1400ms.
+
+## Disable Social Login
+
+```jsx
+<FlowLogin showSocial={false} />
+```
+
+This removes the Google and Apple buttons.
+
+## Disable Remember Me
+
+```jsx
+<FlowLogin showRemember={false} />
+```
+
+## Disable Forgot Password
+
+```jsx
+<FlowLogin showForgot={false} />
+```
+
+## Change Text
+
+```jsx
+<FlowLogin
+  title="Welcome"
+  subtitle="Access your account."
+  compactText="Open Login"
+  primaryText="Continue"
+/>
+```
+
+## Password Visibility
+
+The password field includes an Eye/EyeOff toggle.
+
+Users can switch between:
+
+```text
+password
+```
+
+and:
+
+```text
+text
+```
+
+The visibility state is managed internally.
+
+## Loading State
+
+When `onSubmit` is running, the component displays:
+
+```text
+Signing in...
+```
+
+The form controls are disabled while loading.
+
+## Animation
+
+FlowLogin uses Framer Motion for:
+
+- Card expansion
+- Form entrance
+- Field transitions
+- Floating orb movement
+- Background glow
+- Button transitions
+- Social button appearance
+- Loading state
+
+Main animation easing:
+
+```js
+[0.22, 1, 0.36, 1]
+```
+
+## Customization
+
+### Card Size
+
+The card changes between:
+
+```text
+Compact: 198px
+Expanded: 575px
+```
+
+Modify the values inside the card animation:
+
+```jsx
+height: expanded ? 575 : 198
+```
+
+### Card Radius
+
+```jsx
+borderRadius: expanded ? 27 : 22
+```
+
+Increase the values for softer corners.
+
+### Card Width
+
+Current maximum width:
+
+```text
+410px
+```
+
+Change:
+
+```jsx
+max-w-[410px]
+```
+
+to your preferred width.
+
+### Primary Button
+
+The sign-in button uses a blue gradient:
+
+```css
+linear-gradient(90deg, #08baf2, #0b7ef4)
+```
+
+Modify the Tailwind background class to change its appearance.
+
+### Input Height
+
+Current input height:
+
+```text
+45px
+```
+
+Change:
+
+```jsx
+h-[45px]
+```
+
+for taller or smaller fields.
+
+### Input Radius
+
+Current radius:
+
+```text
+11px
+```
+
+Change:
+
+```jsx
+rounded-[11px]
+```
+
+### Theme
+
+The component uses a dark cyan glass-style theme.
+
+Main colors include:
+
+```text
+Cyan
+#08baf2
+#0b7ef4
+
+Dark backgrounds
+#162b38
+#0b1b25
+#070c16
+```
+
+You can replace these values to match your website theme.
+
+## Floating Orb
+
+The decorative orb is:
+
+```text
+46px × 46px
+```
+
+Its rotation animation runs continuously for:
+
+```text
+7 seconds
+```
+
+Change:
+
+```jsx
+duration: 7
+```
+
+to control rotation speed.
+
+## Form Animation
+
+Fields use:
+
+```js
+opacity
+y
+blur
+```
+
+for their entrance animation.
+
+Current duration:
+
+```text
+0.42 seconds
+```
+
+Adjust `fieldVariant` to change the animation style.
+
+## Social Buttons
+
+The component includes:
+
+- Google
+- Apple
+
+To remove them completely:
+
+```jsx
+showSocial={false}
+```
+
+The social buttons are currently visual buttons only. Connect them to your authentication provider separately.
+
+## Forgot Password
+
+The Forgot password button is currently a UI action without a built-in reset flow.
+
+Connect your own password-reset handler.
+
+## Important
+
+The component does not contain a backend authentication system.
+
+Use `onSubmit` to connect:
+
+- REST API
+- JWT authentication
+- Firebase
+- Supabase
+- NextAuth/Auth.js
+- Your own login system
+
+## Recommended Usage
+
+```jsx
+<FlowLogin
+  title="Welcome Back"
+  subtitle="Sign in to your account."
+  trigger="click"
+  showSocial={true}
+  showRemember={true}
+  showForgot={true}
+  compactText="Log in"
+  primaryText="Sign in"
+  onSubmit={async ({ email, password, remember }) => {
+    await loginUser(email, password, remember);
+  }}
+/>
+```
+
+FlowLogin is designed as a reusable UI layer. Keep authentication, API requests, session handling, and routing outside the component.

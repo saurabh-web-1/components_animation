@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Route 404</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="route-page">
+
+    <div class="page-glow"></div>
+
+    <div class="top-glow" id="topGlow"></div>
+
+    <section class="hero">
+
+      <div class="status" id="statusDisconnected">
+        <span class="status-dot"></span>
+        Signal lost
+      </div>
+
+      <div class="status connected-status" id="statusConnected">
+        <span class="status-dot connected-dot"></span>
+        Power restored
+      </div>
+
+      <div class="error-code" id="errorCode">
+        404
+      </div>
+
+      <h1 id="heading">
+        This page came unplugged.
+      </h1>
+
+      <p id="description">
+        We couldn't find the page you were looking for. It may have
+        moved, or the link may be broken.
+      </p>
+
+      <button class="home-button" type="button" id="homeButton">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M19 12H5"></path>
+          <path d="M12 19l-7-7 7-7"></path>
+        </svg>
+
+        Take me home
+      </button>
+
+    </section>
+
+    <div
+      class="interactive-stage"
+      id="stage"
+    >
+
+      <div class="ground"></div>
+      <div class="ground-line"></div>
+      <div class="ground-support"></div>
+
+      <svg
+        class="cable-svg cable-shadow-svg"
+        id="cableShadowSvg"
+        preserveAspectRatio="none"
+      >
+        <path id="cableShadow"></path>
+      </svg>
+
+      <svg
+        class="cable-svg"
+        id="cableSvg"
+        preserveAspectRatio="none"
+      >
+        <path
+          id="cableOuter"
+          class="cable-outer"
+        ></path>
+
+        <path
+          id="cableHighlight"
+          class="cable-highlight"
+        ></path>
+      </svg>
+
+      <div
+        class="socket"
+        id="socket"
+      >
+        <div class="socket-board"></div>
+
+        <div class="socket-back-edge"></div>
+
+        <div class="socket-inner-rear"></div>
+
+        <div
+          class="socket-body"
+          id="socketBody"
+        >
+          <div class="socket-face"></div>
+
+          <div class="socket-side"></div>
+        </div>
+
+        <div class="socket-reflection"></div>
+
+        <div class="socket-reflection-line"></div>
+      </div>
+
+      <div
+        class="magnetic-target"
+        id="magneticTarget"
+      ></div>
+
+      <div
+        class="plug"
+        id="plug"
+        role="button"
+        tabindex="0"
+        aria-label="Drag plug into socket"
+      >
+
+        <div class="plug-shadow"></div>
+
+        <div class="cable-collar"></div>
+
+        <div class="plug-body">
+
+          <div class="plug-inner"></div>
+
+          <div class="plug-detail">
+            <div class="plug-hole"></div>
+          </div>
+
+          <div class="plug-line plug-line-one"></div>
+
+          <div class="plug-line plug-line-two"></div>
+
+          <div class="plug-depth"></div>
+
+        </div>
+
+        <div class="plug-pin plug-pin-top"></div>
+
+        <div class="plug-pin plug-pin-bottom"></div>
+
+        <div
+          class="plug-connector"
+          id="plugConnector"
+        ></div>
+
+      </div>
+
+      <div
+        class="connection-flash"
+        id="connectionFlash"
+      >
+        <span class="flash-core"></span>
+
+        <span
+          class="flash-ray ray-0"
+        ></span>
+
+        <span
+          class="flash-ray ray-45"
+        ></span>
+
+        <span
+          class="flash-ray ray-90"
+        ></span>
+
+        <span
+          class="flash-ray ray-135"
+        ></span>
+      </div>
+
+    </div>
+
+    <button
+      class="action-button"
+      id="actionButton"
+      type="button"
+    >
+      <span
+        class="loading-spinner"
+        id="loadingSpinner"
+      ></span>
+
+      <svg
+        id="plugIcon"
+        width="17"
+        height="17"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 2v6"></path>
+        <path d="M8 2v6"></path>
+        <path d="M6 8h8"></path>
+        <path d="M7 8v4a5 5 0 0 0 10 0V8"></path>
+        <path d="M12 17v5"></path>
+      </svg>
+
+      <span id="actionText">
+        Plug it back in
+      </span>
+    </button>
+
+    <div
+      class="instruction"
+      id="instruction"
+    >
+      Drag the plug into the socket
+    </div>
+
+    <div class="route-label">
+      Route 404
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
