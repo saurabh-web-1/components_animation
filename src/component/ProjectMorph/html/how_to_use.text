@@ -1,0 +1,366 @@
+PROJECTMORPH
+HOW TO USE AND CUSTOMIZE GUIDE
+
+1. ABOUT THIS COMPONENT
+
+ProjectMorph is a project showcase made with plain HTML, CSS, and JavaScript.
+It does not require React, Tailwind CSS, Framer Motion, or a build tool.
+
+The component includes:
+- Animated project titles
+- Background color transitions
+- A vertical image showcase
+- Previous and next navigation buttons
+- Project progress indicators and dots
+- Automatic project switching
+- Pause-on-hover behavior
+- Mouse parallax on the image area
+- Responsive layout for mobile and desktop
+- Left and right keyboard navigation
+
+The animation is designed to resemble the React version. Small timing or movement
+ differences may occur because this version uses CSS and vanilla JavaScript.
+
+2. FILES REQUIRED
+
+Keep these three files together in the same folder:
+
+ProjectMorph/
+  index.html
+  style.css
+  script.js
+
+index.html contains the page structure.
+style.css contains the layout, colors, responsive styles, and animations.
+script.js contains project data, settings, navigation, and animation logic.
+
+Do not rename these files unless you also update the file references in index.html.
+
+3. HOW TO RUN THE COMPONENT
+
+Step 1: Create a folder named ProjectMorph.
+Step 2: Create a file named index.html inside that folder.
+Step 3: Create a file named style.css inside that folder.
+Step 4: Create a file named script.js inside that folder.
+Step 5: Paste the correct code into each file and save all three files.
+Step 6: Open index.html in a modern web browser.
+
+You can edit the files using Notepad, Notepad++, VS Code, or another plain-text editor.
+For the best editing experience, VS Code or Notepad++ is recommended.
+
+The component loads project photos from Unsplash and the font from Google Fonts.
+An internet connection is needed for those external images and font. Local files and
+basic styles can still open without internet, but external photos or fonts may not load.
+
+4. IMPORTANT HTML CONNECTIONS
+
+Open index.html and confirm these two lines are present in the HEAD section:
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+
+The names must match the actual file names, including spelling.
+Keep all three files in the same folder unless you update the paths.
+
+5. WHERE TO CHANGE YOUR PROJECT DATA
+
+Open script.js and find the section named DEFAULT_PROJECTS.
+This section contains the sample projects: Onyx, Birch, Fjord, and Aether.
+Each project is one object inside the array.
+
+Common fields are:
+
+id
+A unique short ID for the project. Use lowercase letters and no spaces.
+
+ title
+The large project name shown on the page.
+
+category
+A short category label shown above the title.
+
+ year
+The displayed project year.
+
+location
+The short location or subtitle shown in the information area.
+
+description
+A short sentence describing the project.
+
+background
+The background color for this project, written as a CSS color such as #8fb3b1.
+
+accent
+The accent color used for small decorative details.
+
+mainImage
+The URL of the main project photo.
+
+topImage and bottomImage
+These fields are included as optional data examples. The current vertical rail displays
+mainImage for each project. Changing topImage or bottomImage alone will not change the
+visible photo unless you extend the JavaScript to use those fields.
+
+6. EXAMPLE: CHANGE A PROJECT
+
+For example, inside DEFAULT_PROJECTS you can use data like this:
+
+{
+  id: "my-studio",
+  title: "My Studio",
+  category: "INTERIOR DESIGN / 01",
+  year: "2026",
+  location: "New Delhi, India",
+  description: "A calm space designed around light and natural materials.",
+  background: "#899f91",
+  accent: "#ffffff",
+  mainImage: "https://example.com/my-project.jpg"
+}
+
+Use a real image URL that can be opened directly in a browser. Replace the example
+URL with a URL for your own image. Keep commas between object fields, and do not put
+a comma after the final project object if your editor or code style does not require it.
+
+7. HOW TO ADD ANOTHER PROJECT
+
+Step 1: Find the DEFAULT_PROJECTS array in script.js.
+Step 2: Copy one existing project object.
+Step 3: Paste the copied object before the closing square bracket of the array.
+Step 4: Change its id, title, category, year, location, description, colors, and image.
+Step 5: Make sure every project id is unique.
+Step 6: Save script.js and reload the browser page.
+
+Use a comma between adjacent project objects. The array can contain two or more projects.
+The counter and navigation buttons update from the number of objects in the array.
+
+8. HOW TO CHANGE THE INITIAL PROJECT
+
+Find this setting in CONFIG:
+
+initialProject: 0,
+
+The value 0 opens the first project, 1 opens the second, and 2 opens the third.
+Array indexes start at zero.
+
+You can also use a project id, for example:
+
+initialProject: "birch",
+
+The id must match an id inside DEFAULT_PROJECTS. If the ID is not found, the first
+project is used.
+
+9. CONFIGURATION SETTINGS
+
+All normal settings are grouped inside the CONFIG object near the top of script.js.
+
+autoPlay: true
+Set to false to stop automatic project changes.
+
+interval: 4200
+Time between automatic changes in milliseconds. 4200 is about 4.2 seconds.
+Use a larger number to wait longer between projects.
+
+pauseOnHover: true
+When true, automatic switching pauses while the pointer is over the component.
+
+showControls: true
+Shows or hides the previous and next arrow buttons.
+
+showDots: true
+Shows or hides the round project navigation indicators.
+
+showProgress: true
+Shows or hides the horizontal project progress indicators.
+
+showMeta: true
+Shows or hides the location, year, and description area.
+
+parallax: true
+Enables the image area to move slightly with the mouse pointer.
+Set to false to turn this effect off.
+
+imageBlur: 3
+Controls the blur in the inactive images. Set to 0 for sharper inactive images.
+
+imageScale: 1
+Controls the scale of the active image. A value of 1 is normal scale.
+
+imageScrollDistance: 34
+Controls how far the stacked images are separated vertically. Increase it for more
+space between images. Reduce it for a tighter stack.
+
+minHeight: 620
+Sets the minimum component height in pixels. You can change 620 to another number.
+
+label: "SELECTED WORKS"
+Changes the small label shown in the top-right area.
+
+10. ANIMATION SETTINGS
+
+Inside CONFIG, find the animation object.
+
+background: 950
+Controls background transition duration in milliseconds.
+
+ title: 520
+Controls the title letter animation duration.
+
+letterStagger: 45
+Controls the delay between individual title letters, in milliseconds.
+A lower value makes the letters appear closer together in time.
+
+image: 900
+Controls how long image positions and sizes take to transition.
+
+detail: 550
+Controls the timing used when project information changes.
+
+controls: 250
+Controls navigation indicator transition timing.
+
+If an animation value is changed, save script.js and reload the page to see the result.
+The operating system's reduced-motion setting can shorten or disable motion effects.
+
+11. HOW TO CHANGE COLORS
+
+Each project has its own background and accent fields.
+Change the background field to change the page color for that project.
+Change accent to update small decorative accents.
+
+CSS color formats such as these are supported:
+
+#8fb3b1
+#222222
+rgb(120, 140, 150)
+
+Use valid CSS color values. If a color looks incorrect, check the spelling and format.
+
+12. HOW TO USE YOUR OWN IMAGES
+
+Put your photos online and copy the direct image URL into mainImage.
+The URL should point directly to an image file or an image service that allows browser
+loading. Use landscape images with enough resolution for a large display.
+
+If an image is missing:
+- Open the image URL in a browser to test it.
+- Check that the URL was copied completely.
+- Check that the image host allows external website use.
+- Check your internet connection.
+- Try another direct image URL.
+
+Images from another website may stop working if that website changes its URL or access
+rules. For a production website, store and serve your own images when possible.
+
+13. NAVIGATION AND KEYBOARD USE
+
+Click the left arrow to see the previous project.
+Click the right arrow to see the next project.
+Click a dot or progress indicator to jump to a particular project.
+You can also focus the component and press the Left Arrow or Right Arrow key.
+
+The component wraps around: moving forward from the last project returns to the first.
+Moving backward from the first project opens the last one.
+
+14. PROJECT CHANGE CALLBACK
+
+Inside CONFIG, find onProjectChange.
+
+onProjectChange: (project) => {
+  console.log("Project changed:", project);
+}
+
+This function runs when a user changes to another project using the component navigation
+or autoplay. The project object is passed to the function.
+
+You can use the callback to connect the component to your own application logic. For
+example, replace the console.log line with code that updates another part of your page.
+Keep the function syntax valid JavaScript.
+
+15. RESPONSIVE DESIGN
+
+The component has CSS breakpoints for tablets and smaller screens.
+On smaller screens, the title and image rail move to a mobile-friendly layout, and the
+progress indicators are replaced with dots when configured to show them.
+
+To adjust responsive styling, open style.css and search for:
+
+@media (max-width: 760px)
+@media (max-width: 420px)
+
+Change the CSS values inside those sections carefully. Test the page at desktop, tablet,
+and mobile widths after making layout changes.
+
+16. HOW TO CHANGE FONTS
+
+The CSS imports DM Sans from Google Fonts near the top of style.css.
+To use a different font, replace the Google Fonts import URL and update the font-family
+property in the :root rule.
+If you want to use a system font without an online font request, remove the import and
+use a fallback such as Arial, Helvetica, sans-serif.
+
+17. TROUBLESHOOTING
+
+Problem: The page looks unstyled.
+Check that style.css is in the same folder as index.html and that the link is spelled
+correctly. Refresh the browser after saving the file.
+
+Problem: The buttons do not work.
+Check that script.js is in the same folder as index.html and that the script reference
+is spelled correctly. Open the browser developer console and read any JavaScript error.
+
+Problem: Images do not show.
+Check the image URL, internet connection, and whether the image host permits embedding.
+
+Problem: The text or layout is cut off.
+Check the browser width and the minHeight setting. Review the responsive rules in CSS.
+Very long project titles may need a smaller title font size in style.css.
+
+Problem: Changes are not visible.
+Save the file, then refresh the browser. If needed, perform a hard refresh to clear the
+browser cache. Make sure you edited the correct copy of the project folder.
+
+Problem: The animation does not run as expected.
+Check CONFIG animation values and verify that the browser console contains no errors.
+Some movement is intentionally reduced when the system prefers reduced motion.
+
+Problem: A project does not open as the first project.
+Check initialProject. It can be a zero-based index or a matching project id.
+
+18. EDITING IN NOTEPAD
+
+When using Windows Notepad, create or open each file by its exact name.
+For example, index.html must not accidentally be saved as index.html.txt.
+If file extensions are hidden, enable file-name extensions in File Explorer to verify them.
+
+Use Save As when creating a new file and select UTF-8 encoding if the editor asks for it.
+This guide uses plain text and ordinary characters to reduce display problems across
+Notepad, Notepad++, VS Code, and other text editors.
+
+Do not paste the JavaScript into style.css or the CSS into index.html. Each code section
+belongs in its matching file. Save all files before refreshing the browser.
+
+19. BEFORE PUBLISHING YOUR WEBSITE
+
+- Replace the sample projects with your own project data.
+- Replace sample image URLs with images you can use.
+- Test all arrows, dots, and automatic switching.
+- Test desktop and mobile layouts.
+- Check the browser console for errors.
+- Confirm the website's image rights and external asset requirements.
+- Consider hosting your images locally or on a reliable image service.
+
+20. QUICK CHECKLIST
+
+[ ] index.html is saved.
+[ ] style.css is saved.
+[ ] script.js is saved.
+[ ] All three files are in the correct folder.
+[ ] The HTML references style.css and script.js correctly.
+[ ] DEFAULT_PROJECTS contains valid project objects.
+[ ] Each project has a unique id.
+[ ] Each mainImage URL works in a browser.
+[ ] The page has been tested on desktop and mobile.
+
+This guide describes the vanilla JavaScript ProjectMorph version. It does not describe
+or require the original React implementation.

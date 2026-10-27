@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <title>ProductMorph</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="product-page">
+    <div class="ambient-glow" id="ambientGlow"></div>
+
+    <section class="product-card" id="productCard">
+
+      <div class="card-background" id="cardBackground"></div>
+      <div class="top-line"></div>
+      <div class="particles" id="particles"></div>
+
+      <button class="compact-cta" id="openBtn" type="button">
+        <span id="compactText">TAP TO OPEN</span>
+      </button>
+      <div class="compact-line" id="compactLine"></div>
+
+      <div
+        class="product-visual"
+        id="productVisual"
+        role="button"
+        tabindex="0"
+        aria-label="Open product details"
+      >
+        <div class="product-glow" id="productGlow"></div>
+
+        <div class="product-float" id="productFloat">
+          <img
+            class="product-image"
+            id="productImage"
+            src="original-image.png"
+            alt="Original Taste Cola"
+            draggable="false"
+          />
+        </div>
+
+        <div class="light-sweep"></div>
+      </div>
+
+      <div class="product-details" id="productDetails" aria-hidden="true">
+
+        <div class="brand-label" id="brandLabel">
+          AXIS / COLA
+        </div>
+
+        <h1 class="product-title" id="productTitle">
+          Cola
+        </h1>
+
+        <p class="product-description" id="productDescription">
+          Classic cola flavor with a crisp and refreshing finish.
+        </p>
+
+        <p class="product-meta" id="productMeta">
+          330 ML · 35G SUGAR · 32 MG CAFFEINE
+        </p>
+
+        <div class="variants" id="variants"></div>
+
+        <div class="purchase-info" id="purchaseInfo">
+          <div class="quantity-control" id="quantityControl">
+            <button id="decreaseBtn" type="button" aria-label="Decrease quantity">−</button>
+            <span id="quantityValue">1</span>
+            <button id="increaseBtn" type="button" aria-label="Increase quantity">+</button>
+          </div>
+
+          <div class="total-wrap">
+            <span class="total-label">TOTAL</span>
+            <span class="total-price" id="totalPrice">$2.40</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bottom-label" id="bottomLabel">
+        PREMIUM QUALITY · FRESHLY MADE
+      </div>
+
+      <div class="cart-controls" id="cartControls">
+
+        <button
+          class="close-btn"
+          id="closeBtn"
+          type="button"
+          aria-label="Close product details"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <button class="cart-button" id="cartBtn" type="button">
+          <span class="cart-content" id="cartContent">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 7h12l1 14H5L6 7Z"></path>
+              <path d="M9 7a3 3 0 0 1 6 0"></path>
+            </svg>
+            <span id="buttonText">Add to cart</span>
+            <span class="button-total" id="buttonTotal">$2.40</span>
+          </span>
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

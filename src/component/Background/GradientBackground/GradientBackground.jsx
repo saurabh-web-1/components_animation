@@ -113,14 +113,10 @@ const GradientBackground = ({
         ${className}
       `}
     >
-      {/* =========================
-          BACKGROUND
-      ========================== */}
+      {/* BACKGROUND */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
 
-        {/* --------------------------------
-            Animated Gradient Blobs
-        --------------------------------- */}
+       
         {blobs.map((blob, index) => (
           <motion.div
             key={index}
@@ -160,9 +156,7 @@ const GradientBackground = ({
           />
         ))}
 
-        {/* --------------------------------
-            Center Glow
-        --------------------------------- */}
+        {/* Center Glow */}
         <motion.div
           className="
             absolute
@@ -187,9 +181,7 @@ const GradientBackground = ({
           }}
         />
 
-        {/* --------------------------------
-            Aurora Light
-        --------------------------------- */}
+        {/* Aurora Light */}
         <motion.div
           className="
             absolute
@@ -218,9 +210,7 @@ const GradientBackground = ({
           }}
         />
 
-        {/* --------------------------------
-            Second Aurora Light
-        --------------------------------- */}
+        {/*  Second Aurora Light */}
         <motion.div
           className="
             absolute
@@ -249,9 +239,7 @@ const GradientBackground = ({
           }}
         />
 
-        {/* --------------------------------
-            Stars
-        --------------------------------- */}
+        {/* Stars */}
         <div className="absolute inset-0">
           {Array.from({ length: 50 }).map((_, index) => (
             <motion.span
@@ -293,9 +281,7 @@ const GradientBackground = ({
           "
         />
 
-        {/* --------------------------------
-            Vignette
-        --------------------------------- */}
+        {/* Vignette  */}
         <div
           className="
             absolute
@@ -305,9 +291,7 @@ const GradientBackground = ({
         />
       </div>
 
-      {/* =========================
-          CONTENT
-      ========================== */}
+      {/*  CONTENT */}
       <div className="relative z-10 min-h-screen">
         {children}
       </div>

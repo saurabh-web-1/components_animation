@@ -1,0 +1,422 @@
+# ProjectMorph – How to Use Guide
+
+## 1. Overview
+
+ProjectMorph is a reusable React project showcase component. It displays project information with animated image transitions, project details, navigation controls, and optional progress indicators.
+
+You can use it for portfolio websites, agency websites, creative studios, and project galleries.
+
+## 2. Requirements
+
+Make sure your project uses:
+
+- React
+- Framer Motion
+- Tailwind CSS
+
+Install Framer Motion if it is not already installed:
+
+```bash
+npm install framer-motion
+```
+
+Tailwind CSS should also be configured in your project.
+
+## 3. Add the Component
+
+Create a file named `ProjectMorph.jsx` inside your components folder.
+
+Paste the ProjectMorph component code into that file.
+
+Example folder structure:
+
+```text
+src/
+  components/
+    ProjectMorph.jsx
+  pages/
+    Home.jsx
+  App.jsx
+```
+
+## 4. Basic Usage
+
+Import ProjectMorph into your page.
+
+```jsx
+import ProjectMorph from "./components/ProjectMorph";
+
+function Home() {
+  return (
+    <main>
+      <ProjectMorph />
+    </main>
+  );
+}
+
+export default Home;
+```
+
+The component will display its default project data when you do not provide custom projects.
+
+## 5. Display Your Own Projects
+
+You can pass your own project information through the `projects` prop.
+
+```jsx
+import ProjectMorph from "./components/ProjectMorph";
+
+const projects = [
+  {
+    id: 1,
+    title: "E-Commerce Website",
+    category: "Web Development",
+    year: "2026",
+    location: "India",
+    description:
+      "A modern shopping experience with a responsive interface.",
+    background: "#101820",
+    accent: "#A3E635",
+    mainImage: "https://example.com/project-1.jpg",
+  },
+  {
+    id: 2,
+    title: "Creative Portfolio",
+    category: "Portfolio Design",
+    year: "2026",
+    location: "Delhi",
+    description:
+      "A clean portfolio website for a creative professional.",
+    background: "#171717",
+    accent: "#C4B5FD",
+    mainImage: "https://example.com/project-2.jpg",
+  },
+];
+
+function Home() {
+  return <ProjectMorph projects={projects} />;
+}
+
+export default Home;
+```
+
+Replace the example image URLs with your actual image URLs.
+
+## 6. Project Data Reference
+
+Each project can contain the following fields.
+
+`id`: A unique identifier for the project.
+
+`title`: The project title shown in the interface.
+
+`category`: The project category, such as Web Design or Branding.
+
+`year`: The project completion year.
+
+`location`: The project location.
+
+`description`: A short project description.
+
+`background`: The background color associated with the project.
+
+`accent`: The accent color used for visual styling.
+
+`mainImage`: The main image displayed by the component.
+
+`topImage` and `bottomImage`: Additional image fields available in the default project data structure. The current image rail does not independently render these fields.
+
+The component also supports an `images` fallback for the main image through `images[0]` when `mainImage` is unavailable.
+
+## 7. Available Props
+
+`projects`
+
+Pass an array of project objects. Use this prop to display your own projects.
+
+`initialProject`
+
+Choose the initial project according to the value expected by the component's selection logic.
+
+`autoPlay`
+
+Enable or disable automatic project changes.
+
+`interval`
+
+Set the autoplay interval in milliseconds.
+
+`pauseOnHover`
+
+Pause autoplay while the user hovers over the component.
+
+`showControls`
+
+Show or hide the project navigation controls.
+
+`showDots`
+
+Show or hide the navigation dots.
+
+`showProgress`
+
+Show or hide the progress indicator.
+
+`showMeta`
+
+Show or hide project metadata.
+
+`parallax`
+
+Enable or disable the parallax image effect.
+
+`imageBlur`
+
+Customize the image blur effect using the value expected by the component.
+
+`imageScale`
+
+Adjust the image scale.
+
+`imageScrollDistance`
+
+Adjust the image's vertical scroll distance.
+
+`animation`
+
+Choose the animation option supported by the component's animation logic.
+
+`onProjectChange`
+
+Provide a callback to respond when the active project changes.
+
+`className`
+
+Add custom CSS classes to the component's root element.
+
+`minHeight`
+
+Set the component's minimum height.
+
+`label`
+
+Customize the component label.
+
+Use the values and types expected by the actual component code when setting these props.
+
+## 8. Customize Autoplay
+
+To enable automatic project changes:
+
+```jsx
+<ProjectMorph
+  projects={projects}
+  autoPlay={true}
+  interval={5000}
+  pauseOnHover={true}
+/>
+```
+
+Here, `interval={5000}` sets the interval to five seconds, provided the component's autoplay logic uses milliseconds.
+
+Disable autoplay when you want users to navigate through projects manually.
+
+```jsx
+<ProjectMorph
+  projects={projects}
+  autoPlay={false}
+/>
+```
+
+## 9. Customize Controls and Metadata
+
+You can control optional interface elements.
+
+```jsx
+<ProjectMorph
+  projects={projects}
+  showControls={true}
+  showDots={true}
+  showProgress={true}
+  showMeta={true}
+/>
+```
+
+To hide these elements:
+
+```jsx
+<ProjectMorph
+  projects={projects}
+  showControls={false}
+  showDots={false}
+  showProgress={false}
+  showMeta={false}
+/>
+```
+
+## 10. Customize the Animation
+
+You can adjust the visual effects using the component's supported props.
+
+```jsx
+<ProjectMorph
+  projects={projects}
+  parallax={true}
+  imageScale={1.1}
+  imageScrollDistance={100}
+  imageBlur={0}
+/>
+```
+
+The exact visual result depends on how each value is applied in the component's animation logic.
+
+## 11. Listen for Project Changes
+
+Use `onProjectChange` when you need to perform an action after the active project changes.
+
+```jsx
+<ProjectMorph
+  projects={projects}
+  onProjectChange={(project) => {
+    console.log("Active project:", project);
+  }}
+/>
+```
+
+Check the callback argument in the component source to confirm whether it returns a project object, index, or another value.
+
+## 12. Add Custom Styling
+
+You can pass a custom class through `className`.
+
+```jsx
+<ProjectMorph
+  projects={projects}
+  className="my-8 rounded-2xl"
+/>
+```
+
+You can also set the minimum height.
+
+```jsx
+<ProjectMorph
+  projects={projects}
+  minHeight="650px"
+/>
+```
+
+Use responsive Tailwind CSS classes when adapting the component to different screen sizes.
+
+## 13. Example: Portfolio Page
+
+```jsx
+import ProjectMorph from "./components/ProjectMorph";
+
+const portfolioProjects = [
+  {
+    id: "project-1",
+    title: "InfiWeb Studio",
+    category: "Web Development",
+    year: "2026",
+    location: "India",
+    description:
+      "Modern websites and digital experiences for businesses.",
+    background: "#101010",
+    accent: "#A3E635",
+    mainImage: "https://example.com/infiweb.jpg",
+  },
+];
+
+export default function Portfolio() {
+  return (
+    <section className="min-h-screen bg-black px-4 py-12">
+      <div className="mx-auto max-w-7xl">
+        <ProjectMorph
+          projects={portfolioProjects}
+          autoPlay={true}
+          interval={5000}
+          pauseOnHover={true}
+          showControls={true}
+          showDots={true}
+          showProgress={true}
+          showMeta={true}
+          className="w-full"
+        />
+      </div>
+    </section>
+  );
+}
+```
+
+Replace the example image URL with an image that you own or are authorized to use.
+
+## 14. Troubleshooting
+
+**The component does not appear**
+
+Check that the component is imported from the correct path and rendered inside your page.
+
+**Framer Motion error**
+
+Install the dependency using `npm install framer-motion`.
+
+**Images are not loading**
+
+Check that image URLs are valid and accessible. Confirm that `mainImage` contains the correct URL.
+
+**Custom projects are not displaying**
+
+Verify that `projects` is an array and that each object contains the fields used by the component.
+
+**Autoplay is not working**
+
+Check the `autoPlay` value, interval configuration, and autoplay logic in the component.
+
+**Tailwind styles are missing**
+
+Verify that Tailwind CSS is configured correctly and that your component files are included in its source scanning configuration.
+
+**Type or animation errors**
+
+Check the expected prop types and animation values against the actual component implementation.
+
+## 15. Important Notes
+
+- Keep each project ID unique.
+- Use optimized images for better performance.
+- Provide meaningful project titles and descriptions.
+- Test the component on desktop, tablet, and mobile screens.
+- Do not assume unsupported props will work.
+- The current component has a hardcoded brand label and footer phrase. Props such as `brand`, `showBrand`, `showFooter`, and `footerText` are not available unless you add them to the component yourself.
+
+## 16. Quick Testing Checklist
+
+- [ ] Component imports without errors.
+- [ ] Default projects display correctly.
+- [ ] Custom project data appears correctly.
+- [ ] Images load successfully.
+- [ ] Navigation controls work.
+- [ ] Keyboard arrow navigation works.
+- [ ] Autoplay behaves as expected.
+- [ ] Animation effects work correctly.
+- [ ] Layout is responsive.
+- [ ] Browser console has no errors.
+
+## 17. Find Information in Notepad
+
+Open this guide in Notepad and press `Ctrl + F` to search for terms such as:
+
+- `Basic Usage`
+- `Project Data`
+- `Available Props`
+- `Customize Autoplay`
+- `Customize the Animation`
+- `Troubleshooting`
+
+This makes it easier to find the instructions you need.
+
+## Conclusion
+
+ProjectMorph is designed to make project showcases reusable. Pass your own project array, configure the supported props, and customize the styling to match your website.
+
+Always refer to the actual component source when you need to confirm a prop's type, default value, callback signature, or supported animation options.

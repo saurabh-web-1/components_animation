@@ -116,9 +116,7 @@ const GradientMesh = ({
 
     let time = 0;
 
-    // -----------------------------
     // Canvas Resize
-    // -----------------------------
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
 
@@ -137,9 +135,7 @@ const GradientMesh = ({
 
     window.addEventListener("resize", resize);
 
-    // -----------------------------
     // Animation
-    // -----------------------------
     const animate = () => {
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
@@ -187,9 +183,7 @@ const GradientMesh = ({
           }
         }
 
-        // -----------------------------
         // Radial Gradient
-        // -----------------------------
         const gradient =
           ctx.createRadialGradient(
             px,
@@ -232,9 +226,7 @@ const GradientMesh = ({
     animationRef.current =
       requestAnimationFrame(animate);
 
-    // -----------------------------
     // Cleanup
-    // -----------------------------
     return () => {
       window.removeEventListener(
         "resize",
@@ -249,9 +241,7 @@ const GradientMesh = ({
     };
   }, [meshPoints, speed, interactive]);
 
-  // -----------------------------
   // Mouse Move
-  // -----------------------------
   const handleMouseMove = (event) => {
     if (!interactive) return;
 

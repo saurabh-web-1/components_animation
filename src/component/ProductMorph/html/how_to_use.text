@@ -1,0 +1,522 @@
+# ProductMorph — How to Use & Code Modification Guide
+
+**Component Type:** Interactive Product Card  
+**Technology:** HTML, CSS, Vanilla JavaScript  
+**Category:** E-commerce / Product Display  
+**Files:** `index.html`, `style.css`, `script.js`
+
+## 1. Overview
+
+ProductMorph is an interactive product card that transforms from a compact preview into an expanded product details panel.
+
+Features:
+- Compact product preview and expandable details.
+- Animated product image and ambient glow.
+- Product variant selection.
+- Dynamic accent colors.
+- Product description and pricing.
+- Quantity controls and automatic total calculation.
+- Add-to-cart feedback.
+- Floating image, light-sweep and optional particle effects.
+- Responsive layout.
+
+The HTML/CSS/JavaScript version does not require React or Framer Motion.
+
+## 2. Project Folder Structure
+
+```text
+ProductMorph/
+├── index.html
+├── style.css
+├── script.js
+├── original-image.png
+└── lime-image.png
+```
+
+- `index.html` — Component structure.
+- `style.css` — Styling, layout and animations.
+- `script.js` — Product data and interactions.
+- `original-image.png` — Original product image.
+- `lime-image.png` — Lime product image.
+
+Keep the images in the same folder unless you update their paths.
+
+## 3. Setup and Run
+
+1. Create the project folder.
+2. Create the three code files.
+3. Paste the complete code into the corresponding files.
+4. Add the product images.
+5. Confirm that HTML links to the CSS and JavaScript files.
+
+```html
+<link rel="stylesheet" href="./style.css">
+<script src="./script.js" defer></script>
+```
+
+6. Open `index.html` in a browser or run a local development server.
+7. Check the browser console if something does not work.
+
+## 4. How the Component Works
+
+```text
+Page loads
+    ↓
+Compact product preview
+    ↓
+Open product card
+    ↓
+Expanded product details
+    ↓
+Select variant and quantity
+    ↓
+Review total price
+    ↓
+Click Add to cart
+    ↓
+Display cart feedback
+```
+
+The demo cart callback may only log the item to the browser console. A real cart requires integration with your application.
+
+## 5. Product Configuration
+
+Open `script.js` and find `DEFAULT_VARIANTS` and `CONFIG`, if those names exist in your version.
+
+Product variants commonly contain:
+
+- `id` — Unique product variant ID.
+- `name` — Full product name.
+- `shortName` — Short variant label.
+- `accent` — Main accent color.
+- `accentSoft` — Soft glow color.
+- `image` — Product image path.
+- `price` — Numeric unit price.
+- `description` — Product description.
+- `meta` — Supporting product information.
+
+Keep property names consistent with the existing JavaScript.
+
+## 6. Change Brand and Product Title
+
+Open `script.js` and search for `brand`, `AXIS`, `title`, or the current product title.
+
+Example:
+
+```js
+brand: "LUXVORA",
+title: "Sparkling Drink"
+```
+
+Use these values in the existing configuration if it supports them. If the text is hardcoded in HTML, change it in `index.html`.
+
+Do not create a duplicate `CONFIG` object.
+
+## 7. Change Product Images
+
+Find the image path inside the relevant variant.
+
+```js
+image: "original-image.png"
+```
+
+To replace an image:
+
+1. Add the new image to the project.
+2. Search for the old filename in `script.js`.
+3. Replace the path.
+4. Check spelling and extension.
+5. Refresh the browser.
+
+For an image inside an assets folder, the path might be:
+
+```js
+image: "./assets/original-image.png"
+```
+
+This works only if the file exists at that location.
+
+Use optimized transparent PNG images for floating product effects.
+
+## 8. Add a New Product Variant
+
+Find `DEFAULT_VARIANTS` and add another object inside the array.
+
+```js
+{
+  id: "orange",
+  name: "Orange Spark",
+  shortName: "Orange",
+  accent: "#f97316",
+  accentSoft: "rgba(249,115,22,0.28)",
+  image: "orange-image.png",
+  price: 2.8,
+  description: "A sparkling orange-flavored drink.",
+  meta: "330 ML - ORANGE FLAVOR"
+}
+```
+
+Then:
+
+1. Add `orange-image.png` to the project.
+2. Save `script.js`.
+3. Refresh the browser.
+4. Test the new variant.
+5. Confirm the image, color, description and price update.
+
+If variant buttons are generated dynamically, the new option may appear automatically. Otherwise, update the HTML or rendering function.
+
+Every variant needs a unique `id`.
+
+## 9. Change Accent Colors
+
+Edit the selected variant's color values.
+
+```js
+accent: "#8b5cf6",
+accentSoft: "rgba(139,92,246,0.28)"
+```
+
+Color examples:
+
+- Red: `#ef233c`
+- Green: `#22c55e`
+- Orange: `#f97316`
+- Purple: `#8b5cf6`
+- Blue: `#3b82f6`
+
+The JavaScript must apply the selected variant's colors to the card. Changing the data alone will not work if the script does not read these properties.
+
+## 10. Change Price and Product Details
+
+Use a numeric price.
+
+```js
+price: 2.8
+```
+
+Avoid storing the price as a formatted string such as `"$2.80"`.
+
+A typical total calculation is:
+
+```js
+const total = variant.price * quantity;
+const formattedTotal = total.toFixed(2);
+```
+
+Update the description:
+
+```js
+description: "A refreshing citrus drink."
+```
+
+Update the metadata:
+
+```js
+meta: "330 ML - ORANGE FLAVOR"
+```
+
+Use accurate product information. For real purchases, validate the price on the server.
+
+## 11. Modify Quantity Controls
+
+Expected behavior:
+
+- Plus increases quantity.
+- Minus decreases quantity.
+- Quantity cannot fall below one.
+- Total updates after a quantity change.
+
+A typical minimum-one rule is:
+
+```js
+quantity = Math.max(1, quantity - 1);
+```
+
+Use this inside the existing quantity handler. Do not paste it at the top level without connecting it to the event handler.
+
+Test both quantity buttons and verify that the total updates correctly.
+
+## 12. Modify the Cart Button
+
+Search for `Add to cart` in `script.js` or `index.html`.
+
+Possible labels:
+
+- Add to cart
+- Add to bag
+- Buy now
+- Add item
+
+Change the displayed text without removing the button's click handler.
+
+The button's appearance is controlled by `style.css`. Test its normal, hover, focus, disabled and success states after making changes.
+
+## 13. Connect a Real Cart
+
+The demo callback may log the selected item instead of saving it.
+
+An item may contain data like:
+
+```js
+{
+  brand: "AXIS",
+  title: "Cola",
+  variant: "Original Taste",
+  variantId: "original",
+  quantity: 2,
+  unitPrice: 2.4,
+  total: 4.8
+}
+```
+
+A basic handler example:
+
+```js
+function handleCartItem(item) {
+  console.log("Product added:", item);
+}
+```
+
+Connect the handler to your existing cart logic. Do not create duplicate handlers.
+
+For production:
+- Validate product IDs on the server.
+- Validate quantity.
+- Recalculate prices on the server.
+- Handle failed API requests.
+- Prevent repeated submissions.
+- Show success only after the operation succeeds.
+
+The browser's total must not be trusted as the authoritative payment amount.
+
+## 14. Modify Animations
+
+Open `style.css` and search for:
+
+- `animation`
+- `transition`
+- `@keyframes`
+- `transform`
+- `opacity`
+- `glow`
+- `sweep`
+- `particle`
+- `float`
+
+Example:
+
+```css
+.product-image {
+  animation: product-float 3s ease-in-out infinite;
+}
+```
+
+This is an example. Use the actual selector and animation name from your stylesheet.
+
+General rules:
+- Longer duration makes an animation slower.
+- Shorter duration makes it faster.
+- Lower opacity makes an effect subtler.
+- Test opening and closing separately.
+- Change one timing value at a time.
+
+If animation values are configured in JavaScript, confirm that the code actually reads those settings.
+
+## 15. Modify Layout and Responsive Design
+
+Edit `style.css` to change:
+
+- Card width and height.
+- Border radius.
+- Padding and spacing.
+- Product image size.
+- Typography.
+- Button size.
+- Background and shadows.
+- Mobile layout.
+- Transition timing.
+
+Test both compact and expanded views after each major change.
+
+For mobile, check for horizontal scrolling, overlapping content, inaccessible buttons and oversized images.
+
+Preserve existing media queries unless you understand how they affect the layout.
+
+## 16. Modify HTML Safely
+
+Before renaming an ID or class:
+
+1. Find it in `index.html`.
+2. Search for it in `script.js`.
+3. Search for it in `style.css`.
+4. Update all dependent references.
+
+If JavaScript expects an element by ID and that ID is removed, a handler may fail.
+
+Use semantic buttons for interactive actions.
+
+## 17. Modify CSS Safely
+
+Recommended workflow:
+
+1. Find the actual selector in `style.css`.
+2. Change one or two properties.
+3. Save the file.
+4. Refresh the browser.
+5. Test compact and expanded states.
+6. Test mobile layout.
+7. Undo the change if unrelated elements break.
+
+Avoid creating many duplicate rules for the same selector. If a style does not change, inspect the element and check for conflicting CSS rules.
+
+## 18. Modify JavaScript Safely
+
+Before editing `script.js`:
+
+1. Make a backup.
+2. Search for the function or variable.
+3. Read the surrounding code.
+4. Find which event handlers call it.
+5. Make the smallest useful change.
+6. Save and test.
+7. Check the browser console.
+
+Do not paste snippets at arbitrary locations. Variables may only exist inside a particular function or scope.
+
+Avoid declaring the same `const` or function name twice in the same scope.
+
+## 19. Common Code Modification Examples
+
+**Change the accent color:** Find the variant and set `accent` to `"#3b82f6"`. Confirm the update function applies it.
+
+**Change the price:** Set the relevant variant's numeric `price` to `3.25`. Verify the total updates.
+
+**Change the description:** Update the variant's `description` and verify the details panel renders it.
+
+**Replace the image:** Set `image` to `"new-product.png"` and confirm that file exists.
+
+**Slow down an animation:** Find its actual CSS declaration and increase the duration.
+
+**Change button text:** Search for the existing label and change it without removing the click handler.
+
+**Change starting quantity:** Update the supported initial quantity setting and verify that it is a positive integer.
+
+**Add a variant:** Add a complete object to `DEFAULT_VARIANTS`, provide a unique ID and image, and test the selector.
+
+These examples show the intended modifications. Use the actual variable names, selectors and functions in your files.
+
+## 20. Troubleshooting
+
+**Image is missing**
+- Verify the filename and extension.
+- Check the path and file location.
+- Inspect the browser Network panel.
+
+**Card does not open**
+- Confirm `script.js` loads.
+- Check console errors.
+- Verify the open button's selector and click handler.
+
+**Variant does not change**
+- Check unique IDs.
+- Verify the variant click handler.
+- Confirm image, text, price and color are updated.
+
+**Total is incorrect**
+- Confirm the price is numeric.
+- Verify the quantity.
+- Ensure the selected variant is used.
+- Recalculate after quantity changes.
+
+**CSS does not apply**
+- Verify the stylesheet path.
+- Check class names.
+- Inspect the element.
+- Look for conflicting CSS rules.
+
+**Cart button does nothing**
+- Confirm the event listener exists.
+- Check whether the button is disabled.
+- Inspect console errors.
+- Verify the cart callback is connected.
+
+**Animation is abrupt**
+- Check transition durations.
+- Confirm the expected state classes are applied.
+- Check for conflicting styles.
+- Test opening and closing separately.
+
+## 21. Notepad Search Guide
+
+To find a topic in Windows Notepad:
+
+1. Open this document.
+2. Press `Ctrl + F`.
+3. Enter a keyword.
+4. Press Enter to find a match.
+5. Use Find Next or `Shift + Enter` to navigate matches.
+6. Press Esc to close the search box.
+
+Useful search keywords:
+
+- `SETUP`
+- `DEFAULT_VARIANTS`
+- `CONFIG`
+- `IMAGE`
+- `ACCENT`
+- `PRICE`
+- `QUANTITY`
+- `CART`
+- `ANIMATION`
+- `RESPONSIVE`
+- `HTML`
+- `CSS`
+- `JAVASCRIPT`
+- `TROUBLESHOOTING`
+- `CHECKLIST`
+
+For better readability in Notepad:
+- Enable Format > Word Wrap.
+- Increase the font size if needed.
+- Maximize the window.
+- Save the document as `.txt`.
+
+## 22. Testing Checklist
+
+- [ ] `index.html` opens correctly.
+- [ ] `style.css` loads correctly.
+- [ ] `script.js` loads correctly.
+- [ ] Product images appear.
+- [ ] Compact preview is visible.
+- [ ] Card opens and closes.
+- [ ] Variant selection works.
+- [ ] Image and accent update by variant.
+- [ ] Description and metadata update.
+- [ ] Quantity increases correctly.
+- [ ] Quantity never falls below one.
+- [ ] Total updates correctly.
+- [ ] Cart feedback appears.
+- [ ] Real cart integration works if required.
+- [ ] Mobile layout is usable.
+- [ ] No unexpected console errors appear.
+- [ ] Keyboard focus is visible.
+- [ ] Reduced-motion behavior is considered.
+- [ ] Server validates prices for real checkout.
+
+## Final Notes
+
+ProductMorph is a frontend component, not a complete e-commerce backend.
+
+Use:
+- `index.html` for structure.
+- `style.css` for design and animations.
+- `script.js` for product data and interactions.
+
+For product changes, start with `DEFAULT_VARIANTS`.
+For visual changes, start with `style.css`.
+For behavior changes, inspect the relevant functions in `script.js`.
+
+Always make a backup before modifying code. Change one feature at a time and test the compact view, expanded view, variants, quantity controls, cart button and mobile layout.
+
+**Quick search:** Press `Ctrl + F` and search for the feature you want to modify.

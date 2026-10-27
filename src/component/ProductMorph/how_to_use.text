@@ -1,0 +1,441 @@
+# ProductMorph — Complete How to Use Guide
+
+ProductMorph is an animated React product card that transforms from a compact product preview into an interactive product detail panel. It supports product variants, quantity selection, dynamic pricing, add-to-cart callbacks, and customizable Framer Motion animations.
+
+## 1. Features
+
+- Animated compact-to-expanded product card
+- Floating product image and ambient glow
+- Instant product variant and accent color changes
+- Quantity selector and dynamic total
+- Add-to-cart loading and success states
+- Custom product data and images
+- Configurable animation durations
+- Optional automatic opening
+- Cart, close, and variant change callbacks
+- Responsive card layout
+
+## 2. How to Read This Documentation
+
+Use the following steps to quickly find the information you need.
+
+1. Press `Ctrl + F` on Windows or Linux.
+2. Press `Cmd + F` on Mac.
+3. Type a keyword related to your question.
+4. Press `Enter` to find the next matching result.
+5. Press `Esc` to close the search bar.
+
+
+## 3. Requirements
+
+Install the required dependencies:
+
+```bash
+npm install framer-motion lucide-react
+```
+
+Make sure Tailwind CSS is configured in your React project.
+
+## 4. File Structure
+
+```text
+src/
+└── components/
+    ├── ProductMorph.jsx
+    ├── original-image.png
+    └── lime-image.png
+```
+
+The component imports its default product images. Keep these assets in the correct location or update the image imports to match your project.
+
+## 5. Import
+
+```jsx
+import ProductMorph from "./components/ProductMorph";
+```
+
+Adjust the import path according to your project structure.
+
+## 6. Basic Usage
+
+```jsx
+<ProductMorph />
+```
+
+The component includes two default variants: Original Taste and Lime Twist.
+
+Click the product image or the `TAP TO OPEN` button to expand the card. The expanded panel displays product information, variant controls, quantity selection, and the add-to-cart button.
+
+## 7. Custom Usage
+
+```jsx
+<ProductMorph
+  brand="AXIS"
+  title="Cola"
+  compactText="TAP TO OPEN"
+  buttonText="Add to cart"
+  initialVariant={0}
+  initialQuantity={1}
+  autoOpen={false}
+  particles={true}
+  showQuantity={true}
+/>
+```
+
+## 8. Props
+
+| Prop | Default | Description |
+|---|---|---|
+| `brand` | `"AXIS"` | Brand label |
+| `title` | `"Cola"` | Product heading |
+| `compactText` | `"TAP TO OPEN"` | Compact card button text |
+| `buttonText` | `"Add to cart"` | Cart button label |
+| `variants` | `defaultVariants` | Available product variants |
+| `initialVariant` | `0` | Initially selected variant index |
+| `initialQuantity` | `1` | Initial quantity, minimum 1 |
+| `autoOpen` | `false` | Automatically opens the card |
+| `autoOpenDelay` | `1800` | Auto-open delay in milliseconds |
+| `particles` | `true` | Enables ambient particles |
+| `showQuantity` | `true` | Shows quantity controls and total |
+| `openDuration` | `1.05` | Opening duration in seconds |
+| `closeDuration` | `1.1` | Closing duration in seconds |
+| `animation` | `{}` | Individual animation overrides |
+| `onAddToCart` | `undefined` | Add-to-cart callback |
+| `onClose` | `undefined` | Callback after closing |
+| `onVariantChange` | `undefined` | Callback when a variant changes |
+
+## 9. Custom Product Variants
+
+Create your own product variants:
+
+```jsx
+const variants = [
+  {
+    id: "original",
+    name: "Original Taste",
+    shortName: "Cola",
+    accent: "#ef233c",
+    accentSoft: "rgba(239,35,60,0.30)",
+    image: "/images/cola.png",
+    price: 2.4,
+    description: "Classic cola with a crisp finish.",
+    meta: "330 ML · CLASSIC FLAVOR",
+  },
+  {
+    id: "lime",
+    name: "Lime Twist",
+    shortName: "Lime",
+    accent: "#22c55e",
+    accentSoft: "rgba(34,197,94,0.28)",
+    image: "/images/lime.png",
+    price: 2.6,
+    description: "Fresh lime with a sparkling finish.",
+    meta: "330 ML · LIME FLAVOR",
+  },
+];
+```
+
+Pass the variants to the component:
+
+```jsx
+<ProductMorph
+  brand="YOUR BRAND"
+  title="Sparkling Drink"
+  variants={variants}
+/>
+```
+
+## 10. Variant Properties
+
+| Property | Description |
+|---|---|
+| `id` | Unique variant identifier |
+| `name` | Full variant name |
+| `shortName` | Short label in the selector |
+| `accent` | Main accent color |
+| `accentSoft` | Soft glow color, usually RGBA |
+| `image` | Product image source |
+| `price` | Unit price |
+| `description` | Product description |
+| `meta` | Additional product information |
+
+Use a unique `id` for each variant and ensure each image source resolves correctly.
+
+## 11. Change the Initial Variant
+
+```jsx
+<ProductMorph
+  variants={variants}
+  initialVariant={1}
+/>
+```
+
+The index starts at `0`, so `1` selects the second variant.
+
+The initial variant is selected when the component initializes.
+
+## 12. Quantity and Pricing
+
+Quantity starts at `1` by default. The decrease button cannot reduce it below `1`.
+
+The total is calculated automatically:
+
+```js
+const total = (
+  Number(variant.price) * quantity
+).toFixed(2);
+```
+
+Hide the quantity controls:
+
+```jsx
+<ProductMorph showQuantity={false} />
+```
+
+The cart button still displays the calculated total.
+
+The component formats the total to two decimal places and displays a dollar sign by default.
+
+## 13. Add-to-Cart Integration
+
+Connect the component to your cart state or API:
+
+```jsx
+<ProductMorph
+  onAddToCart={async (product) => {
+    await addProductToCart(product);
+  }}
+/>
+```
+
+The callback receives an object with these properties:
+
+```js
+{
+  brand,
+  title,
+  variant,
+  variantId,
+  quantity,
+  unitPrice,
+  total
+}
+```
+
+`unitPrice` and `total` are numbers. The remaining properties identify the product and selected variant.
+
+### Example with Fetch
+
+```jsx
+<ProductMorph
+  onAddToCart={async (product) => {
+    const response = await fetch("/api/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+
+    if (!response.ok) {
+      throw new Error("Could not add product to cart");
+    }
+
+    return response.json();
+  }}
+/>
+```
+
+Replace `/api/cart` with your actual API endpoint.
+
+When the callback succeeds, the component displays an adding state followed by an added confirmation. If the callback throws an error, the component logs the error and resets the cart state.
+
+Without `onAddToCart`, the component demonstrates the animation but does not save a product to a real cart.
+
+## 14. Variant Change Callback
+
+```jsx
+<ProductMorph
+  onVariantChange={(variant) => {
+    console.log("Selected variant:", variant);
+  }}
+/>
+```
+
+The callback receives the selected variant object. Variant changes are blocked while the cart action is processing or the card is closing.
+
+## 15. Close Callback
+
+```jsx
+<ProductMorph
+  onClose={() => {
+    console.log("Product card closed");
+  }}
+/>
+```
+
+This callback runs after the close animation finishes, including the automatic close following a successful add-to-cart action.
+
+## 16. Automatic Opening
+
+```jsx
+<ProductMorph
+  autoOpen={true}
+  autoOpenDelay={1500}
+/>
+```
+
+The card opens automatically after 1500 milliseconds.
+
+Set `autoOpen` to `false` to require user interaction.
+
+## 17. Disable Particles
+
+```jsx
+<ProductMorph particles={false} />
+```
+
+This removes the ambient particle effects while keeping the other product animations.
+
+## 18. Animation Customization
+
+The `animation` prop lets you override individual animation settings:
+
+```jsx
+<ProductMorph
+  animation={{
+    open: 0.8,
+    close: 0.8,
+    float: 2,
+    glow: 2.5,
+    ambientOpacity: 0.4,
+    particle: 2,
+    detail: 0.5,
+    cartControls: 0.3,
+    lightSweep: 3,
+    compactLine: 1.5,
+    productShift: 0.5,
+    cartButton: 0.2,
+    adding: 0.8,
+    addedCloseDelay: 1500,
+    cartFeedback: 800,
+  }}
+/>
+```
+
+All duration values are in seconds except `addedCloseDelay` and `cartFeedback`, which are in milliseconds.
+
+Values inside `animation` override the corresponding duration props or internal defaults.
+
+## 19. Main Animation Settings
+
+| Setting | Purpose |
+|---|---|
+| `open` | Expanding the card |
+| `close` | Closing the card |
+| `float` | Product floating speed |
+| `glow` | Product glow animation |
+| `ambientOpacity` | Ambient glow transitions |
+| `particle` | Particle animation timing |
+| `detail` | Product details entrance |
+| `cartControls` | Cart controls entrance |
+| `lightSweep` | Product light sweep |
+| `compactLine` | Compact button underline |
+| `productShift` | Product movement |
+| `cartButton` | Cart button color transition |
+| `adding` | Adding-state truck animation |
+| `addedCloseDelay` | Delay before closing after success |
+| `cartFeedback` | Delay before showing added confirmation |
+
+## 20. Customize Card Size
+
+The compact card uses a width of `280px` and height of `400px`. When expanded, it uses a maximum width of `780px` and height of `430px`.
+
+Modify the outer card's animation values to change these dimensions:
+
+```jsx
+animate={{
+  width: isExpanded
+    ? "min(780px, calc(100vw - 32px))"
+    : 280,
+  height: isExpanded ? 430 : 400,
+}}
+```
+
+Keep the expanded layout in mind when changing the dimensions, because the details panel and product image are positioned relative to the card.
+
+## 21. Customize Product Image
+
+The product image uses:
+
+```jsx
+className="absolute inset-0 h-full w-full object-contain"
+```
+
+`object-contain` preserves the image proportions. Use `object-cover` if you want the image to fill its container and crop when necessary.
+
+## 22. Customize Colors
+
+Change each variant's `accent` and `accentSoft` values to update the product glow, background effects, selector indicator, and detail label.
+
+Example:
+
+```js
+{
+  accent: "#8b5cf6",
+  accentSoft: "rgba(139,92,246,0.30)",
+}
+```
+
+The card background is dark by default. Modify the outer card's background class if you want a different theme.
+
+## 23. Customize Currency
+
+The cart total currently displays `$`.
+
+To display another currency, find the JSX that renders:
+
+```jsx
+${total}
+```
+
+Replace it with your desired currency symbol or a suitable currency-formatting function. Also update the unit price display in the cart button.
+
+For production applications, use consistent currency formatting for both the displayed price and backend calculations.
+
+## 24. Important Notes
+
+- ProductMorph uses React, Tailwind CSS, and Framer Motion.
+- Product images must resolve correctly in your project.
+- The component does not provide a backend or persistent cart by itself.
+- Connect `onAddToCart` to your actual cart logic.
+- The cart success animation does not confirm a real order unless your callback implements the relevant API logic.
+- Prices are displayed using `$` by default.
+- Variant changes are immediate, without a separate variant-switching animation.
+- The `animation` prop uses seconds for animation durations, but milliseconds for `addedCloseDelay` and `cartFeedback`.
+
+## 25. Recommended Setup
+
+```jsx
+<ProductMorph
+  brand="AXIS"
+  title="Cola"
+  variants={variants}
+  initialVariant={0}
+  initialQuantity={1}
+  particles={true}
+  showQuantity={true}
+  autoOpen={false}
+  onAddToCart={async (product) => {
+    await addProductToCart(product);
+  }}
+  onVariantChange={(variant) => {
+    console.log("Selected:", variant.id);
+  }}
+  onClose={() => {
+    console.log("Product card closed");
+  }}
+/>
+```
+
+ProductMorph is designed as a reusable product UI component. Keep inventory, checkout, cart persistence, and payment logic in your application.
